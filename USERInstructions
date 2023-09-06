@@ -1,0 +1,5 @@
+to use the program run:
+ 'npm i'
+ 'cp .env.example .env'
+ add '"file:./db.sqlite"' to the end of the file.
+ 'npm run dev'
