@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below
+    // Further reading:
+    // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
+    // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
+    url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String @id @default(uuid())
+  userName      String @unique
+  email         String @unique
+
+  friend FriendLink[] @relation("fr")
+
+  passwordHash  String
+  userAuthToken String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+
+  sentMessages   Message[] @relation("SentMessage")
+  receivedMessages Message[] @relation("ReceivedMessage")
+  rooms          Room[]    @relation("UserRoom")
+}
+
+model FriendLink {
+  id      Int      @id @default(autoincrement())
+  addedOn DateTime
+  friend  User[]   @relation("fr")
+}
+
+
+model Room {
+  id        Int       @id @default(autoincrement())
+  name      String
+  //createdAt DateTime  @default(now())
+  //updatedAt DateTime  @updatedAt
+
+  users     User[]    @relation("UserRoom")
+  messages  Message[]
+}
+
+model Message {
+  id         Int       @id @default(autoincrement())
+  content    String
+  //sentAt     DateTime  @default(now())
+
+  // Specify the fields and references here, not in the User model
+  sender     User      @relation("SentMessage", fields: [senderId], references: [id])
+  senderId   String
+  receiver   User?     @relation("ReceivedMessage", fields: [receiverId], references: [id])
+  receiverId String?
+  room       Room      @relation(fields: [roomId], references: [id])
+  roomId     Int
+}

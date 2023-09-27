@@ -13,6 +13,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 const login: Action = async ({ cookies, request }) => {
   const data = await request.formData();
+  const userName = data.get("userName");
   const email = data.get("email");
   const password = data.get("password");
 

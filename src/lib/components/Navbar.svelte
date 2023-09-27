@@ -22,6 +22,14 @@
           <span class="text-md self-center whitespace-nowrap font-semibold"> Flowbite </span>
         </a>
       </div>
+        <div>
+
+          <a href="chatrooms">ChatRooms<a/>
+
+          <a href="friends">Friends<a/>
+
+          <a href="notifications">Notification<a/>
+        </div>
       <div class="flex items-center">
         <!-- Profile -->
         <div class="relative ml-3 flex items-center">
