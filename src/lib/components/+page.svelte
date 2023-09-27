@@ -1,0 +1,31 @@
+npm create svelte@latest myapp
+cd myapp
+npm install
+npm run dev
+<script>
+    let groupName = '';
+    let participants = '';
+  
+    const createGroupChat = () => {
+      const groupNameArray = groupName.split('_').map(username => username.trim());
+  
+      if (groupName.trim() === '' || groupNameArray.length < 2) {
+        alert('Please provide an appropriate group chat title and at least two participants.');
+        return;
+      }
+  
+      alert(`Group "${groupName}" created with participants: ${groupNameArray.join(', ')}`);
+    };
+  </script>
+  
+  <div class="container">
+    <h1>Create Group Chat</h1>
+    <form on:submit|preventDefault={createGroupChat}>
+      <label for="groupName">Group Name:</label>
+      <input type="text" id="groupName" bind:value={groupName} required>
+      <label for="participants">Participants (underscore-separated usernames):</label>
+      <input type="text" id="participants" bind:value={participants} required>
+      <button type="submit">Create Group</button>
+    </form>
+  </div>
+  
