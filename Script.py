@@ -2,6 +2,7 @@ import asyncio
 import subprocess
 import webbrowser
 import re
+import os
 
 def extract_urls(text):
     # Regular expression pattern to find URLs in the text
@@ -36,6 +37,7 @@ async def run_command():
 
 
 if __name__ == '__main__':
+    #os.chdir('/Users/thomas/Onedrive-SNHU/23FADAY/CS250/Project/CS250_Chatroom')
     subprocess.run(['npm', 'i'], check=True)
     subprocess.run(['npx', 'prisma', 'db', 'push'], check=True)
     loop = asyncio.get_event_loop()

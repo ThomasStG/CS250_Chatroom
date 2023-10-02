@@ -14,6 +14,7 @@ export const load = async ({ locals }: Parameters<PageServerLoad>[0]) => {
 
 const login: Action = async ({ cookies, request }) => {
   const data = await request.formData();
+  const userName = data.get("userName");
   const email = data.get("email");
   const password = data.get("password");
 

@@ -1,0 +1,5 @@
+To run the program:
+	go the directory (should end in CS250_Chatroom)
+	run Script.py
+		this should look something like "python3 Script.py" or "python Script.py" 
+		You will need to have python installed

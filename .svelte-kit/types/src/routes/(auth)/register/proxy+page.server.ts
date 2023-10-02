@@ -15,10 +15,13 @@ export const load = async ({ locals }: Parameters<PageServerLoad>[0]) => {
 const register: Action = async ({ request }) => {
   const data = await request.formData();
   const email = data.get("email");
+  const username = data.get("username");
   const password = data.get("password");
   const passwordConfirmation = data.get("password-confirmation");
 
-  if (typeof email !== "string" || typeof password !== "string" || !email || !password) {
+
+  console.log(data)
+  if (typeof email !== "string" || typeof username !== "string" || !username|| typeof password !== "string" || !email || !password) {
     return fail(400, { error: { message: "email and password are required." } });
   }
 
@@ -34,6 +37,7 @@ const register: Action = async ({ request }) => {
   await db.user.create({
     data: {
       email,
+      username,
       passwordHash: await bcrypt.hash(password, 10),
       userAuthToken: crypto.randomUUID(),
     },
