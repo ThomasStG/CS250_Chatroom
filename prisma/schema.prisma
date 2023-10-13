@@ -4,10 +4,6 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below
-  // Further reading:
-  // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
-  // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
   url      = "file:./db.sqlite"
 }
 
@@ -16,8 +12,6 @@ model User {
   email    String @unique
   username String @unique
 
-  friend FriendLink[] @relation("fr")
-
   passwordHash  String
   userAuthToken String @unique
 
@@ -25,12 +19,33 @@ model User {
   receivedMessages Message[] @relation("ReceivedMessage")
 
   rooms Room[] @relation("UserRoom")
+
+  sentFriendRequests   FriendRequest[] @relation("SentRequests")
+  receivedFriendRequests FriendRequest[] @relation("ReceivedRequests")
+
+  friendsAsUser1 Friend[] @relation("User1Friends")
+  friendsAsUser2 Friend[] @relation("User2Friends")
 }
 
-model FriendLink {
-  id      Int      @id @default(autoincrement())
-  addedOn DateTime
-  friend  User[]   @relation("fr")
+
+model Friend {
+  id        Int      @id @default(autoincrement())
+  userId1   Int
+  user1     User     @relation("User1Friends", fields: [userId1], references: [id])
+  userId2   Int
+  user2     User     @relation("User2Friends", fields: [userId2], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model FriendRequest {
+  id        Int      @id @default(autoincrement())
+  fromId    Int
+  from      User     @relation("SentRequests", fields: [fromId], references: [id])
+  toId      Int
+  to        User     @relation("ReceivedRequests", fields: [toId], references: [id])
+  status    String   @default("pending") // pending, accepted, declined
+  createdAt DateTime @default(now())
+  acceptedAt DateTime?
 }
 
 model Room {
@@ -47,7 +62,6 @@ model Message {
   //sentAt     DateTime  @default(now())
   status  String @default("unread") //read, unread, delivered, error, undelivered
 
-  // Specify the fields and references here, not in the User model
   sender     User  @relation("SentMessage", fields: [senderId], references: [id])
   senderId   Int
   receiver   User? @relation("ReceivedMessage", fields: [receiverId], references: [id])
@@ -55,3 +69,4 @@ model Message {
   room       Room  @relation(fields: [roomId], references: [id])
   roomId     Int
 }
+

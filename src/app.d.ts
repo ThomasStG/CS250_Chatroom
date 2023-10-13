@@ -5,7 +5,12 @@ declare namespace App {
   interface Locals {
     user: {
       email: string;
+      id: int;
     };
+    foundUser: {
+      username: string;
+      id: int;
+    }
   }
 
   interface Error {
