@@ -24,7 +24,7 @@
       </div>
         <div>
 
-          <a href="chatrooms">ChatRooms<a/>
+          <a href="/chatrooms">ChatRooms<a/>
 
           <a href="friends">Friends<a/>
 
