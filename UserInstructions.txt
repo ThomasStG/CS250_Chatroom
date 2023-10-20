@@ -3,3 +3,10 @@ To run the program:
 	run Script.py
 		this should look something like "python3 Script.py" or "python Script.py" 
 		You will need to have python installed
+
+
+
+run:
+npm i
+npx prisma db push
+npm run dev

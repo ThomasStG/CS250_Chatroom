@@ -20,13 +20,12 @@ model User {
 
   rooms Room[] @relation("UserRoom")
 
-  sentFriendRequests   FriendRequest[] @relation("SentRequests")
+  sentFriendRequests     FriendRequest[] @relation("SentRequests")
   receivedFriendRequests FriendRequest[] @relation("ReceivedRequests")
 
   friendsAsUser1 Friend[] @relation("User1Friends")
   friendsAsUser2 Friend[] @relation("User2Friends")
 }
-
 
 model Friend {
   id        Int      @id @default(autoincrement())
@@ -38,13 +37,13 @@ model Friend {
 }
 
 model FriendRequest {
-  id        Int      @id @default(autoincrement())
-  fromId    Int
-  from      User     @relation("SentRequests", fields: [fromId], references: [id])
-  toId      Int
-  to        User     @relation("ReceivedRequests", fields: [toId], references: [id])
-  status    String   @default("pending") // pending, accepted, declined
-  createdAt DateTime @default(now())
+  id         Int       @id @default(autoincrement())
+  fromId     Int
+  from       User      @relation("SentRequests", fields: [fromId], references: [id])
+  toId       Int
+  to         User      @relation("ReceivedRequests", fields: [toId], references: [id])
+  status     String    @default("pending") // pending, accepted, declined
+  createdAt  DateTime  @default(now())
   acceptedAt DateTime?
 }
 
@@ -62,11 +61,11 @@ model Message {
   //sentAt     DateTime  @default(now())
   status  String @default("unread") //read, unread, delivered, error, undelivered
 
-  sender     User  @relation("SentMessage", fields: [senderId], references: [id])
+  sender     User     @relation("SentMessage", fields: [senderId], references: [id])
   senderId   Int
-  receiver   User? @relation("ReceivedMessage", fields: [receiverId], references: [id])
+  receiver   User?    @relation("ReceivedMessage", fields: [receiverId], references: [id])
   receiverId Int?
-  room       Room  @relation(fields: [roomId], references: [id])
+  room       Room     @relation(fields: [roomId], references: [id])
   roomId     Int
+  sentAt     DateTime
 }
-

@@ -14,6 +14,7 @@
     "@sveltejs/kit": "^1.0.0",
     "@sveltejs/package": "^1.0.0",
     "@types/bcrypt": "^5.0.0",
+    "@types/luxon": "^3.3.3",
     "@types/node": "^18.11.19",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
@@ -43,7 +44,9 @@
     "@sveltejs/adapter-node": "^1.2.4",
     "bcrypt": "^5.1.0",
     "gradient-avatar": "^1.0.2",
-    "lucide-svelte": "^0.256.0"
+    "lucide-svelte": "^0.256.0",
+    "luxon": "^3.4.3",
+    "smodale": "^1.0.5"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
