@@ -20,8 +20,8 @@
         <hr />
         <!-- svelte-ignore a11y-autofocus -->
         <div>
-            <button class="close" autofocus on:click={() => dialog.close()}
-                >close</button
+            <button class="close" on:click={() => dialog.close()}
+                >X</button
             >
         </div>
     </div>
@@ -30,8 +30,8 @@
 <style>
     .close {
         position: absolute;
-        right: 0;
-        top: 1;
+        right: 4px;
+        top: 0;
     }
     dialog {
         border-radius: 0.2em;
