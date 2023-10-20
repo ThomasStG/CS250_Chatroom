@@ -18,18 +18,21 @@
     <div class="flex items-center justify-between">
       <div class="ml-2 flex items-center justify-start">
         <a href="/" class="flex items-center space-x-2">
-          <Hexagon />
-          <span class="text-md self-center whitespace-nowrap font-semibold"> Flowbite </span>
+          <img src="favicon.png" alt="squire logo" />
+          <span
+            class="text-md helvetica self-center whitespace-nowrap font-semibold"
+            style="font-family: Helvetica, sans-serif;"
+          >
+            Squire
+          </span>
         </a>
       </div>
-        <div>
+      <div>
+        <a class="btn" href="/chatrooms">Chatrooms</a>
+        <a class="btn" href="/friends">Friends</a>
 
-          <a href="/chatrooms">ChatRooms<a/>
-
-          <a href="friends">Friends<a/>
-
-          <a href="notifications">Notification<a/>
-        </div>
+        <!--<a href="notifications">Notification    <a/>-->
+      </div>
       <div class="flex items-center">
         <!-- Profile -->
         <div class="relative ml-3 flex items-center">
@@ -71,14 +74,18 @@
               </p>
             </div>
             <ul class="py-1" role="none">
-              <li>
-                <a href="/settings" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
-                  >Settings</a
+              <!--<li>
+                <a
+                  href="/settings"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  role="menuitem">Settings</a
                 >
-              </li>
+              </li>-->
               <li>
-                <a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
-                  >Log out</a
+                <a
+                  href="/logout"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  role="menuitem">Log out</a
                 >
               </li>
             </ul>

@@ -95,6 +95,18 @@ export const actions = {
                 content: newMessage,
             },
         });
-        console.log(newMessage);
+        console.log(messageI, ' to ', newMessage);
+    },
+    deleteMessage: async ({ request, params, locals }: import('./$types').RequestEvent) => {
+        const data = await request.formData();
+        const messageI = Number(data.get("messageId"));
+        const room_id = parseInt(params.slug)
+
+        await db.message.delete({
+            where: {
+                id: messageI,
+            }
+        });
+        console.log(messageI, ' deleted');
     }
 };null as any as Actions;

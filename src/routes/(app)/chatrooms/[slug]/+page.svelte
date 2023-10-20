@@ -20,7 +20,7 @@
     {#each messages as message}
       <div class="mb-4 rounded-lg bg-gray-800 p-6">
         <p class="text-white">Message: {message.content}</p>
-        <p class="text-gray-400">Sender: {message.sender.email}</p>
+        <p class="text-gray-400">Sender: {message.sender.username}</p>
 
         {#if message.receiver}
           <p class="text-gray-400">Receiver: {message.receiver.email}</p>
@@ -28,12 +28,23 @@
         {#if message.sentAt}
           <p class="text-gray-400">Time: {message.sentAt}</p>
         {/if}
-
-        <button
-          on:click={() => (modals[message.id] = true)}
-          style="color: white; border: 2px solid green; border-radius: 5px; padding: 3px;"
-          >Edit Message</button
-        >
+        <div style="display: flex;">
+          <button
+            on:click={() => (modals[message.id] = true)}
+            class="message-button">Edit Message</button
+          >
+          <form action="?/deleteMessage" method="POST">
+            <button type="submit" class="message-button">
+              Delete Message
+            </button>
+            <input
+              type="hidden"
+              id="messageId"
+              name="messageId"
+              bind:value={message.id}
+            />
+          </form>
+        </div>
         {#if modals[message.id]}
           <!-- Use bind:showModal to control the Modal component -->
           <Modal bind:showModal={modals[message.id]}>
@@ -49,8 +60,7 @@
                       id="message"
                       name="message"
                       autofocus
-                      style="width:380px; display: block; margin-left: auto; margin-right: auto;"
-                      class="block h-full rounded-md border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+                      class="modal-text"
                       bind:value={message.content}
                     />
                     <!--passes the messageId through a hidden attribute to update the db-->
@@ -74,7 +84,7 @@
   <form
     action="?/sendMessage"
     method="POST"
-    class="mx-auto flex max-w-3xl items-center"
+    class="mx-auto flex h-full max-w-3xl items-center"
   >
     <input
       type="text"
@@ -87,12 +97,19 @@
       type="submit"
       class="rounded-r-lg bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
     >
-      Send
+      send
     </button>
   </form>
 </div>
 
 <style>
+  .message-button {
+    color: white;
+    border: 2px solid green;
+    border-radius: 5px;
+    padding: 3px;
+    margin-right: 4px;
+  }
   .bottom {
     position: absolute;
     top: 1;
@@ -106,5 +123,19 @@
   .modal-size {
     height: 250px;
     width: 400px;
+  }
+  .modal-text {
+    width: 380px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    border: 1px solid #ccc; /* You can adjust the border style as needed */
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    padding: 2.5px;
+    color: #333;
+    outline: none;
+    font-size: 14px;
   }
 </style>
