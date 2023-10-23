@@ -16,8 +16,6 @@ export const load = async ({ params, locals }: Parameters<PageServerLoad>[0]) =>
         },
         include: {
             sender: true,
-            //receiver: true,
-
         },
     });
 
@@ -29,6 +27,7 @@ export const load = async ({ params, locals }: Parameters<PageServerLoad>[0]) =>
 export const actions = {
     sendMessage: async ({ request, params, locals }: import('./$types').RequestEvent) => {
         const formData = Object.fromEntries(await request.formData()) as Record<string, string | number>;
+        const now = new Date();
 
         const {
             content,
@@ -40,7 +39,6 @@ export const actions = {
 
         const userId = locals.user?.id; // Get the userId from the locals object
         const roomId = parseInt(params.slug); // Convert the slug to an integer using parseInt()
-        //const sentAt: Date = new Date();
 
         if (!userId) {
             return fail(403, { error: { message: "User not authenticated." } });
@@ -56,11 +54,6 @@ export const actions = {
                             id: userId,
                         },
                     },
-                    receiver: {
-                        connect: {
-                            id: userId,
-                        },
-                    },
                     room: {
                         connect: {
                             id: roomId,
@@ -68,7 +61,7 @@ export const actions = {
                     },
                     content: String(content),
                     status: "unread",
-                    //sentAt: sentAt,
+                    sentAt: now,
                 },
             });
         }
@@ -81,6 +74,7 @@ export const actions = {
         }
     }, editMessage: async ({ request, params, locals }: import('./$types').RequestEvent) => {
         const data = await request.formData();
+        const now = new Date();
         let newMessage = data.get("message")?.toString();
         const messageI = Number(data.get("messageId"));
         if (newMessage == null) {
@@ -93,6 +87,7 @@ export const actions = {
             },
             data: {
                 content: newMessage,
+                updatedAt: now,
             },
         });
         console.log(messageI, ' to ', newMessage);

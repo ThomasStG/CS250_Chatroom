@@ -22,9 +22,10 @@ export const load: PageServerLoad = async ({ request, locals }) => {
         }
     });
 
+    let friends;
     // Merge friends from both relations into a single array
     if (userWithFriends != null) {
-        const friends = [
+        friends = [
             ...userWithFriends.friendsAsUser1.map(friend => friend.user2),
             ...userWithFriends.friendsAsUser2.map(friend => friend.user1)
         ];

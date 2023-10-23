@@ -20,9 +20,7 @@
         <hr />
         <!-- svelte-ignore a11y-autofocus -->
         <div>
-            <button class="close" on:click={() => dialog.close()}
-                >X</button
-            >
+            <button class="close" on:click={() => dialog.close()}>X</button>
         </div>
     </div>
 </dialog>

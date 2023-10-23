@@ -15,8 +15,6 @@ export const load: PageServerLoad = async ({ params, locals }) => {
         },
         include: {
             sender: true,
-            //receiver: true,
-
         },
     });
 
@@ -28,6 +26,7 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 export const actions: Actions = {
     sendMessage: async ({ request, params, locals }) => {
         const formData = Object.fromEntries(await request.formData()) as Record<string, string | number>;
+        const now = new Date();
 
         const {
             content,
@@ -39,7 +38,6 @@ export const actions: Actions = {
 
         const userId = locals.user?.id; // Get the userId from the locals object
         const roomId = parseInt(params.slug); // Convert the slug to an integer using parseInt()
-        //const sentAt: Date = new Date();
 
         if (!userId) {
             return fail(403, { error: { message: "User not authenticated." } });
@@ -55,11 +53,6 @@ export const actions: Actions = {
                             id: userId,
                         },
                     },
-                    receiver: {
-                        connect: {
-                            id: userId,
-                        },
-                    },
                     room: {
                         connect: {
                             id: roomId,
@@ -67,7 +60,7 @@ export const actions: Actions = {
                     },
                     content: String(content),
                     status: "unread",
-                    //sentAt: sentAt,
+                    sentAt: now,
                 },
             });
         }
@@ -80,6 +73,7 @@ export const actions: Actions = {
         }
     }, editMessage: async ({ request, params, locals }) => {
         const data = await request.formData();
+        const now = new Date();
         let newMessage = data.get("message")?.toString();
         const messageI = Number(data.get("messageId"));
         if (newMessage == null) {
@@ -92,6 +86,7 @@ export const actions: Actions = {
             },
             data: {
                 content: newMessage,
+                updatedAt: now,
             },
         });
         console.log(messageI, ' to ', newMessage);
