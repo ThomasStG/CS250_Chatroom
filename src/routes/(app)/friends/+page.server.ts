@@ -22,11 +22,14 @@ export const load: PageServerLoad = async ({ request, locals }) => {
         }
     });
 
+    let friends;
     // Merge friends from both relations into a single array
-    const friends = [
-        ...userWithFriends.friendsAsUser1.map(friend => friend.user2),
-        ...userWithFriends.friendsAsUser2.map(friend => friend.user1)
-    ];
+    if (userWithFriends != null) {
+        friends = [
+            ...userWithFriends.friendsAsUser1.map(friend => friend.user2),
+            ...userWithFriends.friendsAsUser2.map(friend => friend.user1)
+        ];
+    }
 
     // Fetch the user's friend requests
     const friendRequests = await prisma.friendRequest.findMany({
@@ -43,9 +46,9 @@ export const load: PageServerLoad = async ({ request, locals }) => {
     });
 
     return {
-        
-            friendRequests,
-            friends  // Include the friends array in the returned props
+
+        friendRequests,
+        friends  // Include the friends array in the returned props
     };
 };
 
@@ -64,7 +67,7 @@ export const actions: Actions = {
 
             if (!userTo) {
                 // User not found
-                return fail(404, { error: { message: "User not found"}});
+                return fail(404, { error: { message: "User not found" } });
             }
 
             const userFromId = locals.user.id;
@@ -85,10 +88,10 @@ export const actions: Actions = {
             };
         } catch (err) {
             console.error(err);
-            return fail(500,  { error: { message: "Internal Server Error"}});
+            return fail(500, { error: { message: "Internal Server Error" } });
         }
     },
- accept: async ({ request, locals }) => {
+    accept: async ({ request, locals }) => {
         try {
             const formData = Object.fromEntries(await request.formData());
             const { requestId } = formData;

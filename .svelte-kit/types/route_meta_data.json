@@ -8,15 +8,29 @@
 	"/": [
 		"src/routes/+layout.server.ts"
 	],
+	"/(app)/api/searchFriend": [
+		"src/routes/(app)/api/searchFriend/+server.ts"
+	],
+	"/(app)/api/searchUser": [
+		"src/routes/(app)/api/searchUser/+server.ts"
+	],
 	"/(app)/chatrooms": [
+		"src/routes/(app)/chatrooms/+page.server.ts",
+		"src/routes/(app)/+layout.server.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/(app)/chatrooms/create.backup": [
+		"src/routes/(app)/chatrooms/create.backup/+page.server.ts",
 		"src/routes/(app)/+layout.server.ts",
 		"src/routes/+layout.server.ts"
 	],
 	"/(app)/chatrooms/create": [
+		"src/routes/(app)/chatrooms/create/+page.server.ts",
 		"src/routes/(app)/+layout.server.ts",
 		"src/routes/+layout.server.ts"
 	],
 	"/(app)/chatrooms/[slug]": [
+		"src/routes/(app)/chatrooms/[slug]/+page.server.ts",
 		"src/routes/(app)/+layout.server.ts",
 		"src/routes/+layout.server.ts"
 	],
