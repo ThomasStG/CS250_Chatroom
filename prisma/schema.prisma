@@ -53,6 +53,7 @@ model Room {
 
   users    User[]    @relation("UserRoom")
   messages Message[]
+  Chatroom Boolean
 }
 
 model Message {
