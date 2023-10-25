@@ -30,6 +30,7 @@
       <div>
         <a class="btn" href="/chatrooms">Chatrooms</a>
         <a class="btn" href="/friends">Friends</a>
+        <a class="btn" href="/directMessage">Direct Messages</a>
 
         <!--<a href="notifications">Notification    <a/>-->
       </div>

@@ -3,10 +3,6 @@
   export let data: PageData;
 
   $: ({ rooms } = data);
-
-  function refreshPage() {
-    window.location.reload();
-  }
 </script>
 
 <div
@@ -21,22 +17,24 @@
 
   <div class="mx-auto max-w-3xl">
     {#each rooms as room}
-      <div class="flex" style="position: relative;">
-        <a
-          href="/chatrooms/{room.id}"
-          class="mb-4 block rounded-lg bg-gray-800 p-6 hover:bg-gray-700"
-        >
-          <p class="text-xl text-white">Room Name: {room.name}</p>
-        </a>
-        <form action="?/delete" method="POST">
-          <input type="hidden" id="room" bind:value={room.id} />
-          <button
-            type="submit"
-            class="mb-4 block rounded-lg bg-gray-800 p-6 text-xl text-white hover:bg-gray-700"
-            >Delete</button
+      {#if room.Chatroom}
+        <div class="flex" style="position: relative;">
+          <a
+            href="/chatrooms/{room.id}"
+            class="mb-4 block rounded-lg bg-gray-800 p-6 hover:bg-gray-700"
           >
-        </form>
-      </div>
+            <p class="text-xl text-white">Room Name: {room.name}</p>
+          </a>
+          <form action="?/delete" method="POST">
+            <input type="hidden" name="room" bind:value={room.id} />
+            <button
+              type="submit"
+              class="mb-4 block rounded-lg bg-gray-800 p-6 text-xl text-white hover:bg-gray-700"
+              >Delete</button
+            >
+          </form>
+        </div>
+      {/if}
     {/each}
   </div>
   <div class="flex">
