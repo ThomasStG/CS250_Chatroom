@@ -23,10 +23,20 @@
 
 <div>Friends:</div>
 {#each friends as friend}
-    <div>
-        {friend.username}
-        {friend.email}
-        {friend.id}
+    <div class="flex" style="justify-content: space-between; max-width: 350px;">
+        <div style="max-width: 250px; justify-content: space-between;">
+            {friend.username}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            {friend.email}
+        </div>
+        <form action="?/removeFriend" method="post" style=" color: red;">
+            <input
+                type="hidden"
+                id="friendID"
+                name="friendID"
+                bind:value={friend.id}
+            />
+            <button type="submit">Remove Friend</button>
+        </form>
     </div>
 {/each}
 <div>Friends Requests:</div>

@@ -71,6 +71,9 @@ export const actions: Actions = {
             }
 
             const userFromId = locals.user.id;
+            if (userTo.id == userFromId) {
+                return fail(404, { error: { message: "You cannot send a friend request to yourself" } });
+            }
 
             const friendRequest = await prisma.friendRequest.create({
                 data: {
@@ -93,6 +96,7 @@ export const actions: Actions = {
     },
     accept: async ({ request, locals }) => {
         try {
+            const userId = locals.user.id;
             const formData = Object.fromEntries(await request.formData());
             const { requestId } = formData;
 
@@ -102,10 +106,22 @@ export const actions: Actions = {
                 include: { from: true, to: true }
             });
 
+            const usernames = await prisma.user.findMany({
+                where: {
+                    id: {
+                        in: [friendRequest.fromId, friendRequest.toId],
+                    },
+                },
+            });
+            console.log(usernames[0]);
+            console.log(usernames[1]);
+
             if (!friendRequest) {
                 // Friend request not found
                 return fail(404, { error: { message: "Friend request not found" } });
             }
+
+
 
             // Begin a transaction to update the friend request and create the friend record
             await prisma.$transaction([
@@ -120,6 +136,80 @@ export const actions: Actions = {
                     }
                 })
             ]);
+            const name: string = usernames[0].username + "‎" + usernames[1].username;
+            console.log(name);
+
+            await prisma.room.create({
+                data: {
+                    name: name, // Specify the room name
+                    users: {
+                        connect: [
+                            { id: friendRequest.from.id },
+                            { id: friendRequest.to.id }
+                        ]
+                    },
+                    Chatroom: false
+                }
+
+            });
+
+            return { body: { message: 'Friend request accepted' } };
+
+        } catch (err) {
+            console.error(err);
+            return fail(500, { error: { message: "Internal Server Error" } });
+        }
+    },
+    removeFriend: async ({ request, locals }) => {
+        try {
+            const userId = locals.user.id;
+            const data = await request.formData();
+            const friendID: Number = +data.get("friendID");
+
+            // Fetch the friend request details
+
+
+            await prisma.friend.deleteMany({
+                where: {
+                    OR: [
+                        {
+                            userId1: friendID,
+                            userId2: userId
+                        },
+                        {
+                            userId1: userId,
+                            userId2: friendID
+                        }
+                    ]
+                }
+            });
+            await prisma.room.deleteMany({
+                where: {
+                    AND: [
+                        {
+                            OR: [
+                                {
+                                    users: {
+                                        some: {
+                                            id: friendID
+                                        }
+                                    },
+                                },
+                                {
+                                    users: {
+                                        some: {
+                                            id: userId
+                                        }
+                                    },
+                                },
+                            ],
+                        },
+                        {
+                            Chatroom: false,
+                        },
+                    ],
+                },
+            });
 
             return { body: { message: 'Friend request accepted' } };
 

@@ -34,6 +34,14 @@
 		"src/routes/(app)/+layout.server.ts",
 		"src/routes/+layout.server.ts"
 	],
+	"/(app)/directMessage": [
+		"src/routes/(app)/directMessage/+layout.server.ts",
+		"src/routes/(app)/+layout.server.ts",
+		"src/routes/+layout.server.ts",
+		"src/routes/(app)/directMessage/+layout.server.ts",
+		"src/routes/(app)/+layout.server.ts",
+		"src/routes/+layout.server.ts"
+	],
 	"/(app)/friends": [
 		"src/routes/(app)/friends/+page.server.ts",
 		"src/routes/(app)/+layout.server.ts",

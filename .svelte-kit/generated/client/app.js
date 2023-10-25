@@ -13,22 +13,25 @@ export const nodes = [
 	() => import('./nodes/9'),
 	() => import('./nodes/10'),
 	() => import('./nodes/11'),
-	() => import('./nodes/12')
+	() => import('./nodes/12'),
+	() => import('./nodes/13'),
+	() => import('./nodes/14')
 ];
 
-export const server_loads = [0,2];
+export const server_loads = [0,2,3];
 
 export const dictionary = {
-		"/(app)": [3,[2]],
-		"/(app)/chatrooms": [~4,[2]],
-		"/(app)/chatrooms/create.backup": [~7,[2]],
-		"/(app)/chatrooms/create": [~6,[2]],
-		"/(app)/chatrooms/[slug]": [~5,[2]],
-		"/(app)/friends": [~8,[2]],
-		"/(auth)/login": [~10],
-		"/(auth)/logout": [~11],
-		"/(auth)/register": [~12],
-		"/(app)/settings": [9,[2]]
+		"/(app)": [4,[2]],
+		"/(app)/chatrooms": [~5,[2]],
+		"/(app)/chatrooms/create.backup": [~8,[2]],
+		"/(app)/chatrooms/create": [~7,[2]],
+		"/(app)/chatrooms/[slug]": [~6,[2]],
+		"/(app)/directMessage": [9,[2,3]],
+		"/(app)/friends": [~10,[2]],
+		"/(auth)/login": [~12],
+		"/(auth)/logout": [~13],
+		"/(auth)/register": [~14],
+		"/(app)/settings": [11,[2]]
 	};
 
 export const hooks = {

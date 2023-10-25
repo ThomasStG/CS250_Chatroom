@@ -44,17 +44,17 @@ export const actions = {
   delete: async ({ request }: import('./$types').RequestEvent) => {
     try {
       console.log(1);
-      const formData = new URLSearchParams(await request.text());
-      const roomtmp: string | null = formData.get("room");
+      const formData = Object.fromEntries(await request.formData());
+      const roomtmp: string = formData.room;
       console.log(2);
-      let room: number | null = null;
+      let room: number = -1;
       console.log(roomtmp)
       if (roomtmp) {
         room = +roomtmp;
       }
       console.log(room);
 
-      if (room == null) {
+      if (room == null || room == -1) {
         return fail(400, { error: { message: "Missing room ID" } });
       }
 

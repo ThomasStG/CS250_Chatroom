@@ -7,7 +7,7 @@ let userIds: string[] = [];
 export const actions = {
     search: async ({ request }: import('./$types').RequestEvent) => {
         try {
-            const formData = new URLSearchParams(await request.text());
+            const formData = Object.fromEntries(await request.formData());
             const username = formData.get("username");
 
             if (!username) {
@@ -70,6 +70,7 @@ export const actions = {
                     users: {
                         connect: usersToConnect,
                     },
+                    Chatroom: true,
                 },
             });
 
@@ -78,7 +79,11 @@ export const actions = {
             // Clear the userIds array
             userIds = [];
 
-            return { status: 201 };
+            return {
+                status: 201, headers: {
+                    'Location': '/chatrooms'
+                }
+            };
         } catch (error) {
             console.error("Error creating chatroom:", error);
             return fail(500, { error: { message: "Failed to create chatroom." } });
