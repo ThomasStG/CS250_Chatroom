@@ -18,12 +18,12 @@
     <div class="flex items-center justify-between">
       <div class="ml-2 flex items-center justify-start">
         <a href="/" class="flex items-center space-x-2">
-          <!--<img src="favicon.png" alt="squire logo" />-->
+          <img src="favicon.png" alt="squire logo" />
           <span
             class="text-md helvetica self-center whitespace-nowrap font-semibold"
             style="font-family: Helvetica, sans-serif;"
           >
-            Squire
+            [Squire]
           </span>
         </a>
       </div>

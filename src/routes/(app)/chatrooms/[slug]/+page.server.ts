@@ -5,22 +5,31 @@ import db from "$lib/database";
 
 
 export const load: PageServerLoad = async ({ params, locals }) => {
-    const userId = locals.user?.id; // Get the userId from the locals object
-    const roomId = parseInt(params.slug); // Convert the slug to an integer using parseInt()
-    console.log("roomId: ", roomId)
-    // Fetch the messages for the specific chat room and include sender and receiver details
-    const messages = await prisma.message.findMany({
-        where: {
-            roomId: roomId, // Use the roomId here, not params.slug
-        },
-        include: {
-            sender: true,
-        },
-    });
+    try {
+        const userId = locals.user?.id; // Get the userId from the locals object
+        const roomId: number = parseInt(params.slug); // Convert the slug to an integer using parseInt()
+        console.log("roomId: ", roomId)
+        // Fetch the messages for the specific chat room and include sender and receiver details
+        if (roomId) {
+            const messages = await prisma.message.findMany({
+                where: {
+                    roomId: roomId, // Use the roomId here, not params.slug
+                },
+                include: {
+                    sender: true,
+                },
+            });
 
-    return {
-        messages,
-    };
+            return {
+                messages,
+            };
+        }
+    }
+    catch (err) {
+        console.error(err);
+        return fail(500, { error: { message: "Internal Server Error" } });
+    }
+
 };
 
 export const actions: Actions = {

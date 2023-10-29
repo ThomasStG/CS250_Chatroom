@@ -25,7 +25,7 @@
 
   <div class="mx-auto max-w-3xl items-center">
     {#each messages as message}
-      <div class="mb-4 rounded-lg bg-gray-800 p-6">
+      <div class="message-list">
         <p class="text-white">Message: {message.content}</p>
         <p class="text-gray-400">Sender: {message.sender.username}</p>
 
@@ -145,5 +145,11 @@
     color: #333;
     outline: none;
     font-size: 14px;
+  }
+  .message-list {
+    margin-bottom: 1rem; /* mb-4 */
+    border-radius: 0.5rem; /* rounded-lg */
+    background-color: #2d3748; /* bg-gray-800 */
+    padding: 1.5rem;
   }
 </style>

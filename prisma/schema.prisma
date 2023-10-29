@@ -25,6 +25,7 @@ model User {
 
   friendsAsUser1 Friend[] @relation("User1Friends")
   friendsAsUser2 Friend[] @relation("User2Friends")
+  settings int
 }
 
 model Friend {

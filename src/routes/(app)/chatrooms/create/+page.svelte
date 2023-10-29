@@ -1,11 +1,12 @@
-<script >
-let username = "";
-let userNames = [];
-let addedUsers = [];
+<script>
+  let username = "";
+  let chatname = "";
+  let userNames = [];
+  let addedUsers = [];
 
-async function SearchUser() {
-  console.log("username-", username)  
-  try{
+  async function SearchUser() {
+    console.log("username-", username);
+    try {
       const response = await fetch("/api/searchFriend", {
         method: "POST",
         headers: {
@@ -22,23 +23,22 @@ async function SearchUser() {
       console.log("Returned User: ", user);
       console.log(user.id);
       userNames = [...userNames, user.id];
-      console.log(userNames)
-  } catch(error) {
+      console.log(userNames);
+    } catch (error) {
       console.error(
         "There has been a problem with your fetch operation:",
         error
       );
+    }
   }
-};
 
-function addUser(name){
-  addedUsers = [...addedUsers, name];
-  console.log("added users: ", addedUsers)
-}
+  function addUser(name) {
+    addedUsers = [...addedUsers, name];
+    console.log("added users: ", addedUsers);
+  }
 
-
-async function createRoom() {
-  try{
+  async function createRoom() {
+    try {
       const response = await fetch("/api/createRoom", {
         method: "POST",
         headers: {
@@ -53,36 +53,41 @@ async function createRoom() {
 
       let room = (await response.json()).room;
       console.log("Returned Room: ", room);
-  } catch(error) {
+    } catch (error) {
       console.error(
         "There has been a problem with your fetch operation:",
         error
       );
+    }
   }
-};
-
 </script>
 
 <div>
   <div>
     <h>Create Chatroom</h>
-    <input placeholder="User Name" bind:value={username}/>
-    <button type="submit" on:click={SearchUser} >Search</button>
+    <input placeholder="User Name" bind:value={username} />
+    <button type="submit" on:click={SearchUser}>Search</button>
   </div>
   <div>
     {#each userNames as id (id)}
       <p>{id}</p>
-      <button on:click={() => addUser(id)}>
-        Add to Groupchat
-      </button>
+      <button on:click={() => addUser(id)}> Add to Groupchat </button>
     {/each}
   </div>
-  <div>
+</div>
 
-      <h> Added to groupchat:</h>
+<div>
+  {#if addedUsers && addedUsers.length > 0 && chatname}
+    <h2>Added to groupchat:</h2>
     {#each addedUsers as id (id)}
       <p>{id}</p>
-      <button on:click={createRoom}>Create Groupchat</button>
     {/each}
-  </div>
+    <div class="flex" style="gap: 8px;">
+      <h2>Chatroom name</h2>
+      <input placeholder="Chatname" name="chatname" bind:value={chatname} />
+      {#if addedUsers.length > 0 && chatname != ""}
+        <button on:click={createRoom}>Create Groupchat</button>
+      {/if}
+    </div>
+  {/if}
 </div>

@@ -1,4 +1,4 @@
-<div class="mt-8">
+<div>
   <h1
     class="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl"
   >

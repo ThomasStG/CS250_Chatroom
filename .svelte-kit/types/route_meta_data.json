@@ -8,6 +8,9 @@
 	"/": [
 		"src/routes/+layout.server.ts"
 	],
+	"/(app)/api/createRoom": [
+		"src/routes/(app)/api/createRoom/+server.ts"
+	],
 	"/(app)/api/searchFriend": [
 		"src/routes/(app)/api/searchFriend/+server.ts"
 	],
