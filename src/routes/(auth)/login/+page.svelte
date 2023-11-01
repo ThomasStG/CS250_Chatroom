@@ -7,10 +7,15 @@
   export let form: ActionData;
 </script>
 
-<div class="pt:mt-0 mx-auto flex flex-col items-center justify-center px-6 pb-24 md:h-screen">
-  <a href="/" class="mb-8 flex items-center justify-center text-2xl font-semibold lg:mb-10">
+<div
+  class="pt:mt-0 mx-auto flex flex-col items-center justify-center px-6 pb-24 md:h-screen"
+>
+  <a
+    href="/"
+    class="mb-8 flex items-center justify-center text-2xl font-semibold lg:mb-10"
+  >
     <!-- <img src="/images/logo.svg" class="mr-4 h-11" alt="FlowBite Logo" /> -->
-    <span>CS-250 Chatrooms</span>
+    <span style="font-family: Helvetica, sans-serif, Arial">[Squire]</span>
   </a>
   <div class="w-full max-w-xl space-y-8 rounded-md border p-6 shadow sm:p-8">
     <h2 class="text-2xl font-bold text-gray-900">Sign in to platform</h2>
@@ -36,10 +41,10 @@
         };
       }}
     >
-
-      
       <div>
-        <label for="email" class="mb-2 block text-sm font-medium text-gray-900"> Email </label>
+        <label for="email" class="mb-2 block text-sm font-medium text-gray-900">
+          Email
+        </label>
         <input
           id="email"
           name="email"
@@ -51,7 +56,10 @@
       </div>
 
       <div>
-        <label for="password" class="mb-2 block text-sm font-medium text-gray-900">Password</label>
+        <label
+          for="password"
+          class="mb-2 block text-sm font-medium text-gray-900">Password</label
+        >
         <input
           id="password"
           name="password"
@@ -63,7 +71,12 @@
       </div>
 
       <div class="flex items-start">
-        <a href="/forgot-password" class="ml-auto text-sm text-primary-700 hover:underline"> Forgot Password? </a>
+        <a
+          href="/forgot-password"
+          class="ml-auto text-sm text-primary-700 hover:underline"
+        >
+          Forgot Password?
+        </a>
       </div>
 
       <button
@@ -75,7 +88,9 @@
 
       <div class="text-sm font-medium text-gray-500">
         Don't have an account?
-        <a href="/register" class="text-primary-700 hover:underline"> Create account </a>
+        <a href="/register" class="text-primary-700 hover:underline">
+          Create account
+        </a>
       </div>
     </form>
   </div>

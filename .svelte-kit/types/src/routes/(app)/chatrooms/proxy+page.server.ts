@@ -30,9 +30,15 @@ export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) =
         },
       },
     });
+    const user = await prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+    });
 
     return {
-      rooms,
+      rooms: rooms,
+      usr: user
     };
   } catch (err) {
     console.error(err);
