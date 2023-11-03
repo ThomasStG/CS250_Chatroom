@@ -10,8 +10,10 @@ declare namespace App {
     foundUser: {
       username: string;
       id: int;
-    }
+    };
   }
+
+  
 
   interface Error {
     message: string;
@@ -20,4 +22,7 @@ declare namespace App {
   // interface Platform {}
   // interface PrivateEnv {}
   // interface PublicEnv {}
+}
+declare global{
+  var userTheme: string;
 }

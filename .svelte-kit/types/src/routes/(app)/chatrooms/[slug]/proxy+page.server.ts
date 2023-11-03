@@ -4,113 +4,110 @@ import prisma from "$lib/database";
 import { fail, redirect } from "@sveltejs/kit";
 import db from "$lib/database";
 
-
 export const load = async ({ params, locals }: Parameters<PageServerLoad>[0]) => {
-    try {
-        const userId = locals.user?.id; // Get the userId from the locals object
-        const roomId: number = parseInt(params.slug); // Convert the slug to an integer using parseInt()
-        console.log("roomId: ", roomId)
-        // Fetch the messages for the specific chat room and include sender and receiver details
-        if (roomId) {
-            const messages = await prisma.message.findMany({
-                where: {
-                    roomId: roomId, // Use the roomId here, not params.slug
-                },
-                include: {
-                    sender: true,
-                },
-            });
-
-            return {
-                messages,
-            };
-        }
+  try {
+    const userId = locals.user?.id; // Get the userId from the locals object
+    const roomId: number = parseInt(params.slug); // Convert the slug to an integer using parseInt()
+    console.log("roomId: ", roomId);
+    // Fetch the messages for the specific chat room and include sender and receiver details
+    if (roomId) {
+      const messages = await prisma.message.findMany({
+        where: {
+          roomId: roomId, // Use the roomId here, not params.slug
+        },
+        include: {
+          sender: true,
+        },
+      });
+      return {
+        messages, userId,
+      };
     }
-    catch (err) {
-        console.error(err);
-        return fail(500, { error: { message: "Internal Server Error" } });
-    }
-
+  } catch (err) {
+    console.error(err);
+    return fail(500, { error: { message: "Internal Server Error" } });
+  }
 };
 
 export const actions = {
-    sendMessage: async ({ request, params, locals }: import('./$types').RequestEvent) => {
-        const formData = Object.fromEntries(await request.formData()) as Record<string, string | number>;
-        const now = new Date();
+  sendMessage: async ({ request, params, locals }: import('./$types').RequestEvent) => {
+    const formData = Object.fromEntries(await request.formData()) as Record<
+      string,
+      string | number
+    >;
+    const now = new Date();
 
-        const {
-            content,
-        } = formData;
+    const { content } = formData;
 
-        const convertedFormData = {
-            content: String(content),
-        };
+    const convertedFormData = {
+      content: String(content),
+    };
 
-        const userId = locals.user?.id; // Get the userId from the locals object
-        const roomId = parseInt(params.slug); // Convert the slug to an integer using parseInt()
+    const userId = locals.user?.id; // Get the userId from the locals object
+    const roomId = parseInt(params.slug); // Convert the slug to an integer using parseInt()
 
-        if (!userId) {
-            return fail(403, { error: { message: "User not authenticated." } });
-        }
-
-
-        try {
-            await prisma.message.create({
-                data: {
-                    ...convertedFormData,
-                    sender: {
-                        connect: {
-                            id: userId,
-                        },
-                    },
-                    room: {
-                        connect: {
-                            id: roomId,
-                        },
-                    },
-                    content: String(content),
-                    status: "unread",
-                    sentAt: now,
-                },
-            });
-        }
-        catch (err) {
-            console.error(err);
-            return fail(500, { error: { message: "Failed to send message." } });
-        }
-        return {
-            status: 201,
-        }
-    }, editMessage: async ({ request, params, locals }: import('./$types').RequestEvent) => {
-        const data = await request.formData();
-        const now = new Date();
-        let newMessage = data.get("message")?.toString();
-        const messageI = Number(data.get("messageId"));
-        if (newMessage == null) {
-            newMessage = "";
-        }
-
-        await db.message.update({
-            where: {
-                id: messageI,
-            },
-            data: {
-                content: newMessage,
-                updatedAt: now,
-            },
-        });
-        console.log(messageI, ' to ', newMessage);
-    },
-    deleteMessage: async ({ request, params, locals }: import('./$types').RequestEvent) => {
-        const data = await request.formData();
-        const messageI = Number(data.get("messageId"));
-        const room_id = parseInt(params.slug)
-
-        await db.message.delete({
-            where: {
-                id: messageI,
-            }
-        });
-        console.log(messageI, ' deleted');
+    if (!userId) {
+      return fail(403, { error: { message: "User not authenticated." } });
     }
-};null as any as Actions;
+
+    try {
+      await prisma.message.create({
+        data: {
+          ...convertedFormData,
+          sender: {
+            connect: {
+              id: userId,
+            },
+          },
+          room: {
+            connect: {
+              id: roomId,
+            },
+          },
+          content: String(content),
+          status: "unread",
+          sentAt: now,
+        },
+      });
+    } catch (err) {
+      console.error(err);
+      return fail(500, { error: { message: "Failed to send message." } });
+    }
+    return {
+      status: 201,
+    };
+  },
+  editMessage: async ({ request, params, locals }: import('./$types').RequestEvent) => {
+    const data = await request.formData();
+    const now = new Date();
+    let newMessage = data.get("message")?.toString();
+    const messageI = Number(data.get("messageId"));
+    if (newMessage == null) {
+      newMessage = "";
+    }
+
+    await db.message.update({
+      where: {
+        id: messageI,
+      },
+      data: {
+        content: newMessage,
+        updatedAt: now,
+      },
+    });
+    console.log(messageI, " to ", newMessage);
+  },
+  deleteMessage: async ({ request, params, locals }: import('./$types').RequestEvent) => {
+    const data = await request.formData();
+    const messageI = Number(data.get("messageId"));
+    const room_id = parseInt(params.slug);
+
+    await db.message.delete({
+      where: {
+        id: messageI,
+      },
+    });
+    console.log(messageI, " deleted");
+  },
+};
+;null as any as Actions;

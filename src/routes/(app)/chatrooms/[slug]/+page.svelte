@@ -3,13 +3,12 @@
   import type { PageData } from "./$types";
 
   export let data: PageData;
-
+  let messagetext = "";
   let modals: Record<string, boolean> = {};
-
-  $: ({ messages } = data);
+  $: ({ messages, userId} = data);
 </script>
 
-<div class="flex min-h-screen flex-col items-center bg-gray-900 py-8">
+<div class="flex min-h-screen flex-col items-center background py-8">
   <div class="flex items-center">
     <a
       href="/chatrooms"
@@ -24,23 +23,22 @@
   </div>
 
   <div class="mx-auto max-w-3xl items-center">
+    {#if messages}
     {#each messages as message}
       <div class="message-list">
         <p class="text-white">Message: {message.content}</p>
         <p class="text-gray-400">Sender: {message.sender.username}</p>
 
-        {#if message.receiver}
-          <p class="text-gray-400">Receiver: {message.receiver.email}</p>
-        {/if}
         {#if message.sentAt}
           <p class="text-gray-400">Time: {message.sentAt}</p>
         {/if}
         {#if message.updatedAt}
           <p class="text-gray-400">Updated at: {message.updatedAt}</p>
         {/if}
+        {#if userId == message.sender.id}
         <div style="display: flex;">
           <button
-            on:click={() => (modals[message.id] = true)}
+            on:click={() => (modals[message.id] = true,  messagetext = message.content)}
             class="message-button">Edit Message</button
           >
           <form action="?/deleteMessage" method="POST">
@@ -62,14 +60,15 @@
               <body>
                 <form action="?/editMessage" method="POST">
                   <div>
+                    <!-- svelte-ignore a11y-autofocus -->
                     <textarea
                       rows="10"
                       cols="44"
+                      autofocus
                       id="message"
                       name="message"
-                      autofocus
                       class="modal-text"
-                      bind:value={message.content}
+                      bind:value={messagetext}
                     />
                     <!--passes the messageId through a hidden attribute to update the db-->
                     <input
@@ -85,10 +84,12 @@
             </div>
           </Modal>
         {/if}
+        {/if}
       </div>
     {/each}
+    {/if}
   </div>
-
+  <div>
   <form
     action="?/sendMessage"
     method="POST"
@@ -100,6 +101,7 @@
       name="content"
       placeholder="Enter message"
       class="flex-1 rounded-l-lg border border-gray-400 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+      style="color:black"
     />
     <button
       type="submit"
@@ -108,6 +110,7 @@
       send
     </button>
   </form>
+  </div>
 </div>
 
 <style>
@@ -122,11 +125,6 @@
     position: absolute;
     top: 1;
     right: 1;
-  }
-  .close {
-    position: absolute;
-    right: 0;
-    top: 1;
   }
   .modal-size {
     height: 250px;

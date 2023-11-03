@@ -33,8 +33,8 @@ declare module '$env/static/private' {
 	export const PYENV_ROOT: string;
 	export const SHELL: string;
 	export const TERM: string;
-	export const HOMEBREW_REPOSITORY: string;
 	export const TMPDIR: string;
+	export const HOMEBREW_REPOSITORY: string;
 	export const npm_config_global_prefix: string;
 	export const CONDA_SHLVL: string;
 	export const TERM_PROGRAM_VERSION: string;
@@ -62,7 +62,6 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const EDITOR: string;
 	export const npm_package_name: string;
-	export const LOCAL_GIT_DIRECTORY: string;
 	export const LANG: string;
 	export const npm_config_npm_version: string;
 	export const XPC_FLAGS: string;
@@ -70,8 +69,8 @@ declare module '$env/static/private' {
 	export const npm_config_node_gyp: string;
 	export const npm_package_version: string;
 	export const XPC_SERVICE_NAME: string;
-	export const SHLVL: string;
 	export const HOME: string;
+	export const SHLVL: string;
 	export const VSCODE_GIT_ASKPASS_MAIN: string;
 	export const HOMEBREW_PREFIX: string;
 	export const npm_config_cache: string;
@@ -123,8 +122,8 @@ declare module '$env/dynamic/private' {
 		PYENV_ROOT: string;
 		SHELL: string;
 		TERM: string;
-		HOMEBREW_REPOSITORY: string;
 		TMPDIR: string;
+		HOMEBREW_REPOSITORY: string;
 		npm_config_global_prefix: string;
 		CONDA_SHLVL: string;
 		TERM_PROGRAM_VERSION: string;
@@ -152,7 +151,6 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		EDITOR: string;
 		npm_package_name: string;
-		LOCAL_GIT_DIRECTORY: string;
 		LANG: string;
 		npm_config_npm_version: string;
 		XPC_FLAGS: string;
@@ -160,8 +158,8 @@ declare module '$env/dynamic/private' {
 		npm_config_node_gyp: string;
 		npm_package_version: string;
 		XPC_SERVICE_NAME: string;
-		SHLVL: string;
 		HOME: string;
+		SHLVL: string;
 		VSCODE_GIT_ASKPASS_MAIN: string;
 		HOMEBREW_PREFIX: string;
 		npm_config_cache: string;

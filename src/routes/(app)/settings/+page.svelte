@@ -1,120 +1,157 @@
-<h2 class="mb-6 text-3xl font-bold text-gray-900">Settings</h2>
-<form action="#">
-  <div class="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
-    <div class="sm:col-span-2">
-      <label for="name" class="block mb-2 text-sm font-medium text-gray-900">
-        Name
-      </label>
-      <input
-        type="text"
-        name="name"
-        id="name"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-        value=""
-        placeholder="Type name"
-        required
-      />
-    </div>
-    <div class="w-full">
-      <label for="brand" class="block mb-2 text-sm font-medium text-gray-900">
-        Brand
-      </label>
-      <input
-        type="text"
-        name="brand"
-        id="brand"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-        value="Apple"
-        placeholder="Product brand"
-        required
-      />
-    </div>
-    <div class="w-full">
-      <label for="price" class="block mb-2 text-sm font-medium text-gray-900">
-        Price
-      </label>
-      <input
-        type="number"
-        name="price"
-        id="price"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-        value="2999"
-        placeholder="$299"
-        required
-      />
-    </div>
-    <div>
-      <label for="category" class="block mb-2 text-sm font-medium text-gray-900"
-        >Category</label
-      >
-      <select
-        id="category"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
-      >
-        <option selected>Electronics</option>
-        <option value="TV">TV/Monitors</option>
-        <option value="PC">PC</option>
-        <option value="GA">Gaming/Console</option>
-        <option value="PH">Phones</option>
-      </select>
-    </div>
-    <div>
-      <label
-        for="item-weight"
-        class="block mb-2 text-sm font-medium text-gray-900"
-        >Item Weight (kg)</label
-      >
-      <input
-        type="number"
-        name="item-weight"
-        id="item-weight"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-        value="15"
-        placeholder="Ex. 12"
-        required
-      />
-    </div>
-    <div class="sm:col-span-2">
-      <label
-        for="description"
-        class="block mb-2 text-sm font-medium text-gray-900">Description</label
-      >
-      <textarea
-        id="description"
-        rows="8"
-        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
-        placeholder="Write a product description here..."
-      >
-        Standard glass, 3.8GHz 8-core 10th-generation Intel Core i7 processor,
-        Turbo Boost up to 5.0GHz, 16GB 2666MHz DDR4 memory, Radeon Pro 5500 XT
-        with 8GB of GDDR6 memory, 256GB SSD storage, Gigabit Ethernet, Magic
-        Mouse 2, Magic Keyboard - US
-      </textarea>
-    </div>
+<script lang="ts">
+  import type { PageData } from "./$types";
+  export let data: PageData;
+  import { onMount } from 'svelte';
+  $: ({ user, userId } = data);
+
+  onMount(() => {
+const deleteButton = document.getElementById('delete');
+const confirm = document.getElementById('confirm');
+const cancel = document.getElementById('cancel');
+
+
+// Add a click event listener to the button.
+if(deleteButton && cancel && confirm){
+deleteButton.addEventListener('click', () => {
+    // Toggle the "hidden" class on the element to show/hide it.
+    cancel.classList.remove('hidden');
+    confirm.classList.remove('hidden');
+    console.log("pressed")
+});
+confirm.addEventListener('click', () => {
+  cancel.classList.add('hidden');
+  confirm.classList.add('hidden');
+});
+}
+});
+
+</script>
+
+<body class="dark-theme">
+<div >
+  <h2 class="mb-4 text-center text-4xl font-extrabold md:text-5xl lg:text-6xl">Settings</h2>
+<form action="#" class="settings">
+  <div class="setting-item">
+    <p>Dark Mode</p> 
+    <label class="switch">
+    <input type="checkbox">
+    <span class="slider round item"></span>
+    </label>
   </div>
-  <div class="flex items-center space-x-4">
-    <button
-      type="submit"
-      class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-md text-sm px-5 py-2.5 text-center"
-    >
-      Save
-    </button>
-    <button
-      type="button"
-      class="text-red-600 inline-flex items-center hover:text-white border border-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-md text-sm px-5 py-2.5 text-center"
-    >
-      <svg
-        class="w-5 h-5 mr-1 -ml-1"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-        ><path
-          fill-rule="evenodd"
-          d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-          clip-rule="evenodd"
-        /></svg
-      >
-      Delete
-    </button>
-  </div>
+<div class="setting-item">
+ <p class="item">Change Username</p> 
+ <form action="?/changeName" method="POST">
+  <input type="text" name="username" id="username" class="input item" placeholder="New username">
+  <button type="submit" class="item">submit</button>
+ </form>
+</div>
+<div>
+  <form action="?/changePass" method="POST">
+  <input type="text" name="old-pass" id="old-pass" class="input item" placeholder="Old Password">
+  <input type="text" name="new-pass" id="new-pass" class="input item" placeholder="New Password">
+  <button type="submit" class="item">submit</button>
+ </form>
+</div>
+<div class="setting-item">
+  <form action="?/deleteAccount" method="POST">
+  <button id="delete" type="button" class="item">Delete Account</button>
+  <button id="confirm" type="button" class="hidden item"> Cancel </button>
+  <button id="cancel" type="button" class="hidden item"> Confirm </button> <!--will convert to a submit button once logic for deletion is fixed-->
+ </form>
+</div>
 </form>
+</div>
+</body>
+<!--
+  dark vs light mode
+  change username
+  change password
+  delete account
+-->
+
+<style>
+  .input{
+    width:10vw
+  }
+.setting-item{
+  display: flex; 
+  align-items:center; 
+  gap: 5px;
+  padding-bottom: 1%;
+}
+.item {
+  /* Adjust the margin to control space */
+  margin-right: 10px; /* This adds space between items */
+}
+.setting-item:last-child{
+  margin-right:0px;
+}
+.settings{
+  justify-content: space-around;
+  gap: 5px;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.hidden{
+  display: none;
+}
+</style>

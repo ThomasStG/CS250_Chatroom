@@ -5,8 +5,6 @@ import bcrypt from "bcrypt";
 
 import db from "$lib/database";
 
-
-
 export const load = async ({ locals }: Parameters<PageServerLoad>[0]) => {
   // redirect user if logged in
   if (locals.user) {
@@ -21,14 +19,24 @@ const register: Action = async ({ request }) => {
   const password = data.get("password");
   const passwordConfirmation = data.get("password-confirmation");
 
-
-  console.log(data)
-  if (typeof email !== "string" || typeof username !== "string" || !username || typeof password !== "string" || !email || !password) {
-    return fail(400, { error: { message: "email and password are required." } });
+  console.log(data);
+  if (
+    typeof email !== "string" ||
+    typeof username !== "string" ||
+    !username ||
+    typeof password !== "string" ||
+    !email ||
+    !password
+  ) {
+    return fail(400, {
+      error: { message: "email and password are required." },
+    });
   }
 
   if (password !== passwordConfirmation) {
-    return fail(400, { error: { message: "Password confirmation doesn't match." } });
+    return fail(400, {
+      error: { message: "Password confirmation doesn't match." },
+    });
   }
 
   const user = await db.user.findUnique({ where: { email } });

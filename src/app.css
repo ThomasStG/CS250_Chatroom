@@ -8,12 +8,51 @@
     font-family: "Inter", system-ui, sans-serif;
   }
 }
+:root {
+  --background-color: #white;
+  /* Light theme background color */
+  --text-color: #black;
+  /* Light theme text color */
+}
 
+/* Dark theme variables */
+.dark-theme {
+  --background-color: #1a202c;
+  --text-color: white;
+}
+
+body{
+  background-color: var(--background-color);
+  color: var(--text-color);
+  position: absolute;
+  left: 0;
+  top: 8%;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+  z-index: -1;
+}
 .btn {
-
   color: black;
   border-radius: 0px;
   padding: 0px;
   margin-right: 0px;
   text-decoration: none;
+}
+
+.background {
+  background-color: #1a202c;
+  position: absolute;
+  left: 0;
+  top: 8%;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+  z-index: -1;
+  color: white;
+}
+input,
+select,
+textarea {
+  color: #000;
 }

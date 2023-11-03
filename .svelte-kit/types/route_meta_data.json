@@ -63,6 +63,7 @@
 		"src/routes/+layout.server.ts"
 	],
 	"/(app)/settings": [
+		"src/routes/(app)/settings/+page.server.ts",
 		"src/routes/(app)/+layout.server.ts",
 		"src/routes/+layout.server.ts"
 	]

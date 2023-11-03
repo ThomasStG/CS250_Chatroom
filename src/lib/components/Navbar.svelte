@@ -12,13 +12,12 @@
   // Menu toggle action
   let showMenu = false;
 </script>
-
-<nav class="fixed z-30 w-full border-b border-gray-200 bg-white">
-  <div class="px-3 py-3 lg:px-5 lg:pl-3">
-    <div class="flex items-center justify-between">
-      <div class="ml-2 flex items-center justify-start">
+<nav style="">
+  <div style="padding: 1rem; lg:padding: 1.25rem; lg:padding-left: 3rem; background-color: white; max-height: 2rem">
+    <div style="display: flex; align-items: center; justify-content: space-between; background-color: white; max-height: 2rem">
+      <div style="margin-left: 0.5rem; display: flex; align-items: center; justify-content: flex-start;">
         <a href="/" class="flex items-center space-x-2">
-          <img src="favicon.png" alt="squire logo" />
+          <img src="favicon.png"/>
           <span
             class="text-md helvetica self-center whitespace-nowrap font-semibold"
             style="font-family: Helvetica, sans-serif;"
@@ -27,10 +26,10 @@
           </span>
         </a>
       </div>
-      <div>
+      <div style="display: flex; gap: 16px; justify-content: center;">
         <a class="btn" href="/chatrooms">Chatrooms</a>
         <a class="btn" href="/friends">Friends</a>
-        <a class="btn" href="/directMessage">Direct Messages</a>
+        <a class="btn" href="/directMessage">Notifications</a>
 
         <!--<a href="notifications">Notification    <a/>-->
       </div>
@@ -75,13 +74,13 @@
               </p>
             </div>
             <ul class="py-1" role="none">
-              <!--<li>
+              <li>
                 <a
                   href="/settings"
                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   role="menuitem">Settings</a
                 >
-              </li>-->
+              </li>
               <li>
                 <a
                   href="/logout"
@@ -96,3 +95,13 @@
     </div>
   </div>
 </nav>
+<style>
+  .navbar{
+    position: fixed; 
+    z-index: 30; 
+    width: 100%; 
+    border-bottom: 1px solid #ccc; 
+    background-color: #fff;
+    max-height: calc((65/980));
+  }
+</style>

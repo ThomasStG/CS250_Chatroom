@@ -31,7 +31,7 @@ export const dictionary = {
 		"/(auth)/login": [~12],
 		"/(auth)/logout": [~13],
 		"/(auth)/register": [~14],
-		"/(app)/settings": [11,[2]]
+		"/(app)/settings": [~11,[2]]
 	};
 
 export const hooks = {

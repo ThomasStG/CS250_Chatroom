@@ -26,6 +26,7 @@ export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) =
         users: {
           select: {
             email: true,
+            username: true,
           },
         },
       },
@@ -34,11 +35,18 @@ export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) =
       where: {
         id: userId,
       },
+      select: {
+        id: true,
+        username: true,
+        email: true,
+        passwordHash: true,
+        userAuthToken: true,
+      }
     });
-
+    console.log(user);
     return {
       rooms: rooms,
-      usr: user
+      usr: user,
     };
   } catch (err) {
     console.error(err);
@@ -54,7 +62,7 @@ export const actions = {
       const roomtmp: string = formData.room;
       console.log(2);
       let room: number = -1;
-      console.log(roomtmp)
+      console.log(roomtmp);
       if (roomtmp) {
         room = +roomtmp;
       }
@@ -75,5 +83,6 @@ export const actions = {
       console.error("Error deleting room:", error);
       return fail(500, { error: { message: "Internal server error" } });
     }
-  }
-};;null as any as Actions;
+  },
+};
+;null as any as Actions;
