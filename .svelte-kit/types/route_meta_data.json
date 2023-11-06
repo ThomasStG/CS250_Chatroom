@@ -58,6 +58,11 @@
 		"src/routes/(auth)/logout/+page.server.ts",
 		"src/routes/+layout.server.ts"
 	],
+	"/(app)/notifications": [
+		"src/routes/(app)/notifications/+page.server.ts",
+		"src/routes/(app)/+layout.server.ts",
+		"src/routes/+layout.server.ts"
+	],
 	"/(auth)/register": [
 		"src/routes/(auth)/register/+page.server.ts",
 		"src/routes/+layout.server.ts"

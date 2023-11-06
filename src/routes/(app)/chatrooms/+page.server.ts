@@ -40,7 +40,7 @@ export const load: PageServerLoad = async ({ request, locals }) => {
         email: true,
         passwordHash: true,
         userAuthToken: true,
-      }
+      },
     });
     console.log(user);
     return {

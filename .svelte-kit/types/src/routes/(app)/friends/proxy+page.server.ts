@@ -48,7 +48,8 @@ export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) =
 
   return {
     friendRequests,
-    friends, userId,// Include the friends array in the returned props
+    friends,
+    userId, // Include the friends array in the returned props
   };
 };
 

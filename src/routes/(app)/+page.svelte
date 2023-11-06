@@ -1,13 +1,14 @@
 <div>
   <h1
     class="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl"
+    style="color: white;"
   >
     <span
       class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent"
       >CS-250</span
     > Chat App.
   </h1>
-  <p class="text-lg font-normal text-gray-500 lg:text-xl">
+  <p class="text-white-500 text-lg font-normal lg:text-xl">
     This is a chat app for the CS-250 class. This app is capable of
     authentication, creating chat rooms by user ID, and sending messages
   </p>

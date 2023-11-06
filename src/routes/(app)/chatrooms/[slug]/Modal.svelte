@@ -1,7 +1,8 @@
 <script>
-  export let showModal; // boolean
+  export let showModal; 
 
-  let dialog; // HTMLDialogElement
+  import "./[slug].css";
+  let dialog;
 
   $: if (dialog && showModal) dialog.showModal();
 </script>

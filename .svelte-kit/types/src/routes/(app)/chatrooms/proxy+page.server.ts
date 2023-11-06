@@ -41,7 +41,7 @@ export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) =
         email: true,
         passwordHash: true,
         userAuthToken: true,
-      }
+      },
     });
     console.log(user);
     return {

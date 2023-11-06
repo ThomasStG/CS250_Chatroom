@@ -12,12 +12,22 @@
   // Menu toggle action
   let showMenu = false;
 </script>
-<nav style="">
-  <div style="padding: 1rem; lg:padding: 1.25rem; lg:padding-left: 3rem; background-color: white; max-height: 2rem">
-    <div style="display: flex; align-items: center; justify-content: space-between; background-color: white; max-height: 2rem">
-      <div style="margin-left: 0.5rem; display: flex; align-items: center; justify-content: flex-start;">
+
+<nav
+  style="position: fixed; top: 0; left: 0; width: 100%; background-color:1a202c;"
+>
+  <div
+    style="padding: 1rem; lg:padding: 1.25rem; lg:padding-left: 3rem; max-height: 2rem;"
+  >
+    <div
+      style="display: flex; align-items: center; justify-content: space-between; max-height: 2rem;"
+    >
+      <div
+        style="margin-left: 0.5rem; display: flex; align-items: center; justify-content: flex-start;"
+      >
         <a href="/" class="flex items-center space-x-2">
-          <img src="favicon.png"/>
+          <!-- svelte-ignore a11y-missing-attribute -->
+          <img src="favicon.png" />
           <span
             class="text-md helvetica self-center whitespace-nowrap font-semibold"
             style="font-family: Helvetica, sans-serif;"
@@ -26,10 +36,14 @@
           </span>
         </a>
       </div>
-      <div style="display: flex; gap: 16px; justify-content: center;">
-        <a class="btn" href="/chatrooms">Chatrooms</a>
-        <a class="btn" href="/friends">Friends</a>
-        <a class="btn" href="/directMessage">Notifications</a>
+      <div
+        style="display: flex; gap: 16px; justify-content: center; color: white;"
+      >
+        <a class="btn" href="/chatrooms" style="color:white">Chatrooms</a>
+        <a class="btn" href="/friends" style="color:white">Friends</a>
+        <a class="btn" href="/notifications" style="color:white"
+          >Notifications</a
+        >
 
         <!--<a href="notifications">Notification    <a/>-->
       </div>
@@ -95,13 +109,3 @@
     </div>
   </div>
 </nav>
-<style>
-  .navbar{
-    position: fixed; 
-    z-index: 30; 
-    width: 100%; 
-    border-bottom: 1px solid #ccc; 
-    background-color: #fff;
-    max-height: calc((65/980));
-  }
-</style>

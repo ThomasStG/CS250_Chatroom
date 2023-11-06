@@ -13,8 +13,6 @@ declare namespace App {
     };
   }
 
-  
-
   interface Error {
     message: string;
   }
@@ -23,6 +21,6 @@ declare namespace App {
   // interface PrivateEnv {}
   // interface PublicEnv {}
 }
-declare global{
+declare global {
   var userTheme: string;
 }

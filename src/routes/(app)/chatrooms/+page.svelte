@@ -7,8 +7,7 @@
 </script>
 
 <div
-  class="min-h-screen py-8 {theme}"
-  style="margin-right: auto; margin-left: auto; min-height: 100vh; padding-top: 2rem; padding-bottom: 2rem;"
+  class="{theme}"
 >
   <ul class="f">
     <li>
@@ -71,10 +70,12 @@
                     room.users[0].username + "‎" + room.users[1].username)}
                 </div>
                 <p class="text-xl text-white">
-                  Friend Name: {(room.name = (room.name = room.name.replace(
-                    "‎",
-                    ""
-                  )).replace(usr.username, ""))}
+                  {#if usr}
+                    Friend Name: {(room.name = (room.name = room.name.replace(
+                      "‎",
+                      ""
+                    )).replace(usr.username, ""))}
+                  {/if}
                 </p>
               </a>
             </div>
