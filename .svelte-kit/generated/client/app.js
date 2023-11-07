@@ -15,7 +15,8 @@ export const nodes = [
 	() => import('./nodes/11'),
 	() => import('./nodes/12'),
 	() => import('./nodes/13'),
-	() => import('./nodes/14')
+	() => import('./nodes/14'),
+	() => import('./nodes/15')
 ];
 
 export const server_loads = [0,2,3];
@@ -28,10 +29,11 @@ export const dictionary = {
 		"/(app)/chatrooms/[slug]": [~6,[2]],
 		"/(app)/directMessage": [9,[2,3]],
 		"/(app)/friends": [~10,[2]],
-		"/(auth)/login": [~12],
-		"/(auth)/logout": [~13],
-		"/(auth)/register": [~14],
-		"/(app)/settings": [11,[2]]
+		"/(auth)/login": [~13],
+		"/(auth)/logout": [~14],
+		"/(app)/notifications": [~11,[2]],
+		"/(auth)/register": [~15],
+		"/(app)/settings": [~12,[2]]
 	};
 
 export const hooks = {

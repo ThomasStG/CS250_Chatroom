@@ -1,6 +1,7 @@
 import { fail, redirect } from "@sveltejs/kit";
 import bcrypt from "bcrypt";
 import type { Action, Actions, PageServerLoad } from "./$types";
+import prisma from "$lib/database";
 
 import db from "$lib/database";
 
@@ -11,15 +12,21 @@ export const load: PageServerLoad = async ({ locals }) => {
   }
 };
 
-
 const login: Action = async ({ cookies, request }) => {
   const data = await request.formData();
   const userName = data.get("userName");
   const email = data.get("email");
   const password = data.get("password");
 
-  if (typeof email !== "string" || typeof password !== "string" || !email || !password) {
-    return fail(400, { error: { message: "email and password are required." } });
+  if (
+    typeof email !== "string" ||
+    typeof password !== "string" ||
+    !email ||
+    !password
+  ) {
+    return fail(400, {
+      error: { message: "email and password are required." },
+    });
   }
 
   const user = await db.user.findUnique({ where: { email } });

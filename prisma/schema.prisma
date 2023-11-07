@@ -12,6 +12,8 @@ model User {
   email    String @unique
   username String @unique
 
+  theme    String @default("light-theme")
+
   passwordHash  String
   userAuthToken String @unique
 
@@ -25,6 +27,16 @@ model User {
 
   friendsAsUser1 Friend[] @relation("User1Friends")
   friendsAsUser2 Friend[] @relation("User2Friends")
+  Notification Notification[] @relation("notificationReceiver")
+}
+
+model Notification {
+  id         Int       @id @default(autoincrement())
+  senderName String    @default("The Developers")
+  receiverId Int
+  receiver    User     @relation("notificationReceiver", fields: [receiverId], references: [id])
+  content    String
+  sentAt     DateTime  @default(now())
 }
 
 model Friend {

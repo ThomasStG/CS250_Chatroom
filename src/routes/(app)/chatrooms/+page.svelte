@@ -3,11 +3,11 @@
   export let data: PageData;
   console.log(2);
   $: ({ rooms, usr } = data);
+  const theme = "background";
 </script>
 
 <div
-  class="min-h-screen bg-gray-900 py-8"
-  style="margin-right: auto; margin-left: auto;"
+  class="{theme}"
 >
   <ul class="f">
     <li>
@@ -56,7 +56,7 @@
 
       <div
         class="mx-auto max-w-3xl"
-        style="left: 50%; justify-content: center; allign-items: center; display: flex;"
+        style="left: 50%; justify-content: center; align-items: center; display: flex;"
       >
         {#each rooms as room}
           {#if room && room.Chatroom === false}
@@ -65,11 +65,17 @@
                 href="/chatrooms/{room.id}"
                 class="mb-4 block rounded-lg bg-gray-800 p-6 hover:bg-gray-700"
               >
+                <div class="hidden">
+                  {(room.name =
+                    room.users[0].username + "‎" + room.users[1].username)}
+                </div>
                 <p class="text-xl text-white">
-                  Friend Name: {(room.name = (room.name = room.name.replace(
-                    "‎",
-                    ""
-                  )).replace(usr.username, ""))}
+                  {#if usr}
+                    Friend Name: {(room.name = (room.name = room.name.replace(
+                      "‎",
+                      ""
+                    )).replace(usr.username, ""))}
+                  {/if}
                 </p>
               </a>
             </div>
