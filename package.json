@@ -46,6 +46,7 @@
     "gradient-avatar": "^1.0.2",
     "lucide-svelte": "^0.256.0",
     "luxon": "^3.4.3",
+    "navigation": "^6.2.0",
     "smodale": "^1.0.5"
   },
   "prisma": {

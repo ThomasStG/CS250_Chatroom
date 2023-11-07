@@ -56,7 +56,12 @@ const register: Action = async ({ request }) => {
     throw redirect(303, "/login");
   } catch (err) {
     console.error(err);
-    return fail(500, { error: { message: "There was an issue with registering. That username may be taken." } });
+    return fail(500, {
+      error: {
+        message:
+          "There was an issue with registering. That username may be taken.",
+      },
+    });
   }
 };
 

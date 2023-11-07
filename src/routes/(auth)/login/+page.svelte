@@ -18,7 +18,7 @@
     <span style="font-family: Helvetica, sans-serif, Arial">[Squire]</span>
   </a>
   <div class="w-full max-w-xl space-y-8 rounded-md border p-6 shadow sm:p-8">
-    <h2 class="text-2xl font-bold text-gray-900">Sign in to platform</h2>
+    <h2 class="text-2xl font-bold">Sign in to platform</h2>
 
     {#if form?.error?.message}
       <Alert type="danger" description={form.error.message} />
