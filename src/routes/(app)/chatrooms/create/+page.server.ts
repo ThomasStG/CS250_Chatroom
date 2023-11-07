@@ -27,7 +27,7 @@ export const actions: Actions = {
       return fail(500, { error: { message: "Internal server error" } });
     }
   },
-  usrlist: async ({ requests, locals }) => {
+  usrlist: async ({ locals }) => {
     const userId = locals.user?.id;
     if (userIds.length == 0) {
       userIds.push(userId);
@@ -46,6 +46,7 @@ export const actions: Actions = {
       const chatname = formData.get("chatname");
       console.log(chatname);
       const userId = locals.user?.id;
+      userIds.push(userId);
       if (!chatname) {
         console.log("Early return due to missing username or chatname");
         return fail(400, {

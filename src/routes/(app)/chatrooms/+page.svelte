@@ -6,9 +6,7 @@
   const theme = "background";
 </script>
 
-<div
-  class="{theme}"
->
+<div class={theme}>
   <ul class="f">
     <li>
       <h1
@@ -56,7 +54,7 @@
 
       <div
         class="mx-auto max-w-3xl"
-        style="left: 50%; justify-content: center; align-items: center; display: flex;"
+        style="left: 50%; justify-content: center; align-items: center; display: flex; flex-direction:column;"
       >
         {#each rooms as room}
           {#if room && room.Chatroom === false}

@@ -94,7 +94,7 @@ export const actions = {
     try {
       const userId: number = locals.user.id;
 
-      const deletedRooms = await prisma.room.deleteMany({
+      const deleteRooms = await prisma.room.deleteMany({
         where: {
           AND: [
             {
@@ -108,16 +108,50 @@ export const actions = {
         },
       });
 
-      const deleteUser = await prisma.user.delete({
+      const deleteFriends = await prisma.friend.deleteMany({
         where: {
-          id: userId,
+          OR: [
+            {
+              user1: {
+                id: userId,
+              },
+            },
+            {
+              user2: {
+                id: userId,
+              },
+            },
+          ],
         },
       });
 
-      if (deleteUser) {
-        console.log("Account deleted successfully:", deleteUser);
-      } else {
-        console.log("User not found or update failed.");
+      const deleteFriendsRequests = await prisma.friendRequest.deleteMany({
+        where: {
+          OR: [
+            {
+              to: {
+                id: userId,
+              },
+            },
+            {
+              from: {
+                id: userId,
+              },
+            },
+          ],
+        },
+      });
+      if (deleteFriends && deleteFriendsRequests && deleteRooms) {
+        const deleteUser = await prisma.user.delete({
+          where: {
+            id: userId,
+          },
+        });
+        if (deleteUser) {
+          console.log("Account deleted successfully:", deleteUser);
+        } else {
+          console.log("User not found or update failed.");
+        }
       }
     } catch (err) {
       console.log("Error", err);

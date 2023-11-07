@@ -77,7 +77,7 @@
 </div>
 
 <div>
-  {#if addedUsers && addedUsers.length > 0 && chatname}
+  {#if true}
     <h2>Added to groupchat:</h2>
     {#each addedUsers as id (id)}
       <p>{id}</p>

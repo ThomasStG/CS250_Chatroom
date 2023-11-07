@@ -19,18 +19,21 @@
       <div>
         <div class="div-padding">Send Friend request:</div>
         <div style="width:15% margin: 0 auto;">
-          <form action="?/friendRequest" method="POST" style="display: flex; flex-direction: column;">
+          <form
+            action="?/friendRequest"
+            method="POST"
+            style="display: flex; flex-direction: column;"
+          >
             <div style="margin: 0 auto;">
-            <input
-              type="text"
-              id="userName"
-              name="userName"
-              placeholder="Enter User Name"
-              style="width:100%;"
-            />
-          </div>
+              <input
+                type="text"
+                id="userName"
+                name="userName"
+                placeholder="Enter User Name"
+                style="width:100%;"
+              />
+            </div>
             <button type="submit"> Submit</button>
-            
           </form>
         </div>
 

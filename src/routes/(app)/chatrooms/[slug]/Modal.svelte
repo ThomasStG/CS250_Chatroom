@@ -1,5 +1,5 @@
 <script>
-  export let showModal; 
+  export let showModal;
 
   import "./[slug].css";
   let dialog;

@@ -85,6 +85,14 @@ export const actions = {
         },
       });
 
+      const from = await prisma.user.findUnique({ where: { id: userFromId } });
+      const to: number = userTo.id;
+      const message =
+        from.username +
+        " has sent you a friend request. Go to your friends page to accept.";
+
+      await prisma.$queryRaw`insert into Notification (receiverId, content, senderName) values (${to}, ${message}, ${from.username})`;
+
       // User found, return the username
       return {
         body: {
@@ -163,7 +171,7 @@ export const actions = {
     try {
       const userId = locals.user.id;
       const data = await request.formData();
-      const friendID: Number = +data.get("friendID");
+      const friendID: number = +data.get("friendID");
 
       // Fetch the friend request details
 
@@ -181,7 +189,7 @@ export const actions = {
           ],
         },
       });
-      await prisma.room.deleteMany({
+      const roomsToDelete = await prisma.room.findMany({
         where: {
           AND: [
             {
@@ -207,9 +215,33 @@ export const actions = {
             },
           ],
         },
+        include: {
+          users: true,
+        }
       });
+      for (const room of roomsToDelete) {
+        console.log(room);
+      
+        // Get the user IDs related to this room
+        const userIds = room.users.map((user) => user.id);
 
-      return { body: { message: "Friend request accepted" } };
+        // Disconnect users from the room
+        await prisma.room.update({
+          where: { id: room.id },
+          data: {
+            users: {
+              disconnect: userIds.map((id) => ({ id })),
+            },
+          },
+        });
+      
+
+        await prisma.room.delete({
+          where: { id: room.id },
+        });
+      }
+        return { body: { message: "Friend request accepted" } };
+      
     } catch (err) {
       console.error(err);
       return fail(500, { error: { message: "Internal Server Error" } });

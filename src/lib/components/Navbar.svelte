@@ -41,11 +41,13 @@
       >
         <a class="btn" href="/chatrooms" style="color:white">Chatrooms</a>
         <a class="btn" href="/friends" style="color:white">Friends</a>
-        <a class="btn" href="/notifications" style="color:white"
-          >Notifications</a
+        <a
+          class="btn"
+          href="/notifications"
+          style="color:white"
+          id="notificationButton">Notifications</a
         >
-
-        <!--<a href="notifications">Notification    <a/>-->
+        <a class="btn" href="/sendNot" style="color:white">send</a>
       </div>
       <div class="flex items-center">
         <!-- Profile -->

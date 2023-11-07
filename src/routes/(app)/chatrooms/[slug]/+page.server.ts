@@ -74,8 +74,10 @@ export const actions: Actions = {
         console.error(err);
         return fail(500, { error: { message: "Failed to send message." } });
       }
+
       return {
-        status: 201,
+        status: 303,
+        headers: { Location: "/chatrooms/" + roomId },
       };
     } catch (err) {
       console.error(err);

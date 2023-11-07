@@ -2,11 +2,34 @@
   import Modal from "./Modal.svelte";
   import type { PageData } from "./$types";
   import "./[slug].css";
+  import { enhance } from "$app/forms";
 
   export let data: PageData;
   let messagetext: String = "";
   let modals: Record<string, boolean> = {};
   $: ({ messages, userId } = data);
+
+  const clearInput = () => {
+    const inputElement = <HTMLInputElement>document.getElementById("content");
+    if (inputElement) {
+      inputElement.value = "";
+    }
+  };
+
+  // Submit event handler for the form
+  const handleSubmit = async (event) => {
+    // Handle the form submission here (e.g., send the data to the server)
+    // ...
+
+    // Clear the input field
+    clearInput();
+
+    // Programmatically trigger the form submission
+    const form = <HTMLFormElement>document.getElementById("sendForm");
+    if (form) {
+      form.submit();
+    }
+  };
 </script>
 
 <div class="background flex min-h-screen flex-col items-center">
@@ -97,6 +120,13 @@
       action="?/sendMessage"
       method="POST"
       class="mx-auto flex h-full max-w-3xl items-center"
+      id="sendForm"
+      use:enhance={() => {
+        return async ({ update }) => {
+          update({ reset: false });
+        };
+      }}
+      on:submit={handleSubmit}
     >
       <input
         type="text"
@@ -104,10 +134,11 @@
         name="content"
         placeholder="Enter message"
         class="flex-1 rounded-l-lg border border-gray-400 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        style="color:black"
+        required
       />
       <button
         type="submit"
+        id="submit"
         class="rounded-r-lg bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
       >
         send

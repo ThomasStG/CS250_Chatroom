@@ -35,7 +35,11 @@
     >
       Settings
     </h1>
-    <form action="#" class="settings" style="margin-left: 2vw; margin-top: 3vh;">
+    <form
+      action="#"
+      class="settings"
+      style="margin-left: 2vw; margin-top: 3vh;"
+    >
       <div class="setting-item">
         <p>Dark Mode</p>
         <label class="switch">
