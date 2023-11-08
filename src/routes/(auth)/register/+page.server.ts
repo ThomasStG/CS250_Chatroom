@@ -53,7 +53,7 @@ const register: Action = async ({ request }) => {
       },
     });
 
-    throw redirect(303, "/login");
+    
   } catch (err) {
     console.error(err);
     return fail(500, {
@@ -63,6 +63,7 @@ const register: Action = async ({ request }) => {
       },
     });
   }
+  throw redirect(303, "/login");
 };
 
 export const actions: Actions = { register };
