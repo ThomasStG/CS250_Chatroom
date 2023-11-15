@@ -52,8 +52,6 @@ const register: Action = async ({ request }) => {
         userAuthToken: crypto.randomUUID(),
       },
     });
-
-    
   } catch (err) {
     console.error(err);
     return fail(500, {

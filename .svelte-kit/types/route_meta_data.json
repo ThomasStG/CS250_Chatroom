@@ -17,6 +17,9 @@
 	"/(app)/api/searchUser": [
 		"src/routes/(app)/api/searchUser/+server.ts"
 	],
+	"/(app)/api/toggleTheme": [
+		"src/routes/(app)/api/toggleTheme/+server.ts"
+	],
 	"/(app)/chatrooms": [
 		"src/routes/(app)/chatrooms/+page.server.ts",
 		"src/routes/(app)/+layout.server.ts",

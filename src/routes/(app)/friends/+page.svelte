@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { PageData } from "./$types";
   import "./friend.css";
+  import { enhance } from "$app/forms";
   export let data: PageData;
 
   $: ({ friendRequests, friends, userId } = data);
@@ -8,43 +9,57 @@
   export let form;
 </script>
 
-<div class="background">
+<div>
   <div class="content">
     <h1
       class="mb-4 text-center text-4xl font-extrabold md:text-5xl lg:text-6xl"
     >
       Friends
     </h1>
-    <body>
-      <div>
-        <div class="div-padding">Send Friend request:</div>
-        <div style="width:15% margin: 0 auto;">
-          <form
-            action="?/friendRequest"
-            method="POST"
-            style="display: flex; flex-direction: column;"
-          >
-            <div style="margin: 0 auto;">
-              <input
-                type="text"
-                id="userName"
-                name="userName"
-                placeholder="Enter User Name"
-                style="width:100%;"
-              />
-            </div>
-            <button type="submit"> Submit</button>
-          </form>
-        </div>
+    <div>
+      <div class="div-padding">Send Friend request:</div>
+      <div style="width:15% margin: 0 auto;">
+        <form
+          action="?/friendRequest"
+          method="POST"
+          style="display: flex; flex-direction: column;"
+          use:enhance={() => {
+            return async ({ update }) => {
+              update({ reset: false });
+            };
+          }}
+        >
+          <div style="margin: 0 auto;">
+            <input
+              type="text"
+              id="userName"
+              name="userName"
+              placeholder="Enter User Name"
+              style="width:100%;"
+            />
+          </div>
+          <button type="submit"> Submit</button>
+        </form>
+      </div>
 
-        <div class="div-padding">Friends:</div>
+      <div class="div-padding">Friends:</div>
+      {#if friends}
         {#each friends as friend}
           <div class="element-flex">
             <div>
               {friend.username}
             </div>
             <div>{friend.email}</div>
-            <form action="?/removeFriend" method="post" style=" color: red;">
+            <form
+              action="?/removeFriend"
+              method="post"
+              style=" color: red;"
+              use:enhance={() => {
+                return async ({ update }) => {
+                  update({ reset: false });
+                };
+              }}
+            >
               <input
                 type="hidden"
                 id="friendID"
@@ -64,7 +79,15 @@
             <div>{friendRequest.from.email}</div>
             <div>{friendRequest.status}</div>
             {#if friendRequest.fromId != userId}
-              <form action="?/accept" method="POST">
+              <form
+                action="?/accept"
+                method="POST"
+                use:enhance={() => {
+                  return async ({ update }) => {
+                    update({ reset: false });
+                  };
+                }}
+              >
                 <input
                   type="hidden"
                   name="requestId"
@@ -72,13 +95,21 @@
                 />
                 <button>Accept</button>
               </form>
-              <form action="?/decline" method="Post">
+              <form
+                action="?/decline"
+                method="Post"
+                use:enhance={() => {
+                  return async ({ update }) => {
+                    update({ reset: false });
+                  };
+                }}
+              >
                 <button>Decline</button>
               </form>
             {/if}
           </div>
         {/each}
-      </div>
-    </body>
+      {/if}
+    </div>
   </div>
 </div>

@@ -13,9 +13,7 @@
   let showMenu = false;
 </script>
 
-<nav
-  style="position: fixed; top: 0; left: 0; width: 100%; background-color:1a202c;"
->
+<nav style="position: fixed; top: 0; left: 0; width: 100%;">
   <div
     style="padding: 1rem; lg:padding: 1.25rem; lg:padding-left: 3rem; max-height: 2rem;"
   >
@@ -36,18 +34,13 @@
           </span>
         </a>
       </div>
-      <div
-        style="display: flex; gap: 16px; justify-content: center; color: white;"
-      >
-        <a class="btn" href="/chatrooms" style="color:white">Chatrooms</a>
-        <a class="btn" href="/friends" style="color:white">Friends</a>
-        <a
-          class="btn"
-          href="/notifications"
-          style="color:white"
-          id="notificationButton">Notifications</a
+      <div style="display: flex; gap: 16px; justify-content: center;">
+        <a class="btn dark" href="/chatrooms" id="Nav-Chat">Chatrooms</a>
+        <a class="btn dark" href="/friends" id="Nav-Friend">Friends</a>
+        <a class="btn dark" href="/notifications" id="Nav-Notify"
+          >Notifications</a
         >
-        <a class="btn" href="/sendNot" style="color:white">send</a>
+        <a class="btn dark" href="/sendNot" id="Nav-Send">send</a>
       </div>
       <div class="flex items-center">
         <!-- Profile -->
@@ -111,3 +104,12 @@
     </div>
   </div>
 </nav>
+
+<style>
+  .dark {
+    color: white;
+  }
+  .light {
+    color: black;
+  }
+</style>

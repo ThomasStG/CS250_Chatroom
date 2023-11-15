@@ -12,7 +12,7 @@ model User {
   email    String @unique
   username String @unique
 
-  theme    String @default("light-theme")
+  lightTheme    Boolean @default(false)
 
   passwordHash  String
   userAuthToken String @unique

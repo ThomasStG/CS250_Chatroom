@@ -1,5 +1,5 @@
 .message-button {
-  color: white;
+  color: inherit;
   border: 2px solid green;
   border-radius: 5px;
   padding: 3px;
@@ -23,12 +23,11 @@
   margin-left: auto;
   margin-right: auto;
   height: 100%;
-  border: 1px solid #ccc;
   /* You can adjust the border style as needed */
   border-radius: 4px;
-  background-color: #f0f0f0;
+  background-color: inherit;
   padding: 2.5px;
-  color: #333;
+  color: inherit;
   outline: none;
   font-size: 14px;
 }
@@ -38,9 +37,11 @@
   /* mb-4 */
   border-radius: 0.5rem;
   /* rounded-lg */
-  background-color: #2d3748;
+  background-color: /*#2d3748*/ inherit;
   /* bg-gray-800 */
   padding: 1.5rem;
+  border-color: grey;
+  border-width: 2px;
 }
 .close {
   position: absolute;
