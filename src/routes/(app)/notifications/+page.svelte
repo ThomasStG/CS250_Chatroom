@@ -11,10 +11,7 @@
       {#each notifications as notification}
         <div class="list">
           <div>
-            <a
-              href="/notifications/{notification.id}"
-              class="mb-4 block rounded-lg bg-gray-800 p-6 hover:bg-gray-700"
-            >
+            <a href="/notifications/{notification.id}" class="chatbuttons">
               <p>sender: {notification.senderName}</p>
               <p>sent at: {notification.sentAt}</p>
             </a>

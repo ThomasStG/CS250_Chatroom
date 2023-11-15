@@ -20,6 +20,8 @@ export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) =
   };
 };
 
+
+
 export const actions = {
   changeName: async ({ request, params, locals }: import('./$types').RequestEvent) => {
     try {
@@ -156,23 +158,6 @@ export const actions = {
     } catch (err) {
       console.log("Error", err);
     }
-  },
-  theme: async ({ locals }: import('./$types').RequestEvent) => {
-    const userId = locals.user.id;
-    /*if (theme == "dark-theme"){
-            theme = "light-theme";
-        }
-        else{
-            theme = "dark-theme";
-        }
-        prisma.user.update({
-            data: {
-                theme: theme,
-            }
-            where: {
-                id: userId,
-            }
-        });*/
   },
 };
 ;null as any as Actions;

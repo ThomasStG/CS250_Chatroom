@@ -1,8 +1,5 @@
 <div>
-  <h1
-    class="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl"
-    style="color: white;"
-  >
+  <h1 class="mb-4 text-3xl font-extrabold md:text-5xl lg:text-6xl">
     <span
       class="bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-transparent"
       >CS-250</span

@@ -1,17 +1,22 @@
 <script lang="ts">
-  import type { PageData } from "./$types";
-  export let data: PageData;
   import { onMount } from "svelte";
-  $: ({ user, userId } = data);
 
   onMount(() => {
     const deleteButton = document.getElementById("delete");
     const confirm = document.getElementById("confirm");
     const cancel = document.getElementById("cancel");
     const message = document.getElementById("message");
+    const bodytheme = document.getElementById("docbody");
+    const darkmode = document.getElementById("darkmode");
+    const chatbtn = document.getElementById("Nav-Chat");
+    const sendbtn = document.getElementById("Nav-Send");
+    const friendbtn = document.getElementById("Nav-Friend");
+    const notifybtn = document.getElementById("Nav-Notify");
+    const styleScript = document.getElementById("styleScript");
+    var theme = document.getElementsByTagName("link")[0];
 
     // Add a click event listener to the button.
-    if (deleteButton && cancel && confirm) {
+    if (deleteButton && cancel && confirm && message) {
       deleteButton.addEventListener("click", () => {
         // Toggle the "hidden" class on the element to show/hide it.
         cancel.classList.remove("hidden");
@@ -22,7 +27,23 @@
       confirm.addEventListener("click", () => {
         cancel.classList.add("hidden");
         confirm.classList.add("hidden");
-        message?.classList.add("hidden");
+        message.classList.add("hidden");
+      });
+    }
+
+    if (bodytheme && darkmode && chatbtn && sendbtn && friendbtn && notifybtn) {
+      darkmode.addEventListener("click", () => {
+        //bodytheme.classList.toggle("style-light");
+        document.body.classList.toggle("style-light");
+        chatbtn.classList.toggle("dark");
+        chatbtn.classList.toggle("light");
+        sendbtn.classList.toggle("dark");
+        sendbtn.classList.toggle("light");
+        friendbtn.classList.toggle("dark");
+        friendbtn.classList.toggle("light");
+        notifybtn.classList.toggle("dark");
+        notifybtn.classList.toggle("light");
+        
       });
     }
   });
@@ -31,7 +52,7 @@
 <div class="background">
   <div>
     <h1
-      class="mb-4 text-center text-4xl font-extrabold text-white md:text-5xl lg:text-6xl"
+      class="mb-4 text-center text-4xl font-extrabold md:text-5xl lg:text-6xl"
     >
       Settings
     </h1>
@@ -42,10 +63,7 @@
     >
       <div class="setting-item">
         <p>Dark Mode</p>
-        <label class="switch">
-          <input type="checkbox" id="darkmode" />
-          <span class="slider round item" />
-        </label>
+        <button id="darkmode" class="item">Turn on/off</button>
       </div>
       <div class="setting-item">
         <p class="item">Change Username</p>
@@ -125,67 +143,6 @@
   .settings {
     justify-content: space-around;
     gap: 5px;
-  }
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 70px;
-    height: 34px;
-  }
-
-  /* Hide default HTML checkbox */
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
-  /* The slider */
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-  }
-
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-  }
-
-  input:checked + .slider {
-    background-color: #2196f3;
-  }
-
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196f3;
-  }
-
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
-
-  .slider.round:before {
-    border-radius: 50%;
   }
   .hidden {
     display: none;

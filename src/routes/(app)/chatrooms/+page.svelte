@@ -1,5 +1,7 @@
 <script lang="ts">
   import type { PageData } from "./$types";
+  import "./chatrooms.css";
+  import { enhance } from "$app/forms";
   export let data: PageData;
   console.log(2);
   $: ({ rooms, usr } = data);
@@ -10,44 +12,54 @@
   <ul class="f">
     <li>
       <h1
-        class="mb-4 text-center text-4xl font-extrabold text-white md:text-5xl lg:text-6xl"
+        class="mb-4 text-center text-4xl font-extrabold md:text-5xl lg:text-6xl"
       >
         Chat Rooms
       </h1>
 
       <div class="mx-auto max-w-3xl">
-        {#each rooms as room}
-          {#if room.Chatroom}
-            <div class="flex" style="position: relative;">
-              <a
-                href="/chatrooms/{room.id}"
-                class="mb-4 block rounded-lg bg-gray-800 p-6 hover:bg-gray-700"
+        {#if rooms}
+          {#each rooms as room}
+            {#if room.Chatroom}
+              <div
+                class="flex"
+                style="position: relative; justify-content: center;"
               >
-                <p class="text-xl text-white">Room Name: {room.name}</p>
-              </a>
-              <form action="?/delete" method="POST">
-                <input type="hidden" name="room" bind:value={room.id} />
-                <button
-                  type="submit"
-                  class="mb-4 block rounded-lg bg-gray-800 p-6 text-xl text-white hover:bg-gray-700"
-                  >Delete</button
+                <a
+                  href="/chatrooms/{room.id}"
+                  id="chatbutton"
+                  class="chatbuttons"
                 >
-              </form>
-            </div>
-          {/if}
-        {/each}
+                  <p class="text-xl">Room Name: {room.name}</p>
+                </a>
+                <form
+                  action="?/delete"
+                  method="POST"
+                  use:enhance={() => {
+                    return async ({ update }) => {
+                      update({ reset: false });
+                    };
+                  }}
+                >
+                  <input type="hidden" name="room" bind:value={room.id} />
+                  <button type="submit" id="chatdelete" class="chatbuttons"
+                    >Delete</button
+                  >
+                </form>
+              </div>
+            {/if}
+          {/each}
+        {/if}
       </div>
       <div class="flex">
-        <a
-          href="/chatrooms/create"
-          class="mx-auto mb-4 block max-w-3xl rounded-lg bg-gray-800 p-6 hover:bg-gray-700"
-          ><p style="color: white;">Create a New Chatroom</p></a
+        <a href="/chatrooms/create" class="chatbuttons mx-auto"
+          ><p>Create a New Chatroom</p></a
         >
       </div>
     </li>
     <li>
       <h1
-        class="mb-4 text-center text-4xl font-extrabold text-white md:text-5xl lg:text-6xl"
+        class="mb-4 text-center text-4xl font-extrabold md:text-5xl lg:text-6xl"
       >
         Direct Messages
       </h1>
@@ -56,29 +68,31 @@
         class="mx-auto max-w-3xl"
         style="left: 50%; justify-content: center; align-items: center; display: flex; flex-direction:column;"
       >
-        {#each rooms as room}
-          {#if room && room.Chatroom === false}
-            <div class="flex" style="position: relative;">
-              <a
-                href="/chatrooms/{room.id}"
-                class="mb-4 block rounded-lg bg-gray-800 p-6 hover:bg-gray-700"
-              >
-                <div class="hidden">
-                  {(room.name =
-                    room.users[0].username + "‎" + room.users[1].username)}
-                </div>
-                <p class="text-xl text-white">
-                  {#if usr}
-                    Friend Name: {(room.name = (room.name = room.name.replace(
-                      "‎",
-                      ""
-                    )).replace(usr.username, ""))}
-                  {/if}
-                </p>
-              </a>
-            </div>
-          {/if}
-        {/each}
+        {#if rooms}
+          {#each rooms as room}
+            {#if room && room.Chatroom === false}
+              <div class="flex" style="position: relative;">
+                <a
+                  href="/chatrooms/{room.id}"
+                  class="mb-4 block rounded-lg bg-gray-800 p-6 hover:bg-gray-700"
+                >
+                  <div class="hidden">
+                    {(room.name =
+                      room.users[0].username + "‎" + room.users[1].username)}
+                  </div>
+                  <p class="text-xl text-white">
+                    {#if usr}
+                      Friend Name: {(room.name = (room.name = room.name.replace(
+                        "‎",
+                        ""
+                      )).replace(usr.username, ""))}
+                    {/if}
+                  </p>
+                </a>
+              </div>
+            {/if}
+          {/each}
+        {/if}
       </div>
     </li>
   </ul>

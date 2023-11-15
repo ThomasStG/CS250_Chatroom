@@ -4,7 +4,7 @@ import type { RequestEvent, RequestHandler } from "./$types";
 import { json } from "@sveltejs/kit";
 
 export async function POST({ request }) {
-  const { addedUsers } = await request.json();
+  const { addedUsers, chatname } = await request.json();
 
   const usersToConnect = addedUsers.map((id) => ({
     id: id,
@@ -12,7 +12,7 @@ export async function POST({ request }) {
 
   const room = await prisma.room.create({
     data: {
-      name: "New Groupchat",
+      name: chatname,
       Chatroom: true,
       users: {
         connect: usersToConnect,

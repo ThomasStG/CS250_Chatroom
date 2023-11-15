@@ -59,7 +59,7 @@ export const actions = {
     try {
       console.log(1);
       const formData = Object.fromEntries(await request.formData());
-      const roomtmp: string = formData.room;
+      const roomtmp = formData.room;
       console.log(2);
       let room: number = -1;
       console.log(roomtmp);
@@ -73,6 +73,11 @@ export const actions = {
       }
 
       console.log(5);
+      await prisma.message.deleteMany({
+        where: {
+          roomId: room,
+        },
+      });
       await prisma.room.delete({
         where: {
           id: room,

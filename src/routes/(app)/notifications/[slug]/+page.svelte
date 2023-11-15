@@ -11,11 +11,11 @@
   <div class="flex items-center">
     <a
       href="/notifications"
-      class="mb-2 mr-4 text-3xl font-extrabold text-white md:text-4xl lg:text-2xl"
+      class="mb-2 mr-4 text-3xl font-extrabold md:text-4xl lg:text-2xl"
       style="text-align: left">Back</a
     >
     <h1
-      class="mb-4 text-center text-4xl font-extrabold text-white md:text-5xl lg:text-6xl"
+      class="mb-4 text-center text-4xl font-extrabold md:text-5xl lg:text-6xl"
     >
       Message
     </h1>
@@ -23,13 +23,21 @@
 
   <div class="mx-auto max-w-3xl items-center">
     {#if notification}
-      <p class="text-white">Message: {notification.content}</p>
-      <p class="text-gray-400">Sender: {notification.senderName}</p>
+      <p>Message: {notification.content}</p>
+      <p style="color: inherit;">Sender: {notification.senderName}</p>
 
       {#if notification.sentAt}
-        <p class="text-gray-400">Time: {notification.sentAt}</p>
+        <p style="color: inherit;">Time: {notification.sentAt}</p>
       {/if}
-      <form action="?/deleteMessage" method="POST">
+      <form
+        action="?/deleteMessage"
+        method="POST"
+        use:enhance={() => {
+          return async ({ update }) => {
+            update({ reset: false });
+          };
+        }}
+      >
         <button type="submit" class="message-button"> Delete Message </button>
         <input
           type="hidden"

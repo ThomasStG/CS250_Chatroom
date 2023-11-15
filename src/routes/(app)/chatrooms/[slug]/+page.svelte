@@ -36,11 +36,11 @@
   <div class="flex items-center">
     <a
       href="/chatrooms"
-      class="mb-2 mr-4 text-3xl font-extrabold text-white md:text-4xl lg:text-2xl"
+      class="mb-2 mr-4 text-3xl font-extrabold md:text-4xl lg:text-2xl"
       style="text-align: left">Back</a
     >
     <h1
-      class="mb-4 text-center text-4xl font-extrabold text-white md:text-5xl lg:text-6xl"
+      class="mb-4 text-center text-4xl font-extrabold md:text-5xl lg:text-6xl"
     >
       Messages
     </h1>
@@ -50,14 +50,14 @@
     {#if messages}
       {#each messages as message}
         <div class="message-list">
-          <p class="text-white">Message: {message.content}</p>
-          <p class="text-gray-400">Sender: {message.sender.username}</p>
+          <p>Message: {message.content}</p>
+          <p>Sender: {message.sender.username}</p>
 
           {#if message.sentAt}
-            <p class="text-gray-400">Time: {message.sentAt}</p>
+            <p>Time: {message.sentAt}</p>
           {/if}
           {#if message.updatedAt}
-            <p class="text-gray-400">Updated at: {message.updatedAt}</p>
+            <p>Updated at: {message.updatedAt}</p>
           {/if}
           {#if userId == message.sender.id}
             <div style="display: flex;">
@@ -67,7 +67,15 @@
                 )}
                 class="message-button">Edit Message</button
               >
-              <form action="?/deleteMessage" method="POST">
+              <form
+                action="?/deleteMessage"
+                method="POST"
+                use:enhance={() => {
+                  return async ({ update }) => {
+                    update({ reset: false });
+                  };
+                }}
+              >
                 <button type="submit" class="message-button">
                   Delete Message
                 </button>
@@ -84,7 +92,15 @@
                 <h2 slot="header">Edit Message</h2>
                 <div class="modal-size">
                   <body>
-                    <form action="?/editMessage" method="POST">
+                    <form
+                      action="?/editMessage"
+                      method="POST"
+                      use:enhance={() => {
+                        return async ({ update }) => {
+                          update({ reset: false });
+                        };
+                      }}
+                    >
                       <div>
                         <!-- svelte-ignore a11y-autofocus -->
                         <textarea
@@ -139,7 +155,8 @@
       <button
         type="submit"
         id="submit"
-        class="rounded-r-lg bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        class="rounded-r-lg bg-blue-500 px-4 py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        style="color:inherit"
       >
         send
       </button>

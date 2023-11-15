@@ -88,10 +88,15 @@ export const actions = {
       const from = await prisma.user.findUnique({ where: { id: userFromId } });
       const to: number = userTo.id;
       const message =
-        from.username +
+        from?.username +
         " has sent you a friend request. Go to your friends page to accept.";
-
-      await prisma.$queryRaw`insert into Notification (receiverId, content, senderName) values (${to}, ${message}, ${from.username})`;
+      await prisma.notification.create({
+        data: {
+          content: message,
+          receiverId: to,
+          senderName: from?.username,
+        },
+      });
 
       // User found, return the username
       return {
@@ -117,20 +122,21 @@ export const actions = {
         include: { from: true, to: true },
       });
 
-      const usernames = await prisma.user.findMany({
-        where: {
-          id: {
-            in: [friendRequest.fromId, friendRequest.toId],
-          },
-        },
-      });
-      console.log(usernames[0]);
-      console.log(usernames[1]);
 
       if (!friendRequest) {
         // Friend request not found
         return fail(404, { error: { message: "Friend request not found" } });
       }
+        const usernames = await prisma.user.findMany({
+          where: {
+            id: {
+              in: [friendRequest.fromId, friendRequest.toId],
+            },
+          },
+        });
+      
+
+      
 
       // Begin a transaction to update the friend request and create the friend record
       await prisma.$transaction([
@@ -171,7 +177,11 @@ export const actions = {
     try {
       const userId = locals.user.id;
       const data = await request.formData();
-      const friendID: number = +data.get("friendID");
+      const friendIDTemp = data.get("friendID");
+      if (!friendIDTemp) {
+        throw new Error("No friend ID provided.");
+      }
+      const friendID: number = +friendIDTemp;
 
       // Fetch the friend request details
 
@@ -217,11 +227,11 @@ export const actions = {
         },
         include: {
           users: true,
-        }
+        },
       });
       for (const room of roomsToDelete) {
         console.log(room);
-      
+
         // Get the user IDs related to this room
         const userIds = room.users.map((user) => user.id);
 
@@ -234,14 +244,17 @@ export const actions = {
             },
           },
         });
-      
+        await prisma.message.deleteMany({
+        where: {
+          roomId: room.id,
+        },
+      });
 
         await prisma.room.delete({
           where: { id: room.id },
         });
       }
-        return { body: { message: "Friend request accepted" } };
-      
+      return { body: { message: "Friend request accepted" } };
     } catch (err) {
       console.error(err);
       return fail(500, { error: { message: "Internal Server Error" } });

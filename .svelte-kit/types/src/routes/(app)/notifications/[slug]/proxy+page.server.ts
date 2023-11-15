@@ -12,7 +12,7 @@ export const load = async ({ params, locals }: Parameters<PageServerLoad>[0]) =>
       const notifications = await prisma.notification.findMany({
         where: {
           id: notificationId,
-        }
+        },
       });
       const notification = notifications[0];
       return {
@@ -33,16 +33,16 @@ export const actions = {
       const message = await prisma.notification.findMany({
         where: {
           id: notificationId,
-        }
+        },
       });
 
       if (message.length > 0) {
         console.log(message[0]);
         const notifications = await prisma.notification.deleteMany({
-        where: {
-          id: notificationId,
-        }
-      });
+          where: {
+            id: notificationId,
+          },
+        });
         console.log(notificationId, " deleted");
       }
     } catch (err) {
