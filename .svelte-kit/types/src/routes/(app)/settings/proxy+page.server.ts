@@ -1,7 +1,7 @@
 // @ts-nocheck
 import type { Actions, PageServerLoad } from "./$types";
 import prisma from "$lib/database";
-import { fail } from "@sveltejs/kit";
+import { fail, redirect } from "@sveltejs/kit";
 import bcrypt from "bcrypt";
 
 import db from "$lib/database";
@@ -96,68 +96,75 @@ export const actions = {
     try {
       const userId: number = locals.user.id;
 
-      const deleteRooms = await prisma.room.deleteMany({
-        where: {
-          AND: [
-            {
-              OR: [
-                { users: { some: { id: userId } } },
-                { users: { some: { id: userId } } },
-              ],
-            },
-            { Chatroom: false },
-          ],
-        },
-      });
+      await prisma.$transaction(async (prisma) => {
+  // Manually handle deletions based on relationships
+  await prisma.message.deleteMany({
+    where: {
+      OR: [
+        { senderId: userId },
+        { receiverId: userId },
+      ],
+    },
+  });
 
-      const deleteFriends = await prisma.friend.deleteMany({
-        where: {
-          OR: [
-            {
-              user1: {
-                id: userId,
-              },
-            },
-            {
-              user2: {
-                id: userId,
-              },
-            },
-          ],
-        },
-      });
+  // Remove the user from rooms or delete rooms associated only with this user
+  const roomsToUpdate = await prisma.room.findMany({
+    where: {
+      users: { some: { id: userId } },
+    },
+  });
 
-      const deleteFriendsRequests = await prisma.friendRequest.deleteMany({
-        where: {
-          OR: [
-            {
-              to: {
-                id: userId,
-              },
-            },
-            {
-              from: {
-                id: userId,
-              },
-            },
-          ],
+  for (const room of roomsToUpdate) {
+    const updatedUsers = room.users.filter((user) => user.id !== userId);
+
+    await prisma.room.update({
+      where: { id: room.id },
+      data: {
+        users: {
+          disconnect: updatedUsers.map((user) => ({ id: user.id })),
         },
+      },
+    });
+  }
+
+  // Handle friend relationships and friend requests
+  await prisma.friendRequest.deleteMany({
+    where: {
+      OR: [
+        { fromId: userId },
+        { toId: userId },
+      ],
+    },
+  });
+
+  await prisma.friend.deleteMany({
+    where: {
+      OR: [
+        { userId1: userId },
+        { userId2: userId },
+      ],
+    },
+  });
+
+  // Delete notifications related to the user
+  await prisma.notification.deleteMany({
+    where: {
+      receiverId: userId,
+    },
+  });
+
+  // Finally, delete the user
+  await prisma.user.delete({
+    where: {
+      id: userId,
+    },
+  });
       });
-      if (deleteFriends && deleteFriendsRequests && deleteRooms) {
-        const deleteUser = await prisma.user.delete({
-          where: {
-            id: userId,
-          },
-        });
-        if (deleteUser) {
-          console.log("Account deleted successfully:", deleteUser);
-        } else {
-          console.log("User not found or update failed.");
-        }
-      }
     } catch (err) {
       console.log("Error", err);
     }
+      throw redirect(302, "/")
   },
 };
+
 ;null as any as Actions;

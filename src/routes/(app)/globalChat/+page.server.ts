@@ -6,10 +6,20 @@ import db from "$lib/database";
 export const load: PageServerLoad = async ({ params, locals }) => {
   try {
     const userId = locals.user?.id; // Get the userId from the locals object
-    const roomId: number = parseInt(params.slug);
-    console.log("roomId: ", roomId);
+    const roomId: number = 0;
+    const room = await prisma.room.findUnique({
+        where: {id:roomId}
+    });
+    if (!room) {
+      const test = await prisma.room.create({
+    data: {
+      id: 0,
+      name: "Global",
+      Chatroom: true,
+    }
+      });
+    }
     // Fetch the messages for the specific chat room and include sender and receiver details
-    if (roomId) {
       const messages = await prisma.message.findMany({
         where: {
           roomId: roomId, // Use the roomId here, not params.slug
@@ -18,18 +28,10 @@ export const load: PageServerLoad = async ({ params, locals }) => {
           sender: true,
         },
       });
-      const roomName = await prisma.room.findUnique({
-        where: {
-          id: roomId,
-        }
-      });
       return {
         messages,
-        roomName,
         userId,
-        roomId,
       };
-    }
   } catch (err) {
     console.error(err);
     return fail(500, { error: { message: "Internal Server Error" } });
@@ -52,7 +54,7 @@ export const actions: Actions = {
       };
 
       const userId = locals.user?.id; // Get the userId from the locals object
-      const roomId: number = parseInt(params.slug); // Convert the slug to an integer using parseInt()
+      const roomId = 0; // Convert the slug to an integer using parseInt()
 
       if (!userId) {
         return fail(403, { error: { message: "User not authenticated." } });

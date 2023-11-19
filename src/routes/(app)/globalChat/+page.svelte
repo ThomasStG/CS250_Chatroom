@@ -7,7 +7,7 @@
   export let data: PageData;
   let messagetext: String = "";
   let modals: Record<string, boolean> = {};
-  $: ({ messages, roomName, userId, roomId } = data);
+  $: ({ messages, userId } = data);
 
   const clearInput = () => {
     const inputElement = <HTMLInputElement>document.getElementById("content");
@@ -17,7 +17,7 @@
   };
 
   // Submit event handler for the form
-  const handleSubmit = async (event) => {
+  const handleSubmit = async () => {
     // Handle the form submission here (e.g., send the data to the server)
     // ...
 
@@ -34,17 +34,11 @@
 
 <div class="background flex min-h-screen flex-col items-center">
   <div class="flex items-center">
-    <a
-      href="/chatrooms"
-      class="mb-2 mr-4 text-3xl font-extrabold md:text-4xl lg:text-2xl"
-      style="text-align: left">Back</a
-    >
     <h1
       class="mb-4 text-center text-4xl font-extrabold md:text-5xl lg:text-6xl"
     >
       Messages
     </h1>
-    <a href="{roomId}/edit">edit</a>
   </div>
 
   <div class="mx-auto max-w-3xl items-center">

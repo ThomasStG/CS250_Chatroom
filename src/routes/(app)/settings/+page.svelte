@@ -5,33 +5,31 @@
     const deleteButton = document.getElementById("delete");
     const confirm = document.getElementById("confirm");
     const cancel = document.getElementById("cancel");
-    const message = document.getElementById("message");
     const bodytheme = document.getElementById("docbody");
     const darkmode = document.getElementById("darkmode");
     const chatbtn = document.getElementById("Nav-Chat");
     const sendbtn = document.getElementById("Nav-Send");
     const friendbtn = document.getElementById("Nav-Friend");
     const notifybtn = document.getElementById("Nav-Notify");
+    const globalChat = document.getElementById("global-chat");
     const styleScript = document.getElementById("styleScript");
     var theme = document.getElementsByTagName("link")[0];
 
     // Add a click event listener to the button.
-    if (deleteButton && cancel && confirm && message) {
+    if (deleteButton && cancel && confirm) {
       deleteButton.addEventListener("click", () => {
         // Toggle the "hidden" class on the element to show/hide it.
         cancel.classList.remove("hidden");
         confirm.classList.remove("hidden");
-        message?.classList.remove("hidden");
         console.log("pressed");
       });
       confirm.addEventListener("click", () => {
         cancel.classList.add("hidden");
         confirm.classList.add("hidden");
-        message.classList.add("hidden");
       });
     }
 
-    if (bodytheme && darkmode && chatbtn && sendbtn && friendbtn && notifybtn) {
+    if (bodytheme && darkmode && chatbtn && sendbtn && friendbtn && notifybtn && globalChat) {
       darkmode.addEventListener("click", () => {
         //bodytheme.classList.toggle("style-light");
         document.body.classList.toggle("style-light");
@@ -43,6 +41,8 @@
         friendbtn.classList.toggle("light");
         notifybtn.classList.toggle("dark");
         notifybtn.classList.toggle("light");
+        globalChat.classList.toggle("dark");
+        globalChat.classList.toggle("light");
         
       });
     }
@@ -74,6 +74,7 @@
             id="username"
             class="input item"
             placeholder="New username"
+            maxlength="14"
           />
           <button type="submit" class="item">submit</button>
         </form>
@@ -103,13 +104,10 @@
           <button id="confirm" type="button" class="item hidden">
             Cancel
           </button>
-          <button id="cancel" type="button" class="item hidden">
+          <button id="cancel" type="submit" class="item hidden">
             Confirm
           </button>
           <!--will convert to a submit button once logic for deletion is fixed-->
-          <div id="message" class="item hidden">
-            This feature is not implemented yet!
-          </div>
         </form>
       </div>
     </form>

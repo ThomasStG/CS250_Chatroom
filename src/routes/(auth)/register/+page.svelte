@@ -13,14 +13,14 @@
     href="/"
     class="mb-8 flex items-center justify-center text-2xl font-semibold lg:mb-10"
   >
-    <!-- <img src="/images/logo.svg" class="mr-4 h-11" alt="FlowBite Logo"> -->
-    <span>Flowbite</span>
+    <img src="/favicon.png" class="mr-4 h-11" alt="Squire Logo">
+    <span>[Squire]</span>
   </a>
   <!-- Card -->
   <div
-    class="w-full max-w-xl space-y-8 rounded-md border bg-white p-6 shadow sm:p-8"
+    class="w-full max-w-xl space-y-8 rounded-md border p-6 shadow sm:p-8" style="background: #202020; border-color:#303040; border-width:5px;" 
   >
-    <h2 class="text-2xl font-bold text-gray-900">Create a new account</h2>
+    <h2 class="text-2xl font-bold">Create a new account</h2>
 
     {#if form?.error?.message}
       <Alert type="danger" description={form.error.message} />
@@ -28,7 +28,7 @@
 
     <form action="?/register" method="POST" use:enhance class="mt-8 space-y-6">
       <div>
-        <label for="email" class="mb-2 block text-sm font-medium text-gray-900">
+        <label for="email" class="mb-2 block text-sm font-medium">
           Email
         </label>
         <input
@@ -43,7 +43,8 @@
       <div>
         <label
           for="username"
-          class="mb-2 block text-sm font-medium text-gray-900"
+          class="mb-2 block text-sm font-medium"
+          maxlength="14"
         >
           User-Name
         </label>
@@ -52,14 +53,14 @@
           name="username"
           type="text"
           required
-          class="block w-full rounded-md border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+          class="block w-full rounded-md border border-gray-300 bg-gray-50 p-2.5 focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
         />
       </div>
 
       <div>
         <label
           for="password"
-          class="mb-2 block text-sm font-medium text-gray-900"
+          class="mb-2 block text-sm font-medium "
         >
           Password
         </label>
@@ -76,7 +77,7 @@
       <div>
         <label
           for="confirm-password"
-          class="mb-2 block text-sm font-medium text-gray-900"
+          class="mb-2 block text-sm font-medium"
         >
           Confirm password
         </label>

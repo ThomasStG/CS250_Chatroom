@@ -35,8 +35,8 @@
 }
 
 body {
-  background-color: #1a202c;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 input,
@@ -76,48 +76,13 @@ h1 {
   display: block;
   /* block */
   border-radius: 0.5rem;
-  /* rounded-lg */
-  border-color: #47476b;
-  border-width: 2px;
-  /* bg-gray-800 */
-  padding: 1.5rem;
-  /* p-6 */
-}
-
-.chatbuttons:hover {
-  background-color: rgb(82 82 91);
-  /* hover:bg-gray-700 */
-  color: white;
-}
-
-.chatbuttons-s {
-  margin-bottom: 1rem;
-  /* mb-4 */
-  display: block;
-  /* block */
-  border-radius: 0.5rem;
-  /* rounded-lg */
-  border-color: #47476b;
-  border-width: 2px;
-  /* bg-gray-800 */
-  padding: .4rem;
-  /* p-6 */
-}
-
-.chatbuttons-s:hover {
-  background-color: rgb(82 82 91);
-  /* hover:bg-gray-700 */
-  color: white;
-}
-.chatbuttons-light {
-  margin-bottom: 1rem;
-  /* mb-4 */
-  display: block;
-  /* block */
-  border-radius: 0.5rem;
   background-color: rgb(156 163 175);
   padding: 1.5rem;
 }
-.chatbuttons-light:hover {
+.chatbuttons:hover {
   background-color: rgb(209 213 219);
+}
+
+.nav_buttons {
+  color: black;
 }

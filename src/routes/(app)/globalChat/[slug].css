@@ -1,0 +1,60 @@
+.message-button {
+  color: inherit;
+  border: 2px solid green;
+  border-radius: 5px;
+  padding: 3px;
+  margin-right: 4px;
+}
+
+.bottom {
+  position: absolute;
+  top: 1;
+  right: 1;
+}
+
+.modal-size {
+  height: 250px;
+  width: 400px;
+}
+
+.modal-text {
+  width: 380px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  /* You can adjust the border style as needed */
+  border-radius: 4px;
+  background-color: inherit;
+  padding: 2.5px;
+  color: inherit;
+  outline: none;
+  font-size: 14px;
+}
+
+.message-list {
+  margin-bottom: 1rem;
+  /* mb-4 */
+  border-radius: 0.5rem;
+  /* rounded-lg */
+  background-color: /*#2d3748*/ inherit;
+  /* bg-gray-800 */
+  padding: 1.5rem;
+  border-color: grey;
+  border-width: 2px;
+}
+.close {
+  position: absolute;
+  right: 4px;
+  top: 0;
+}
+
+dialog {
+  border-radius: 0.2em;
+  border: none;
+  padding: 0;
+}
+
+button {
+  display: block;
+}

@@ -41,6 +41,7 @@
           >Notifications</a
         >
         <a class="btn dark" href="/sendNot" id="Nav-Send">send</a>
+        <a class="btn dark" href="/globalChat" id="global-chat">global-chat</a>
       </div>
       <div class="flex items-center">
         <!-- Profile -->

@@ -1,15 +1,26 @@
+// @ts-nocheck
 import type { Action, PageServerLoad, Actions } from "./$types";
 import prisma from "$lib/database";
 import { fail, redirect } from "@sveltejs/kit";
 import db from "$lib/database";
 
-export const load: PageServerLoad = async ({ params, locals }) => {
+export const load = async ({ params, locals }: Parameters<PageServerLoad>[0]) => {
   try {
     const userId = locals.user?.id; // Get the userId from the locals object
-    const roomId: number = parseInt(params.slug);
-    console.log("roomId: ", roomId);
+    const roomId: number = 0;
+    const room = await prisma.room.findUnique({
+        where: {id:roomId}
+    });
+    if (!room) {
+      const test = await prisma.room.create({
+    data: {
+      id: 0,
+      name: "Global",
+      Chatroom: true,
+    }
+      });
+    }
     // Fetch the messages for the specific chat room and include sender and receiver details
-    if (roomId) {
       const messages = await prisma.message.findMany({
         where: {
           roomId: roomId, // Use the roomId here, not params.slug
@@ -18,26 +29,18 @@ export const load: PageServerLoad = async ({ params, locals }) => {
           sender: true,
         },
       });
-      const roomName = await prisma.room.findUnique({
-        where: {
-          id: roomId,
-        }
-      });
       return {
         messages,
-        roomName,
         userId,
-        roomId,
       };
-    }
   } catch (err) {
     console.error(err);
     return fail(500, { error: { message: "Internal Server Error" } });
   }
 };
 
-export const actions: Actions = {
-  sendMessage: async ({ request, params, locals }) => {
+export const actions = {
+  sendMessage: async ({ request, params, locals }: import('./$types').RequestEvent) => {
     try {
       const formData = Object.fromEntries(await request.formData()) as Record<
         string,
@@ -52,7 +55,7 @@ export const actions: Actions = {
       };
 
       const userId = locals.user?.id; // Get the userId from the locals object
-      const roomId: number = parseInt(params.slug); // Convert the slug to an integer using parseInt()
+      const roomId = 0; // Convert the slug to an integer using parseInt()
 
       if (!userId) {
         return fail(403, { error: { message: "User not authenticated." } });
@@ -91,7 +94,7 @@ export const actions: Actions = {
       return fail(500, { error: { message: "Internal Server Error" } });
     }
   },
-  editMessage: async ({ request }) => {
+  editMessage: async ({ request }: import('./$types').RequestEvent) => {
     try {
       const data = await request.formData();
       const now = new Date();
@@ -116,7 +119,7 @@ export const actions: Actions = {
       return fail(500, { error: { message: "Internal Server Error" } });
     }
   },
-  deleteMessage: async ({ request }) => {
+  deleteMessage: async ({ request }: import('./$types').RequestEvent) => {
     try {
       const data = await request.formData();
       const messageI = Number(data.get("messageId"));
@@ -139,3 +142,4 @@ export const actions: Actions = {
     }
   },
 };
+;null as any as Actions;

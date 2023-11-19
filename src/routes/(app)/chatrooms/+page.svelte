@@ -32,20 +32,6 @@
                 >
                   <p class="text-xl">Room Name: {room.name}</p>
                 </a>
-                <form
-                  action="?/delete"
-                  method="POST"
-                  use:enhance={() => {
-                    return async ({ update }) => {
-                      update({ reset: false });
-                    };
-                  }}
-                >
-                  <input type="hidden" name="room" bind:value={room.id} />
-                  <button type="submit" id="chatdelete" class="chatbuttons"
-                    >Delete</button
-                  >
-                </form>
               </div>
             {/if}
           {/each}

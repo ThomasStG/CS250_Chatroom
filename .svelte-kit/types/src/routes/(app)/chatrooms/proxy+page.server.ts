@@ -55,39 +55,5 @@ export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) =
 };
 
 export const actions = {
-  delete: async ({ request }: import('./$types').RequestEvent) => {
-    try {
-      console.log(1);
-      const formData = Object.fromEntries(await request.formData());
-      const roomtmp = formData.room;
-      console.log(2);
-      let room: number = -1;
-      console.log(roomtmp);
-      if (roomtmp) {
-        room = +roomtmp;
-      }
-      console.log(room);
-
-      if (room == null || room == -1) {
-        return fail(400, { error: { message: "Missing room ID" } });
-      }
-
-      console.log(5);
-      await prisma.message.deleteMany({
-        where: {
-          roomId: room,
-        },
-      });
-      await prisma.room.delete({
-        where: {
-          id: room,
-        },
-      });
-      console.log(6);
-    } catch (error) {
-      console.error("Error deleting room:", error);
-      return fail(500, { error: { message: "Internal server error" } });
-    }
-  },
 };
 ;null as any as Actions;
