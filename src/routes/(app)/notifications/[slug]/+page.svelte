@@ -21,7 +21,7 @@
     </h1>
   </div>
 
-  <div class="mx-auto max-w-3xl items-center message-list">
+  <div class="message-list mx-auto max-w-3xl items-center">
     {#if notification}
       <p>Message: {notification.content}</p>
       <p style="color: inherit;">Sender: {notification.senderName}</p>

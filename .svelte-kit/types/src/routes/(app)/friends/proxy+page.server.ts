@@ -3,7 +3,10 @@ import type { Actions, PageServerLoad } from "./$types";
 import prisma from "$lib/database";
 import { fail } from "@sveltejs/kit";
 
-export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) => {
+export const load = async ({
+  request,
+  locals,
+}: Parameters<PageServerLoad>[0]) => {
   const userId = locals.user.id;
 
   // Fetch the user's friends
@@ -54,7 +57,10 @@ export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) =
 };
 
 export const actions = {
-  friendRequest: async ({ request, locals }: import('./$types').RequestEvent) => {
+  friendRequest: async ({
+    request,
+    locals,
+  }: import("./$types").RequestEvent) => {
     try {
       const formData = Object.fromEntries(await request.formData());
       const { userName } = formData;
@@ -110,7 +116,7 @@ export const actions = {
       return fail(500, { error: { message: "Internal Server Error" } });
     }
   },
-  accept: async ({ request, locals }: import('./$types').RequestEvent) => {
+  accept: async ({ request, locals }: import("./$types").RequestEvent) => {
     try {
       const userId = locals.user.id;
       const formData = Object.fromEntries(await request.formData());
@@ -122,21 +128,17 @@ export const actions = {
         include: { from: true, to: true },
       });
 
-
       if (!friendRequest) {
         // Friend request not found
         return fail(404, { error: { message: "Friend request not found" } });
       }
-        const usernames = await prisma.user.findMany({
-          where: {
-            id: {
-              in: [friendRequest.fromId, friendRequest.toId],
-            },
+      const usernames = await prisma.user.findMany({
+        where: {
+          id: {
+            in: [friendRequest.fromId, friendRequest.toId],
           },
-        });
-      
-
-      
+        },
+      });
 
       // Begin a transaction to update the friend request and create the friend record
       await prisma.$transaction([
@@ -173,7 +175,10 @@ export const actions = {
       return fail(500, { error: { message: "Internal Server Error" } });
     }
   },
-  removeFriend: async ({ request, locals }: import('./$types').RequestEvent) => {
+  removeFriend: async ({
+    request,
+    locals,
+  }: import("./$types").RequestEvent) => {
     try {
       const userId = locals.user.id;
       const data = await request.formData();
@@ -245,10 +250,10 @@ export const actions = {
           },
         });
         await prisma.message.deleteMany({
-        where: {
-          roomId: room.id,
-        },
-      });
+          where: {
+            roomId: room.id,
+          },
+        });
 
         await prisma.room.delete({
           where: { id: room.id },
@@ -261,4 +266,4 @@ export const actions = {
     }
   },
 };
-;null as any as Actions;
+null as any as Actions;

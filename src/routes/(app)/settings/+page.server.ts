@@ -19,8 +19,6 @@ export const load: PageServerLoad = async ({ request, locals }) => {
   };
 };
 
-
-
 export const actions: Actions = {
   changeName: async ({ request, params, locals }) => {
     try {
@@ -96,73 +94,63 @@ export const actions: Actions = {
       const userId: number = locals.user.id;
 
       await prisma.$transaction(async (prisma) => {
-  // Manually handle deletions based on relationships
-  await prisma.message.deleteMany({
-    where: {
-      OR: [
-        { senderId: userId },
-        { receiverId: userId },
-      ],
-    },
-  });
+        // Manually handle deletions based on relationships
+        await prisma.message.deleteMany({
+          where: {
+            OR: [{ senderId: userId }, { receiverId: userId }],
+          },
+        });
 
-  // Remove the user from rooms or delete rooms associated only with this user
-  const roomsToUpdate = await prisma.room.findMany({
-    where: {
-      users: { some: { id: userId } },
-    },
-  });
+        // Remove the user from rooms or delete rooms associated only with this user
+        const roomsToUpdate = await prisma.room.findMany({
+          where: {
+            users: { some: { id: userId } },
+          },
+        });
 
-  for (const room of roomsToUpdate) {
-    const updatedUsers = room.users.filter((user) => user.id !== userId);
+        for (const room of roomsToUpdate) {
+          const updatedUsers = room.users.filter((user) => user.id !== userId);
 
-    await prisma.room.update({
-      where: { id: room.id },
-      data: {
-        users: {
-          disconnect: updatedUsers.map((user) => ({ id: user.id })),
-        },
-      },
-    });
-  }
+          await prisma.room.update({
+            where: { id: room.id },
+            data: {
+              users: {
+                disconnect: updatedUsers.map((user) => ({ id: user.id })),
+              },
+            },
+          });
+        }
 
-  // Handle friend relationships and friend requests
-  await prisma.friendRequest.deleteMany({
-    where: {
-      OR: [
-        { fromId: userId },
-        { toId: userId },
-      ],
-    },
-  });
+        // Handle friend relationships and friend requests
+        await prisma.friendRequest.deleteMany({
+          where: {
+            OR: [{ fromId: userId }, { toId: userId }],
+          },
+        });
 
-  await prisma.friend.deleteMany({
-    where: {
-      OR: [
-        { userId1: userId },
-        { userId2: userId },
-      ],
-    },
-  });
+        await prisma.friend.deleteMany({
+          where: {
+            OR: [{ userId1: userId }, { userId2: userId }],
+          },
+        });
 
-  // Delete notifications related to the user
-  await prisma.notification.deleteMany({
-    where: {
-      receiverId: userId,
-    },
-  });
+        // Delete notifications related to the user
+        await prisma.notification.deleteMany({
+          where: {
+            receiverId: userId,
+          },
+        });
 
-  // Finally, delete the user
-  await prisma.user.delete({
-    where: {
-      id: userId,
-    },
-  });
+        // Finally, delete the user
+        await prisma.user.delete({
+          where: {
+            id: userId,
+          },
+        });
       });
     } catch (err) {
       console.log("Error", err);
     }
-      throw redirect(302, "/")
+    throw redirect(302, "/");
   },
 };
-

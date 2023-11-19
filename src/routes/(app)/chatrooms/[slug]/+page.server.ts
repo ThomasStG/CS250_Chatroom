@@ -21,7 +21,7 @@ export const load: PageServerLoad = async ({ params, locals }) => {
       const roomName = await prisma.room.findUnique({
         where: {
           id: roomId,
-        }
+        },
       });
       return {
         messages,

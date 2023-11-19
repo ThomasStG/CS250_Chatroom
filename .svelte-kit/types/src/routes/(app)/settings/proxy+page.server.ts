@@ -6,7 +6,10 @@ import bcrypt from "bcrypt";
 
 import db from "$lib/database";
 
-export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) => {
+export const load = async ({
+  request,
+  locals,
+}: Parameters<PageServerLoad>[0]) => {
   const userId = locals.user.id;
 
   // Fetch the user's friends
@@ -20,10 +23,12 @@ export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) =
   };
 };
 
-
-
 export const actions = {
-  changeName: async ({ request, params, locals }: import('./$types').RequestEvent) => {
+  changeName: async ({
+    request,
+    params,
+    locals,
+  }: import("./$types").RequestEvent) => {
     try {
       const userId: number = locals.user.id;
       const formData = Object.fromEntries(await request.formData());
@@ -47,7 +52,11 @@ export const actions = {
       console.log("Error", err);
     }
   },
-  changePass: async ({ request, params, locals }: import('./$types').RequestEvent) => {
+  changePass: async ({
+    request,
+    params,
+    locals,
+  }: import("./$types").RequestEvent) => {
     try {
       const userId: number = locals.user.id;
       const formData = Object.fromEntries(await request.formData());
@@ -92,79 +101,74 @@ export const actions = {
       console.log("Error", err);
     }
   },
-  deleteAccount: async ({ request, params, locals }: import('./$types').RequestEvent) => {
+  deleteAccount: async ({
+    request,
+    params,
+    locals,
+  }: import("./$types").RequestEvent) => {
     try {
       const userId: number = locals.user.id;
 
       await prisma.$transaction(async (prisma) => {
-  // Manually handle deletions based on relationships
-  await prisma.message.deleteMany({
-    where: {
-      OR: [
-        { senderId: userId },
-        { receiverId: userId },
-      ],
-    },
-  });
+        // Manually handle deletions based on relationships
+        await prisma.message.deleteMany({
+          where: {
+            OR: [{ senderId: userId }, { receiverId: userId }],
+          },
+        });
 
-  // Remove the user from rooms or delete rooms associated only with this user
-  const roomsToUpdate = await prisma.room.findMany({
-    where: {
-      users: { some: { id: userId } },
-    },
-  });
+        // Remove the user from rooms or delete rooms associated only with this user
+        const roomsToUpdate = await prisma.room.findMany({
+          where: {
+            users: { some: { id: userId } },
+          },
+        });
 
-  for (const room of roomsToUpdate) {
-    const updatedUsers = room.users.filter((user) => user.id !== userId);
+        for (const room of roomsToUpdate) {
+          const updatedUsers = room.users.filter((user) => user.id !== userId);
 
-    await prisma.room.update({
-      where: { id: room.id },
-      data: {
-        users: {
-          disconnect: updatedUsers.map((user) => ({ id: user.id })),
-        },
-      },
-    });
-  }
+          await prisma.room.update({
+            where: { id: room.id },
+            data: {
+              users: {
+                disconnect: updatedUsers.map((user) => ({ id: user.id })),
+              },
+            },
+          });
+        }
 
-  // Handle friend relationships and friend requests
-  await prisma.friendRequest.deleteMany({
-    where: {
-      OR: [
-        { fromId: userId },
-        { toId: userId },
-      ],
-    },
-  });
+        // Handle friend relationships and friend requests
+        await prisma.friendRequest.deleteMany({
+          where: {
+            OR: [{ fromId: userId }, { toId: userId }],
+          },
+        });
 
-  await prisma.friend.deleteMany({
-    where: {
-      OR: [
-        { userId1: userId },
-        { userId2: userId },
-      ],
-    },
-  });
+        await prisma.friend.deleteMany({
+          where: {
+            OR: [{ userId1: userId }, { userId2: userId }],
+          },
+        });
 
-  // Delete notifications related to the user
-  await prisma.notification.deleteMany({
-    where: {
-      receiverId: userId,
-    },
-  });
+        // Delete notifications related to the user
+        await prisma.notification.deleteMany({
+          where: {
+            receiverId: userId,
+          },
+        });
 
-  // Finally, delete the user
-  await prisma.user.delete({
-    where: {
-      id: userId,
-    },
-  });
+        // Finally, delete the user
+        await prisma.user.delete({
+          where: {
+            id: userId,
+          },
+        });
       });
     } catch (err) {
       console.log("Error", err);
     }
-      throw redirect(302, "/")
+    throw redirect(302, "/");
   },
 };
 
-;null as any as Actions;
+null as any as Actions;

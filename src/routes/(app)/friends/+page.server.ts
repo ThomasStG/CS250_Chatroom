@@ -121,21 +121,17 @@ export const actions: Actions = {
         include: { from: true, to: true },
       });
 
-
       if (!friendRequest) {
         // Friend request not found
         return fail(404, { error: { message: "Friend request not found" } });
       }
-        const usernames = await prisma.user.findMany({
-          where: {
-            id: {
-              in: [friendRequest.fromId, friendRequest.toId],
-            },
+      const usernames = await prisma.user.findMany({
+        where: {
+          id: {
+            in: [friendRequest.fromId, friendRequest.toId],
           },
-        });
-      
-
-      
+        },
+      });
 
       // Begin a transaction to update the friend request and create the friend record
       await prisma.$transaction([
@@ -244,10 +240,10 @@ export const actions: Actions = {
           },
         });
         await prisma.message.deleteMany({
-        where: {
-          roomId: room.id,
-        },
-      });
+          where: {
+            roomId: room.id,
+          },
+        });
 
         await prisma.room.delete({
           where: { id: room.id },

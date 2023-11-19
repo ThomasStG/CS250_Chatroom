@@ -3,29 +3,28 @@ import prisma from "$lib/database";
 import { fail, redirect } from "@sveltejs/kit";
 import db from "$lib/database";
 
-export const load: PageServerLoad = async ({ params, locals }) => { 
-    const roomId: number = parseInt(params.slug);
+export const load: PageServerLoad = async ({ params, locals }) => {
+  const roomId: number = parseInt(params.slug);
 
-    const room = prisma.room.findUnique({
-        where: {
-            id: roomId,
-        }
-    });
+  const room = prisma.room.findUnique({
+    where: {
+      id: roomId,
+    },
+  });
 
-    return {
-        room,
-    }
-}
+  return {
+    room,
+  };
+};
 
 export const actions: Actions = {
-    rename: async ({ params, request }) => {
+  rename: async ({ params, request }) => {
     try {
-      
       const roomId: number = parseInt(params.slug);
       const data = await request.formData();
-      const newName = (data.get("newName"))?.toString();
+      const newName = data.get("newName")?.toString();
       if (newName && (newName.length > 15 || newName.length < 5)) {
-        throw ('Name is too long or too short');
+        throw "Name is too long or too short";
       }
 
       await prisma.room.update({
@@ -34,59 +33,55 @@ export const actions: Actions = {
         },
         data: {
           name: newName,
-        }
+        },
       });
-    }
-    catch (err) {
+    } catch (err) {
       console.log("Error: ", err);
     }
-        throw redirect(302, "/chatrooms/" + parseInt(params.slug));
-    },
-    exit: async ({ locals, params }) => {
-  try {
-    const roomId: number = parseInt(params.slug);
-    const userId: number = parseInt(locals.user.id); // Assuming user ID is a number
+    throw redirect(302, "/chatrooms/" + parseInt(params.slug));
+  },
+  exit: async ({ locals, params }) => {
+    try {
+      const roomId: number = parseInt(params.slug);
+      const userId: number = parseInt(locals.user.id); // Assuming user ID is a number
 
-    const room = await prisma.room.findUnique({
-      where: { id: roomId },
-      include: { users: true }, // Include users for filtering
-    });
+      const room = await prisma.room.findUnique({
+        where: { id: roomId },
+        include: { users: true }, // Include users for filtering
+      });
 
-    if (!room) {
-      return fail(400, { error: { message: "Missing room ID" } });
-    }
+      if (!room) {
+        return fail(400, { error: { message: "Missing room ID" } });
+      }
       if (room.users.length == 1) {
-          await prisma.room.update({
-              where: { id: roomId },
-              data: {
-                  users: {
-                      disconnect: { id: userId }, // Disconnect the specific user
-                  },
-              },
-          });
-          await prisma.room.delete({
-              where: { id: roomId },
-          });
-          console.log("deleted");
-      }
-      else {
-          await prisma.room.update({
-              where: { id: roomId },
-              data: {
-                  users: {
-                      disconnect: { id: userId }, // Disconnect the specific user
-                  },
-              }
-          });
+        await prisma.room.update({
+          where: { id: roomId },
+          data: {
+            users: {
+              disconnect: { id: userId }, // Disconnect the specific user
+            },
+          },
+        });
+        await prisma.room.delete({
+          where: { id: roomId },
+        });
+        console.log("deleted");
+      } else {
+        await prisma.room.update({
+          where: { id: roomId },
+          data: {
+            users: {
+              disconnect: { id: userId }, // Disconnect the specific user
+            },
+          },
+        });
       }
 
-    
-
-    // Return success or appropriate response
-  } catch (error) {
-    console.error("Error removing user:", error);
-    return fail(500, { error: { message: "Internal server error" } });
-  }
-        throw redirect(302, "/chatrooms");
-}
-}
+      // Return success or appropriate response
+    } catch (error) {
+      console.error("Error removing user:", error);
+      return fail(500, { error: { message: "Internal server error" } });
+    }
+    throw redirect(302, "/chatrooms");
+  },
+};

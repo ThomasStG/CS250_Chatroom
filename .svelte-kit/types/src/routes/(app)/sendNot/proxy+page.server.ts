@@ -3,7 +3,7 @@ import type { Actions } from "./$types";
 import prisma from "$lib/database";
 import { fail, json } from "@sveltejs/kit";
 export const actions = {
-  search: async ({ request }: import('./$types').RequestEvent) => {
+  search: async ({ request }: import("./$types").RequestEvent) => {
     try {
       const formData = Object.fromEntries(await request.formData());
       const username = formData.username.toString();
@@ -27,7 +27,7 @@ export const actions = {
     }
   },
 
-  send: async ({ request }: import('./$types').RequestEvent) => {
+  send: async ({ request }: import("./$types").RequestEvent) => {
     try {
       const formData = new URLSearchParams(await request.text());
       console.log(2);
@@ -61,7 +61,7 @@ export const actions = {
       });
     }
   },
-  del: async ({ request }: import('./$types').RequestEvent) => {
+  del: async ({ request }: import("./$types").RequestEvent) => {
     try {
       const deletedRooms = await prisma.room.deleteMany({
         where: {
@@ -73,4 +73,4 @@ export const actions = {
     }
   },
 };
-;null as any as Actions;
+null as any as Actions;

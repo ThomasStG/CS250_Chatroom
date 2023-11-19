@@ -8,30 +8,30 @@ export const load: PageServerLoad = async ({ params, locals }) => {
     const userId = locals.user?.id; // Get the userId from the locals object
     const roomId: number = 0;
     const room = await prisma.room.findUnique({
-        where: {id:roomId}
+      where: { id: roomId },
     });
     if (!room) {
       const test = await prisma.room.create({
-    data: {
-      id: 0,
-      name: "Global",
-      Chatroom: true,
-    }
+        data: {
+          id: 0,
+          name: "Global",
+          Chatroom: true,
+        },
       });
     }
     // Fetch the messages for the specific chat room and include sender and receiver details
-      const messages = await prisma.message.findMany({
-        where: {
-          roomId: roomId, // Use the roomId here, not params.slug
-        },
-        include: {
-          sender: true,
-        },
-      });
-      return {
-        messages,
-        userId,
-      };
+    const messages = await prisma.message.findMany({
+      where: {
+        roomId: roomId, // Use the roomId here, not params.slug
+      },
+      include: {
+        sender: true,
+      },
+    });
+    return {
+      messages,
+      userId,
+    };
   } catch (err) {
     console.error(err);
     return fail(500, { error: { message: "Internal Server Error" } });

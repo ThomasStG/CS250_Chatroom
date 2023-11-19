@@ -66,4 +66,4 @@ const register: Action = async ({ request }) => {
 };
 
 export const actions = { register };
-;null as any as Actions;
+null as any as Actions;

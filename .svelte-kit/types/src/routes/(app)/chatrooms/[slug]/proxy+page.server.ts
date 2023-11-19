@@ -4,7 +4,10 @@ import prisma from "$lib/database";
 import { fail, redirect } from "@sveltejs/kit";
 import db from "$lib/database";
 
-export const load = async ({ params, locals }: Parameters<PageServerLoad>[0]) => {
+export const load = async ({
+  params,
+  locals,
+}: Parameters<PageServerLoad>[0]) => {
   try {
     const userId = locals.user?.id; // Get the userId from the locals object
     const roomId: number = parseInt(params.slug);
@@ -22,7 +25,7 @@ export const load = async ({ params, locals }: Parameters<PageServerLoad>[0]) =>
       const roomName = await prisma.room.findUnique({
         where: {
           id: roomId,
-        }
+        },
       });
       return {
         messages,
@@ -38,7 +41,11 @@ export const load = async ({ params, locals }: Parameters<PageServerLoad>[0]) =>
 };
 
 export const actions = {
-  sendMessage: async ({ request, params, locals }: import('./$types').RequestEvent) => {
+  sendMessage: async ({
+    request,
+    params,
+    locals,
+  }: import("./$types").RequestEvent) => {
     try {
       const formData = Object.fromEntries(await request.formData()) as Record<
         string,
@@ -92,7 +99,7 @@ export const actions = {
       return fail(500, { error: { message: "Internal Server Error" } });
     }
   },
-  editMessage: async ({ request }: import('./$types').RequestEvent) => {
+  editMessage: async ({ request }: import("./$types").RequestEvent) => {
     try {
       const data = await request.formData();
       const now = new Date();
@@ -117,7 +124,7 @@ export const actions = {
       return fail(500, { error: { message: "Internal Server Error" } });
     }
   },
-  deleteMessage: async ({ request }: import('./$types').RequestEvent) => {
+  deleteMessage: async ({ request }: import("./$types").RequestEvent) => {
     try {
       const data = await request.formData();
       const messageI = Number(data.get("messageId"));
@@ -140,4 +147,4 @@ export const actions = {
     }
   },
 };
-;null as any as Actions;
+null as any as Actions;

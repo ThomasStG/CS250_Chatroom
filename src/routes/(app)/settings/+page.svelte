@@ -29,7 +29,15 @@
       });
     }
 
-    if (bodytheme && darkmode && chatbtn && sendbtn && friendbtn && notifybtn && globalChat) {
+    if (
+      bodytheme &&
+      darkmode &&
+      chatbtn &&
+      sendbtn &&
+      friendbtn &&
+      notifybtn &&
+      globalChat
+    ) {
       darkmode.addEventListener("click", () => {
         //bodytheme.classList.toggle("style-light");
         document.body.classList.toggle("style-light");
@@ -43,7 +51,6 @@
         notifybtn.classList.toggle("light");
         globalChat.classList.toggle("dark");
         globalChat.classList.toggle("light");
-        
       });
     }
   });

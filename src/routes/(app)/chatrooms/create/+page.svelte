@@ -45,7 +45,7 @@
     try {
       addedUsers.push(userId);
       if (chatname && (chatname.length > 15 || chatname.length < 3)) {
-        throw ('Name is too long or too short');
+        throw "Name is too long or too short";
       }
       const response = await fetch("/api/createRoom", {
         method: "POST",
@@ -93,7 +93,12 @@
     {/each}
     <div class="flex" style="gap: 8px;">
       <h2>Chatroom name</h2>
-      <input placeholder="Chatname" name="chatname" bind:value={chatname} maxlength="14"/>
+      <input
+        placeholder="Chatname"
+        name="chatname"
+        bind:value={chatname}
+        maxlength="14"
+      />
       {#if addedUsers.length > 0 && chatname != ""}
         <button on:click={createRoom}>Create Groupchat</button>
       {/if}

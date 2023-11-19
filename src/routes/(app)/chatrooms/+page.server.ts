@@ -53,5 +53,4 @@ export const load: PageServerLoad = async ({ request, locals }) => {
   }
 };
 
-export const actions: Actions = {
-};
+export const actions: Actions = {};

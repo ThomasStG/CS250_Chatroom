@@ -13,12 +13,13 @@
     href="/"
     class="mb-8 flex items-center justify-center text-2xl font-semibold lg:mb-10"
   >
-    <img src="/favicon.png" class="mr-4 h-11" alt="Squire Logo">
+    <img src="/favicon.png" class="mr-4 h-11" alt="Squire Logo" />
     <span>[Squire]</span>
   </a>
   <!-- Card -->
   <div
-    class="w-full max-w-xl space-y-8 rounded-md border p-6 shadow sm:p-8" style="background: #202020; border-color:#303040; border-width:5px;" 
+    class="w-full max-w-xl space-y-8 rounded-md border p-6 shadow sm:p-8"
+    style="background: #202020; border-color:#303040; border-width:5px;"
   >
     <h2 class="text-2xl font-bold">Create a new account</h2>
 
@@ -58,10 +59,7 @@
       </div>
 
       <div>
-        <label
-          for="password"
-          class="mb-2 block text-sm font-medium "
-        >
+        <label for="password" class="mb-2 block text-sm font-medium">
           Password
         </label>
         <input
@@ -75,10 +73,7 @@
       </div>
 
       <div>
-        <label
-          for="confirm-password"
-          class="mb-2 block text-sm font-medium"
-        >
+        <label for="confirm-password" class="mb-2 block text-sm font-medium">
           Confirm password
         </label>
         <input
