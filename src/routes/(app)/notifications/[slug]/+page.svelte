@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { PageData } from "./$types";
-  //import "./[slug].css";
+  import "./[slug].css";
   import { enhance } from "$app/forms";
 
   export let data: PageData;
@@ -21,7 +21,7 @@
     </h1>
   </div>
 
-  <div class="mx-auto max-w-3xl items-center">
+  <div class="message-list mx-auto max-w-3xl items-center">
     {#if notification}
       <p>Message: {notification.content}</p>
       <p style="color: inherit;">Sender: {notification.senderName}</p>
@@ -37,8 +37,9 @@
             update({ reset: false });
           };
         }}
+        style="border: 4px; border-color: green;"
       >
-        <button type="submit" class="message-button"> Delete Message </button>
+        <button type="submit" class="chatbuttons-s"> Delete Message </button>
         <input
           type="hidden"
           id="messageId"

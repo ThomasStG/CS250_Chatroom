@@ -1,0 +1,12 @@
+.message-list {
+  margin-bottom: 1rem;
+  /* mb-4 */
+  border-radius: 0.5rem;
+  /* rounded-lg */
+  background-color:
+        /*#2d3748*/ inherit;
+  /* bg-gray-800 */
+  padding: 1.5rem;
+  border-color: grey;
+  border-width: 2px;
+}

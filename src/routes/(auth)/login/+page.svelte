@@ -17,7 +17,10 @@
     <!-- <img src="/images/logo.svg" class="mr-4 h-11" alt="FlowBite Logo" /> -->
     <span style="font-family: Helvetica, sans-serif, Arial">[Squire]</span>
   </a>
-  <div class="w-full max-w-xl space-y-8 rounded-md border p-6 shadow sm:p-8">
+  <div
+    class="w-full max-w-xl space-y-8 rounded-md border p-6 shadow sm:p-8"
+    style="background: #202020; border-color:#303040; border-width:5px;"
+  >
     <h2 class="text-2xl font-bold">Sign in to platform</h2>
 
     {#if form?.error?.message}
@@ -42,7 +45,7 @@
       }}
     >
       <div>
-        <label for="email" class="mb-2 block text-sm font-medium text-gray-900">
+        <label for="email" class="mb-2 block text-sm font-medium">
           Email
         </label>
         <input
@@ -56,9 +59,8 @@
       </div>
 
       <div>
-        <label
-          for="password"
-          class="mb-2 block text-sm font-medium text-gray-900">Password</label
+        <label for="password" class="mb-2 block text-sm font-medium"
+          >Password</label
         >
         <input
           id="password"

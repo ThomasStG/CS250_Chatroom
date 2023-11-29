@@ -3,10 +3,17 @@ import prisma from "$lib/database";
 import { fail, redirect } from "@sveltejs/kit";
 import db from "$lib/database";
 
+class Invalid extends Error {
+  constructor(message: string) {
+    super(message); // call the parent constructor
+    this.name = "CustomError"; // set the name property
+  }
+}
+
 export const load: PageServerLoad = async ({ params, locals }) => {
   try {
     const userId = locals.user?.id; // Get the userId from the locals object
-    const roomId: number = parseInt(params.slug); // Convert the slug to an integer using parseInt()
+    const roomId: number = parseInt(params.slug);
     console.log("roomId: ", roomId);
     // Fetch the messages for the specific chat room and include sender and receiver details
     if (roomId) {
@@ -18,14 +25,47 @@ export const load: PageServerLoad = async ({ params, locals }) => {
           sender: true,
         },
       });
+      const roomName = await prisma.room.findUnique({
+        where: {
+          id: roomId,
+        },
+      });
+      const room = await prisma.room.findUnique({
+        where: {
+          id: roomId,
+        },
+        include: {
+          users: true,
+        },
+      });
+
+      if (room && room.users) {
+        let isinroom: boolean = false;
+        console.log("checking");
+        for (const user of room.users) {
+          if (user.id === userId) {
+            console.log("found");
+            isinroom = true;
+          }
+        }
+        if (!isinroom) {
+          console.log("invalid");
+          throw new Invalid("Invalid User");
+        }
+      }
       return {
         messages,
+        roomName,
         userId,
+        roomId,
       };
     }
   } catch (err) {
-    console.error(err);
-    return fail(500, { error: { message: "Internal Server Error" } });
+    if (err instanceof Invalid) throw redirect(302, "/chatrooms");
+    else {
+      console.error(err);
+      return fail(500, { error: { message: "Internal Server Error" } });
+    }
   }
 };
 
@@ -45,7 +85,7 @@ export const actions: Actions = {
       };
 
       const userId = locals.user?.id; // Get the userId from the locals object
-      const roomId = parseInt(params.slug); // Convert the slug to an integer using parseInt()
+      const roomId: number = parseInt(params.slug); // Convert the slug to an integer using parseInt()
 
       if (!userId) {
         return fail(403, { error: { message: "User not authenticated." } });
@@ -77,7 +117,7 @@ export const actions: Actions = {
 
       return {
         status: 303,
-        headers: { Location: "/chatrooms/" + roomId },
+        headers: { Location: "/globalChat/" },
       };
     } catch (err) {
       console.error(err);

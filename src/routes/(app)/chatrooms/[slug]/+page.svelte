@@ -7,7 +7,7 @@
   export let data: PageData;
   let messagetext: String = "";
   let modals: Record<string, boolean> = {};
-  $: ({ messages, userId } = data);
+  $: ({ messages, roomName, userId, roomId } = data);
 
   const clearInput = () => {
     const inputElement = <HTMLInputElement>document.getElementById("content");
@@ -33,6 +33,10 @@
 </script>
 
 <div class="background flex min-h-screen flex-col items-center">
+  {#if roomName && roomName.name}
+  <h1 class="mb-4 text-center text-4xl font-extrabold md:text-5xl lg:text-6xl">
+    Room: {roomName.name}
+  </h1>
   <div class="flex items-center">
     <a
       href="/chatrooms"
@@ -44,14 +48,14 @@
     >
       Messages
     </h1>
+    <a href="{roomId}/edit">edit</a>
   </div>
-
+  {/if}
   <div class="mx-auto max-w-3xl items-center">
     {#if messages}
       {#each messages as message}
         <div class="message-list">
           <p>Message: {message.content}</p>
-          <p>Sender: {message.sender.username}</p>
 
           {#if message.sentAt}
             <p>Time: {message.sentAt}</p>

@@ -1,88 +1,88 @@
 {
-	"/(app)": [
-		"src/routes/(app)/+layout.server.ts",
-		"src/routes/+layout.server.ts",
-		"src/routes/(app)/+layout.server.ts",
-		"src/routes/+layout.server.ts"
-	],
-	"/": [
-		"src/routes/+layout.server.ts"
-	],
-	"/(app)/api/createRoom": [
-		"src/routes/(app)/api/createRoom/+server.ts"
-	],
-	"/(app)/api/searchFriend": [
-		"src/routes/(app)/api/searchFriend/+server.ts"
-	],
-	"/(app)/api/searchUser": [
-		"src/routes/(app)/api/searchUser/+server.ts"
-	],
-	"/(app)/api/toggleTheme": [
-		"src/routes/(app)/api/toggleTheme/+server.ts"
-	],
-	"/(app)/chatrooms": [
-		"src/routes/(app)/chatrooms/+page.server.ts",
-		"src/routes/(app)/+layout.server.ts",
-		"src/routes/+layout.server.ts"
-	],
-	"/(app)/chatrooms/create.backup": [
-		"src/routes/(app)/chatrooms/create.backup/+page.server.ts",
-		"src/routes/(app)/+layout.server.ts",
-		"src/routes/+layout.server.ts"
-	],
-	"/(app)/chatrooms/create": [
-		"src/routes/(app)/chatrooms/create/+page.server.ts",
-		"src/routes/(app)/+layout.server.ts",
-		"src/routes/+layout.server.ts"
-	],
-	"/(app)/chatrooms/[slug]": [
-		"src/routes/(app)/chatrooms/[slug]/+page.server.ts",
-		"src/routes/(app)/+layout.server.ts",
-		"src/routes/+layout.server.ts"
-	],
-	"/(app)/directMessage": [
-		"src/routes/(app)/directMessage/+layout.server.ts",
-		"src/routes/(app)/+layout.server.ts",
-		"src/routes/+layout.server.ts",
-		"src/routes/(app)/directMessage/+layout.server.ts",
-		"src/routes/(app)/+layout.server.ts",
-		"src/routes/+layout.server.ts"
-	],
-	"/(app)/friends": [
-		"src/routes/(app)/friends/+page.server.ts",
-		"src/routes/(app)/+layout.server.ts",
-		"src/routes/+layout.server.ts"
-	],
-	"/(auth)/login": [
-		"src/routes/(auth)/login/+page.server.ts",
-		"src/routes/+layout.server.ts"
-	],
-	"/(auth)/logout": [
-		"src/routes/(auth)/logout/+page.server.ts",
-		"src/routes/+layout.server.ts"
-	],
-	"/(app)/notifications": [
-		"src/routes/(app)/notifications/+page.server.ts",
-		"src/routes/(app)/+layout.server.ts",
-		"src/routes/+layout.server.ts"
-	],
-	"/(app)/notifications/[slug]": [
-		"src/routes/(app)/notifications/[slug]/+page.server.ts",
-		"src/routes/(app)/+layout.server.ts",
-		"src/routes/+layout.server.ts"
-	],
-	"/(auth)/register": [
-		"src/routes/(auth)/register/+page.server.ts",
-		"src/routes/+layout.server.ts"
-	],
-	"/(app)/sendNot": [
-		"src/routes/(app)/sendNot/+page.server.ts",
-		"src/routes/(app)/+layout.server.ts",
-		"src/routes/+layout.server.ts"
-	],
-	"/(app)/settings": [
-		"src/routes/(app)/settings/+page.server.ts",
-		"src/routes/(app)/+layout.server.ts",
-		"src/routes/+layout.server.ts"
-	]
+  "/(app)": [
+    "src/routes/(app)/+layout.server.ts",
+    "src/routes/+layout.server.ts",
+    "src/routes/(app)/+layout.server.ts",
+    "src/routes/+layout.server.ts"
+  ],
+  "/": ["src/routes/+layout.server.ts"],
+  "/(app)/api/createRoom": ["src/routes/(app)/api/createRoom/+server.ts"],
+  "/(app)/api/searchFriend": ["src/routes/(app)/api/searchFriend/+server.ts"],
+  "/(app)/api/searchUser": ["src/routes/(app)/api/searchUser/+server.ts"],
+  "/(app)/api/toggleTheme": ["src/routes/(app)/api/toggleTheme/+server.ts"],
+  "/(app)/chatrooms": [
+    "src/routes/(app)/chatrooms/+page.server.ts",
+    "src/routes/(app)/+layout.server.ts",
+    "src/routes/+layout.server.ts"
+  ],
+  "/(app)/chatrooms/create.backup": [
+    "src/routes/(app)/chatrooms/create.backup/+page.server.ts",
+    "src/routes/(app)/+layout.server.ts",
+    "src/routes/+layout.server.ts"
+  ],
+  "/(app)/chatrooms/create": [
+    "src/routes/(app)/chatrooms/create/+page.server.ts",
+    "src/routes/(app)/+layout.server.ts",
+    "src/routes/+layout.server.ts"
+  ],
+  "/(app)/chatrooms/[slug]": [
+    "src/routes/(app)/chatrooms/[slug]/+page.server.ts",
+    "src/routes/(app)/+layout.server.ts",
+    "src/routes/+layout.server.ts"
+  ],
+  "/(app)/chatrooms/[slug]/edit": [
+    "src/routes/(app)/chatrooms/[slug]/edit/+page.server.ts",
+    "src/routes/(app)/+layout.server.ts",
+    "src/routes/+layout.server.ts"
+  ],
+  "/(app)/directMessage": [
+    "src/routes/(app)/directMessage/+layout.server.ts",
+    "src/routes/(app)/+layout.server.ts",
+    "src/routes/+layout.server.ts",
+    "src/routes/(app)/directMessage/+layout.server.ts",
+    "src/routes/(app)/+layout.server.ts",
+    "src/routes/+layout.server.ts"
+  ],
+  "/(app)/friends": [
+    "src/routes/(app)/friends/+page.server.ts",
+    "src/routes/(app)/+layout.server.ts",
+    "src/routes/+layout.server.ts"
+  ],
+  "/(app)/globalChat": [
+    "src/routes/(app)/globalChat/+page.server.ts",
+    "src/routes/(app)/+layout.server.ts",
+    "src/routes/+layout.server.ts"
+  ],
+  "/(auth)/login": [
+    "src/routes/(auth)/login/+page.server.ts",
+    "src/routes/+layout.server.ts"
+  ],
+  "/(auth)/logout": [
+    "src/routes/(auth)/logout/+page.server.ts",
+    "src/routes/+layout.server.ts"
+  ],
+  "/(app)/notifications": [
+    "src/routes/(app)/notifications/+page.server.ts",
+    "src/routes/(app)/+layout.server.ts",
+    "src/routes/+layout.server.ts"
+  ],
+  "/(app)/notifications/[slug]": [
+    "src/routes/(app)/notifications/[slug]/+page.server.ts",
+    "src/routes/(app)/+layout.server.ts",
+    "src/routes/+layout.server.ts"
+  ],
+  "/(auth)/register": [
+    "src/routes/(auth)/register/+page.server.ts",
+    "src/routes/+layout.server.ts"
+  ],
+  "/(app)/sendNot": [
+    "src/routes/(app)/sendNot/+page.server.ts",
+    "src/routes/(app)/+layout.server.ts",
+    "src/routes/+layout.server.ts"
+  ],
+  "/(app)/settings": [
+    "src/routes/(app)/settings/+page.server.ts",
+    "src/routes/(app)/+layout.server.ts",
+    "src/routes/+layout.server.ts"
+  ]
 }

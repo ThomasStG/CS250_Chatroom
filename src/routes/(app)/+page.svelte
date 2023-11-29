@@ -1,3 +1,9 @@
+<script lang="ts">
+  export let data: App.PageData & Record<string, any>;
+  const user = data.user;
+  console.log(user.lightTheme);
+</script>
+
 <div>
   <h1 class="mb-4 text-3xl font-extrabold md:text-5xl lg:text-6xl">
     <span
