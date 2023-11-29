@@ -51,6 +51,12 @@
         notifybtn.classList.toggle("light");
         globalChat.classList.toggle("dark");
         globalChat.classList.toggle("light");
+        if (document.body.classList.contains("style-light")){
+          localStorage.setItem('color-theme', 'light');
+        }
+        else {
+          localStorage.setItem('color-theme', 'dark');
+        }
       });
     }
   });

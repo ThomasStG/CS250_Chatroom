@@ -6,10 +6,7 @@ import bcrypt from "bcrypt";
 
 import db from "$lib/database";
 
-export const load = async ({
-  request,
-  locals,
-}: Parameters<PageServerLoad>[0]) => {
+export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) => {
   const userId = locals.user.id;
 
   // Fetch the user's friends
@@ -24,11 +21,7 @@ export const load = async ({
 };
 
 export const actions = {
-  changeName: async ({
-    request,
-    params,
-    locals,
-  }: import("./$types").RequestEvent) => {
+  changeName: async ({ request, params, locals }: import('./$types').RequestEvent) => {
     try {
       const userId: number = locals.user.id;
       const formData = Object.fromEntries(await request.formData());
@@ -52,11 +45,7 @@ export const actions = {
       console.log("Error", err);
     }
   },
-  changePass: async ({
-    request,
-    params,
-    locals,
-  }: import("./$types").RequestEvent) => {
+  changePass: async ({ request, params, locals }: import('./$types').RequestEvent) => {
     try {
       const userId: number = locals.user.id;
       const formData = Object.fromEntries(await request.formData());
@@ -101,11 +90,7 @@ export const actions = {
       console.log("Error", err);
     }
   },
-  deleteAccount: async ({
-    request,
-    params,
-    locals,
-  }: import("./$types").RequestEvent) => {
+  deleteAccount: async ({ request, params, locals }: import('./$types').RequestEvent) => {
     try {
       const userId: number = locals.user.id;
 
@@ -170,5 +155,4 @@ export const actions = {
     throw redirect(302, "/");
   },
 };
-
-null as any as Actions;
+;null as any as Actions;

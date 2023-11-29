@@ -2,35 +2,34 @@
 import type { Action, PageServerLoad, Actions } from "./$types";
 import prisma from "$lib/database";
 import { fail, redirect } from "@sveltejs/kit";
-import db from "$lib/database";
 
-export const load = async ({
-  params,
-  locals,
-}: Parameters<PageServerLoad>[0]) => {
-  const roomId: number = parseInt(params.slug);
+export const load = async ({ params }: Parameters<PageServerLoad>[0]) => {
+    try {
+        const roomId: number = parseInt(params.slug);
 
-  const room = prisma.room.findUnique({
-    where: {
-      id: roomId,
-    },
-  });
-
-  return {
-    room,
-  };
+        const room = await prisma.room.findUnique({
+            where: {
+                id: roomId,
+            },
+        });
+        return {
+            room,
+        };
+    } catch (err) {
+        console.error("Error: ", err);
+        return fail(500, { error: { message: "Internal server error" } });
+    }
 };
 
 export const actions = {
-  rename: async ({ params, request }: import("./$types").RequestEvent) => {
+  rename: async ({ params, request }: import('./$types').RequestEvent) => {
     try {
       const roomId: number = parseInt(params.slug);
       const data = await request.formData();
       const newName = data.get("newName")?.toString();
-      if (newName && (newName.length > 15 || newName.length < 5)) {
+      if (newName && (newName.length > 15 || newName.length < 3)) {
         throw "Name is too long or too short";
       }
-
       await prisma.room.update({
         where: {
           id: roomId,
@@ -40,11 +39,12 @@ export const actions = {
         },
       });
     } catch (err) {
-      console.log("Error: ", err);
+        console.error("Error: ", err);
+        return fail(500, { error: { message: "Internal server error" } });
     }
-    throw redirect(302, "/chatrooms/" + parseInt(params.slug));
+    //throw redirect(302, "/chatrooms/" + parseInt(params.slug));
   },
-  exit: async ({ locals, params }: import("./$types").RequestEvent) => {
+  exit: async ({ locals, params }: import('./$types').RequestEvent) => {
     try {
       const roomId: number = parseInt(params.slug);
       const userId: number = parseInt(locals.user.id); // Assuming user ID is a number
@@ -89,4 +89,4 @@ export const actions = {
     throw redirect(302, "/chatrooms");
   },
 };
-null as any as Actions;
+;null as any as Actions;

@@ -3,6 +3,13 @@ import prisma from "$lib/database";
 import { fail, redirect } from "@sveltejs/kit";
 import db from "$lib/database";
 
+class Invalid extends Error {
+  constructor(message: string) {
+    super(message); // call the parent constructor
+    this.name = "CustomError"; // set the name property
+  }
+}
+
 export const load: PageServerLoad = async ({ params, locals }) => {
   try {
     const userId = locals.user?.id; // Get the userId from the locals object
@@ -23,6 +30,29 @@ export const load: PageServerLoad = async ({ params, locals }) => {
           id: roomId,
         },
       });
+      const room = await prisma.room.findUnique({
+        where: {
+          id: roomId,
+        },
+        include: {
+          users: true,
+        },
+      });
+
+      if (room && room.users) {
+        let isinroom: boolean = false;
+        console.log("checking");
+        for (const user of room.users) {
+          if (user.id === userId) {
+            console.log("found");
+            isinroom = true;
+          }
+        }
+        if (!isinroom) {
+          console.log("invalid");
+          throw new Invalid("Invalid User");
+        }
+      }
       return {
         messages,
         roomName,
@@ -31,8 +61,11 @@ export const load: PageServerLoad = async ({ params, locals }) => {
       };
     }
   } catch (err) {
-    console.error(err);
-    return fail(500, { error: { message: "Internal Server Error" } });
+    if (err instanceof Invalid) throw redirect(302, "/chatrooms");
+    else {
+      console.error(err);
+      return fail(500, { error: { message: "Internal Server Error" } });
+    }
   }
 };
 

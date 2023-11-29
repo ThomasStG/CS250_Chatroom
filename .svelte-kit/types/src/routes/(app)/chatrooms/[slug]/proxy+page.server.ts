@@ -4,10 +4,14 @@ import prisma from "$lib/database";
 import { fail, redirect } from "@sveltejs/kit";
 import db from "$lib/database";
 
-export const load = async ({
-  params,
-  locals,
-}: Parameters<PageServerLoad>[0]) => {
+class Invalid extends Error {
+  constructor(message: string) {
+    super(message); // call the parent constructor
+    this.name = "CustomError"; // set the name property
+  }
+}
+
+export const load = async ({ params, locals }: Parameters<PageServerLoad>[0]) => {
   try {
     const userId = locals.user?.id; // Get the userId from the locals object
     const roomId: number = parseInt(params.slug);
@@ -27,6 +31,29 @@ export const load = async ({
           id: roomId,
         },
       });
+      const room = await prisma.room.findUnique({
+        where: {
+          id: roomId,
+        },
+        include: {
+          users: true,
+        },
+      });
+
+      if (room && room.users) {
+        let isinroom: boolean = false;
+        console.log("checking");
+        for (const user of room.users) {
+          if (user.id === userId) {
+            console.log("found");
+            isinroom = true;
+          }
+        }
+        if (!isinroom) {
+          console.log("invalid");
+          throw new Invalid("Invalid User");
+        }
+      }
       return {
         messages,
         roomName,
@@ -35,17 +62,16 @@ export const load = async ({
       };
     }
   } catch (err) {
-    console.error(err);
-    return fail(500, { error: { message: "Internal Server Error" } });
+    if (err instanceof Invalid) throw redirect(302, "/chatrooms");
+    else {
+      console.error(err);
+      return fail(500, { error: { message: "Internal Server Error" } });
+    }
   }
 };
 
 export const actions = {
-  sendMessage: async ({
-    request,
-    params,
-    locals,
-  }: import("./$types").RequestEvent) => {
+  sendMessage: async ({ request, params, locals }: import('./$types').RequestEvent) => {
     try {
       const formData = Object.fromEntries(await request.formData()) as Record<
         string,
@@ -99,7 +125,7 @@ export const actions = {
       return fail(500, { error: { message: "Internal Server Error" } });
     }
   },
-  editMessage: async ({ request }: import("./$types").RequestEvent) => {
+  editMessage: async ({ request }: import('./$types').RequestEvent) => {
     try {
       const data = await request.formData();
       const now = new Date();
@@ -124,7 +150,7 @@ export const actions = {
       return fail(500, { error: { message: "Internal Server Error" } });
     }
   },
-  deleteMessage: async ({ request }: import("./$types").RequestEvent) => {
+  deleteMessage: async ({ request }: import('./$types').RequestEvent) => {
     try {
       const data = await request.formData();
       const messageI = Number(data.get("messageId"));
@@ -147,4 +173,4 @@ export const actions = {
     }
   },
 };
-null as any as Actions;
+;null as any as Actions;

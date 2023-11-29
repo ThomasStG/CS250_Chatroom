@@ -5,17 +5,18 @@
   $: ({ room } = data);
 </script>
 
+{#if room && room.name}
+<a href="/chatrooms/{room.id}">back</a>
 <h1 class="mb-4 text-center text-4xl font-extrabold md:text-5xl lg:text-6xl">
-  Edit Chatroom
+  Edit Chatroom: {room.name || 'Unnamed Room'}
 </h1>
+
 
 <div
   style="display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;"
->
-  {#if room && room.name}
+  height: 100vh;">
     <div class="mb-2 text-2xl">Change Chatroom Name</div>
     <form
       action="?/rename"
@@ -54,5 +55,6 @@
       <input type="hidden" name="room" bind:value={room.id} />
       <button type="submit" id="chatexit" class="chatbuttons">Exit Room</button>
     </form>
-  {/if}
+
 </div>
+  {/if}

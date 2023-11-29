@@ -1,20 +1,23 @@
 import type { Action, PageServerLoad, Actions } from "./$types";
 import prisma from "$lib/database";
 import { fail, redirect } from "@sveltejs/kit";
-import db from "$lib/database";
 
-export const load: PageServerLoad = async ({ params, locals }) => {
-  const roomId: number = parseInt(params.slug);
+export const load: PageServerLoad = async ({ params }) => {
+    try {
+        const roomId: number = parseInt(params.slug);
 
-  const room = prisma.room.findUnique({
-    where: {
-      id: roomId,
-    },
-  });
-
-  return {
-    room,
-  };
+        const room = await prisma.room.findUnique({
+            where: {
+                id: roomId,
+            },
+        });
+        return {
+            room,
+        };
+    } catch (err) {
+        console.error("Error: ", err);
+        return fail(500, { error: { message: "Internal server error" } });
+    }
 };
 
 export const actions: Actions = {
@@ -23,10 +26,9 @@ export const actions: Actions = {
       const roomId: number = parseInt(params.slug);
       const data = await request.formData();
       const newName = data.get("newName")?.toString();
-      if (newName && (newName.length > 15 || newName.length < 5)) {
+      if (newName && (newName.length > 15 || newName.length < 3)) {
         throw "Name is too long or too short";
       }
-
       await prisma.room.update({
         where: {
           id: roomId,
@@ -36,9 +38,10 @@ export const actions: Actions = {
         },
       });
     } catch (err) {
-      console.log("Error: ", err);
+        console.error("Error: ", err);
+        return fail(500, { error: { message: "Internal server error" } });
     }
-    throw redirect(302, "/chatrooms/" + parseInt(params.slug));
+    //throw redirect(302, "/chatrooms/" + parseInt(params.slug));
   },
   exit: async ({ locals, params }) => {
     try {

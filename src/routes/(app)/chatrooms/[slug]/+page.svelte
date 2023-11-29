@@ -33,6 +33,10 @@
 </script>
 
 <div class="background flex min-h-screen flex-col items-center">
+  {#if roomName && roomName.name}
+  <h1 class="mb-4 text-center text-4xl font-extrabold md:text-5xl lg:text-6xl">
+    Room: {roomName.name}
+  </h1>
   <div class="flex items-center">
     <a
       href="/chatrooms"
@@ -46,7 +50,7 @@
     </h1>
     <a href="{roomId}/edit">edit</a>
   </div>
-
+  {/if}
   <div class="mx-auto max-w-3xl items-center">
     {#if messages}
       {#each messages as message}

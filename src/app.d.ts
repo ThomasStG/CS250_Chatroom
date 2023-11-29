@@ -6,10 +6,12 @@ declare namespace App {
     user: {
       email: string;
       id: int;
+      lightTheme: boolean;
     };
     foundUser: {
       username: string;
       id: int;
+      lightTheme: boolean;
     };
   }
 
