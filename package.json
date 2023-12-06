@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "deploy": "npm run build &&npx gh-pages -d build -t true",
     "dev": "vite dev --port 3000",
     "build": "vite build",
     "preview": "vite preview",
@@ -11,6 +12,7 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^1.0.0",
+    "@sveltejs/adapter-static": "^2.0.3",
     "@sveltejs/kit": "^1.0.0",
     "@sveltejs/package": "^1.0.0",
     "@types/bcrypt": "^5.0.0",
@@ -24,6 +26,7 @@
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-svelte3": "^4.0.0",
+    "gh-pages": "^6.1.0",
     "postcss": "^8.4.21",
     "prettier": "^2.8.8",
     "prettier-plugin-svelte": "^2.8.1",

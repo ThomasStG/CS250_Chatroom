@@ -2,17 +2,22 @@ import type { Action, PageServerLoad, Actions } from "./$types";
 import prisma from "$lib/database";
 import { fail, redirect } from "@sveltejs/kit";
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, locals }) => {
     try {
-        const roomId: number = parseInt(params.slug);
+      const roomId: number = parseInt(params.slug);
+      const userId = locals.user.id;
 
         const room = await prisma.room.findUnique({
             where: {
                 id: roomId,
-            },
+          },
+          include: {
+            users: true,
+          }
         });
         return {
-            room,
+          room,
+          userId,
         };
     } catch (err) {
         console.error("Error: ", err);
