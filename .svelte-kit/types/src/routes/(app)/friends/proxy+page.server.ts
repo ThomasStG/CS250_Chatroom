@@ -3,10 +3,7 @@ import type { Actions, PageServerLoad } from "./$types";
 import prisma from "$lib/database";
 import { fail } from "@sveltejs/kit";
 
-export const load = async ({
-  request,
-  locals,
-}: Parameters<PageServerLoad>[0]) => {
+export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) => {
   const userId = locals.user.id;
 
   // Fetch the user's friends
@@ -57,10 +54,7 @@ export const load = async ({
 };
 
 export const actions = {
-  friendRequest: async ({
-    request,
-    locals,
-  }: import("./$types").RequestEvent) => {
+  friendRequest: async ({ request, locals }: import('./$types').RequestEvent) => {
     try {
       const formData = Object.fromEntries(await request.formData());
       const { userName } = formData;
@@ -116,7 +110,7 @@ export const actions = {
       return fail(500, { error: { message: "Internal Server Error" } });
     }
   },
-  accept: async ({ request, locals }: import("./$types").RequestEvent) => {
+  accept: async ({ request, locals }: import('./$types').RequestEvent) => {
     try {
       const userId = locals.user.id;
       const formData = Object.fromEntries(await request.formData());
@@ -175,10 +169,7 @@ export const actions = {
       return fail(500, { error: { message: "Internal Server Error" } });
     }
   },
-  removeFriend: async ({
-    request,
-    locals,
-  }: import("./$types").RequestEvent) => {
+  removeFriend: async ({ request, locals }: import('./$types').RequestEvent) => {
     try {
       const userId = locals.user.id;
       const data = await request.formData();
@@ -266,4 +257,4 @@ export const actions = {
     }
   },
 };
-null as any as Actions;
+;null as any as Actions;

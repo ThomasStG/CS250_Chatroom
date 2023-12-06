@@ -51,12 +51,6 @@
         notifybtn.classList.toggle("light");
         globalChat.classList.toggle("dark");
         globalChat.classList.toggle("light");
-        if (document.body.classList.contains("style-light")){
-          localStorage.setItem('color-theme', 'light');
-        }
-        else {
-          localStorage.setItem('color-theme', 'dark');
-        }
       });
     }
   });
@@ -95,14 +89,14 @@
       <div>
         <form action="?/changePass" method="POST">
           <input
-            type="text"
+            type="password"
             name="old-pass"
             id="old-pass"
             class="input item"
             placeholder="Old Password"
           />
           <input
-            type="text"
+            type="password"
             name="new-pass"
             id="new-pass"
             class="input item"
@@ -120,19 +114,11 @@
           <button id="cancel" type="submit" class="item hidden">
             Confirm
           </button>
-          <!--will convert to a submit button once logic for deletion is fixed-->
         </form>
       </div>
     </form>
   </div>
 </div>
-
-<!--
-  dark vs light mode
-  change username
-  change password
-  delete account
--->
 
 <style>
   .input {

@@ -3,10 +3,7 @@ import type { Actions, PageServerLoad } from "./$types";
 import prisma from "$lib/database";
 import { fail } from "@sveltejs/kit";
 
-export const load = async ({
-  request,
-  locals,
-}: Parameters<PageServerLoad>[0]) => {
+export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) => {
   // Get the userId from the user object in event.locals
   const userId = locals.user.id;
 
@@ -58,4 +55,4 @@ export const load = async ({
 };
 
 export const actions = {};
-null as any as Actions;
+;null as any as Actions;

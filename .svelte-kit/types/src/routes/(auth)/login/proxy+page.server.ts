@@ -65,4 +65,4 @@ const login: Action = async ({ cookies, request }) => {
 };
 
 export const actions = { login };
-null as any as Actions;
+;null as any as Actions;

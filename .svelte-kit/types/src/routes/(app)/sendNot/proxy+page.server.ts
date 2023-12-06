@@ -1,9 +1,22 @@
 // @ts-nocheck
-import type { Actions } from "./$types";
+import type { Actions, PageServerLoad } from "./$types";
 import prisma from "$lib/database";
-import { fail, json } from "@sveltejs/kit";
+import { fail, json, redirect } from "@sveltejs/kit";
+
+export const load = async ({ params, locals }: Parameters<PageServerLoad>[0]) => {
+    const userId = locals.user?.id; // Get the userId from the locals object
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+    });
+    if (!user || user.id != 2) {
+      throw redirect(302, "/");
+    }
+};
+
+
+
 export const actions = {
-  search: async ({ request }: import("./$types").RequestEvent) => {
+  search: async ({ request }: import('./$types').RequestEvent) => {
     try {
       const formData = Object.fromEntries(await request.formData());
       const username = formData.username.toString();
@@ -27,7 +40,7 @@ export const actions = {
     }
   },
 
-  send: async ({ request }: import("./$types").RequestEvent) => {
+  send: async ({ request }: import('./$types').RequestEvent) => {
     try {
       const formData = new URLSearchParams(await request.text());
       console.log(2);
@@ -61,7 +74,7 @@ export const actions = {
       });
     }
   },
-  del: async ({ request }: import("./$types").RequestEvent) => {
+  del: async ({ request }: import('./$types').RequestEvent) => {
     try {
       const deletedRooms = await prisma.room.deleteMany({
         where: {
@@ -73,4 +86,4 @@ export const actions = {
     }
   },
 };
-null as any as Actions;
+;null as any as Actions;

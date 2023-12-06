@@ -6,12 +6,10 @@ declare namespace App {
     user: {
       email: string;
       id: int;
-      lightTheme: boolean;
     };
     foundUser: {
       username: string;
       id: int;
-      lightTheme: boolean;
     };
   }
 
@@ -22,7 +20,4 @@ declare namespace App {
   // interface Platform {}
   // interface PrivateEnv {}
   // interface PublicEnv {}
-}
-declare global {
-  var userTheme: string;
 }

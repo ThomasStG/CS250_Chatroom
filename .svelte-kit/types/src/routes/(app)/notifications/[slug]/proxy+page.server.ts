@@ -3,10 +3,7 @@ import type { PageServerLoad, Actions } from "./$types";
 import prisma from "$lib/database";
 import { fail, redirect } from "@sveltejs/kit";
 
-export const load = async ({
-  params,
-  locals,
-}: Parameters<PageServerLoad>[0]) => {
+export const load = async ({ params, locals }: Parameters<PageServerLoad>[0]) => {
   try {
     const notificationId: number = parseInt(params.slug); // Convert the slug to an integer using parseInt()
     console.log("notificationId: ", notificationId);
@@ -29,10 +26,7 @@ export const load = async ({
 };
 
 export const actions = {
-  deleteMessage: async ({
-    request,
-    params,
-  }: import("./$types").RequestEvent) => {
+  deleteMessage: async ({ request, params }: import('./$types').RequestEvent) => {
     try {
       const notificationId: number = parseInt(params.slug);
       console.log(notificationId);
@@ -58,4 +52,4 @@ export const actions = {
     throw redirect(303, "/notifications");
   },
 };
-null as any as Actions;
+;null as any as Actions;
