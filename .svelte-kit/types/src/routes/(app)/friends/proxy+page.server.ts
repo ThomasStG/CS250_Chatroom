@@ -209,12 +209,12 @@ export const actions = {
           },
         }),
       ]);
-      const name: string = usernames[0].username + "‎" + usernames[1].username;
+      const name: string = usernames[0].username + " " + usernames[1].username;
       console.log(name);
 
       await prisma.room.create({
         data: {
-          name: "DirectMessage", // Specify the room name
+          name: name, // Specify the room name
           users: {
             connect: [
               { id: friendRequest.from.id },

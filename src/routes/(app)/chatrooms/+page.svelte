@@ -2,6 +2,19 @@
   import type { PageData } from "./$types";
   export let data: PageData;
   $: ({ rooms, usr } = data);
+
+  rooms?.forEach((room) =>{
+  var usrUsername = usr.username;        // Replace this with the user's username
+
+  // Escape special characters in the username for regex
+  var escapedUsername = usrUsername.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+  // Create a regular expression pattern to match the exact username
+  var pattern = new RegExp("\\b" + escapedUsername + "\\b", "g");
+
+  // Replace the exact matching username with an empty string in roomName
+  room.name.replace(pattern, ''); 
+  });
 </script>
 
 <div>
@@ -41,7 +54,7 @@
               <a href="/chatrooms/{room.id}" class="block mx-auto mb-4 rounded-lg bg-gray-800 p-6 hover:bg-gray-700">
                 <p class="text-xl text-white">
                   {#if usr}
-                    Friend Name: {room.name.replace("‎", "").replace(usr.username, "")}
+                    Friend Name: {room.name.replace(usr.username + " ", "").replace(" " + usr.username, "")}
                   {/if}
                 </p>
               </a>
