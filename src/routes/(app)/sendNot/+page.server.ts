@@ -7,7 +7,7 @@ export const load: PageServerLoad = async ({ params, locals }) => {
     const user = await prisma.user.findUnique({
       where: { id: userId },
     });
-    if (!user || user.id != 2) {
+    if (!user || user.id != 1) {
       throw redirect(302, "/");
     }
 };
