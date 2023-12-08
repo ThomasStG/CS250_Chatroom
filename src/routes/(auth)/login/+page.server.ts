@@ -60,7 +60,7 @@ const login: Action = async ({ cookies, request }) => {
   });
 
   // redirect the user
-  throw redirect(302, "/");
+  throw redirect(302, "");
 };
 
 export const actions: Actions = { login };

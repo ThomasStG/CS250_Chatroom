@@ -4,10 +4,7 @@ import prisma from "$lib/database";
 import { fail } from "@sveltejs/kit";
 
 //input userName, and ChatName,and user's username
-export const load = async ({
-  request,
-  cookies,
-}: Parameters<PageServerLoad>[0]) => {
+export const load = async ({ request, cookies }: Parameters<PageServerLoad>[0]) => {
   const foundUserCookie = cookies.get("foundUser");
   return {
     foundUserCookie: foundUserCookie,
@@ -15,7 +12,7 @@ export const load = async ({
 };
 
 export const actions = {
-  findUser: async ({ request, cookies }: import("./$types").RequestEvent) => {
+  findUser: async ({ request, cookies }: import('./$types').RequestEvent) => {
     try {
       const formData = Object.fromEntries(await request.formData());
       const { userName } = formData;
@@ -48,4 +45,4 @@ export const actions = {
     }
   },
 };
-null as any as Actions;
+;null as any as Actions;
