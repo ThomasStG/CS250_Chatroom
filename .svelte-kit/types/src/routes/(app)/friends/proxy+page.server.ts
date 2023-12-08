@@ -6,6 +6,10 @@ import { fail } from "@sveltejs/kit";
 export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) => {
   const userId = locals.user.id;
 
+  const user = await prisma.user.findUnique({
+    where: { id: userId }
+  });
+
   // Fetch the user's friends
   const userWithFriends = await prisma.user.findUnique({
     where: { id: userId },
@@ -27,8 +31,8 @@ export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) =
   // Merge friends from both relations into a single array
   if (userWithFriends != null) {
     friends = [
-      ...userWithFriends.friendsAsUser1.map((friend) => friend.user2),
       ...userWithFriends.friendsAsUser2.map((friend) => friend.user1),
+      ...userWithFriends.friendsAsUser1.map((friend) => friend.user2),
     ];
   }
 
@@ -45,10 +49,21 @@ export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) =
       to: true, // Include the details of the user to whom the request was sent
     },
   });
+  let friendRequestList: typeof user[] = [];
+  friendRequests.forEach((friendRequest) => {
+    if (userId === friendRequest.toId) {
+      friendRequestList.push(friendRequest.from);
+    }
+    else {
+      friendRequestList.push(friendRequest.to);
+    }
+  });
+  console.log(friendRequestList);
 
   return {
     friendRequests,
     friends,
+    friendRequestList,
     userId, // Include the friends array in the returned props
   };
 };
@@ -56,6 +71,7 @@ export const load = async ({ request, locals }: Parameters<PageServerLoad>[0]) =
 export const actions = {
   friendRequest: async ({ request, locals }: import('./$types').RequestEvent) => {
     try {
+      const userId = locals.user.id;
       const formData = Object.fromEntries(await request.formData());
       const { userName } = formData;
       console.log(userName);
@@ -78,33 +94,79 @@ export const actions = {
         });
       }
 
-      const friendRequest = await prisma.friendRequest.create({
-        data: {
-          fromId: userFromId,
-          toId: userTo.id,
+      const userWithFriends = await prisma.user.findUnique({
+        where: { id: userId },
+        include: {
+          friendsAsUser1: {
+            include: {
+              user2: true,
+            },
+          },
+          friendsAsUser2: {
+            include: {
+              user1: true,
+            },
+          },
         },
       });
-
-      const from = await prisma.user.findUnique({ where: { id: userFromId } });
-      const to: number = userTo.id;
-      const message =
-        from?.username +
-        " has sent you a friend request. Go to your friends page to accept.";
-      await prisma.notification.create({
-        data: {
-          content: message,
-          receiverId: to,
-          senderName: from?.username,
+      const friendRequests = await prisma.friendRequest.findMany({
+        where: {
+          OR: [
+            { fromId: userId, status: "pending" },
+            { toId: userId, status: "pending" },
+          ],
+        },
+        include: {
+          from: true, // Include the details of the user who sent the request
+          to: true, // Include the details of the user to whom the request was sent
         },
       });
+      // Check if the user is already a friend
+      if (userWithFriends) {
+        const isFriend =
+          userWithFriends.friendsAsUser1.some((friendship) => friendship.user2.id === userTo.id) ||
+          userWithFriends.friendsAsUser2.some((friendship) => friendship.user1.id === userTo.id);
 
-      // User found, return the username
-      return {
-        body: {
-          userName: userTo.username,
-          friendRequest: friendRequest.id,
-        },
-      };
+        // Check if there's already a friend request between the users
+        const existingRequest = friendRequests.find(
+          (request) =>
+            (request.fromId === userFromId && request.toId === userTo.id) ||
+            (request.fromId === userTo.id && request.toId === userFromId)
+        );
+
+        if (!isFriend && !existingRequest){
+          const friendRequest = await prisma.friendRequest.create({
+            data: {
+              fromId: userFromId,
+              toId: userTo.id,
+            },
+          });
+
+          const from = await prisma.user.findUnique({ where: { id: userFromId } });
+          const to: number = userTo.id;
+          const message =
+            from?.username +
+            " has sent you a friend request. Go to your friends page to accept.";
+          await prisma.notification.create({
+            data: {
+              content: message,
+              receiverId: to,
+              senderName: from?.username,
+            },
+          });
+
+          // User found, return the username
+          return {
+            body: {
+              userName: userTo.username,
+              friendRequest: friendRequest.id,
+            },
+          };
+        }
+        else {
+          console.log("You already have this user as a friend or have an active friend request");
+        }
+      }
     } catch (err) {
       console.error(err);
       return fail(500, { error: { message: "Internal Server Error" } });
@@ -147,12 +209,12 @@ export const actions = {
           },
         }),
       ]);
-      const name: string = usernames[0].username + "‎" + usernames[1].username;
+      const name: string = usernames[0].username + " " + usernames[1].username;
       console.log(name);
 
       await prisma.room.create({
         data: {
-          name: "DirectMessage", // Specify the room name
+          name: name, // Specify the room name
           users: {
             connect: [
               { id: friendRequest.from.id },
