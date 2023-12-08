@@ -40,7 +40,7 @@
         <a class="btn dark" href="/notifications" id="Nav-Notify"
           >Notifications</a
         >
-        {#if user.id == 2}
+        {#if user.id == 1}
           <a class="btn dark" href="/sendNot" id="Nav-Send">send</a>
         {/if}
         <a class="btn dark" href="/globalChat" id="global-chat">global-chat</a>
