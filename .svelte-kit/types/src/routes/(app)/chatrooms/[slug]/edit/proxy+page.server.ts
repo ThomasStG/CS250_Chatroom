@@ -4,26 +4,26 @@ import prisma from "$lib/database";
 import { fail, redirect } from "@sveltejs/kit";
 
 export const load = async ({ params, locals }: Parameters<PageServerLoad>[0]) => {
-    try {
-      const roomId: number = parseInt(params.slug);
-      const userId = locals.user.id;
+  try {
+    const roomId: number = parseInt(params.slug);
+    const userId = locals.user.id;
 
-        const room = await prisma.room.findUnique({
-            where: {
-                id: roomId,
-          },
-          include: {
-            users: true,
-          }
-        });
-        return {
-          room,
-          userId,
-        };
-    } catch (err) {
-        console.error("Error: ", err);
-        return fail(500, { error: { message: "Internal server error" } });
-    }
+    const room = await prisma.room.findUnique({
+      where: {
+        id: roomId,
+      },
+      include: {
+        users: true,
+      },
+    });
+    return {
+      room,
+      userId,
+    };
+  } catch (err) {
+    console.error("Error: ", err);
+    return fail(500, { error: { message: "Internal server error" } });
+  }
 };
 
 export const actions = {
@@ -44,8 +44,8 @@ export const actions = {
         },
       });
     } catch (err) {
-        console.error("Error: ", err);
-        return fail(500, { error: { message: "Internal server error" } });
+      console.error("Error: ", err);
+      return fail(500, { error: { message: "Internal server error" } });
     }
     //throw redirect(302, "/chatrooms/" + parseInt(params.slug));
   },

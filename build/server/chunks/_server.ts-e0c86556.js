@@ -1,24 +1,24 @@
-import { d as db } from './database-637f9b59.js';
-import 'dns';
-import { j as json } from './index-0087e825.js';
-import '@prisma/client';
+import { d as db } from "./database-637f9b59.js";
+import "dns";
+import { j as json } from "./index-0087e825.js";
+import "@prisma/client";
 
 async function POST({ request }) {
   const { addedUsers, chatname } = await request.json();
   const usersToConnect = addedUsers.map((id) => ({
-    id
+    id,
   }));
   const room = await db.room.create({
     data: {
       name: chatname,
       Chatroom: true,
       users: {
-        connect: usersToConnect
-      }
+        connect: usersToConnect,
+      },
     },
     include: {
-      users: true
-    }
+      users: true,
+    },
   });
   if (!room) {
     console.error("error creating room");

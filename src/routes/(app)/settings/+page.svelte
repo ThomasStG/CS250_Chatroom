@@ -90,15 +90,15 @@
         <form action="?/changePass" method="POST">
           <input
             type="password"
-            name="old-pass"
-            id="old-pass"
+            name="oldPass"
+            id="oldPass"
             class="input item"
             placeholder="Old Password"
           />
           <input
             type="password"
-            name="new-pass"
-            id="new-pass"
+            name="newPass1"
+            id="newPass1"
             class="input item"
             placeholder="New Password"
           />

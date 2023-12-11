@@ -1,4 +1,8 @@
-import { c as create_ssr_component, i as each, e as escape } from './index3-09a7cb96.js';
+import {
+  c as create_ssr_component,
+  i as each,
+  e as escape,
+} from "./index3-09a7cb96.js";
 
 const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let foundUserCookie;

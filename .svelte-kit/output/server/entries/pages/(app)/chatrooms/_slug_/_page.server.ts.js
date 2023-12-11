@@ -14,25 +14,25 @@ const load = async ({ params, locals }) => {
     if (roomId) {
       const messages = await db.message.findMany({
         where: {
-          roomId
+          roomId,
           // Use the roomId here, not params.slug
         },
         include: {
-          sender: true
-        }
+          sender: true,
+        },
       });
       const roomName = await db.room.findUnique({
         where: {
-          id: roomId
-        }
+          id: roomId,
+        },
       });
       const room = await db.room.findUnique({
         where: {
-          id: roomId
+          id: roomId,
         },
         include: {
-          users: true
-        }
+          users: true,
+        },
       });
       if (room && room.users) {
         let isinroom = false;
@@ -52,12 +52,11 @@ const load = async ({ params, locals }) => {
         messages,
         roomName,
         userId,
-        roomId
+        roomId,
       };
     }
   } catch (err) {
-    if (err instanceof Invalid)
-      throw redirect(302, "/chatrooms");
+    if (err instanceof Invalid) throw redirect(302, "/chatrooms");
     else {
       console.error(err);
       return fail(500, { error: { message: "Internal Server Error" } });
@@ -71,7 +70,7 @@ const actions = {
       const now = /* @__PURE__ */ new Date();
       const { content } = formData;
       const convertedFormData = {
-        content: String(content)
+        content: String(content),
       };
       const userId = locals.user?.id;
       const roomId = parseInt(params.slug);
@@ -84,18 +83,18 @@ const actions = {
             ...convertedFormData,
             sender: {
               connect: {
-                id: userId
-              }
+                id: userId,
+              },
             },
             room: {
               connect: {
-                id: roomId
-              }
+                id: roomId,
+              },
             },
             content: String(content),
             status: "unread",
-            sentAt: now
-          }
+            sentAt: now,
+          },
         });
       } catch (err) {
         console.error(err);
@@ -103,7 +102,7 @@ const actions = {
       }
       return {
         status: 303,
-        headers: { Location: "/globalChat/" }
+        headers: { Location: "/globalChat/" },
       };
     } catch (err) {
       console.error(err);
@@ -121,12 +120,12 @@ const actions = {
       }
       await db.message.update({
         where: {
-          id: messageI
+          id: messageI,
         },
         data: {
           content: newMessage,
-          updatedAt: now
-        }
+          updatedAt: now,
+        },
       });
       console.log(messageI, " to ", newMessage);
     } catch (err) {
@@ -140,14 +139,14 @@ const actions = {
       const messageI = Number(data.get("messageId"));
       const message = await db.message.findUnique({
         where: {
-          id: messageI
-        }
+          id: messageI,
+        },
       });
       if (message) {
         await db.message.delete({
           where: {
-            id: messageI
-          }
+            id: messageI,
+          },
         });
         console.log(messageI, " deleted");
       }
@@ -155,9 +154,6 @@ const actions = {
       console.error(err);
       return fail(500, { error: { message: "Internal Server Error" } });
     }
-  }
+  },
 };
-export {
-  actions,
-  load
-};
+export { actions, load };

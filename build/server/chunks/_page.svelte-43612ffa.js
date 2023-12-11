@@ -1,8 +1,8 @@
-import { c as create_ssr_component } from './index3-09a7cb96.js';
+import { c as create_ssr_component } from "./index3-09a7cb96.js";
 
 const css = {
   code: ".input.svelte-q4yqv2{width:10vw}.setting-item.svelte-q4yqv2{display:flex;align-items:center;gap:5px;padding-bottom:1%}.item.svelte-q4yqv2{margin-right:10px}.setting-item.svelte-q4yqv2:last-child{margin-right:0px}.settings.svelte-q4yqv2{justify-content:space-around;gap:5px}.hidden.svelte-q4yqv2{display:none}",
-  map: null
+  map: null,
 };
 const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   $$result.css.add(css);

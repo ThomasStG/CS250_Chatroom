@@ -6,7 +6,7 @@ async function POST({ request, locals, url }) {
     const data = JSON.parse(rawData);
     const { username } = data;
     const user = await db.user.findUnique({
-      where: { username }
+      where: { username },
     });
     if (!user) {
       return { status: 404, body: { error: "User not found" } };
@@ -17,6 +17,4 @@ async function POST({ request, locals, url }) {
     return { status: 500, body: { error: "Server error" } };
   }
 }
-export {
-  POST
-};
+export { POST };

@@ -54,7 +54,7 @@
           name="username"
           type="text"
           required
-          class="block w-full rounded-md border border-gray-300 bg-gray-50 p-2.5 focus:border-primary-500 focus:ring-primary-500 sm:text-sm text-gray-900"
+          class="block w-full rounded-md border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
         />
       </div>
 

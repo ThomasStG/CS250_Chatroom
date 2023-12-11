@@ -1,6 +1,6 @@
-import { d as db } from './database-637f9b59.js';
-import './index-0087e825.js';
-import '@prisma/client';
+import { d as db } from "./database-637f9b59.js";
+import "./index-0087e825.js";
+import "@prisma/client";
 
 async function POST({ request, locals, url }) {
   try {
@@ -8,7 +8,7 @@ async function POST({ request, locals, url }) {
     const data = JSON.parse(rawData);
     const { username } = data;
     const user = await db.user.findUnique({
-      where: { username }
+      where: { username },
     });
     if (!user) {
       return { status: 404, body: { error: "User not found" } };

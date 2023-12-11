@@ -6,7 +6,7 @@ export const load: PageServerLoad = async ({ request, locals }) => {
   const userId = locals.user.id;
 
   const user = await prisma.user.findUnique({
-    where: { id: userId }
+    where: { id: userId },
   });
 
   // Fetch the user's friends
@@ -48,12 +48,11 @@ export const load: PageServerLoad = async ({ request, locals }) => {
       to: true, // Include the details of the user to whom the request was sent
     },
   });
-  let friendRequestList: typeof user[] = [];
+  let friendRequestList: (typeof user)[] = [];
   friendRequests.forEach((friendRequest) => {
     if (userId === friendRequest.toId) {
       friendRequestList.push(friendRequest.from);
-    }
-    else {
+    } else {
       friendRequestList.push(friendRequest.to);
     }
   });
@@ -123,8 +122,12 @@ export const actions: Actions = {
       // Check if the user is already a friend
       if (userWithFriends) {
         const isFriend =
-          userWithFriends.friendsAsUser1.some((friendship) => friendship.user2.id === userTo.id) ||
-          userWithFriends.friendsAsUser2.some((friendship) => friendship.user1.id === userTo.id);
+          userWithFriends.friendsAsUser1.some(
+            (friendship) => friendship.user2.id === userTo.id
+          ) ||
+          userWithFriends.friendsAsUser2.some(
+            (friendship) => friendship.user1.id === userTo.id
+          );
 
         // Check if there's already a friend request between the users
         const existingRequest = friendRequests.find(
@@ -133,7 +136,7 @@ export const actions: Actions = {
             (request.fromId === userTo.id && request.toId === userFromId)
         );
 
-        if (!isFriend && !existingRequest){
+        if (!isFriend && !existingRequest) {
           const friendRequest = await prisma.friendRequest.create({
             data: {
               fromId: userFromId,
@@ -141,7 +144,9 @@ export const actions: Actions = {
             },
           });
 
-          const from = await prisma.user.findUnique({ where: { id: userFromId } });
+          const from = await prisma.user.findUnique({
+            where: { id: userFromId },
+          });
           const to: number = userTo.id;
           const message =
             from?.username +
@@ -161,9 +166,10 @@ export const actions: Actions = {
               friendRequest: friendRequest.id,
             },
           };
-        }
-        else {
-          console.log("You already have this user as a friend or have an active friend request");
+        } else {
+          console.log(
+            "You already have this user as a friend or have an active friend request"
+          );
         }
       }
     } catch (err) {

@@ -5,11 +5,11 @@ const load = async ({ params }) => {
     const roomId = parseInt(params.slug);
     const room = await db.room.findUnique({
       where: {
-        id: roomId
-      }
+        id: roomId,
+      },
     });
     return {
-      room
+      room,
     };
   } catch (err) {
     console.error("Error: ", err);
@@ -27,11 +27,11 @@ const actions = {
       }
       await db.room.update({
         where: {
-          id: roomId
+          id: roomId,
         },
         data: {
-          name: newName
-        }
+          name: newName,
+        },
       });
     } catch (err) {
       console.error("Error: ", err);
@@ -44,7 +44,7 @@ const actions = {
       const userId = parseInt(locals.user.id);
       const room = await db.room.findUnique({
         where: { id: roomId },
-        include: { users: true }
+        include: { users: true },
         // Include users for filtering
       });
       if (!room) {
@@ -55,13 +55,13 @@ const actions = {
           where: { id: roomId },
           data: {
             users: {
-              disconnect: { id: userId }
+              disconnect: { id: userId },
               // Disconnect the specific user
-            }
-          }
+            },
+          },
         });
         await db.room.delete({
-          where: { id: roomId }
+          where: { id: roomId },
         });
         console.log("deleted");
       } else {
@@ -69,10 +69,10 @@ const actions = {
           where: { id: roomId },
           data: {
             users: {
-              disconnect: { id: userId }
+              disconnect: { id: userId },
               // Disconnect the specific user
-            }
-          }
+            },
+          },
         });
       }
     } catch (error) {
@@ -80,9 +80,6 @@ const actions = {
       return fail(500, { error: { message: "Internal server error" } });
     }
     throw redirect(302, "/chatrooms");
-  }
+  },
 };
-export {
-  actions,
-  load
-};
+export { actions, load };

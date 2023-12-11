@@ -1,4 +1,4 @@
-import * as server from '../entries/pages/(auth)/logout/_page.server.ts.js';
+import * as server from "../entries/pages/(auth)/logout/_page.server.ts.js";
 
 export const index = 18;
 export { server };

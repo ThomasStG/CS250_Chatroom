@@ -5,6 +5,4 @@ let prisma;
   prisma = new PrismaClientProd();
 }
 const db = prisma;
-export {
-  db as d
-};
+export { db as d };

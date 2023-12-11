@@ -47,15 +47,11 @@ export const actions: Actions = {
   changePass: async ({ request, params, locals }) => {
     try {
       const userId: number = locals.user.id;
-      const formData = Object.fromEntries(await request.formData());
-      const oldPass: string = formData.oldPass.toString();
-      const newPass1: string = formData.newPass1.toString();
-      const newPass2: string = formData.newPass2.toString();
-
-      if (newPass1 != newPass2) {
-        return fail(400, { error: { message: "Passwords do not match" } });
-      }
-
+      const formData = Object.fromEntries(await request.formData()) as Record<
+        string,
+        string
+      >;
+      const { newPass1, oldPass } = formData;
       // Use the `await` keyword to wait for the Prisma update operation to complete
       const user = await db.user.findUnique({ where: { id: userId } });
       if (!user) {
@@ -109,16 +105,20 @@ export const actions: Actions = {
         });
 
         for (const room of roomsToUpdate) {
-          const updatedUsers = room.users.filter((user) => user.id !== userId);
+          if (room.users) {
+            const updatedUsers = room.users.filter(
+              (user) => user.id !== userId
+            );
 
-          await prisma.room.update({
-            where: { id: room.id },
-            data: {
-              users: {
-                disconnect: updatedUsers.map((user) => ({ id: user.id })),
+            await prisma.room.update({
+              where: { id: room.id },
+              data: {
+                users: {
+                  disconnect: updatedUsers.map((user) => ({ id: user.id })),
+                },
               },
-            },
-          });
+            });
+          }
         }
 
         // Handle friend relationships and friend requests

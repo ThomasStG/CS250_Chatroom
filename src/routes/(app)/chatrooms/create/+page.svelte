@@ -18,7 +18,8 @@
         body: JSON.stringify({ username }),
       });
 
-      if (!response.ok) throw new Error("Network response was not ok " + response.statusText);
+      if (!response.ok)
+        throw new Error("Network response was not ok " + response.statusText);
 
       const { user } = await response.json();
       userNames = [...userNames, user.id];
@@ -34,7 +35,8 @@
   async function createRoom() {
     try {
       addedUsers.push(userId);
-      if (chatname.length > 15 || chatname.length < 3) throw new Error("Invalid chatname length");
+      if (chatname.length > 15 || chatname.length < 3)
+        throw new Error("Invalid chatname length");
 
       const response = await fetch("/api/createRoom", {
         method: "POST",
@@ -42,7 +44,8 @@
         body: JSON.stringify({ addedUsers, chatname }),
       });
 
-      if (!response.ok) throw new Error("Network response was not ok " + response.statusText);
+      if (!response.ok)
+        throw new Error("Network response was not ok " + response.statusText);
 
       goto("/chatrooms");
     } catch (error) {
@@ -51,21 +54,33 @@
   }
 </script>
 
-
 <div class="p-4">
   <div class="mb-4">
     <h1 class="text-lg font-semibold">Create Chatroom</h1>
-    <div class="flex gap-2 items-center mt-2">
-      <input class="border p-2 rounded" placeholder="User Name" bind:value={username} />
-      <button class="bg-blue-500 text-white rounded p-2 hover:bg-blue-600" type="submit" on:click={searchUser}>Search</button>
+    <div class="mt-2 flex items-center gap-2">
+      <input
+        class="rounded border p-2"
+        placeholder="User Name"
+        bind:value={username}
+      />
+      <button
+        class="rounded bg-blue-500 p-2 text-white hover:bg-blue-600"
+        type="submit"
+        on:click={searchUser}>Search</button
+      >
     </div>
   </div>
 
   <div class="mb-4">
     {#each userNames as id (id)}
-      <div class="flex gap-2 items-center">
+      <div class="flex items-center gap-2">
         <p class="mr-2">{id}</p>
-        <button class="bg-green-500 text-white rounded p-2 hover:bg-green-600" on:click={() => addUser(id)}> Add to Groupchat </button>
+        <button
+          class="rounded bg-green-500 p-2 text-white hover:bg-green-600"
+          on:click={() => addUser(id)}
+        >
+          Add to Groupchat
+        </button>
       </div>
     {/each}
   </div>
@@ -76,12 +91,18 @@
       {#each addedUsers as id (id)}
         <p>{id}</p>
       {/each}
-      <div class="flex gap-2 items-center mt-2">
+      <div class="mt-2 flex items-center gap-2">
         <h2 class="text-lg font-semibold">Chatroom name</h2>
-        <input class="border p-2 rounded" placeholder="Chatname" bind:value={chatname} maxlength="14" />
-        {#if chatname}
-          <button class="bg-purple-500 text-white rounded p-2 hover:bg-purple-600" on:click={createRoom}>Create Groupchat</button>
-        {/if}
+        <input
+          class="rounded border p-2"
+          placeholder="Chatname"
+          bind:value={chatname}
+          maxlength="14"
+        />
+          <button
+            class="rounded bg-purple-500 p-2 text-white hover:bg-purple-600"
+            on:click={createRoom}>Create Groupchat</button
+          >
       </div>
     </div>
   {/if}

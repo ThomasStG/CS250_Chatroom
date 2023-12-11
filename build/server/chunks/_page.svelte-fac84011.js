@@ -1,6 +1,9 @@
-import { c as create_ssr_component, v as validate_component } from './index3-09a7cb96.js';
-import { A as Alert } from './Alert-d91cf531.js';
-import './clsx.m-2bb6df4b.js';
+import {
+  c as create_ssr_component,
+  v as validate_component,
+} from "./index3-09a7cb96.js";
+import { A as Alert } from "./Alert-d91cf531.js";
+import "./clsx.m-2bb6df4b.js";
 
 const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { form } = $$props;
@@ -11,15 +14,19 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   
   <div class="w-full max-w-xl space-y-8 rounded-md border p-6 shadow sm:p-8" style="background: #202020; border-color:#303040; border-width:5px;"><h2 class="text-2xl font-bold">Create a new account</h2>
 
-    ${form?.error?.message ? `${validate_component(Alert, "Alert").$$render(
-    $$result,
-    {
-      type: "danger",
-      description: form.error.message
-    },
-    {},
-    {}
-  )}` : ``}
+    ${
+      form?.error?.message
+        ? `${validate_component(Alert, "Alert").$$render(
+            $$result,
+            {
+              type: "danger",
+              description: form.error.message,
+            },
+            {},
+            {}
+          )}`
+        : ``
+    }
 
     <form action="?/register" method="POST" class="mt-8 space-y-6"><div><label for="email" class="mb-2 block text-sm font-medium">Email
         </label>

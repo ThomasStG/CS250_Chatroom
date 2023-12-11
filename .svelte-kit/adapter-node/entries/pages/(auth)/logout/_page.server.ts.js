@@ -5,10 +5,8 @@ const load = async ({ cookies }) => {
   }
   cookies.set("session", "", {
     path: "/",
-    expires: /* @__PURE__ */ new Date(0)
+    expires: /* @__PURE__ */ new Date(0),
   });
   throw redirect(302, "/login");
 };
-export {
-  load
-};
+export { load };

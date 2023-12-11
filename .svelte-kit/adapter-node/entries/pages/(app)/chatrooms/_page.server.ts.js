@@ -10,35 +10,35 @@ const load = async ({ request, locals }) => {
       where: {
         users: {
           some: {
-            id: userId
-          }
-        }
+            id: userId,
+          },
+        },
       },
       include: {
         users: {
           select: {
             email: true,
-            username: true
-          }
-        }
-      }
+            username: true,
+          },
+        },
+      },
     });
     const user = await db.user.findUnique({
       where: {
-        id: userId
+        id: userId,
       },
       select: {
         id: true,
         username: true,
         email: true,
         passwordHash: true,
-        userAuthToken: true
-      }
+        userAuthToken: true,
+      },
     });
     console.log(user);
     return {
       rooms,
-      usr: user
+      usr: user,
     };
   } catch (err) {
     console.error(err);
@@ -46,7 +46,4 @@ const load = async ({ request, locals }) => {
   }
 };
 const actions = {};
-export {
-  actions,
-  load
-};
+export { actions, load };

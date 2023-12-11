@@ -22,4 +22,4 @@ export async function POST({ request }) {
     console.error("Error updating room:", error);
     return json({ error: "Internal server error" }, { status: 500 });
   }
-};
+}

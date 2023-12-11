@@ -5,9 +5,7 @@ const load = async ({ locals }) => {
     throw redirect(302, "/login");
   }
   return {
-    user: locals.user
+    user: locals.user,
   };
 };
-export {
-  load
-};
+export { load };

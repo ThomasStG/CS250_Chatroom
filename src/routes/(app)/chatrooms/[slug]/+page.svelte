@@ -15,11 +15,8 @@
       inputElement.value = "";
     }
   };
-
   // Submit event handler for the form
-  const handleSubmit = async (event) => {
-    // Handle the form submission here (e.g., send the data to the server)
-    // ...
+  const handleSubmit = async () => {
 
     // Clear the input field
     clearInput();
@@ -34,22 +31,24 @@
 
 <div class="background flex min-h-screen flex-col items-center">
   {#if roomName && roomName.name}
-  <h1 class="mb-4 text-center text-4xl font-extrabold md:text-5xl lg:text-6xl">
-    Room: {roomName.name}
-  </h1>
-  <div class="flex items-center">
-    <a
-      href="/chatrooms"
-      class="mb-2 mr-4 text-3xl font-extrabold md:text-4xl lg:text-2xl"
-      style="text-align: left">Back</a
-    >
     <h1
       class="mb-4 text-center text-4xl font-extrabold md:text-5xl lg:text-6xl"
     >
-      Messages
+      Room: {roomName.name}
     </h1>
-    <a href="{roomId}/edit">edit</a>
-  </div>
+    <div class="flex items-center">
+      <a
+        href="/chatrooms"
+        class="mb-2 mr-4 text-3xl font-extrabold md:text-4xl lg:text-2xl"
+        style="text-align: left">Back</a
+      >
+      <h1
+        class="mb-4 text-center text-4xl font-extrabold md:text-5xl lg:text-6xl"
+      >
+        Messages
+      </h1>
+      <a href="{roomId}/edit">edit</a>
+    </div>
   {/if}
   <div class="mx-auto max-w-3xl items-center">
     {#if messages}
@@ -92,8 +91,8 @@
               </form>
             </div>
             {#if modals[message.id]}
-              <Modal bind:showModal={modals[message.id]}>
-                <h2 slot="header">Edit Message</h2>
+              <Modal bind:showModal={modals[message.id]} >
+                <h2 slot="header" style="border: 4px; border-color:#1a202c; color: white;">Edit Message</h2>
                 <div class="modal-size">
                   <body>
                     <form

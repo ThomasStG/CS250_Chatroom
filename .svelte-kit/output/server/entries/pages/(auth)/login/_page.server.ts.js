@@ -11,9 +11,14 @@ const login = async ({ cookies, request }) => {
   data.get("userName");
   const email = data.get("email");
   const password = data.get("password");
-  if (typeof email !== "string" || typeof password !== "string" || !email || !password) {
+  if (
+    typeof email !== "string" ||
+    typeof password !== "string" ||
+    !email ||
+    !password
+  ) {
     return fail(400, {
-      error: { message: "email and password are required." }
+      error: { message: "email and password are required." },
     });
   }
   const user = await db.user.findUnique({ where: { email } });
@@ -26,7 +31,7 @@ const login = async ({ cookies, request }) => {
   }
   const authenticatedUser = await db.user.update({
     where: { email: user.email },
-    data: { userAuthToken: crypto.randomUUID() }
+    data: { userAuthToken: crypto.randomUUID() },
   });
   cookies.set("session", authenticatedUser.userAuthToken, {
     // send cookie for every page
@@ -39,12 +44,9 @@ const login = async ({ cookies, request }) => {
     // only sent over HTTPS in production
     secure: process.env.NODE_ENV === "production",
     // set cookie to expire after a month
-    maxAge: 60 * 60 * 24 * 30
+    maxAge: 60 * 60 * 24 * 30,
   });
   throw redirect(302, "/");
 };
 const actions = { login };
-export {
-  actions,
-  load
-};
+export { actions, load };

@@ -1,9 +1,13 @@
 import { d as db } from "../../../../chunks/database.js";
-import { r as redirect, f as fail, j as json } from "../../../../chunks/index.js";
+import {
+  r as redirect,
+  f as fail,
+  j as json,
+} from "../../../../chunks/index.js";
 const load = async ({ params, locals }) => {
   const userId = locals.user?.id;
   const user = await db.user.findUnique({
-    where: { id: userId }
+    where: { id: userId },
   });
   if (!user || user.id != 2) {
     throw redirect(302, "/");
@@ -18,7 +22,7 @@ const actions = {
         return fail(400, { error: { message: "Missing username" } });
       }
       const user = await db.user.findUnique({
-        where: { username }
+        where: { username },
       });
       if (!user) {
         return fail(404, { error: { message: "User not found" } });
@@ -40,7 +44,7 @@ const actions = {
       if (!content) {
         console.log("Early return due to missing content");
         return fail(400, {
-          error: { message: "Missing content" }
+          error: { message: "Missing content" },
         });
       }
       if (sender != "")
@@ -50,13 +54,13 @@ const actions = {
       return {
         status: 201,
         headers: {
-          Location: "/sendNot"
-        }
+          Location: "/sendNot",
+        },
       };
     } catch (error) {
       console.error("Error creating notification:", error);
       return fail(500, {
-        error: { message: "Failed to create notification." }
+        error: { message: "Failed to create notification." },
       });
     }
   },
@@ -64,15 +68,12 @@ const actions = {
     try {
       const deletedRooms = await db.room.deleteMany({
         where: {
-          Chatroom: false
-        }
+          Chatroom: false,
+        },
       });
     } catch (err) {
       console.log("Error", err);
     }
-  }
+  },
 };
-export {
-  actions,
-  load
-};
+export { actions, load };
