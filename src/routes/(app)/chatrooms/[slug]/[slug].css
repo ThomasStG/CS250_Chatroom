@@ -53,6 +53,7 @@ dialog {
   border-radius: 0.2em;
   border: none;
   padding: 0;
+  background-color: #1a202c;
 }
 
 button {

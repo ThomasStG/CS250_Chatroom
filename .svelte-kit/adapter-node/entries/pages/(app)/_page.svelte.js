@@ -7,6 +7,4 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     sending and approving friend requests, and utilizing direct messages.
   </p></div>`;
 });
-export {
-  Page as default
-};
+export { Page as default };

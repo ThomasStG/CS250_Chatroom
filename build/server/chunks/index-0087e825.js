@@ -39,7 +39,9 @@ class ActionFailure {
 }
 function error(status, body) {
   if (isNaN(status) || status < 400 || status > 599) {
-    throw new Error(`HTTP error status codes must be between 400 and 599 — ${status} is invalid`);
+    throw new Error(
+      `HTTP error status codes must be between 400 and 599 — ${status} is invalid`
+    );
   }
   return new HttpError(status, body);
 }
@@ -60,7 +62,7 @@ function json(data, init) {
   }
   return new Response(body, {
     ...init,
-    headers
+    headers,
   });
 }
 const encoder = new TextEncoder();
@@ -71,17 +73,26 @@ function text(body, init) {
     headers.set("content-length", encoded.byteLength.toString());
     return new Response(encoded, {
       ...init,
-      headers
+      headers,
     });
   }
   return new Response(body, {
     ...init,
-    headers
+    headers,
   });
 }
 function fail(status, data) {
   return new ActionFailure(status, data);
 }
 
-export { ActionFailure as A, HttpError as H, Redirect as R, error as e, fail as f, json as j, redirect as r, text as t };
+export {
+  ActionFailure as A,
+  HttpError as H,
+  Redirect as R,
+  error as e,
+  fail as f,
+  json as j,
+  redirect as r,
+  text as t,
+};
 //# sourceMappingURL=index-0087e825.js.map

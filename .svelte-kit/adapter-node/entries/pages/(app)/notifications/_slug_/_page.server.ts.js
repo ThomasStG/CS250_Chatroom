@@ -7,12 +7,12 @@ const load = async ({ params, locals }) => {
     if (notificationId) {
       const notifications = await db.notification.findMany({
         where: {
-          id: notificationId
-        }
+          id: notificationId,
+        },
       });
       const notification = notifications[0];
       return {
-        notification
+        notification,
       };
     }
   } catch (err) {
@@ -27,15 +27,15 @@ const actions = {
       console.log(notificationId);
       const message = await db.notification.findMany({
         where: {
-          id: notificationId
-        }
+          id: notificationId,
+        },
       });
       if (message.length > 0) {
         console.log(message[0]);
         const notifications = await db.notification.deleteMany({
           where: {
-            id: notificationId
-          }
+            id: notificationId,
+          },
         });
         console.log(notificationId, " deleted");
       }
@@ -44,9 +44,6 @@ const actions = {
       return fail(500, { error: { message: "Internal Server Error" } });
     }
     throw redirect(303, "/notifications");
-  }
+  },
 };
-export {
-  actions,
-  load
-};
+export { actions, load };

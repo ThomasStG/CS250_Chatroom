@@ -3,7 +3,7 @@ import { f as fail } from "../../../../../chunks/index.js";
 const load = async ({ request, cookies }) => {
   const foundUserCookie = cookies.get("foundUser");
   return {
-    foundUserCookie
+    foundUserCookie,
   };
 };
 const actions = {
@@ -13,8 +13,8 @@ const actions = {
       const { userName } = formData;
       const foundUser = await db.user.findUnique({
         where: {
-          username: String(userName)
-        }
+          username: String(userName),
+        },
       });
       console.log(foundUser);
       if (!foundUser) {
@@ -25,18 +25,15 @@ const actions = {
       }
       return {
         body: {
-          foundUser
-        }
+          foundUser,
+        },
       };
     } catch (err) {
       console.error(err);
       return fail(500, {
-        error: { message: "Internal Server Error: finding user" }
+        error: { message: "Internal Server Error: finding user" },
       });
     }
-  }
+  },
 };
-export {
-  actions,
-  load
-};
+export { actions, load };

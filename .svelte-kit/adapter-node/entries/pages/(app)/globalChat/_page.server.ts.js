@@ -5,29 +5,29 @@ const load = async ({ params, locals }) => {
     const userId = locals.user?.id;
     const roomId = 0;
     const room = await db.room.findUnique({
-      where: { id: roomId }
+      where: { id: roomId },
     });
     if (!room) {
       const test = await db.room.create({
         data: {
           id: 0,
           name: "Global",
-          Chatroom: true
-        }
+          Chatroom: true,
+        },
       });
     }
     const messages = await db.message.findMany({
       where: {
-        roomId
+        roomId,
         // Use the roomId here, not params.slug
       },
       include: {
-        sender: true
-      }
+        sender: true,
+      },
     });
     return {
       messages,
-      userId
+      userId,
     };
   } catch (err) {
     console.error(err);
@@ -41,7 +41,7 @@ const actions = {
       const now = /* @__PURE__ */ new Date();
       const { content } = formData;
       const convertedFormData = {
-        content: String(content)
+        content: String(content),
       };
       const userId = locals.user?.id;
       const roomId = 0;
@@ -54,18 +54,18 @@ const actions = {
             ...convertedFormData,
             sender: {
               connect: {
-                id: userId
-              }
+                id: userId,
+              },
             },
             room: {
               connect: {
-                id: roomId
-              }
+                id: roomId,
+              },
             },
             content: String(content),
             status: "unread",
-            sentAt: now
-          }
+            sentAt: now,
+          },
         });
       } catch (err) {
         console.error(err);
@@ -73,7 +73,7 @@ const actions = {
       }
       return {
         status: 303,
-        headers: { Location: "/globalChat/" }
+        headers: { Location: "/globalChat/" },
       };
     } catch (err) {
       console.error(err);
@@ -91,12 +91,12 @@ const actions = {
       }
       await db.message.update({
         where: {
-          id: messageI
+          id: messageI,
         },
         data: {
           content: newMessage,
-          updatedAt: now
-        }
+          updatedAt: now,
+        },
       });
       console.log(messageI, " to ", newMessage);
     } catch (err) {
@@ -110,14 +110,14 @@ const actions = {
       const messageI = Number(data.get("messageId"));
       const message = await db.message.findUnique({
         where: {
-          id: messageI
-        }
+          id: messageI,
+        },
       });
       if (message) {
         await db.message.delete({
           where: {
-            id: messageI
-          }
+            id: messageI,
+          },
         });
         console.log(messageI, " deleted");
       }
@@ -125,9 +125,6 @@ const actions = {
       console.error(err);
       return fail(500, { error: { message: "Internal Server Error" } });
     }
-  }
+  },
 };
-export {
-  actions,
-  load
-};
+export { actions, load };

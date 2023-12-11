@@ -14,14 +14,21 @@ const register = async ({ request }) => {
     const password = data.get("password");
     const passwordConfirmation = data.get("password-confirmation");
     console.log(data);
-    if (typeof email !== "string" || typeof username !== "string" || !username || typeof password !== "string" || !email || !password) {
+    if (
+      typeof email !== "string" ||
+      typeof username !== "string" ||
+      !username ||
+      typeof password !== "string" ||
+      !email ||
+      !password
+    ) {
       return fail(400, {
-        error: { message: "email and password are required." }
+        error: { message: "email and password are required." },
       });
     }
     if (password !== passwordConfirmation) {
       return fail(400, {
-        error: { message: "Password confirmation doesn't match." }
+        error: { message: "Password confirmation doesn't match." },
       });
     }
     const user = await db.user.findUnique({ where: { email } });
@@ -33,21 +40,19 @@ const register = async ({ request }) => {
         email,
         username,
         passwordHash: await bcrypt.hash(password, 10),
-        userAuthToken: crypto.randomUUID()
-      }
+        userAuthToken: crypto.randomUUID(),
+      },
     });
   } catch (err) {
     console.error(err);
     return fail(500, {
       error: {
-        message: "There was an issue with registering. That username may be taken."
-      }
+        message:
+          "There was an issue with registering. That username may be taken.",
+      },
     });
   }
   throw redirect(303, "/login");
 };
 const actions = { register };
-export {
-  actions,
-  load
-};
+export { actions, load };

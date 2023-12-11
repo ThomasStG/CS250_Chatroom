@@ -15,7 +15,7 @@
 >
   <!-- svelte-ignore a11y-no-static-element-interactions -->
   <div on:click|stopPropagation>
-    <slot name="header" />
+    <slot name="header"/>
     <hr />
     <slot />
     <hr />
@@ -31,6 +31,7 @@
     position: absolute;
     right: 4px;
     top: 0;
+    color:white;
   }
   dialog {
     border-radius: 0.2em;

@@ -10,32 +10,30 @@ const load = async ({ request, locals }) => {
       where: {
         users: {
           some: {
-            id: userId
-          }
-        }
+            id: userId,
+          },
+        },
       },
       include: {
         users: {
           select: {
-            email: true
-          }
-        }
-      }
+            email: true,
+          },
+        },
+      },
     });
     const user = await db.user.findUnique({
       where: {
-        id: userId
-      }
+        id: userId,
+      },
     });
     return {
       rooms: roo,
-      usr: user
+      usr: user,
     };
   } catch (err) {
     console.error(err);
     return fail(500, { error: { message: "Failed to fetch rooms." } });
   }
 };
-export {
-  load
-};
+export { load };

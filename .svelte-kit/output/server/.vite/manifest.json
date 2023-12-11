@@ -1,17 +1,13 @@
 {
   ".svelte-kit/generated/server/internal.js": {
     "file": "internal.js",
-    "imports": [
-      "_internal.js"
-    ],
+    "imports": ["_internal.js"],
     "isEntry": true,
     "src": ".svelte-kit/generated/server/internal.js"
   },
   "_Alert.js": {
     "file": "chunks/Alert.js",
-    "imports": [
-      "_index3.js"
-    ]
+    "imports": ["_index3.js"]
   },
   "_database.js": {
     "file": "chunks/database.js"
@@ -21,53 +17,37 @@
   },
   "_index2.js": {
     "file": "chunks/index2.js",
-    "imports": [
-      "_index3.js"
-    ]
+    "imports": ["_index3.js"]
   },
   "_index3.js": {
     "file": "chunks/index3.js"
   },
   "_internal.js": {
-    "dynamicImports": [
-      "src/hooks.server.ts"
-    ],
+    "dynamicImports": ["src/hooks.server.ts"],
     "file": "chunks/internal.js",
-    "imports": [
-      "_index3.js"
-    ]
+    "imports": ["_index3.js"]
   },
   "node_modules/@sveltejs/kit/src/runtime/components/error.svelte": {
     "file": "entries/fallbacks/error.svelte.js",
-    "imports": [
-      "_index3.js"
-    ],
+    "imports": ["_index3.js"],
     "isEntry": true,
     "src": "node_modules/@sveltejs/kit/src/runtime/components/error.svelte"
   },
   "node_modules/@sveltejs/kit/src/runtime/components/layout.svelte": {
     "file": "entries/fallbacks/layout.svelte.js",
-    "imports": [
-      "_index3.js"
-    ],
+    "imports": ["_index3.js"],
     "isEntry": true,
     "src": "node_modules/@sveltejs/kit/src/runtime/components/layout.svelte"
   },
   "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
     "file": "index.js",
-    "imports": [
-      "_internal.js",
-      "_index.js",
-      "_index2.js"
-    ],
+    "imports": ["_internal.js", "_index.js", "_index2.js"],
     "isEntry": true,
     "src": "node_modules/@sveltejs/kit/src/runtime/server/index.js"
   },
   "src/hooks.server.ts": {
     "file": "chunks/hooks.server.js",
-    "imports": [
-      "_database.js"
-    ],
+    "imports": ["_database.js"],
     "isDynamicEntry": true,
     "src": "src/hooks.server.ts"
   },
@@ -77,74 +57,50 @@
   },
   "src/routes/(app)/+layout.server.ts": {
     "file": "entries/pages/(app)/_layout.server.ts.js",
-    "imports": [
-      "_index.js",
-      "_database.js"
-    ],
+    "imports": ["_index.js", "_database.js"],
     "isEntry": true,
     "src": "src/routes/(app)/+layout.server.ts"
   },
   "src/routes/(app)/+layout.svelte": {
-    "css": [
-      "_app/immutable/assets/_layout.39103503.css"
-    ],
+    "css": ["_app/immutable/assets/_layout.39103503.css"],
     "file": "entries/pages/(app)/_layout.svelte.js",
-    "imports": [
-      "_index3.js",
-      "_index2.js"
-    ],
+    "imports": ["_index3.js", "_index2.js"],
     "isEntry": true,
     "src": "src/routes/(app)/+layout.svelte"
   },
   "src/routes/(app)/+page.svelte": {
     "file": "entries/pages/(app)/_page.svelte.js",
-    "imports": [
-      "_index3.js"
-    ],
+    "imports": ["_index3.js"],
     "isEntry": true,
     "src": "src/routes/(app)/+page.svelte"
   },
   "src/routes/(app)/api/createRoom/+server.ts": {
     "file": "entries/endpoints/(app)/api/createRoom/_server.ts.js",
-    "imports": [
-      "_database.js",
-      "_index.js"
-    ],
+    "imports": ["_database.js", "_index.js"],
     "isEntry": true,
     "src": "src/routes/(app)/api/createRoom/+server.ts"
   },
   "src/routes/(app)/api/searchFriend/+server.ts": {
     "file": "entries/endpoints/(app)/api/searchFriend/_server.ts.js",
-    "imports": [
-      "_database.js",
-      "_index.js"
-    ],
+    "imports": ["_database.js", "_index.js"],
     "isEntry": true,
     "src": "src/routes/(app)/api/searchFriend/+server.ts"
   },
   "src/routes/(app)/api/searchUser/+server.ts": {
     "file": "entries/endpoints/(app)/api/searchUser/_server.ts.js",
-    "imports": [
-      "_database.js",
-      "_index.js"
-    ],
+    "imports": ["_database.js", "_index.js"],
     "isEntry": true,
     "src": "src/routes/(app)/api/searchUser/+server.ts"
   },
   "src/routes/(app)/chatrooms/+page.server.ts": {
     "file": "entries/pages/(app)/chatrooms/_page.server.ts.js",
-    "imports": [
-      "_database.js",
-      "_index.js"
-    ],
+    "imports": ["_database.js", "_index.js"],
     "isEntry": true,
     "src": "src/routes/(app)/chatrooms/+page.server.ts"
   },
   "src/routes/(app)/chatrooms/+page.svelte": {
     "file": "entries/pages/(app)/chatrooms/_page.svelte.js",
-    "imports": [
-      "_index3.js"
-    ],
+    "imports": ["_index3.js"],
     "isEntry": true,
     "src": "src/routes/(app)/chatrooms/+page.svelte"
   },
@@ -154,55 +110,38 @@
   },
   "src/routes/(app)/chatrooms/[slug]/+page.server.ts": {
     "file": "entries/pages/(app)/chatrooms/_slug_/_page.server.ts.js",
-    "imports": [
-      "_database.js",
-      "_index.js"
-    ],
+    "imports": ["_database.js", "_index.js"],
     "isEntry": true,
     "src": "src/routes/(app)/chatrooms/[slug]/+page.server.ts"
   },
   "src/routes/(app)/chatrooms/[slug]/+page.svelte": {
-    "css": [
-      "_app/immutable/assets/_page.81312968.css"
-    ],
+    "css": ["_app/immutable/assets/_page.81312968.css"],
     "file": "entries/pages/(app)/chatrooms/_slug_/_page.svelte.js",
-    "imports": [
-      "_index3.js"
-    ],
+    "imports": ["_index3.js"],
     "isEntry": true,
     "src": "src/routes/(app)/chatrooms/[slug]/+page.svelte"
   },
   "src/routes/(app)/chatrooms/[slug]/edit/+page.server.ts": {
     "file": "entries/pages/(app)/chatrooms/_slug_/edit/_page.server.ts.js",
-    "imports": [
-      "_database.js",
-      "_index.js"
-    ],
+    "imports": ["_database.js", "_index.js"],
     "isEntry": true,
     "src": "src/routes/(app)/chatrooms/[slug]/edit/+page.server.ts"
   },
   "src/routes/(app)/chatrooms/[slug]/edit/+page.svelte": {
     "file": "entries/pages/(app)/chatrooms/_slug_/edit/_page.svelte.js",
-    "imports": [
-      "_index3.js"
-    ],
+    "imports": ["_index3.js"],
     "isEntry": true,
     "src": "src/routes/(app)/chatrooms/[slug]/edit/+page.svelte"
   },
   "src/routes/(app)/chatrooms/create.backup/+page.server.ts": {
     "file": "entries/pages/(app)/chatrooms/create.backup/_page.server.ts.js",
-    "imports": [
-      "_database.js",
-      "_index.js"
-    ],
+    "imports": ["_database.js", "_index.js"],
     "isEntry": true,
     "src": "src/routes/(app)/chatrooms/create.backup/+page.server.ts"
   },
   "src/routes/(app)/chatrooms/create.backup/+page.svelte": {
     "file": "entries/pages/(app)/chatrooms/create.backup/_page.svelte.js",
-    "imports": [
-      "_index3.js"
-    ],
+    "imports": ["_index3.js"],
     "isEntry": true,
     "src": "src/routes/(app)/chatrooms/create.backup/+page.svelte"
   },
@@ -213,43 +152,31 @@
   },
   "src/routes/(app)/chatrooms/create/+page.svelte": {
     "file": "entries/pages/(app)/chatrooms/create/_page.svelte.js",
-    "imports": [
-      "_index3.js"
-    ],
+    "imports": ["_index3.js"],
     "isEntry": true,
     "src": "src/routes/(app)/chatrooms/create/+page.svelte"
   },
   "src/routes/(app)/directMessage/+layout.server.ts": {
     "file": "entries/pages/(app)/directMessage/_layout.server.ts.js",
-    "imports": [
-      "_database.js",
-      "_index.js"
-    ],
+    "imports": ["_database.js", "_index.js"],
     "isEntry": true,
     "src": "src/routes/(app)/directMessage/+layout.server.ts"
   },
   "src/routes/(app)/directMessage/+page.svelte": {
     "file": "entries/pages/(app)/directMessage/_page.svelte.js",
-    "imports": [
-      "_index3.js"
-    ],
+    "imports": ["_index3.js"],
     "isEntry": true,
     "src": "src/routes/(app)/directMessage/+page.svelte"
   },
   "src/routes/(app)/friends/+page.server.ts": {
     "file": "entries/pages/(app)/friends/_page.server.ts.js",
-    "imports": [
-      "_database.js",
-      "_index.js"
-    ],
+    "imports": ["_database.js", "_index.js"],
     "isEntry": true,
     "src": "src/routes/(app)/friends/+page.server.ts"
   },
   "src/routes/(app)/friends/+page.svelte": {
     "file": "entries/pages/(app)/friends/_page.svelte.js",
-    "imports": [
-      "_index3.js"
-    ],
+    "imports": ["_index3.js"],
     "isEntry": true,
     "src": "src/routes/(app)/friends/+page.svelte"
   },
@@ -259,21 +186,14 @@
   },
   "src/routes/(app)/globalChat/+page.server.ts": {
     "file": "entries/pages/(app)/globalChat/_page.server.ts.js",
-    "imports": [
-      "_database.js",
-      "_index.js"
-    ],
+    "imports": ["_database.js", "_index.js"],
     "isEntry": true,
     "src": "src/routes/(app)/globalChat/+page.server.ts"
   },
   "src/routes/(app)/globalChat/+page.svelte": {
-    "css": [
-      "_app/immutable/assets/_page.81312968.css"
-    ],
+    "css": ["_app/immutable/assets/_page.81312968.css"],
     "file": "entries/pages/(app)/globalChat/_page.svelte.js",
-    "imports": [
-      "_index3.js"
-    ],
+    "imports": ["_index3.js"],
     "isEntry": true,
     "src": "src/routes/(app)/globalChat/+page.svelte"
   },
@@ -283,21 +203,14 @@
   },
   "src/routes/(app)/notifications/+page.server.ts": {
     "file": "entries/pages/(app)/notifications/_page.server.ts.js",
-    "imports": [
-      "_database.js",
-      "_index.js"
-    ],
+    "imports": ["_database.js", "_index.js"],
     "isEntry": true,
     "src": "src/routes/(app)/notifications/+page.server.ts"
   },
   "src/routes/(app)/notifications/+page.svelte": {
-    "css": [
-      "_app/immutable/assets/_page.a6a2f9f0.css"
-    ],
+    "css": ["_app/immutable/assets/_page.a6a2f9f0.css"],
     "file": "entries/pages/(app)/notifications/_page.svelte.js",
-    "imports": [
-      "_index3.js"
-    ],
+    "imports": ["_index3.js"],
     "isEntry": true,
     "src": "src/routes/(app)/notifications/+page.svelte"
   },
@@ -307,38 +220,26 @@
   },
   "src/routes/(app)/notifications/[slug]/+page.server.ts": {
     "file": "entries/pages/(app)/notifications/_slug_/_page.server.ts.js",
-    "imports": [
-      "_database.js",
-      "_index.js"
-    ],
+    "imports": ["_database.js", "_index.js"],
     "isEntry": true,
     "src": "src/routes/(app)/notifications/[slug]/+page.server.ts"
   },
   "src/routes/(app)/notifications/[slug]/+page.svelte": {
-    "css": [
-      "_app/immutable/assets/_page.9218ae43.css"
-    ],
+    "css": ["_app/immutable/assets/_page.9218ae43.css"],
     "file": "entries/pages/(app)/notifications/_slug_/_page.svelte.js",
-    "imports": [
-      "_index3.js"
-    ],
+    "imports": ["_index3.js"],
     "isEntry": true,
     "src": "src/routes/(app)/notifications/[slug]/+page.svelte"
   },
   "src/routes/(app)/sendNot/+page.server.ts": {
     "file": "entries/pages/(app)/sendNot/_page.server.ts.js",
-    "imports": [
-      "_database.js",
-      "_index.js"
-    ],
+    "imports": ["_database.js", "_index.js"],
     "isEntry": true,
     "src": "src/routes/(app)/sendNot/+page.server.ts"
   },
   "src/routes/(app)/sendNot/+page.svelte": {
     "file": "entries/pages/(app)/sendNot/_page.svelte.js",
-    "imports": [
-      "_index3.js"
-    ],
+    "imports": ["_index3.js"],
     "isEntry": true,
     "src": "src/routes/(app)/sendNot/+page.svelte"
   },
@@ -348,65 +249,44 @@
   },
   "src/routes/(app)/settings/+page.server.ts": {
     "file": "entries/pages/(app)/settings/_page.server.ts.js",
-    "imports": [
-      "_database.js",
-      "_index.js"
-    ],
+    "imports": ["_database.js", "_index.js"],
     "isEntry": true,
     "src": "src/routes/(app)/settings/+page.server.ts"
   },
   "src/routes/(app)/settings/+page.svelte": {
-    "css": [
-      "_app/immutable/assets/_page.5073478e.css"
-    ],
+    "css": ["_app/immutable/assets/_page.5073478e.css"],
     "file": "entries/pages/(app)/settings/_page.svelte.js",
-    "imports": [
-      "_index3.js"
-    ],
+    "imports": ["_index3.js"],
     "isEntry": true,
     "src": "src/routes/(app)/settings/+page.svelte"
   },
   "src/routes/(auth)/login/+page.server.ts": {
     "file": "entries/pages/(auth)/login/_page.server.ts.js",
-    "imports": [
-      "_index.js",
-      "_database.js"
-    ],
+    "imports": ["_index.js", "_database.js"],
     "isEntry": true,
     "src": "src/routes/(auth)/login/+page.server.ts"
   },
   "src/routes/(auth)/login/+page.svelte": {
     "file": "entries/pages/(auth)/login/_page.svelte.js",
-    "imports": [
-      "_index3.js",
-      "_Alert.js"
-    ],
+    "imports": ["_index3.js", "_Alert.js"],
     "isEntry": true,
     "src": "src/routes/(auth)/login/+page.svelte"
   },
   "src/routes/(auth)/logout/+page.server.ts": {
     "file": "entries/pages/(auth)/logout/_page.server.ts.js",
-    "imports": [
-      "_index.js"
-    ],
+    "imports": ["_index.js"],
     "isEntry": true,
     "src": "src/routes/(auth)/logout/+page.server.ts"
   },
   "src/routes/(auth)/register/+page.server.ts": {
     "file": "entries/pages/(auth)/register/_page.server.ts.js",
-    "imports": [
-      "_index.js",
-      "_database.js"
-    ],
+    "imports": ["_index.js", "_database.js"],
     "isEntry": true,
     "src": "src/routes/(auth)/register/+page.server.ts"
   },
   "src/routes/(auth)/register/+page.svelte": {
     "file": "entries/pages/(auth)/register/_page.svelte.js",
-    "imports": [
-      "_index3.js",
-      "_Alert.js"
-    ],
+    "imports": ["_index3.js", "_Alert.js"],
     "isEntry": true,
     "src": "src/routes/(auth)/register/+page.svelte"
   },
@@ -420,13 +300,9 @@
     "src": "src/routes/+layout.server.ts"
   },
   "src/routes/+layout.svelte": {
-    "css": [
-      "_app/immutable/assets/_layout.cb6a6307.css"
-    ],
+    "css": ["_app/immutable/assets/_layout.cb6a6307.css"],
     "file": "entries/pages/_layout.svelte.js",
-    "imports": [
-      "_index3.js"
-    ],
+    "imports": ["_index3.js"],
     "isEntry": true,
     "src": "src/routes/+layout.svelte"
   }

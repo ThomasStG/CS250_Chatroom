@@ -6,6 +6,4 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     <input type="text" name="sender" id="sender" placeholder="Sender Name">
     <button type="submit" class="item">send</button></form></div>`;
 });
-export {
-  Page as default
-};
+export { Page as default };

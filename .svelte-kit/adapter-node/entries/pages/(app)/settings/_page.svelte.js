@@ -2,7 +2,7 @@ import { c as create_ssr_component } from "../../../../chunks/index3.js";
 const _page_svelte_svelte_type_style_lang = "";
 const css = {
   code: ".input.svelte-q4yqv2{width:10vw}.setting-item.svelte-q4yqv2{display:flex;align-items:center;gap:5px;padding-bottom:1%}.item.svelte-q4yqv2{margin-right:10px}.setting-item.svelte-q4yqv2:last-child{margin-right:0px}.settings.svelte-q4yqv2{justify-content:space-around;gap:5px}.hidden.svelte-q4yqv2{display:none}",
-  map: null
+  map: null,
 };
 const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   $$result.css.add(css);
@@ -23,6 +23,4 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
           </button></form></div></form></div>
 </div>`;
 });
-export {
-  Page as default
-};
+export { Page as default };

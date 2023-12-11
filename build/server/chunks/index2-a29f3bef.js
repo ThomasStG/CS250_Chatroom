@@ -1,9 +1,9 @@
-import { f as noop, h as safe_not_equal } from './index3-09a7cb96.js';
+import { f as noop, h as safe_not_equal } from "./index3-09a7cb96.js";
 
 const subscriber_queue = [];
 function readable(value, start) {
   return {
-    subscribe: writable(value, start).subscribe
+    subscribe: writable(value, start).subscribe,
   };
 }
 function writable(value, start = noop) {

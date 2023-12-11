@@ -4,16 +4,14 @@ import prisma from "$lib/database";
 import { fail, json, redirect } from "@sveltejs/kit";
 
 export const load = async ({ params, locals }: Parameters<PageServerLoad>[0]) => {
-    const userId = locals.user?.id; // Get the userId from the locals object
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
-    });
-    if (!user || user.id != 1) {
-      throw redirect(302, "/");
-    }
+  const userId = locals.user?.id; // Get the userId from the locals object
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+  });
+  if (!user || user.id != 1) {
+    throw redirect(302, "/");
+  }
 };
-
-
 
 export const actions = {
   search: async ({ request }: import('./$types').RequestEvent) => {

@@ -1,6 +1,18 @@
-import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component } from './chunks/index3-09a7cb96.js';
-import { e as error, j as json, t as text, R as Redirect, H as HttpError, A as ActionFailure } from './chunks/index-0087e825.js';
-import { w as writable, r as readable } from './chunks/index2-a29f3bef.js';
+import {
+  c as create_ssr_component,
+  s as setContext,
+  v as validate_component,
+  m as missing_component,
+} from "./chunks/index3-09a7cb96.js";
+import {
+  e as error,
+  j as json,
+  t as text,
+  R as Redirect,
+  H as HttpError,
+  A as ActionFailure,
+} from "./chunks/index-0087e825.js";
+import { w as writable, r as readable } from "./chunks/index2-a29f3bef.js";
 
 let base = "";
 let assets = base;
@@ -10,13 +22,11 @@ function reset() {
   assets = initial.assets;
 }
 let public_env = {};
-function set_private_env(environment) {
-}
+function set_private_env(environment) {}
 function set_public_env(environment) {
   public_env = environment;
 }
-function afterUpdate() {
-}
+function afterUpdate() {}
 const Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { stores } = $$props;
   let { page } = $$props;
@@ -35,9 +45,17 @@ const Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     $$bindings.stores(stores);
   if ($$props.page === void 0 && $$bindings.page && page !== void 0)
     $$bindings.page(page);
-  if ($$props.constructors === void 0 && $$bindings.constructors && constructors !== void 0)
+  if (
+    $$props.constructors === void 0 &&
+    $$bindings.constructors &&
+    constructors !== void 0
+  )
     $$bindings.constructors(constructors);
-  if ($$props.components === void 0 && $$bindings.components && components !== void 0)
+  if (
+    $$props.components === void 0 &&
+    $$bindings.components &&
+    components !== void 0
+  )
     $$bindings.components(components);
   if ($$props.form === void 0 && $$bindings.form && form !== void 0)
     $$bindings.form(form);
@@ -59,89 +77,126 @@ const Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     $$rendered = `
 
 
-${constructors[1] ? `${validate_component(constructors[0] || missing_component, "svelte:component").$$render(
-      $$result,
-      { data: data_0, this: components[0] },
-      {
-        this: ($$value) => {
-          components[0] = $$value;
-          $$settled = false;
-        }
-      },
-      {
-        default: () => {
-          return `${constructors[2] ? `${validate_component(constructors[1] || missing_component, "svelte:component").$$render(
-            $$result,
-            { data: data_1, this: components[1] },
-            {
-              this: ($$value) => {
-                components[1] = $$value;
-                $$settled = false;
-              }
-            },
-            {
-              default: () => {
-                return `${constructors[3] ? `${validate_component(constructors[2] || missing_component, "svelte:component").$$render(
-                  $$result,
-                  { data: data_2, this: components[2] },
-                  {
-                    this: ($$value) => {
-                      components[2] = $$value;
-                      $$settled = false;
+${
+  constructors[1]
+    ? `${validate_component(
+        constructors[0] || missing_component,
+        "svelte:component"
+      ).$$render(
+        $$result,
+        { data: data_0, this: components[0] },
+        {
+          this: ($$value) => {
+            components[0] = $$value;
+            $$settled = false;
+          },
+        },
+        {
+          default: () => {
+            return `${
+              constructors[2]
+                ? `${validate_component(
+                    constructors[1] || missing_component,
+                    "svelte:component"
+                  ).$$render(
+                    $$result,
+                    { data: data_1, this: components[1] },
+                    {
+                      this: ($$value) => {
+                        components[1] = $$value;
+                        $$settled = false;
+                      },
+                    },
+                    {
+                      default: () => {
+                        return `${
+                          constructors[3]
+                            ? `${validate_component(
+                                constructors[2] || missing_component,
+                                "svelte:component"
+                              ).$$render(
+                                $$result,
+                                { data: data_2, this: components[2] },
+                                {
+                                  this: ($$value) => {
+                                    components[2] = $$value;
+                                    $$settled = false;
+                                  },
+                                },
+                                {
+                                  default: () => {
+                                    return `${validate_component(
+                                      constructors[3] || missing_component,
+                                      "svelte:component"
+                                    ).$$render(
+                                      $$result,
+                                      {
+                                        data: data_3,
+                                        form,
+                                        this: components[3],
+                                      },
+                                      {
+                                        this: ($$value) => {
+                                          components[3] = $$value;
+                                          $$settled = false;
+                                        },
+                                      },
+                                      {}
+                                    )}`;
+                                  },
+                                }
+                              )}`
+                            : `${validate_component(
+                                constructors[2] || missing_component,
+                                "svelte:component"
+                              ).$$render(
+                                $$result,
+                                { data: data_2, form, this: components[2] },
+                                {
+                                  this: ($$value) => {
+                                    components[2] = $$value;
+                                    $$settled = false;
+                                  },
+                                },
+                                {}
+                              )}`
+                        }`;
+                      },
                     }
-                  },
-                  {
-                    default: () => {
-                      return `${validate_component(constructors[3] || missing_component, "svelte:component").$$render(
-                        $$result,
-                        { data: data_3, form, this: components[3] },
-                        {
-                          this: ($$value) => {
-                            components[3] = $$value;
-                            $$settled = false;
-                          }
-                        },
-                        {}
-                      )}`;
-                    }
-                  }
-                )}` : `${validate_component(constructors[2] || missing_component, "svelte:component").$$render(
-                  $$result,
-                  { data: data_2, form, this: components[2] },
-                  {
-                    this: ($$value) => {
-                      components[2] = $$value;
-                      $$settled = false;
-                    }
-                  },
-                  {}
-                )}`}`;
-              }
-            }
-          )}` : `${validate_component(constructors[1] || missing_component, "svelte:component").$$render(
-            $$result,
-            { data: data_1, form, this: components[1] },
-            {
-              this: ($$value) => {
-                components[1] = $$value;
-                $$settled = false;
-              }
-            },
-            {}
-          )}`}`;
+                  )}`
+                : `${validate_component(
+                    constructors[1] || missing_component,
+                    "svelte:component"
+                  ).$$render(
+                    $$result,
+                    { data: data_1, form, this: components[1] },
+                    {
+                      this: ($$value) => {
+                        components[1] = $$value;
+                        $$settled = false;
+                      },
+                    },
+                    {}
+                  )}`
+            }`;
+          },
         }
-      }
-    )}` : `${validate_component(constructors[0] || missing_component, "svelte:component").$$render(
-      $$result,
-      { data: data_0, form, this: components[0] },
-      {
-        this: ($$value) => {
-          components[0] = $$value;
-          $$settled = false;
-        }
-      },
-      {}
-    )}`}
+      )}`
+    : `${validate_component(
+        constructors[0] || missing_component,
+        "svelte:component"
+      ).$$render(
+        $$result,
+        { data: data_0, form, this: components[0] },
+        {
+          this: ($$value) => {
+            components[0] = $$value;
+            $$settled = false;
+          },
+        },
+        {}
+      )}`
+}
 
 ${``}`;
   } while (!$$settled);
@@ -149,7 +204,17 @@ ${``}`;
 });
 const options = {
   app_template_contains_nonce: false,
-  csp: { "mode": "auto", "directives": { "upgrade-insecure-requests": false, "block-all-mixed-content": false }, "reportOnly": { "upgrade-insecure-requests": false, "block-all-mixed-content": false } },
+  csp: {
+    mode: "auto",
+    directives: {
+      "upgrade-insecure-requests": false,
+      "block-all-mixed-content": false,
+    },
+    reportOnly: {
+      "upgrade-insecure-requests": false,
+      "block-all-mixed-content": false,
+    },
+  },
   csrf_check_origin: true,
   track_server_fetches: false,
   embedded: false,
@@ -161,8 +226,18 @@ const options = {
   root: Root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\n\n<html lang="en"class="dark">\n  <head>\n    <meta charset="utf-8" />\n    <link rel="icon" href="' + assets2 + '/favicon.png" />\n    <meta name="viewport" content="width=device-width" />\n    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />\n    ' + head + '\n  </head>\n\n  <body id="docbody" class="dark:style-light">\n    <div>' + body + "</div>\n  </body>\n</html>\n",
-    error: ({ status, message }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
+    app: ({ head, body, assets: assets2, nonce, env }) =>
+      '<!DOCTYPE html>\n\n<html lang="en"class="dark">\n  <head>\n    <meta charset="utf-8" />\n    <link rel="icon" href="' +
+      assets2 +
+      '/favicon.png" />\n    <meta name="viewport" content="width=device-width" />\n    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />\n    ' +
+      head +
+      '\n  </head>\n\n  <body id="docbody" class="dark:style-light">\n    <div>' +
+      body +
+      "</div>\n  </body>\n</html>\n",
+    error: ({ status, message }) =>
+      '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' +
+      message +
+      `</title>
 
 		<style>
 			body {
@@ -221,118 +296,122 @@ const options = {
 	</head>
 	<body>
 		<div class="error">
-			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
+			<span class="status">` +
+      status +
+      '</span>\n			<div class="message">\n				<h1>' +
+      message +
+      "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n",
   },
-  version_hash: "8hg0eq"
+  version_hash: "8hg0eq",
 };
 function get_hooks() {
-  return import('./chunks/hooks.server-a099c872.js');
+  return import("./chunks/hooks.server-a099c872.js");
 }
 
 /** @type {Record<string, string>} */
 const escaped = {
-	'<': '\\u003C',
-	'\\': '\\\\',
-	'\b': '\\b',
-	'\f': '\\f',
-	'\n': '\\n',
-	'\r': '\\r',
-	'\t': '\\t',
-	'\u2028': '\\u2028',
-	'\u2029': '\\u2029'
+  "<": "\\u003C",
+  "\\": "\\\\",
+  "\b": "\\b",
+  "\f": "\\f",
+  "\n": "\\n",
+  "\r": "\\r",
+  "\t": "\\t",
+  "\u2028": "\\u2028",
+  "\u2029": "\\u2029",
 };
 
 class DevalueError extends Error {
-	/**
-	 * @param {string} message
-	 * @param {string[]} keys
-	 */
-	constructor(message, keys) {
-		super(message);
-		this.name = 'DevalueError';
-		this.path = keys.join('');
-	}
+  /**
+   * @param {string} message
+   * @param {string[]} keys
+   */
+  constructor(message, keys) {
+    super(message);
+    this.name = "DevalueError";
+    this.path = keys.join("");
+  }
 }
 
 /** @param {any} thing */
 function is_primitive(thing) {
-	return Object(thing) !== thing;
+  return Object(thing) !== thing;
 }
 
 const object_proto_names = /* @__PURE__ */ Object.getOwnPropertyNames(
-	Object.prototype
+  Object.prototype
 )
-	.sort()
-	.join('\0');
+  .sort()
+  .join("\0");
 
 /** @param {any} thing */
 function is_plain_object(thing) {
-	const proto = Object.getPrototypeOf(thing);
+  const proto = Object.getPrototypeOf(thing);
 
-	return (
-		proto === Object.prototype ||
-		proto === null ||
-		Object.getOwnPropertyNames(proto).sort().join('\0') === object_proto_names
-	);
+  return (
+    proto === Object.prototype ||
+    proto === null ||
+    Object.getOwnPropertyNames(proto).sort().join("\0") === object_proto_names
+  );
 }
 
 /** @param {any} thing */
 function get_type(thing) {
-	return Object.prototype.toString.call(thing).slice(8, -1);
+  return Object.prototype.toString.call(thing).slice(8, -1);
 }
 
 /** @param {string} char */
 function get_escaped_char(char) {
-	switch (char) {
-		case '"':
-			return '\\"';
-		case '<':
-			return '\\u003C';
-		case '\\':
-			return '\\\\';
-		case '\n':
-			return '\\n';
-		case '\r':
-			return '\\r';
-		case '\t':
-			return '\\t';
-		case '\b':
-			return '\\b';
-		case '\f':
-			return '\\f';
-		case '\u2028':
-			return '\\u2028';
-		case '\u2029':
-			return '\\u2029';
-		default:
-			return char < ' '
-				? `\\u${char.charCodeAt(0).toString(16).padStart(4, '0')}`
-				: '';
-	}
+  switch (char) {
+    case '"':
+      return '\\"';
+    case "<":
+      return "\\u003C";
+    case "\\":
+      return "\\\\";
+    case "\n":
+      return "\\n";
+    case "\r":
+      return "\\r";
+    case "\t":
+      return "\\t";
+    case "\b":
+      return "\\b";
+    case "\f":
+      return "\\f";
+    case "\u2028":
+      return "\\u2028";
+    case "\u2029":
+      return "\\u2029";
+    default:
+      return char < " "
+        ? `\\u${char.charCodeAt(0).toString(16).padStart(4, "0")}`
+        : "";
+  }
 }
 
 /** @param {string} str */
 function stringify_string(str) {
-	let result = '';
-	let last_pos = 0;
-	const len = str.length;
+  let result = "";
+  let last_pos = 0;
+  const len = str.length;
 
-	for (let i = 0; i < len; i += 1) {
-		const char = str[i];
-		const replacement = get_escaped_char(char);
-		if (replacement) {
-			result += str.slice(last_pos, i) + replacement;
-			last_pos = i + 1;
-		}
-	}
+  for (let i = 0; i < len; i += 1) {
+    const char = str[i];
+    const replacement = get_escaped_char(char);
+    if (replacement) {
+      result += str.slice(last_pos, i) + replacement;
+      last_pos = i + 1;
+    }
+  }
 
-	return `"${last_pos === 0 ? str : result + str.slice(last_pos)}"`;
+  return `"${last_pos === 0 ? str : result + str.slice(last_pos)}"`;
 }
 
-const chars$1 = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_$';
+const chars$1 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_$";
 const unsafe_chars = /[<\b\f\n\r\t\0\u2028\u2029]/g;
 const reserved =
-	/^(?:do|if|in|for|int|let|new|try|var|byte|case|char|else|enum|goto|long|this|void|with|await|break|catch|class|const|final|float|short|super|throw|while|yield|delete|double|export|import|native|return|switch|throws|typeof|boolean|default|extends|finally|package|private|abstract|continue|debugger|function|volatile|interface|protected|transient|implements|instanceof|synchronized)$/;
+  /^(?:do|if|in|for|int|let|new|try|var|byte|case|char|else|enum|goto|long|this|void|with|await|break|catch|class|const|final|float|short|super|throw|while|yield|delete|double|export|import|native|return|switch|throws|typeof|boolean|default|extends|finally|package|private|abstract|continue|debugger|function|volatile|interface|protected|transient|implements|instanceof|synchronized)$/;
 
 /**
  * Turn a value into the JavaScript that creates an equivalent value
@@ -340,297 +419,297 @@ const reserved =
  * @param {(value: any) => string | void} [replacer]
  */
 function uneval(value, replacer) {
-	const counts = new Map();
+  const counts = new Map();
 
-	/** @type {string[]} */
-	const keys = [];
+  /** @type {string[]} */
+  const keys = [];
 
-	const custom = new Map();
+  const custom = new Map();
 
-	/** @param {any} thing */
-	function walk(thing) {
-		if (typeof thing === 'function') {
-			throw new DevalueError(`Cannot stringify a function`, keys);
-		}
+  /** @param {any} thing */
+  function walk(thing) {
+    if (typeof thing === "function") {
+      throw new DevalueError(`Cannot stringify a function`, keys);
+    }
 
-		if (!is_primitive(thing)) {
-			if (counts.has(thing)) {
-				counts.set(thing, counts.get(thing) + 1);
-				return;
-			}
+    if (!is_primitive(thing)) {
+      if (counts.has(thing)) {
+        counts.set(thing, counts.get(thing) + 1);
+        return;
+      }
 
-			counts.set(thing, 1);
+      counts.set(thing, 1);
 
-			if (replacer) {
-				const str = replacer(thing);
+      if (replacer) {
+        const str = replacer(thing);
 
-				if (typeof str === 'string') {
-					custom.set(thing, str);
-					return;
-				}
-			}
+        if (typeof str === "string") {
+          custom.set(thing, str);
+          return;
+        }
+      }
 
-			const type = get_type(thing);
+      const type = get_type(thing);
 
-			switch (type) {
-				case 'Number':
-				case 'BigInt':
-				case 'String':
-				case 'Boolean':
-				case 'Date':
-				case 'RegExp':
-					return;
+      switch (type) {
+        case "Number":
+        case "BigInt":
+        case "String":
+        case "Boolean":
+        case "Date":
+        case "RegExp":
+          return;
 
-				case 'Array':
-					/** @type {any[]} */ (thing).forEach((value, i) => {
-						keys.push(`[${i}]`);
-						walk(value);
-						keys.pop();
-					});
-					break;
+        case "Array":
+          /** @type {any[]} */ (thing).forEach((value, i) => {
+            keys.push(`[${i}]`);
+            walk(value);
+            keys.pop();
+          });
+          break;
 
-				case 'Set':
-					Array.from(thing).forEach(walk);
-					break;
+        case "Set":
+          Array.from(thing).forEach(walk);
+          break;
 
-				case 'Map':
-					for (const [key, value] of thing) {
-						keys.push(
-							`.get(${is_primitive(key) ? stringify_primitive$1(key) : '...'})`
-						);
-						walk(value);
-						keys.pop();
-					}
-					break;
+        case "Map":
+          for (const [key, value] of thing) {
+            keys.push(
+              `.get(${is_primitive(key) ? stringify_primitive$1(key) : "..."})`
+            );
+            walk(value);
+            keys.pop();
+          }
+          break;
 
-				default:
-					if (!is_plain_object(thing)) {
-						throw new DevalueError(
-							`Cannot stringify arbitrary non-POJOs`,
-							keys
-						);
-					}
+        default:
+          if (!is_plain_object(thing)) {
+            throw new DevalueError(
+              `Cannot stringify arbitrary non-POJOs`,
+              keys
+            );
+          }
 
-					if (Object.getOwnPropertySymbols(thing).length > 0) {
-						throw new DevalueError(
-							`Cannot stringify POJOs with symbolic keys`,
-							keys
-						);
-					}
+          if (Object.getOwnPropertySymbols(thing).length > 0) {
+            throw new DevalueError(
+              `Cannot stringify POJOs with symbolic keys`,
+              keys
+            );
+          }
 
-					for (const key in thing) {
-						keys.push(`.${key}`);
-						walk(thing[key]);
-						keys.pop();
-					}
-			}
-		}
-	}
+          for (const key in thing) {
+            keys.push(`.${key}`);
+            walk(thing[key]);
+            keys.pop();
+          }
+      }
+    }
+  }
 
-	walk(value);
+  walk(value);
 
-	const names = new Map();
+  const names = new Map();
 
-	Array.from(counts)
-		.filter((entry) => entry[1] > 1)
-		.sort((a, b) => b[1] - a[1])
-		.forEach((entry, i) => {
-			names.set(entry[0], get_name(i));
-		});
+  Array.from(counts)
+    .filter((entry) => entry[1] > 1)
+    .sort((a, b) => b[1] - a[1])
+    .forEach((entry, i) => {
+      names.set(entry[0], get_name(i));
+    });
 
-	/**
-	 * @param {any} thing
-	 * @returns {string}
-	 */
-	function stringify(thing) {
-		if (names.has(thing)) {
-			return names.get(thing);
-		}
+  /**
+   * @param {any} thing
+   * @returns {string}
+   */
+  function stringify(thing) {
+    if (names.has(thing)) {
+      return names.get(thing);
+    }
 
-		if (is_primitive(thing)) {
-			return stringify_primitive$1(thing);
-		}
+    if (is_primitive(thing)) {
+      return stringify_primitive$1(thing);
+    }
 
-		if (custom.has(thing)) {
-			return custom.get(thing);
-		}
+    if (custom.has(thing)) {
+      return custom.get(thing);
+    }
 
-		const type = get_type(thing);
+    const type = get_type(thing);
 
-		switch (type) {
-			case 'Number':
-			case 'String':
-			case 'Boolean':
-				return `Object(${stringify(thing.valueOf())})`;
+    switch (type) {
+      case "Number":
+      case "String":
+      case "Boolean":
+        return `Object(${stringify(thing.valueOf())})`;
 
-			case 'RegExp':
-				return `new RegExp(${stringify_string(thing.source)}, "${
-					thing.flags
-				}")`;
+      case "RegExp":
+        return `new RegExp(${stringify_string(thing.source)}, "${
+          thing.flags
+        }")`;
 
-			case 'Date':
-				return `new Date(${thing.getTime()})`;
+      case "Date":
+        return `new Date(${thing.getTime()})`;
 
-			case 'Array':
-				const members = /** @type {any[]} */ (thing).map((v, i) =>
-					i in thing ? stringify(v) : ''
-				);
-				const tail = thing.length === 0 || thing.length - 1 in thing ? '' : ',';
-				return `[${members.join(',')}${tail}]`;
+      case "Array":
+        const members = /** @type {any[]} */ (thing).map((v, i) =>
+          i in thing ? stringify(v) : ""
+        );
+        const tail = thing.length === 0 || thing.length - 1 in thing ? "" : ",";
+        return `[${members.join(",")}${tail}]`;
 
-			case 'Set':
-			case 'Map':
-				return `new ${type}([${Array.from(thing).map(stringify).join(',')}])`;
+      case "Set":
+      case "Map":
+        return `new ${type}([${Array.from(thing).map(stringify).join(",")}])`;
 
-			default:
-				const obj = `{${Object.keys(thing)
-					.map((key) => `${safe_key(key)}:${stringify(thing[key])}`)
-					.join(',')}}`;
-				const proto = Object.getPrototypeOf(thing);
-				if (proto === null) {
-					return Object.keys(thing).length > 0
-						? `Object.assign(Object.create(null),${obj})`
-						: `Object.create(null)`;
-				}
+      default:
+        const obj = `{${Object.keys(thing)
+          .map((key) => `${safe_key(key)}:${stringify(thing[key])}`)
+          .join(",")}}`;
+        const proto = Object.getPrototypeOf(thing);
+        if (proto === null) {
+          return Object.keys(thing).length > 0
+            ? `Object.assign(Object.create(null),${obj})`
+            : `Object.create(null)`;
+        }
 
-				return obj;
-		}
-	}
+        return obj;
+    }
+  }
 
-	const str = stringify(value);
+  const str = stringify(value);
 
-	if (names.size) {
-		/** @type {string[]} */
-		const params = [];
+  if (names.size) {
+    /** @type {string[]} */
+    const params = [];
 
-		/** @type {string[]} */
-		const statements = [];
+    /** @type {string[]} */
+    const statements = [];
 
-		/** @type {string[]} */
-		const values = [];
+    /** @type {string[]} */
+    const values = [];
 
-		names.forEach((name, thing) => {
-			params.push(name);
+    names.forEach((name, thing) => {
+      params.push(name);
 
-			if (custom.has(thing)) {
-				values.push(/** @type {string} */ (custom.get(thing)));
-				return;
-			}
+      if (custom.has(thing)) {
+        values.push(/** @type {string} */ (custom.get(thing)));
+        return;
+      }
 
-			if (is_primitive(thing)) {
-				values.push(stringify_primitive$1(thing));
-				return;
-			}
+      if (is_primitive(thing)) {
+        values.push(stringify_primitive$1(thing));
+        return;
+      }
 
-			const type = get_type(thing);
+      const type = get_type(thing);
 
-			switch (type) {
-				case 'Number':
-				case 'String':
-				case 'Boolean':
-					values.push(`Object(${stringify(thing.valueOf())})`);
-					break;
+      switch (type) {
+        case "Number":
+        case "String":
+        case "Boolean":
+          values.push(`Object(${stringify(thing.valueOf())})`);
+          break;
 
-				case 'RegExp':
-					values.push(thing.toString());
-					break;
+        case "RegExp":
+          values.push(thing.toString());
+          break;
 
-				case 'Date':
-					values.push(`new Date(${thing.getTime()})`);
-					break;
+        case "Date":
+          values.push(`new Date(${thing.getTime()})`);
+          break;
 
-				case 'Array':
-					values.push(`Array(${thing.length})`);
-					/** @type {any[]} */ (thing).forEach((v, i) => {
-						statements.push(`${name}[${i}]=${stringify(v)}`);
-					});
-					break;
+        case "Array":
+          values.push(`Array(${thing.length})`);
+          /** @type {any[]} */ (thing).forEach((v, i) => {
+            statements.push(`${name}[${i}]=${stringify(v)}`);
+          });
+          break;
 
-				case 'Set':
-					values.push(`new Set`);
-					statements.push(
-						`${name}.${Array.from(thing)
-							.map((v) => `add(${stringify(v)})`)
-							.join('.')}`
-					);
-					break;
+        case "Set":
+          values.push(`new Set`);
+          statements.push(
+            `${name}.${Array.from(thing)
+              .map((v) => `add(${stringify(v)})`)
+              .join(".")}`
+          );
+          break;
 
-				case 'Map':
-					values.push(`new Map`);
-					statements.push(
-						`${name}.${Array.from(thing)
-							.map(([k, v]) => `set(${stringify(k)}, ${stringify(v)})`)
-							.join('.')}`
-					);
-					break;
+        case "Map":
+          values.push(`new Map`);
+          statements.push(
+            `${name}.${Array.from(thing)
+              .map(([k, v]) => `set(${stringify(k)}, ${stringify(v)})`)
+              .join(".")}`
+          );
+          break;
 
-				default:
-					values.push(
-						Object.getPrototypeOf(thing) === null ? 'Object.create(null)' : '{}'
-					);
-					Object.keys(thing).forEach((key) => {
-						statements.push(
-							`${name}${safe_prop(key)}=${stringify(thing[key])}`
-						);
-					});
-			}
-		});
+        default:
+          values.push(
+            Object.getPrototypeOf(thing) === null ? "Object.create(null)" : "{}"
+          );
+          Object.keys(thing).forEach((key) => {
+            statements.push(
+              `${name}${safe_prop(key)}=${stringify(thing[key])}`
+            );
+          });
+      }
+    });
 
-		statements.push(`return ${str}`);
+    statements.push(`return ${str}`);
 
-		return `(function(${params.join(',')}){${statements.join(
-			';'
-		)}}(${values.join(',')}))`;
-	} else {
-		return str;
-	}
+    return `(function(${params.join(",")}){${statements.join(
+      ";"
+    )}}(${values.join(",")}))`;
+  } else {
+    return str;
+  }
 }
 
 /** @param {number} num */
 function get_name(num) {
-	let name = '';
+  let name = "";
 
-	do {
-		name = chars$1[num % chars$1.length] + name;
-		num = ~~(num / chars$1.length) - 1;
-	} while (num >= 0);
+  do {
+    name = chars$1[num % chars$1.length] + name;
+    num = ~~(num / chars$1.length) - 1;
+  } while (num >= 0);
 
-	return reserved.test(name) ? `${name}0` : name;
+  return reserved.test(name) ? `${name}0` : name;
 }
 
 /** @param {string} c */
 function escape_unsafe_char(c) {
-	return escaped[c] || c;
+  return escaped[c] || c;
 }
 
 /** @param {string} str */
 function escape_unsafe_chars(str) {
-	return str.replace(unsafe_chars, escape_unsafe_char);
+  return str.replace(unsafe_chars, escape_unsafe_char);
 }
 
 /** @param {string} key */
 function safe_key(key) {
-	return /^[_$a-zA-Z][_$a-zA-Z0-9]*$/.test(key)
-		? key
-		: escape_unsafe_chars(JSON.stringify(key));
+  return /^[_$a-zA-Z][_$a-zA-Z0-9]*$/.test(key)
+    ? key
+    : escape_unsafe_chars(JSON.stringify(key));
 }
 
 /** @param {string} key */
 function safe_prop(key) {
-	return /^[_$a-zA-Z][_$a-zA-Z0-9]*$/.test(key)
-		? `.${key}`
-		: `[${escape_unsafe_chars(JSON.stringify(key))}]`;
+  return /^[_$a-zA-Z][_$a-zA-Z0-9]*$/.test(key)
+    ? `.${key}`
+    : `[${escape_unsafe_chars(JSON.stringify(key))}]`;
 }
 
 /** @param {any} thing */
 function stringify_primitive$1(thing) {
-	if (typeof thing === 'string') return stringify_string(thing);
-	if (thing === void 0) return 'void 0';
-	if (thing === 0 && 1 / thing < 0) return '-0';
-	const str = String(thing);
-	if (typeof thing === 'number') return str.replace(/^(-)?0\./, '$1.');
-	if (typeof thing === 'bigint') return thing + 'n';
-	return str;
+  if (typeof thing === "string") return stringify_string(thing);
+  if (thing === void 0) return "void 0";
+  if (thing === 0 && 1 / thing < 0) return "-0";
+  const str = String(thing);
+  if (typeof thing === "number") return str.replace(/^(-)?0\./, "$1.");
+  if (typeof thing === "bigint") return thing + "n";
+  return str;
 }
 
 const UNDEFINED = -1;
@@ -646,167 +725,167 @@ const NEGATIVE_ZERO = -6;
  * @param {Record<string, (value: any) => any>} [reducers]
  */
 function stringify(value, reducers) {
-	/** @type {any[]} */
-	const stringified = [];
+  /** @type {any[]} */
+  const stringified = [];
 
-	/** @type {Map<any, number>} */
-	const indexes = new Map();
+  /** @type {Map<any, number>} */
+  const indexes = new Map();
 
-	/** @type {Array<{ key: string, fn: (value: any) => any }>} */
-	const custom = [];
-	for (const key in reducers) {
-		custom.push({ key, fn: reducers[key] });
-	}
+  /** @type {Array<{ key: string, fn: (value: any) => any }>} */
+  const custom = [];
+  for (const key in reducers) {
+    custom.push({ key, fn: reducers[key] });
+  }
 
-	/** @type {string[]} */
-	const keys = [];
+  /** @type {string[]} */
+  const keys = [];
 
-	let p = 0;
+  let p = 0;
 
-	/** @param {any} thing */
-	function flatten(thing) {
-		if (typeof thing === 'function') {
-			throw new DevalueError(`Cannot stringify a function`, keys);
-		}
+  /** @param {any} thing */
+  function flatten(thing) {
+    if (typeof thing === "function") {
+      throw new DevalueError(`Cannot stringify a function`, keys);
+    }
 
-		if (indexes.has(thing)) return indexes.get(thing);
+    if (indexes.has(thing)) return indexes.get(thing);
 
-		if (thing === undefined) return UNDEFINED;
-		if (Number.isNaN(thing)) return NAN;
-		if (thing === Infinity) return POSITIVE_INFINITY;
-		if (thing === -Infinity) return NEGATIVE_INFINITY;
-		if (thing === 0 && 1 / thing < 0) return NEGATIVE_ZERO;
+    if (thing === undefined) return UNDEFINED;
+    if (Number.isNaN(thing)) return NAN;
+    if (thing === Infinity) return POSITIVE_INFINITY;
+    if (thing === -Infinity) return NEGATIVE_INFINITY;
+    if (thing === 0 && 1 / thing < 0) return NEGATIVE_ZERO;
 
-		const index = p++;
-		indexes.set(thing, index);
+    const index = p++;
+    indexes.set(thing, index);
 
-		for (const { key, fn } of custom) {
-			const value = fn(thing);
-			if (value) {
-				stringified[index] = `["${key}",${flatten(value)}]`;
-				return index;
-			}
-		}
+    for (const { key, fn } of custom) {
+      const value = fn(thing);
+      if (value) {
+        stringified[index] = `["${key}",${flatten(value)}]`;
+        return index;
+      }
+    }
 
-		let str = '';
+    let str = "";
 
-		if (is_primitive(thing)) {
-			str = stringify_primitive(thing);
-		} else {
-			const type = get_type(thing);
+    if (is_primitive(thing)) {
+      str = stringify_primitive(thing);
+    } else {
+      const type = get_type(thing);
 
-			switch (type) {
-				case 'Number':
-				case 'String':
-				case 'Boolean':
-					str = `["Object",${stringify_primitive(thing)}]`;
-					break;
+      switch (type) {
+        case "Number":
+        case "String":
+        case "Boolean":
+          str = `["Object",${stringify_primitive(thing)}]`;
+          break;
 
-				case 'BigInt':
-					str = `["BigInt",${thing}]`;
-					break;
+        case "BigInt":
+          str = `["BigInt",${thing}]`;
+          break;
 
-				case 'Date':
-					str = `["Date","${thing.toISOString()}"]`;
-					break;
+        case "Date":
+          str = `["Date","${thing.toISOString()}"]`;
+          break;
 
-				case 'RegExp':
-					const { source, flags } = thing;
-					str = flags
-						? `["RegExp",${stringify_string(source)},"${flags}"]`
-						: `["RegExp",${stringify_string(source)}]`;
-					break;
+        case "RegExp":
+          const { source, flags } = thing;
+          str = flags
+            ? `["RegExp",${stringify_string(source)},"${flags}"]`
+            : `["RegExp",${stringify_string(source)}]`;
+          break;
 
-				case 'Array':
-					str = '[';
+        case "Array":
+          str = "[";
 
-					for (let i = 0; i < thing.length; i += 1) {
-						if (i > 0) str += ',';
+          for (let i = 0; i < thing.length; i += 1) {
+            if (i > 0) str += ",";
 
-						if (i in thing) {
-							keys.push(`[${i}]`);
-							str += flatten(thing[i]);
-							keys.pop();
-						} else {
-							str += HOLE;
-						}
-					}
+            if (i in thing) {
+              keys.push(`[${i}]`);
+              str += flatten(thing[i]);
+              keys.pop();
+            } else {
+              str += HOLE;
+            }
+          }
 
-					str += ']';
+          str += "]";
 
-					break;
+          break;
 
-				case 'Set':
-					str = '["Set"';
+        case "Set":
+          str = '["Set"';
 
-					for (const value of thing) {
-						str += `,${flatten(value)}`;
-					}
+          for (const value of thing) {
+            str += `,${flatten(value)}`;
+          }
 
-					str += ']';
-					break;
+          str += "]";
+          break;
 
-				case 'Map':
-					str = '["Map"';
+        case "Map":
+          str = '["Map"';
 
-					for (const [key, value] of thing) {
-						keys.push(
-							`.get(${is_primitive(key) ? stringify_primitive(key) : '...'})`
-						);
-						str += `,${flatten(key)},${flatten(value)}`;
-					}
+          for (const [key, value] of thing) {
+            keys.push(
+              `.get(${is_primitive(key) ? stringify_primitive(key) : "..."})`
+            );
+            str += `,${flatten(key)},${flatten(value)}`;
+          }
 
-					str += ']';
-					break;
+          str += "]";
+          break;
 
-				default:
-					if (!is_plain_object(thing)) {
-						throw new DevalueError(
-							`Cannot stringify arbitrary non-POJOs`,
-							keys
-						);
-					}
+        default:
+          if (!is_plain_object(thing)) {
+            throw new DevalueError(
+              `Cannot stringify arbitrary non-POJOs`,
+              keys
+            );
+          }
 
-					if (Object.getOwnPropertySymbols(thing).length > 0) {
-						throw new DevalueError(
-							`Cannot stringify POJOs with symbolic keys`,
-							keys
-						);
-					}
+          if (Object.getOwnPropertySymbols(thing).length > 0) {
+            throw new DevalueError(
+              `Cannot stringify POJOs with symbolic keys`,
+              keys
+            );
+          }
 
-					if (Object.getPrototypeOf(thing) === null) {
-						str = '["null"';
-						for (const key in thing) {
-							keys.push(`.${key}`);
-							str += `,${stringify_string(key)},${flatten(thing[key])}`;
-							keys.pop();
-						}
-						str += ']';
-					} else {
-						str = '{';
-						let started = false;
-						for (const key in thing) {
-							if (started) str += ',';
-							started = true;
-							keys.push(`.${key}`);
-							str += `${stringify_string(key)}:${flatten(thing[key])}`;
-							keys.pop();
-						}
-						str += '}';
-					}
-			}
-		}
+          if (Object.getPrototypeOf(thing) === null) {
+            str = '["null"';
+            for (const key in thing) {
+              keys.push(`.${key}`);
+              str += `,${stringify_string(key)},${flatten(thing[key])}`;
+              keys.pop();
+            }
+            str += "]";
+          } else {
+            str = "{";
+            let started = false;
+            for (const key in thing) {
+              if (started) str += ",";
+              started = true;
+              keys.push(`.${key}`);
+              str += `${stringify_string(key)}:${flatten(thing[key])}`;
+              keys.pop();
+            }
+            str += "}";
+          }
+      }
+    }
 
-		stringified[index] = str;
-		return index;
-	}
+    stringified[index] = str;
+    return index;
+  }
 
-	const index = flatten(value);
+  const index = flatten(value);
 
-	// special case — value is represented as a negative index
-	if (index < 0) return `${index}`;
+  // special case — value is represented as a negative index
+  if (index < 0) return `${index}`;
 
-	return `[${stringified.join(',')}]`;
+  return `[${stringified.join(",")}]`;
 }
 
 /**
@@ -814,13 +893,13 @@ function stringify(value, reducers) {
  * @returns {string}
  */
 function stringify_primitive(thing) {
-	const type = typeof thing;
-	if (type === 'string') return stringify_string(thing);
-	if (thing instanceof String) return stringify_string(thing.toString());
-	if (thing === void 0) return UNDEFINED.toString();
-	if (thing === 0 && 1 / thing < 0) return NEGATIVE_ZERO.toString();
-	if (type === 'bigint') return `["BigInt","${thing}"]`;
-	return String(thing);
+  const type = typeof thing;
+  if (type === "string") return stringify_string(thing);
+  if (thing instanceof String) return stringify_string(thing.toString());
+  if (thing === void 0) return UNDEFINED.toString();
+  if (thing === 0 && 1 / thing < 0) return NEGATIVE_ZERO.toString();
+  if (type === "bigint") return `["BigInt","${thing}"]`;
+  return String(thing);
 }
 
 var cookie = {};
@@ -834,421 +913,421 @@ var cookie = {};
 
 var hasRequiredCookie;
 
-function requireCookie () {
-	if (hasRequiredCookie) return cookie;
-	hasRequiredCookie = 1;
+function requireCookie() {
+  if (hasRequiredCookie) return cookie;
+  hasRequiredCookie = 1;
 
-	/**
-	 * Module exports.
-	 * @public
-	 */
+  /**
+   * Module exports.
+   * @public
+   */
 
-	cookie.parse = parse;
-	cookie.serialize = serialize;
+  cookie.parse = parse;
+  cookie.serialize = serialize;
 
-	/**
-	 * Module variables.
-	 * @private
-	 */
+  /**
+   * Module variables.
+   * @private
+   */
 
-	var __toString = Object.prototype.toString;
+  var __toString = Object.prototype.toString;
 
-	/**
-	 * RegExp to match field-content in RFC 7230 sec 3.2
-	 *
-	 * field-content = field-vchar [ 1*( SP / HTAB ) field-vchar ]
-	 * field-vchar   = VCHAR / obs-text
-	 * obs-text      = %x80-FF
-	 */
+  /**
+   * RegExp to match field-content in RFC 7230 sec 3.2
+   *
+   * field-content = field-vchar [ 1*( SP / HTAB ) field-vchar ]
+   * field-vchar   = VCHAR / obs-text
+   * obs-text      = %x80-FF
+   */
 
-	var fieldContentRegExp = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
+  var fieldContentRegExp = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
 
-	/**
-	 * Parse a cookie header.
-	 *
-	 * Parse the given cookie header string into an object
-	 * The object has the various cookies as keys(names) => values
-	 *
-	 * @param {string} str
-	 * @param {object} [options]
-	 * @return {object}
-	 * @public
-	 */
+  /**
+   * Parse a cookie header.
+   *
+   * Parse the given cookie header string into an object
+   * The object has the various cookies as keys(names) => values
+   *
+   * @param {string} str
+   * @param {object} [options]
+   * @return {object}
+   * @public
+   */
 
-	function parse(str, options) {
-	  if (typeof str !== 'string') {
-	    throw new TypeError('argument str must be a string');
-	  }
+  function parse(str, options) {
+    if (typeof str !== "string") {
+      throw new TypeError("argument str must be a string");
+    }
 
-	  var obj = {};
-	  var opt = options || {};
-	  var dec = opt.decode || decode;
+    var obj = {};
+    var opt = options || {};
+    var dec = opt.decode || decode;
 
-	  var index = 0;
-	  while (index < str.length) {
-	    var eqIdx = str.indexOf('=', index);
+    var index = 0;
+    while (index < str.length) {
+      var eqIdx = str.indexOf("=", index);
 
-	    // no more cookie pairs
-	    if (eqIdx === -1) {
-	      break
-	    }
+      // no more cookie pairs
+      if (eqIdx === -1) {
+        break;
+      }
 
-	    var endIdx = str.indexOf(';', index);
+      var endIdx = str.indexOf(";", index);
 
-	    if (endIdx === -1) {
-	      endIdx = str.length;
-	    } else if (endIdx < eqIdx) {
-	      // backtrack on prior semicolon
-	      index = str.lastIndexOf(';', eqIdx - 1) + 1;
-	      continue
-	    }
+      if (endIdx === -1) {
+        endIdx = str.length;
+      } else if (endIdx < eqIdx) {
+        // backtrack on prior semicolon
+        index = str.lastIndexOf(";", eqIdx - 1) + 1;
+        continue;
+      }
 
-	    var key = str.slice(index, eqIdx).trim();
+      var key = str.slice(index, eqIdx).trim();
 
-	    // only assign once
-	    if (undefined === obj[key]) {
-	      var val = str.slice(eqIdx + 1, endIdx).trim();
+      // only assign once
+      if (undefined === obj[key]) {
+        var val = str.slice(eqIdx + 1, endIdx).trim();
 
-	      // quoted values
-	      if (val.charCodeAt(0) === 0x22) {
-	        val = val.slice(1, -1);
-	      }
+        // quoted values
+        if (val.charCodeAt(0) === 0x22) {
+          val = val.slice(1, -1);
+        }
 
-	      obj[key] = tryDecode(val, dec);
-	    }
+        obj[key] = tryDecode(val, dec);
+      }
 
-	    index = endIdx + 1;
-	  }
+      index = endIdx + 1;
+    }
 
-	  return obj;
-	}
+    return obj;
+  }
 
-	/**
-	 * Serialize data into a cookie header.
-	 *
-	 * Serialize the a name value pair into a cookie string suitable for
-	 * http headers. An optional options object specified cookie parameters.
-	 *
-	 * serialize('foo', 'bar', { httpOnly: true })
-	 *   => "foo=bar; httpOnly"
-	 *
-	 * @param {string} name
-	 * @param {string} val
-	 * @param {object} [options]
-	 * @return {string}
-	 * @public
-	 */
+  /**
+   * Serialize data into a cookie header.
+   *
+   * Serialize the a name value pair into a cookie string suitable for
+   * http headers. An optional options object specified cookie parameters.
+   *
+   * serialize('foo', 'bar', { httpOnly: true })
+   *   => "foo=bar; httpOnly"
+   *
+   * @param {string} name
+   * @param {string} val
+   * @param {object} [options]
+   * @return {string}
+   * @public
+   */
 
-	function serialize(name, val, options) {
-	  var opt = options || {};
-	  var enc = opt.encode || encode;
+  function serialize(name, val, options) {
+    var opt = options || {};
+    var enc = opt.encode || encode;
 
-	  if (typeof enc !== 'function') {
-	    throw new TypeError('option encode is invalid');
-	  }
+    if (typeof enc !== "function") {
+      throw new TypeError("option encode is invalid");
+    }
 
-	  if (!fieldContentRegExp.test(name)) {
-	    throw new TypeError('argument name is invalid');
-	  }
+    if (!fieldContentRegExp.test(name)) {
+      throw new TypeError("argument name is invalid");
+    }
 
-	  var value = enc(val);
+    var value = enc(val);
 
-	  if (value && !fieldContentRegExp.test(value)) {
-	    throw new TypeError('argument val is invalid');
-	  }
+    if (value && !fieldContentRegExp.test(value)) {
+      throw new TypeError("argument val is invalid");
+    }
 
-	  var str = name + '=' + value;
+    var str = name + "=" + value;
 
-	  if (null != opt.maxAge) {
-	    var maxAge = opt.maxAge - 0;
+    if (null != opt.maxAge) {
+      var maxAge = opt.maxAge - 0;
 
-	    if (isNaN(maxAge) || !isFinite(maxAge)) {
-	      throw new TypeError('option maxAge is invalid')
-	    }
+      if (isNaN(maxAge) || !isFinite(maxAge)) {
+        throw new TypeError("option maxAge is invalid");
+      }
 
-	    str += '; Max-Age=' + Math.floor(maxAge);
-	  }
+      str += "; Max-Age=" + Math.floor(maxAge);
+    }
 
-	  if (opt.domain) {
-	    if (!fieldContentRegExp.test(opt.domain)) {
-	      throw new TypeError('option domain is invalid');
-	    }
+    if (opt.domain) {
+      if (!fieldContentRegExp.test(opt.domain)) {
+        throw new TypeError("option domain is invalid");
+      }
 
-	    str += '; Domain=' + opt.domain;
-	  }
+      str += "; Domain=" + opt.domain;
+    }
 
-	  if (opt.path) {
-	    if (!fieldContentRegExp.test(opt.path)) {
-	      throw new TypeError('option path is invalid');
-	    }
+    if (opt.path) {
+      if (!fieldContentRegExp.test(opt.path)) {
+        throw new TypeError("option path is invalid");
+      }
 
-	    str += '; Path=' + opt.path;
-	  }
+      str += "; Path=" + opt.path;
+    }
 
-	  if (opt.expires) {
-	    var expires = opt.expires;
+    if (opt.expires) {
+      var expires = opt.expires;
 
-	    if (!isDate(expires) || isNaN(expires.valueOf())) {
-	      throw new TypeError('option expires is invalid');
-	    }
+      if (!isDate(expires) || isNaN(expires.valueOf())) {
+        throw new TypeError("option expires is invalid");
+      }
 
-	    str += '; Expires=' + expires.toUTCString();
-	  }
+      str += "; Expires=" + expires.toUTCString();
+    }
 
-	  if (opt.httpOnly) {
-	    str += '; HttpOnly';
-	  }
+    if (opt.httpOnly) {
+      str += "; HttpOnly";
+    }
 
-	  if (opt.secure) {
-	    str += '; Secure';
-	  }
+    if (opt.secure) {
+      str += "; Secure";
+    }
 
-	  if (opt.priority) {
-	    var priority = typeof opt.priority === 'string'
-	      ? opt.priority.toLowerCase()
-	      : opt.priority;
+    if (opt.priority) {
+      var priority =
+        typeof opt.priority === "string"
+          ? opt.priority.toLowerCase()
+          : opt.priority;
 
-	    switch (priority) {
-	      case 'low':
-	        str += '; Priority=Low';
-	        break
-	      case 'medium':
-	        str += '; Priority=Medium';
-	        break
-	      case 'high':
-	        str += '; Priority=High';
-	        break
-	      default:
-	        throw new TypeError('option priority is invalid')
-	    }
-	  }
+      switch (priority) {
+        case "low":
+          str += "; Priority=Low";
+          break;
+        case "medium":
+          str += "; Priority=Medium";
+          break;
+        case "high":
+          str += "; Priority=High";
+          break;
+        default:
+          throw new TypeError("option priority is invalid");
+      }
+    }
 
-	  if (opt.sameSite) {
-	    var sameSite = typeof opt.sameSite === 'string'
-	      ? opt.sameSite.toLowerCase() : opt.sameSite;
+    if (opt.sameSite) {
+      var sameSite =
+        typeof opt.sameSite === "string"
+          ? opt.sameSite.toLowerCase()
+          : opt.sameSite;
 
-	    switch (sameSite) {
-	      case true:
-	        str += '; SameSite=Strict';
-	        break;
-	      case 'lax':
-	        str += '; SameSite=Lax';
-	        break;
-	      case 'strict':
-	        str += '; SameSite=Strict';
-	        break;
-	      case 'none':
-	        str += '; SameSite=None';
-	        break;
-	      default:
-	        throw new TypeError('option sameSite is invalid');
-	    }
-	  }
+      switch (sameSite) {
+        case true:
+          str += "; SameSite=Strict";
+          break;
+        case "lax":
+          str += "; SameSite=Lax";
+          break;
+        case "strict":
+          str += "; SameSite=Strict";
+          break;
+        case "none":
+          str += "; SameSite=None";
+          break;
+        default:
+          throw new TypeError("option sameSite is invalid");
+      }
+    }
 
-	  return str;
-	}
+    return str;
+  }
 
-	/**
-	 * URL-decode string value. Optimized to skip native call when no %.
-	 *
-	 * @param {string} str
-	 * @returns {string}
-	 */
+  /**
+   * URL-decode string value. Optimized to skip native call when no %.
+   *
+   * @param {string} str
+   * @returns {string}
+   */
 
-	function decode (str) {
-	  return str.indexOf('%') !== -1
-	    ? decodeURIComponent(str)
-	    : str
-	}
+  function decode(str) {
+    return str.indexOf("%") !== -1 ? decodeURIComponent(str) : str;
+  }
 
-	/**
-	 * URL-encode value.
-	 *
-	 * @param {string} str
-	 * @returns {string}
-	 */
+  /**
+   * URL-encode value.
+   *
+   * @param {string} str
+   * @returns {string}
+   */
 
-	function encode (val) {
-	  return encodeURIComponent(val)
-	}
+  function encode(val) {
+    return encodeURIComponent(val);
+  }
 
-	/**
-	 * Determine if value is a Date.
-	 *
-	 * @param {*} val
-	 * @private
-	 */
+  /**
+   * Determine if value is a Date.
+   *
+   * @param {*} val
+   * @private
+   */
 
-	function isDate (val) {
-	  return __toString.call(val) === '[object Date]' ||
-	    val instanceof Date
-	}
+  function isDate(val) {
+    return __toString.call(val) === "[object Date]" || val instanceof Date;
+  }
 
-	/**
-	 * Try decoding a string using a decoding function.
-	 *
-	 * @param {string} str
-	 * @param {function} decode
-	 * @private
-	 */
+  /**
+   * Try decoding a string using a decoding function.
+   *
+   * @param {string} str
+   * @param {function} decode
+   * @private
+   */
 
-	function tryDecode(str, decode) {
-	  try {
-	    return decode(str);
-	  } catch (e) {
-	    return str;
-	  }
-	}
-	return cookie;
+  function tryDecode(str, decode) {
+    try {
+      return decode(str);
+    } catch (e) {
+      return str;
+    }
+  }
+  return cookie;
 }
 
 var cookieExports = requireCookie();
 
-var setCookie = {exports: {}};
+var setCookie = { exports: {} };
 
 var hasRequiredSetCookie;
 
-function requireSetCookie () {
-	if (hasRequiredSetCookie) return setCookie.exports;
-	hasRequiredSetCookie = 1;
+function requireSetCookie() {
+  if (hasRequiredSetCookie) return setCookie.exports;
+  hasRequiredSetCookie = 1;
 
-	var defaultParseOptions = {
-	  decodeValues: true,
-	  map: false,
-	  silent: false,
-	};
+  var defaultParseOptions = {
+    decodeValues: true,
+    map: false,
+    silent: false,
+  };
 
-	function isNonEmptyString(str) {
-	  return typeof str === "string" && !!str.trim();
-	}
+  function isNonEmptyString(str) {
+    return typeof str === "string" && !!str.trim();
+  }
 
-	function parseString(setCookieValue, options) {
-	  var parts = setCookieValue.split(";").filter(isNonEmptyString);
+  function parseString(setCookieValue, options) {
+    var parts = setCookieValue.split(";").filter(isNonEmptyString);
 
-	  var nameValuePairStr = parts.shift();
-	  var parsed = parseNameValuePair(nameValuePairStr);
-	  var name = parsed.name;
-	  var value = parsed.value;
+    var nameValuePairStr = parts.shift();
+    var parsed = parseNameValuePair(nameValuePairStr);
+    var name = parsed.name;
+    var value = parsed.value;
 
-	  options = options
-	    ? Object.assign({}, defaultParseOptions, options)
-	    : defaultParseOptions;
+    options = options
+      ? Object.assign({}, defaultParseOptions, options)
+      : defaultParseOptions;
 
-	  try {
-	    value = options.decodeValues ? decodeURIComponent(value) : value; // decode cookie value
-	  } catch (e) {
-	    console.error(
-	      "set-cookie-parser encountered an error while decoding a cookie with value '" +
-	        value +
-	        "'. Set options.decodeValues to false to disable this feature.",
-	      e
-	    );
-	  }
+    try {
+      value = options.decodeValues ? decodeURIComponent(value) : value; // decode cookie value
+    } catch (e) {
+      console.error(
+        "set-cookie-parser encountered an error while decoding a cookie with value '" +
+          value +
+          "'. Set options.decodeValues to false to disable this feature.",
+        e
+      );
+    }
 
-	  var cookie = {
-	    name: name,
-	    value: value,
-	  };
+    var cookie = {
+      name: name,
+      value: value,
+    };
 
-	  parts.forEach(function (part) {
-	    var sides = part.split("=");
-	    var key = sides.shift().trimLeft().toLowerCase();
-	    var value = sides.join("=");
-	    if (key === "expires") {
-	      cookie.expires = new Date(value);
-	    } else if (key === "max-age") {
-	      cookie.maxAge = parseInt(value, 10);
-	    } else if (key === "secure") {
-	      cookie.secure = true;
-	    } else if (key === "httponly") {
-	      cookie.httpOnly = true;
-	    } else if (key === "samesite") {
-	      cookie.sameSite = value;
-	    } else {
-	      cookie[key] = value;
-	    }
-	  });
+    parts.forEach(function (part) {
+      var sides = part.split("=");
+      var key = sides.shift().trimLeft().toLowerCase();
+      var value = sides.join("=");
+      if (key === "expires") {
+        cookie.expires = new Date(value);
+      } else if (key === "max-age") {
+        cookie.maxAge = parseInt(value, 10);
+      } else if (key === "secure") {
+        cookie.secure = true;
+      } else if (key === "httponly") {
+        cookie.httpOnly = true;
+      } else if (key === "samesite") {
+        cookie.sameSite = value;
+      } else {
+        cookie[key] = value;
+      }
+    });
 
-	  return cookie;
-	}
+    return cookie;
+  }
 
-	function parseNameValuePair(nameValuePairStr) {
-	  // Parses name-value-pair according to rfc6265bis draft
+  function parseNameValuePair(nameValuePairStr) {
+    // Parses name-value-pair according to rfc6265bis draft
 
-	  var name = "";
-	  var value = "";
-	  var nameValueArr = nameValuePairStr.split("=");
-	  if (nameValueArr.length > 1) {
-	    name = nameValueArr.shift();
-	    value = nameValueArr.join("="); // everything after the first =, joined by a "=" if there was more than one part
-	  } else {
-	    value = nameValuePairStr;
-	  }
+    var name = "";
+    var value = "";
+    var nameValueArr = nameValuePairStr.split("=");
+    if (nameValueArr.length > 1) {
+      name = nameValueArr.shift();
+      value = nameValueArr.join("="); // everything after the first =, joined by a "=" if there was more than one part
+    } else {
+      value = nameValuePairStr;
+    }
 
-	  return { name: name, value: value };
-	}
+    return { name: name, value: value };
+  }
 
-	function parse(input, options) {
-	  options = options
-	    ? Object.assign({}, defaultParseOptions, options)
-	    : defaultParseOptions;
+  function parse(input, options) {
+    options = options
+      ? Object.assign({}, defaultParseOptions, options)
+      : defaultParseOptions;
 
-	  if (!input) {
-	    if (!options.map) {
-	      return [];
-	    } else {
-	      return {};
-	    }
-	  }
+    if (!input) {
+      if (!options.map) {
+        return [];
+      } else {
+        return {};
+      }
+    }
 
-	  if (input.headers) {
-	    if (typeof input.headers.getSetCookie === "function") {
-	      // for fetch responses - they combine headers of the same type in the headers array,
-	      // but getSetCookie returns an uncombined array
-	      input = input.headers.getSetCookie();
-	    } else if (input.headers["set-cookie"]) {
-	      // fast-path for node.js (which automatically normalizes header names to lower-case
-	      input = input.headers["set-cookie"];
-	    } else {
-	      // slow-path for other environments - see #25
-	      var sch =
-	        input.headers[
-	          Object.keys(input.headers).find(function (key) {
-	            return key.toLowerCase() === "set-cookie";
-	          })
-	        ];
-	      // warn if called on a request-like object with a cookie header rather than a set-cookie header - see #34, 36
-	      if (!sch && input.headers.cookie && !options.silent) {
-	        console.warn(
-	          "Warning: set-cookie-parser appears to have been called on a request object. It is designed to parse Set-Cookie headers from responses, not Cookie headers from requests. Set the option {silent: true} to suppress this warning."
-	        );
-	      }
-	      input = sch;
-	    }
-	  }
-	  if (!Array.isArray(input)) {
-	    input = [input];
-	  }
+    if (input.headers) {
+      if (typeof input.headers.getSetCookie === "function") {
+        // for fetch responses - they combine headers of the same type in the headers array,
+        // but getSetCookie returns an uncombined array
+        input = input.headers.getSetCookie();
+      } else if (input.headers["set-cookie"]) {
+        // fast-path for node.js (which automatically normalizes header names to lower-case
+        input = input.headers["set-cookie"];
+      } else {
+        // slow-path for other environments - see #25
+        var sch =
+          input.headers[
+            Object.keys(input.headers).find(function (key) {
+              return key.toLowerCase() === "set-cookie";
+            })
+          ];
+        // warn if called on a request-like object with a cookie header rather than a set-cookie header - see #34, 36
+        if (!sch && input.headers.cookie && !options.silent) {
+          console.warn(
+            "Warning: set-cookie-parser appears to have been called on a request object. It is designed to parse Set-Cookie headers from responses, not Cookie headers from requests. Set the option {silent: true} to suppress this warning."
+          );
+        }
+        input = sch;
+      }
+    }
+    if (!Array.isArray(input)) {
+      input = [input];
+    }
 
-	  options = options
-	    ? Object.assign({}, defaultParseOptions, options)
-	    : defaultParseOptions;
+    options = options
+      ? Object.assign({}, defaultParseOptions, options)
+      : defaultParseOptions;
 
-	  if (!options.map) {
-	    return input.filter(isNonEmptyString).map(function (str) {
-	      return parseString(str, options);
-	    });
-	  } else {
-	    var cookies = {};
-	    return input.filter(isNonEmptyString).reduce(function (cookies, str) {
-	      var cookie = parseString(str, options);
-	      cookies[cookie.name] = cookie;
-	      return cookies;
-	    }, cookies);
-	  }
-	}
+    if (!options.map) {
+      return input.filter(isNonEmptyString).map(function (str) {
+        return parseString(str, options);
+      });
+    } else {
+      var cookies = {};
+      return input.filter(isNonEmptyString).reduce(function (cookies, str) {
+        var cookie = parseString(str, options);
+        cookies[cookie.name] = cookie;
+        return cookies;
+      }, cookies);
+    }
+  }
 
-	/*
+  /*
 	  Set-Cookie header field-values are sometimes comma joined in one string. This splits them without choking on commas
 	  that are within a single set-cookie field-value, such as in the Expires portion.
 
@@ -1259,84 +1338,89 @@ function requireSetCookie () {
 	  Based on: https://github.com/google/j2objc/commit/16820fdbc8f76ca0c33472810ce0cb03d20efe25
 	  Credits to: https://github.com/tomball for original and https://github.com/chrusart for JavaScript implementation
 	*/
-	function splitCookiesString(cookiesString) {
-	  if (Array.isArray(cookiesString)) {
-	    return cookiesString;
-	  }
-	  if (typeof cookiesString !== "string") {
-	    return [];
-	  }
+  function splitCookiesString(cookiesString) {
+    if (Array.isArray(cookiesString)) {
+      return cookiesString;
+    }
+    if (typeof cookiesString !== "string") {
+      return [];
+    }
 
-	  var cookiesStrings = [];
-	  var pos = 0;
-	  var start;
-	  var ch;
-	  var lastComma;
-	  var nextStart;
-	  var cookiesSeparatorFound;
+    var cookiesStrings = [];
+    var pos = 0;
+    var start;
+    var ch;
+    var lastComma;
+    var nextStart;
+    var cookiesSeparatorFound;
 
-	  function skipWhitespace() {
-	    while (pos < cookiesString.length && /\s/.test(cookiesString.charAt(pos))) {
-	      pos += 1;
-	    }
-	    return pos < cookiesString.length;
-	  }
+    function skipWhitespace() {
+      while (
+        pos < cookiesString.length &&
+        /\s/.test(cookiesString.charAt(pos))
+      ) {
+        pos += 1;
+      }
+      return pos < cookiesString.length;
+    }
 
-	  function notSpecialChar() {
-	    ch = cookiesString.charAt(pos);
+    function notSpecialChar() {
+      ch = cookiesString.charAt(pos);
 
-	    return ch !== "=" && ch !== ";" && ch !== ",";
-	  }
+      return ch !== "=" && ch !== ";" && ch !== ",";
+    }
 
-	  while (pos < cookiesString.length) {
-	    start = pos;
-	    cookiesSeparatorFound = false;
+    while (pos < cookiesString.length) {
+      start = pos;
+      cookiesSeparatorFound = false;
 
-	    while (skipWhitespace()) {
-	      ch = cookiesString.charAt(pos);
-	      if (ch === ",") {
-	        // ',' is a cookie separator if we have later first '=', not ';' or ','
-	        lastComma = pos;
-	        pos += 1;
+      while (skipWhitespace()) {
+        ch = cookiesString.charAt(pos);
+        if (ch === ",") {
+          // ',' is a cookie separator if we have later first '=', not ';' or ','
+          lastComma = pos;
+          pos += 1;
 
-	        skipWhitespace();
-	        nextStart = pos;
+          skipWhitespace();
+          nextStart = pos;
 
-	        while (pos < cookiesString.length && notSpecialChar()) {
-	          pos += 1;
-	        }
+          while (pos < cookiesString.length && notSpecialChar()) {
+            pos += 1;
+          }
 
-	        // currently special character
-	        if (pos < cookiesString.length && cookiesString.charAt(pos) === "=") {
-	          // we found cookies separator
-	          cookiesSeparatorFound = true;
-	          // pos is inside the next cookie, so back up and return it.
-	          pos = nextStart;
-	          cookiesStrings.push(cookiesString.substring(start, lastComma));
-	          start = pos;
-	        } else {
-	          // in param ',' or param separator ';',
-	          // we continue from that comma
-	          pos = lastComma + 1;
-	        }
-	      } else {
-	        pos += 1;
-	      }
-	    }
+          // currently special character
+          if (pos < cookiesString.length && cookiesString.charAt(pos) === "=") {
+            // we found cookies separator
+            cookiesSeparatorFound = true;
+            // pos is inside the next cookie, so back up and return it.
+            pos = nextStart;
+            cookiesStrings.push(cookiesString.substring(start, lastComma));
+            start = pos;
+          } else {
+            // in param ',' or param separator ';',
+            // we continue from that comma
+            pos = lastComma + 1;
+          }
+        } else {
+          pos += 1;
+        }
+      }
 
-	    if (!cookiesSeparatorFound || pos >= cookiesString.length) {
-	      cookiesStrings.push(cookiesString.substring(start, cookiesString.length));
-	    }
-	  }
+      if (!cookiesSeparatorFound || pos >= cookiesString.length) {
+        cookiesStrings.push(
+          cookiesString.substring(start, cookiesString.length)
+        );
+      }
+    }
 
-	  return cookiesStrings;
-	}
+    return cookiesStrings;
+  }
 
-	setCookie.exports = parse;
-	setCookie.exports.parse = parse;
-	setCookie.exports.parseString = parseString;
-	setCookie.exports.splitCookiesString = splitCookiesString;
-	return setCookie.exports;
+  setCookie.exports = parse;
+  setCookie.exports.parse = parse;
+  setCookie.exports.parseString = parseString;
+  setCookie.exports.splitCookiesString = splitCookiesString;
+  return setCookie.exports;
 }
 
 var setCookieExports = requireSetCookie();
@@ -1350,7 +1434,7 @@ const ENDPOINT_METHODS = /* @__PURE__ */ new Set([
   "PATCH",
   "DELETE",
   "OPTIONS",
-  "HEAD"
+  "HEAD",
 ]);
 const PAGE_METHODS = /* @__PURE__ */ new Set(["GET", "POST", "HEAD"]);
 function negotiate(accept, types) {
@@ -1366,10 +1450,10 @@ function negotiate(accept, types) {
     if (a.q !== b.q) {
       return b.q - a.q;
     }
-    if (a.subtype === "*" !== (b.subtype === "*")) {
+    if ((a.subtype === "*") !== (b.subtype === "*")) {
       return a.subtype === "*" ? 1 : -1;
     }
-    if (a.type === "*" !== (b.type === "*")) {
+    if ((a.type === "*") !== (b.type === "*")) {
       return a.type === "*" ? 1 : -1;
     }
     return a.i - b.i;
@@ -1379,7 +1463,9 @@ function negotiate(accept, types) {
   for (const mimetype of types) {
     const [type, subtype] = mimetype.split("/");
     const priority = parts.findIndex(
-      (part) => (part.type === type || part.type === "*") && (part.subtype === subtype || part.subtype === "*")
+      (part) =>
+        (part.type === type || part.type === "*") &&
+        (part.subtype === subtype || part.subtype === "*")
     );
     if (priority !== -1 && priority < min_priority) {
       accepted = mimetype;
@@ -1389,7 +1475,8 @@ function negotiate(accept, types) {
   return accepted;
 }
 function is_content_type(request, ...types) {
-  const type = request.headers.get("content-type")?.split(";", 1)[0].trim() ?? "";
+  const type =
+    request.headers.get("content-type")?.split(";", 1)[0].trim() ?? "";
   return types.includes(type.toLowerCase());
 }
 function is_form_content_type(request) {
@@ -1409,22 +1496,34 @@ function exec(match, params, matchers) {
     const param = params[i];
     let value = values[i - buffered];
     if (param.chained && param.rest && buffered) {
-      value = values.slice(i - buffered, i + 1).filter((s2) => s2).join("/");
+      value = values
+        .slice(i - buffered, i + 1)
+        .filter((s2) => s2)
+        .join("/");
       buffered = 0;
     }
     if (value === void 0) {
-      if (param.rest)
-        result[param.name] = "";
+      if (param.rest) result[param.name] = "";
       continue;
     }
     if (!param.matcher || matchers[param.matcher](value)) {
       result[param.name] = value;
       const next_param = params[i + 1];
       const next_value = values[i + 1];
-      if (next_param && !next_param.rest && next_param.optional && next_value && param.chained) {
+      if (
+        next_param &&
+        !next_param.rest &&
+        next_param.optional &&
+        next_value &&
+        param.chained
+      ) {
         buffered = 0;
       }
-      if (!next_param && !next_value && Object.keys(result).length === values_needing_match.length) {
+      if (
+        !next_param &&
+        !next_value &&
+        Object.keys(result).length === values_needing_match.length
+      ) {
         buffered = 0;
       }
       continue;
@@ -1435,17 +1534,15 @@ function exec(match, params, matchers) {
     }
     return;
   }
-  if (buffered)
-    return;
+  if (buffered) return;
   return result;
 }
 function coalesce_to_error(err) {
-  return err instanceof Error || err && /** @type {any} */
-  err.name && /** @type {any} */
-  err.message ? (
-    /** @type {Error} */
-    err
-  ) : new Error(JSON.stringify(err));
+  return err instanceof Error ||
+    (err && /** @type {any} */ err.name && /** @type {any} */ err.message)
+    ? /** @type {Error} */
+      err
+    : new Error(JSON.stringify(err));
 }
 function normalize_error(error2) {
   return (
@@ -1459,21 +1556,22 @@ function method_not_allowed(mod, method) {
     headers: {
       // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405
       // "The server must generate an Allow header field in a 405 status code response"
-      allow: allowed_methods(mod).join(", ")
-    }
+      allow: allowed_methods(mod).join(", "),
+    },
   });
 }
 function allowed_methods(mod) {
-  const allowed = Array.from(ENDPOINT_METHODS).filter((method) => method in mod);
-  if ("GET" in mod || "HEAD" in mod)
-    allowed.push("HEAD");
+  const allowed = Array.from(ENDPOINT_METHODS).filter(
+    (method) => method in mod
+  );
+  if ("GET" in mod || "HEAD" in mod) allowed.push("HEAD");
   return allowed;
 }
 function static_error_page(options2, status, message) {
   let page = options2.templates.error({ status, message });
   return text(page, {
     headers: { "content-type": "text/html; charset=utf-8" },
-    status
+    status,
   });
 }
 async function handle_fatal_error(event, options2, error2) {
@@ -1482,11 +1580,11 @@ async function handle_fatal_error(event, options2, error2) {
   const body = await handle_error_and_jsonify(event, options2, error2);
   const type = negotiate(event.request.headers.get("accept") || "text/html", [
     "application/json",
-    "text/html"
+    "text/html",
   ]);
   if (event.isDataRequest || type === "application/json") {
     return json(body, {
-      status
+      status,
     });
   }
   return static_error_page(options2, status, body.message);
@@ -1495,15 +1593,17 @@ async function handle_error_and_jsonify(event, options2, error2) {
   if (error2 instanceof HttpError) {
     return error2.body;
   } else {
-    return await options2.hooks.handleError({ error: error2, event }) ?? {
-      message: event.route.id != null ? "Internal Error" : "Not Found"
-    };
+    return (
+      (await options2.hooks.handleError({ error: error2, event })) ?? {
+        message: event.route.id != null ? "Internal Error" : "Not Found",
+      }
+    );
   }
 }
 function redirect_response(status, location) {
   const response = new Response(void 0, {
     status,
-    headers: { location }
+    headers: { location },
   });
   return response;
 }
@@ -1519,24 +1619,22 @@ function clarify_devalue_error(event, error2) {
 function stringify_uses(node) {
   const uses = [];
   if (node.uses && node.uses.dependencies.size > 0) {
-    uses.push(`"dependencies":${JSON.stringify(Array.from(node.uses.dependencies))}`);
+    uses.push(
+      `"dependencies":${JSON.stringify(Array.from(node.uses.dependencies))}`
+    );
   }
   if (node.uses && node.uses.params.size > 0) {
     uses.push(`"params":${JSON.stringify(Array.from(node.uses.params))}`);
   }
-  if (node.uses?.parent)
-    uses.push('"parent":1');
-  if (node.uses?.route)
-    uses.push('"route":1');
-  if (node.uses?.url)
-    uses.push('"url":1');
+  if (node.uses?.parent) uses.push('"parent":1');
+  if (node.uses?.route) uses.push('"route":1');
+  if (node.uses?.url) uses.push('"url":1');
   return `"uses":{${uses.join(",")}}`;
 }
 async function render_endpoint(event, mod, state) {
-  const method = (
+  const method =
     /** @type {import('types').HttpMethod} */
-    event.request.method
-  );
+    event.request.method;
   let handler = mod[method] || mod.fallback;
   if (method === "HEAD" && mod.GET && !mod.HEAD) {
     handler = mod.GET;
@@ -1569,7 +1667,7 @@ async function render_endpoint(event, mod, state) {
       response = new Response(response.body, {
         status: response.status,
         statusText: response.statusText,
-        headers: new Headers(response.headers)
+        headers: new Headers(response.headers),
       });
       response.headers.set("x-sveltekit-prerender", String(prerender));
     }
@@ -1578,7 +1676,7 @@ async function render_endpoint(event, mod, state) {
     if (e instanceof Redirect) {
       return new Response(void 0, {
         status: e.status,
-        headers: { location: e.location }
+        headers: { location: e.location },
       });
     }
     throw e;
@@ -1601,8 +1699,7 @@ function compact(arr) {
   );
 }
 function normalize_path(path, trailing_slash) {
-  if (path === "/" || trailing_slash === "ignore")
-    return path;
+  if (path === "/" || trailing_slash === "ignore") return path;
   if (trailing_slash === "never") {
     return path.endsWith("/") ? path.slice(0, -1) : path;
   } else if (trailing_slash === "always" && !path.endsWith("/")) {
@@ -1619,17 +1716,9 @@ function decode_params(params) {
   }
   return params;
 }
-const tracked_url_properties = (
+const tracked_url_properties =
   /** @type {const} */
-  [
-    "href",
-    "pathname",
-    "search",
-    "searchParams",
-    "toString",
-    "toJSON"
-  ]
-);
+  ["href", "pathname", "search", "searchParams", "toString", "toJSON"];
 function make_trackable(url, callback) {
   const tracked = new URL(url);
   for (const property of tracked_url_properties) {
@@ -1639,11 +1728,15 @@ function make_trackable(url, callback) {
         return url[property];
       },
       enumerable: true,
-      configurable: true
+      configurable: true,
     });
   }
   {
-    tracked[Symbol.for("nodejs.util.inspect.custom")] = (depth, opts, inspect) => {
+    tracked[Symbol.for("nodejs.util.inspect.custom")] = (
+      depth,
+      opts,
+      inspect
+    ) => {
       return inspect(url, opts);
     };
   }
@@ -1657,7 +1750,7 @@ function disable_hash(url) {
       throw new Error(
         "Cannot access event.url.hash. Consider using `$page.url.hash` inside a component instead"
       );
-    }
+    },
   });
 }
 function disable_search(url) {
@@ -1665,8 +1758,10 @@ function disable_search(url) {
   for (const property of ["search", "searchParams"]) {
     Object.defineProperty(url, property, {
       get() {
-        throw new Error(`Cannot access url.${property} on a page with prerendering enabled`);
-      }
+        throw new Error(
+          `Cannot access url.${property} on a page with prerendering enabled`
+        );
+      },
     });
   }
 }
@@ -1690,34 +1785,40 @@ function strip_data_suffix(pathname) {
 function is_action_json_request(event) {
   const accept = negotiate(event.request.headers.get("accept") ?? "*/*", [
     "application/json",
-    "text/html"
+    "text/html",
   ]);
   return accept === "application/json" && event.request.method === "POST";
 }
 async function handle_action_json_request(event, options2, server) {
   const actions = server?.actions;
   if (!actions) {
-    const no_actions_error = error(405, "POST method not allowed. No actions exist for this page");
+    const no_actions_error = error(
+      405,
+      "POST method not allowed. No actions exist for this page"
+    );
     return action_json(
       {
         type: "error",
-        error: await handle_error_and_jsonify(event, options2, no_actions_error)
+        error: await handle_error_and_jsonify(
+          event,
+          options2,
+          no_actions_error
+        ),
       },
       {
         status: no_actions_error.status,
         headers: {
           // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405
           // "The server must generate an Allow header field in a 405 status code response"
-          allow: "GET"
-        }
+          allow: "GET",
+        },
       }
     );
   }
   check_named_default_separate(actions);
   try {
     const data = await call_action(event, actions);
-    if (false)
-      ;
+    if (false);
     if (data instanceof ActionFailure) {
       return action_json({
         type: "failure",
@@ -1729,7 +1830,7 @@ async function handle_action_json_request(event, options2, server) {
           data.data,
           /** @type {string} */
           event.route.id
-        )
+        ),
       });
     } else {
       return action_json({
@@ -1740,7 +1841,7 @@ async function handle_action_json_request(event, options2, server) {
           data,
           /** @type {string} */
           event.route.id
-        )
+        ),
       });
     }
   } catch (e) {
@@ -1751,22 +1852,28 @@ async function handle_action_json_request(event, options2, server) {
     return action_json(
       {
         type: "error",
-        error: await handle_error_and_jsonify(event, options2, check_incorrect_fail_use(err))
+        error: await handle_error_and_jsonify(
+          event,
+          options2,
+          check_incorrect_fail_use(err)
+        ),
       },
       {
-        status: err instanceof HttpError ? err.status : 500
+        status: err instanceof HttpError ? err.status : 500,
       }
     );
   }
 }
 function check_incorrect_fail_use(error2) {
-  return error2 instanceof ActionFailure ? new Error('Cannot "throw fail()". Use "return fail()"') : error2;
+  return error2 instanceof ActionFailure
+    ? new Error('Cannot "throw fail()". Use "return fail()"')
+    : error2;
 }
 function action_json_redirect(redirect) {
   return action_json({
     type: "redirect",
     status: redirect.status,
-    location: redirect.location
+    location: redirect.location,
   });
 }
 function action_json(data, init2) {
@@ -1781,30 +1888,32 @@ async function handle_action_request(event, server) {
     event.setHeaders({
       // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405
       // "The server must generate an Allow header field in a 405 status code response"
-      allow: "GET"
+      allow: "GET",
     });
     return {
       type: "error",
-      error: error(405, "POST method not allowed. No actions exist for this page")
+      error: error(
+        405,
+        "POST method not allowed. No actions exist for this page"
+      ),
     };
   }
   check_named_default_separate(actions);
   try {
     const data = await call_action(event, actions);
-    if (false)
-      ;
+    if (false);
     if (data instanceof ActionFailure) {
       return {
         type: "failure",
         status: data.status,
-        data: data.data
+        data: data.data,
       };
     } else {
       return {
         type: "success",
         status: 200,
         // @ts-expect-error this will be removed upon serialization, so `undefined` is the same as omission
-        data
+        data,
       };
     }
   } catch (e) {
@@ -1813,12 +1922,12 @@ async function handle_action_request(event, server) {
       return {
         type: "redirect",
         status: err.status,
-        location: err.location
+        location: err.location,
       };
     }
     return {
       type: "error",
-      error: check_incorrect_fail_use(err)
+      error: check_incorrect_fail_use(err),
     };
   }
 }
@@ -1847,7 +1956,9 @@ async function call_action(event, actions) {
   }
   if (!is_form_content_type(event.request)) {
     throw new Error(
-      `Actions expect form-encoded data (received ${event.request.headers.get("content-type")})`
+      `Actions expect form-encoded data (received ${event.request.headers.get(
+        "content-type"
+      )})`
     );
   }
   return action(event);
@@ -1862,14 +1973,12 @@ function try_deserialize(data, fn, route_id) {
   try {
     return fn(data);
   } catch (e) {
-    const error2 = (
+    const error2 =
       /** @type {any} */
-      e
-    );
+      e;
     if ("path" in error2) {
       let message = `Data returned from action inside ${route_id} is not serializable: ${error2.message}`;
-      if (error2.path !== "")
-        message += ` (data.${error2.path})`;
+      if (error2.path !== "") message += ` (data.${error2.path})`;
       throw new Error(message);
     }
     throw error2;
@@ -1879,7 +1988,12 @@ async function unwrap_promises(object) {
   for (const key2 in object) {
     if (typeof object[key2]?.then === "function") {
       return Object.fromEntries(
-        await Promise.all(Object.entries(object).map(async ([key3, value]) => [key3, await value]))
+        await Promise.all(
+          Object.entries(object).map(async ([key3, value]) => [
+            key3,
+            await value,
+          ])
+        )
       );
     }
   }
@@ -1893,16 +2007,15 @@ async function load_server_data({
   node,
   parent,
   // TODO 2.0: Remove this
-  track_server_fetches
+  track_server_fetches,
 }) {
-  if (!node?.server)
-    return null;
+  if (!node?.server) return null;
   const uses = {
     dependencies: /* @__PURE__ */ new Set(),
     params: /* @__PURE__ */ new Set(),
     parent: false,
     route: false,
-    url: false
+    url: false,
   };
   const url = make_trackable(event.url, () => {
     uses.url = true;
@@ -1913,7 +2026,10 @@ async function load_server_data({
   const result = await node.server.load?.call(null, {
     ...event,
     fetch: (info, init2) => {
-      const url2 = new URL(info instanceof Request ? info.url : info, event.url);
+      const url2 = new URL(
+        info instanceof Request ? info.url : info,
+        event.url
+      );
       if (track_server_fetches) {
         uses.dependencies.add(url2.href);
       }
@@ -1929,11 +2045,11 @@ async function load_server_data({
     params: new Proxy(event.params, {
       get: (target, key2) => {
         uses.params.add(key2);
-        return target[
+        return (
           /** @type {string} */
-          key2
-        ];
-      }
+          target[key2]
+        );
+      },
     }),
     parent: async () => {
       uses.parent = true;
@@ -1942,20 +2058,20 @@ async function load_server_data({
     route: new Proxy(event.route, {
       get: (target, key2) => {
         uses.route = true;
-        return target[
+        return (
           /** @type {'id'} */
-          key2
-        ];
-      }
+          target[key2]
+        );
+      },
     }),
-    url
+    url,
   });
   const data = result ? await unwrap_promises(result) : null;
   return {
     type: "data",
     data,
     uses,
-    slash: node.server.trailingSlash
+    slash: node.server.trailingSlash,
   };
 }
 async function load_data({
@@ -1966,7 +2082,7 @@ async function load_data({
   server_data_promise,
   state,
   resolve_opts,
-  csr
+  csr,
 }) {
   const server_data_node = await server_data_promise;
   if (!node?.universal?.load) {
@@ -1979,19 +2095,25 @@ async function load_data({
     route: event.route,
     fetch: create_universal_fetch(event, state, fetched, csr, resolve_opts),
     setHeaders: event.setHeaders,
-    depends: () => {
-    },
-    parent
+    depends: () => {},
+    parent,
   });
   const data = result ? await unwrap_promises(result) : null;
   return data;
 }
 function create_universal_fetch(event, state, fetched, csr, resolve_opts) {
   return async (input, init2) => {
-    const cloned_body = input instanceof Request && input.body ? input.clone().body : null;
-    const cloned_headers = input instanceof Request && [...input.headers].length ? new Headers(input.headers) : init2?.headers;
+    const cloned_body =
+      input instanceof Request && input.body ? input.clone().body : null;
+    const cloned_headers =
+      input instanceof Request && [...input.headers].length
+        ? new Headers(input.headers)
+        : init2?.headers;
     let response = await event.fetch(input, init2);
-    const url = new URL(input instanceof Request ? input.url : input, event.url);
+    const url = new URL(
+      input instanceof Request ? input.url : input,
+      event.url
+    );
     const same_origin = url.origin === event.url.origin;
     let dependency;
     if (same_origin) {
@@ -2000,18 +2122,21 @@ function create_universal_fetch(event, state, fetched, csr, resolve_opts) {
         state.prerendering.dependencies.set(url.pathname, dependency);
       }
     } else {
-      const mode = input instanceof Request ? input.mode : init2?.mode ?? "cors";
+      const mode =
+        input instanceof Request ? input.mode : init2?.mode ?? "cors";
       if (mode === "no-cors") {
         response = new Response("", {
           status: response.status,
           statusText: response.statusText,
-          headers: response.headers
+          headers: response.headers,
         });
       } else {
         const acao = response.headers.get("access-control-allow-origin");
-        if (!acao || acao !== event.url.origin && acao !== "*") {
+        if (!acao || (acao !== event.url.origin && acao !== "*")) {
           throw new Error(
-            `CORS error: ${acao ? "Incorrect" : "No"} 'Access-Control-Allow-Origin' header is present on the requested resource`
+            `CORS error: ${
+              acao ? "Incorrect" : "No"
+            } 'Access-Control-Allow-Origin' header is present on the requested resource`
           );
         }
       }
@@ -2024,19 +2149,24 @@ function create_universal_fetch(event, state, fetched, csr, resolve_opts) {
             const status_number = Number(response2.status);
             if (isNaN(status_number)) {
               throw new Error(
-                `response.status is not a number. value: "${response2.status}" type: ${typeof response2.status}`
+                `response.status is not a number. value: "${
+                  response2.status
+                }" type: ${typeof response2.status}`
               );
             }
             fetched.push({
-              url: same_origin ? url.href.slice(event.url.origin.length) : url.href,
+              url: same_origin
+                ? url.href.slice(event.url.origin.length)
+                : url.href,
               method: event.request.method,
-              request_body: (
+              request_body:
                 /** @type {string | ArrayBufferView | undefined} */
-                input instanceof Request && cloned_body ? await stream_to_string(cloned_body) : init2?.body
-              ),
+                input instanceof Request && cloned_body
+                  ? await stream_to_string(cloned_body)
+                  : init2?.body,
               request_headers: cloned_headers,
               response_body: body,
-              response: response2
+              response: response2,
             });
           }
           if (dependency) {
@@ -2062,7 +2192,7 @@ function create_universal_fetch(event, state, fetched, csr, resolve_opts) {
           };
         }
         return Reflect.get(response2, key2, response2);
-      }
+      },
     });
     if (csr) {
       const get = response.headers.get;
@@ -2070,7 +2200,10 @@ function create_universal_fetch(event, state, fetched, csr, resolve_opts) {
         const lower = key2.toLowerCase();
         const value = get.call(response.headers, lower);
         if (value && !lower.startsWith("x-sveltekit-")) {
-          const included = resolve_opts.filterSerializedResponseHeaders(lower, value);
+          const included = resolve_opts.filterSerializedResponseHeaders(
+            lower,
+            value
+          );
           if (!included) {
             throw new Error(
               `Failed to get response header "${lower}" — it must be included by the \`filterSerializedResponseHeaders\` option: https://kit.svelte.dev/docs/hooks#server-hooks-handle (at ${event.route.id})`
@@ -2101,13 +2234,15 @@ function hash(...values) {
   for (const value of values) {
     if (typeof value === "string") {
       let i = value.length;
-      while (i)
-        hash2 = hash2 * 33 ^ value.charCodeAt(--i);
+      while (i) hash2 = (hash2 * 33) ^ value.charCodeAt(--i);
     } else if (ArrayBuffer.isView(value)) {
-      const buffer = new Uint8Array(value.buffer, value.byteOffset, value.byteLength);
+      const buffer = new Uint8Array(
+        value.buffer,
+        value.byteOffset,
+        value.byteLength
+      );
       let i = buffer.length;
-      while (i)
-        hash2 = hash2 * 33 ^ buffer[--i];
+      while (i) hash2 = (hash2 * 33) ^ buffer[--i];
     } else {
       throw new TypeError("value must be a string or TypedArray");
     }
@@ -2116,11 +2251,13 @@ function hash(...values) {
 }
 const escape_html_attr_dict = {
   "&": "&amp;",
-  '"': "&quot;"
+  '"': "&quot;",
 };
 const escape_html_attr_regex = new RegExp(
   // special characters
-  `[${Object.keys(escape_html_attr_dict).join("")}]|[\\ud800-\\udbff](?![\\udc00-\\udfff])|[\\ud800-\\udbff][\\udc00-\\udfff]|[\\udc00-\\udfff]`,
+  `[${Object.keys(escape_html_attr_dict).join(
+    ""
+  )}]|[\\ud800-\\udbff](?![\\udc00-\\udfff])|[\\ud800-\\udbff][\\udc00-\\udfff]|[\\udc00-\\udfff]`,
   "g"
 );
 function escape_html_attr(str) {
@@ -2135,7 +2272,7 @@ function escape_html_attr(str) {
 const replacements = {
   "<": "\\u003C",
   "\u2028": "\\u2028",
-  "\u2029": "\\u2029"
+  "\u2029": "\\u2029",
 };
 const pattern = new RegExp(`[${Object.keys(replacements).join("")}]`, "g");
 function serialize_data(fetched, filter, prerendering = false) {
@@ -2147,24 +2284,24 @@ function serialize_data(fetched, filter, prerendering = false) {
     if (filter(key2, value)) {
       headers[key2] = value;
     }
-    if (key2 === "cache-control")
-      cache_control = value;
-    else if (key2 === "age")
-      age = value;
-    else if (key2 === "vary" && value.trim() === "*")
-      varyAny = true;
+    if (key2 === "cache-control") cache_control = value;
+    else if (key2 === "age") age = value;
+    else if (key2 === "vary" && value.trim() === "*") varyAny = true;
   }
   const payload = {
     status: fetched.response.status,
     statusText: fetched.response.statusText,
     headers,
-    body: fetched.response_body
+    body: fetched.response_body,
   };
-  const safe_payload = JSON.stringify(payload).replace(pattern, (match) => replacements[match]);
+  const safe_payload = JSON.stringify(payload).replace(
+    pattern,
+    (match) => replacements[match]
+  );
   const attrs = [
     'type="application/json"',
     "data-sveltekit-fetched",
-    `data-url=${escape_html_attr(fetched.url)}`
+    `data-url=${escape_html_attr(fetched.url)}`,
   ];
   if (fetched.request_headers || fetched.request_body) {
     const values = [];
@@ -2177,7 +2314,9 @@ function serialize_data(fetched, filter, prerendering = false) {
     attrs.push(`data-hash="${hash(...values)}"`);
   }
   if (!prerendering && fetched.method === "GET" && cache_control && !varyAny) {
-    const match = /s-maxage=(\d+)/g.exec(cache_control) ?? /max-age=(\d+)/g.exec(cache_control);
+    const match =
+      /s-maxage=(\d+)/g.exec(cache_control) ??
+      /max-age=(\d+)/g.exec(cache_control);
     if (match) {
       const ttl = +match[1] - +(age ?? "0");
       attrs.push(`data-ttl="${ttl}"`);
@@ -2188,8 +2327,7 @@ function serialize_data(fetched, filter, prerendering = false) {
 const s = JSON.stringify;
 const encoder$2 = new TextEncoder();
 function sha256(data) {
-  if (!key[0])
-    precompute();
+  if (!key[0]) precompute();
   const out = init.slice(0);
   const array2 = encode(data);
   for (let i = 0; i < array2.length; i += 16) {
@@ -2209,28 +2347,52 @@ function sha256(data) {
       if (i2 < 16) {
         tmp = w[i2];
       } else {
-        a = w[i2 + 1 & 15];
-        b = w[i2 + 14 & 15];
-        tmp = w[i2 & 15] = (a >>> 7 ^ a >>> 18 ^ a >>> 3 ^ a << 25 ^ a << 14) + (b >>> 17 ^ b >>> 19 ^ b >>> 10 ^ b << 15 ^ b << 13) + w[i2 & 15] + w[i2 + 9 & 15] | 0;
+        a = w[(i2 + 1) & 15];
+        b = w[(i2 + 14) & 15];
+        tmp = w[i2 & 15] =
+          (((a >>> 7) ^ (a >>> 18) ^ (a >>> 3) ^ (a << 25) ^ (a << 14)) +
+            ((b >>> 17) ^ (b >>> 19) ^ (b >>> 10) ^ (b << 15) ^ (b << 13)) +
+            w[i2 & 15] +
+            w[(i2 + 9) & 15]) |
+          0;
       }
-      tmp = tmp + out7 + (out4 >>> 6 ^ out4 >>> 11 ^ out4 >>> 25 ^ out4 << 26 ^ out4 << 21 ^ out4 << 7) + (out6 ^ out4 & (out5 ^ out6)) + key[i2];
+      tmp =
+        tmp +
+        out7 +
+        ((out4 >>> 6) ^
+          (out4 >>> 11) ^
+          (out4 >>> 25) ^
+          (out4 << 26) ^
+          (out4 << 21) ^
+          (out4 << 7)) +
+        (out6 ^ (out4 & (out5 ^ out6))) +
+        key[i2];
       out7 = out6;
       out6 = out5;
       out5 = out4;
-      out4 = out3 + tmp | 0;
+      out4 = (out3 + tmp) | 0;
       out3 = out2;
       out2 = out1;
       out1 = out0;
-      out0 = tmp + (out1 & out2 ^ out3 & (out1 ^ out2)) + (out1 >>> 2 ^ out1 >>> 13 ^ out1 >>> 22 ^ out1 << 30 ^ out1 << 19 ^ out1 << 10) | 0;
+      out0 =
+        (tmp +
+          ((out1 & out2) ^ (out3 & (out1 ^ out2))) +
+          ((out1 >>> 2) ^
+            (out1 >>> 13) ^
+            (out1 >>> 22) ^
+            (out1 << 30) ^
+            (out1 << 19) ^
+            (out1 << 10))) |
+        0;
     }
-    out[0] = out[0] + out0 | 0;
-    out[1] = out[1] + out1 | 0;
-    out[2] = out[2] + out2 | 0;
-    out[3] = out[3] + out3 | 0;
-    out[4] = out[4] + out4 | 0;
-    out[5] = out[5] + out5 | 0;
-    out[6] = out[6] + out6 | 0;
-    out[7] = out[7] + out7 | 0;
+    out[0] = (out[0] + out0) | 0;
+    out[1] = (out[1] + out1) | 0;
+    out[2] = (out[2] + out2) | 0;
+    out[3] = (out[3] + out3) | 0;
+    out[4] = (out[4] + out4) | 0;
+    out[5] = (out[5] + out5) | 0;
+    out[6] = (out[6] + out6) | 0;
+    out[7] = (out[7] + out7) | 0;
   }
   const bytes = new Uint8Array(out.buffer);
   reverse_endianness(bytes);
@@ -2285,15 +2447,16 @@ function encode(str) {
   words[words.length - 1] = length;
   return words;
 }
-const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".split("");
+const chars =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".split("");
 function base64(bytes) {
   const l = bytes.length;
   let result = "";
   let i;
   for (i = 2; i < l; i += 3) {
     result += chars[bytes[i - 2] >> 2];
-    result += chars[(bytes[i - 2] & 3) << 4 | bytes[i - 1] >> 4];
-    result += chars[(bytes[i - 1] & 15) << 2 | bytes[i] >> 6];
+    result += chars[((bytes[i - 2] & 3) << 4) | (bytes[i - 1] >> 4)];
+    result += chars[((bytes[i - 1] & 15) << 2) | (bytes[i] >> 6)];
     result += chars[bytes[i] & 63];
   }
   if (i === l + 1) {
@@ -2303,7 +2466,7 @@ function base64(bytes) {
   }
   if (i === l) {
     result += chars[bytes[i - 2] >> 2];
-    result += chars[(bytes[i - 2] & 3) << 4 | bytes[i - 1] >> 4];
+    result += chars[((bytes[i - 2] & 3) << 4) | (bytes[i - 1] >> 4)];
     result += chars[(bytes[i - 1] & 15) << 2];
     result += "=";
   }
@@ -2323,7 +2486,7 @@ const quoted = /* @__PURE__ */ new Set([
   "strict-dynamic",
   "report-sample",
   "wasm-unsafe-eval",
-  "script"
+  "script",
 ]);
 const crypto_pattern = /^(nonce|sha\d\d\d)-/;
 class BaseProvider {
@@ -2354,8 +2517,14 @@ class BaseProvider {
     this.#style_src = [];
     const effective_script_src = d["script-src"] || d["default-src"];
     const effective_style_src = d["style-src"] || d["default-src"];
-    this.#script_needs_csp = !!effective_script_src && effective_script_src.filter((value) => value !== "unsafe-inline").length > 0;
-    this.#style_needs_csp = !!effective_style_src && effective_style_src.filter((value) => value !== "unsafe-inline").length > 0;
+    this.#script_needs_csp =
+      !!effective_script_src &&
+      effective_script_src.filter((value) => value !== "unsafe-inline").length >
+        0;
+    this.#style_needs_csp =
+      !!effective_style_src &&
+      effective_style_src.filter((value) => value !== "unsafe-inline").length >
+        0;
     this.script_needs_nonce = this.#script_needs_csp && !this.#use_hashes;
     this.style_needs_nonce = this.#style_needs_csp && !this.#use_hashes;
     this.#nonce = nonce;
@@ -2388,26 +2557,29 @@ class BaseProvider {
     const directives = { ...this.#directives };
     if (this.#style_src.length > 0) {
       directives["style-src"] = [
-        ...directives["style-src"] || directives["default-src"] || [],
-        ...this.#style_src
+        ...(directives["style-src"] || directives["default-src"] || []),
+        ...this.#style_src,
       ];
     }
     if (this.#script_src.length > 0) {
       directives["script-src"] = [
-        ...directives["script-src"] || directives["default-src"] || [],
-        ...this.#script_src
+        ...(directives["script-src"] || directives["default-src"] || []),
+        ...this.#script_src,
       ];
     }
     for (const key2 in directives) {
-      if (is_meta && (key2 === "frame-ancestors" || key2 === "report-uri" || key2 === "sandbox")) {
+      if (
+        is_meta &&
+        (key2 === "frame-ancestors" ||
+          key2 === "report-uri" ||
+          key2 === "sandbox")
+      ) {
         continue;
       }
-      const value = (
+      const value =
         /** @type {string[] | true} */
-        directives[key2]
-      );
-      if (!value)
-        continue;
+        directives[key2];
+      if (!value) continue;
       const directive = [key2];
       if (Array.isArray(value)) {
         value.forEach((value2) => {
@@ -2429,7 +2601,9 @@ class CspProvider extends BaseProvider {
     if (!content) {
       return;
     }
-    return `<meta http-equiv="content-security-policy" content=${escape_html_attr(content)}>`;
+    return `<meta http-equiv="content-security-policy" content=${escape_html_attr(
+      content
+    )}>`;
   }
 }
 class CspReportOnlyProvider extends BaseProvider {
@@ -2463,15 +2637,25 @@ class Csp {
    * @param {import('./types').CspOpts} opts
    */
   constructor({ mode, directives, reportOnly }, { prerender }) {
-    const use_hashes = mode === "hash" || mode === "auto" && prerender;
+    const use_hashes = mode === "hash" || (mode === "auto" && prerender);
     this.csp_provider = new CspProvider(use_hashes, directives, this.nonce);
-    this.report_only_provider = new CspReportOnlyProvider(use_hashes, reportOnly, this.nonce);
+    this.report_only_provider = new CspReportOnlyProvider(
+      use_hashes,
+      reportOnly,
+      this.nonce
+    );
   }
   get script_needs_nonce() {
-    return this.csp_provider.script_needs_nonce || this.report_only_provider.script_needs_nonce;
+    return (
+      this.csp_provider.script_needs_nonce ||
+      this.report_only_provider.script_needs_nonce
+    );
   }
   get style_needs_nonce() {
-    return this.csp_provider.style_needs_nonce || this.report_only_provider.style_needs_nonce;
+    return (
+      this.csp_provider.style_needs_nonce ||
+      this.report_only_provider.style_needs_nonce
+    );
   }
   /** @param {string} content */
   add_script(content) {
@@ -2501,28 +2685,27 @@ function create_async_iterator() {
         return {
           next: async () => {
             const next = await deferred[0].promise;
-            if (!next.done)
-              deferred.shift();
+            if (!next.done) deferred.shift();
             return next;
-          }
+          },
         };
-      }
+      },
     },
     push: (value) => {
       deferred[deferred.length - 1].fulfil({
         value,
-        done: false
+        done: false,
       });
       deferred.push(defer());
     },
     done: () => {
       deferred[deferred.length - 1].fulfil({ done: true });
-    }
+    },
   };
 }
 const updated = {
   ...readable(false),
-  check: () => false
+  check: () => false,
 };
 const encoder$1 = new TextEncoder();
 async function render_response({
@@ -2536,14 +2719,18 @@ async function render_response({
   error: error2 = null,
   event,
   resolve_opts,
-  action_result
+  action_result,
 }) {
   if (state.prerendering) {
     if (options2.csp.mode === "nonce") {
-      throw new Error('Cannot use prerendering if config.kit.csp.mode === "nonce"');
+      throw new Error(
+        'Cannot use prerendering if config.kit.csp.mode === "nonce"'
+      );
     }
     if (options2.app_template_contains_nonce) {
-      throw new Error("Cannot use prerendering if page template contains %sveltekit.nonce%");
+      throw new Error(
+        "Cannot use prerendering if page template contains %sveltekit.nonce%"
+      );
     }
   }
   const { client } = manifest._;
@@ -2553,7 +2740,10 @@ async function render_response({
   const link_header_preloads = /* @__PURE__ */ new Set();
   const inline_styles = /* @__PURE__ */ new Map();
   let rendered;
-  const form_value = action_result?.type === "success" || action_result?.type === "failure" ? action_result.data ?? null : null;
+  const form_value =
+    action_result?.type === "success" || action_result?.type === "failure"
+      ? action_result.data ?? null
+      : null;
   let base$1 = base;
   let assets$1 = assets;
   let base_expression = s(base);
@@ -2561,7 +2751,7 @@ async function render_response({
     const segments = event.url.pathname.slice(base.length).split("/").slice(2);
     base$1 = segments.map(() => "..").join("/") || ".";
     base_expression = `new URL(${s(base$1)}, location).pathname.slice(0, -1)`;
-    if (!assets || assets[0] === "/" && assets !== SVELTE_KIT_ASSETS) {
+    if (!assets || (assets[0] === "/" && assets !== SVELTE_KIT_ASSETS)) {
       assets$1 = base$1;
     }
   }
@@ -2570,10 +2760,12 @@ async function render_response({
       stores: {
         page: writable(null),
         navigating: writable(null),
-        updated
+        updated,
       },
-      constructors: await Promise.all(branch.map(({ node }) => node.component())),
-      form: form_value
+      constructors: await Promise.all(
+        branch.map(({ node }) => node.component())
+      ),
+      form: form_value,
     };
     let data2 = {};
     for (let i = 0; i < branch.length; i += 1) {
@@ -2582,15 +2774,14 @@ async function render_response({
     }
     props.page = {
       error: error2,
-      params: (
+      params:
         /** @type {Record<string, any>} */
-        event.params
-      ),
+        event.params,
       route: event.route,
       status,
       url: event.url,
       data: data2,
-      form: form_value
+      form: form_value,
     };
     {
       try {
@@ -2600,14 +2791,13 @@ async function render_response({
       }
     }
     for (const { node } of branch) {
-      for (const url of node.imports)
-        modulepreloads.add(url);
-      for (const url of node.stylesheets)
-        stylesheets.add(url);
-      for (const url of node.fonts)
-        fonts.add(url);
+      for (const url of node.imports) modulepreloads.add(url);
+      for (const url of node.stylesheets) stylesheets.add(url);
+      for (const url of node.fonts) fonts.add(url);
       if (node.inline_styles) {
-        Object.entries(await node.inline_styles()).forEach(([k, v]) => inline_styles.set(k, v));
+        Object.entries(await node.inline_styles()).forEach(([k, v]) =>
+          inline_styles.set(k, v)
+        );
       }
     }
   } else {
@@ -2616,7 +2806,7 @@ async function render_response({
   let head = "";
   let body = rendered.html;
   const csp = new Csp(options2.csp, {
-    prerender: !!state.prerendering
+    prerender: !!state.prerendering,
   });
   const prefixed = (path) => {
     if (path.startsWith("/")) {
@@ -2627,8 +2817,7 @@ async function render_response({
   if (inline_styles.size > 0) {
     const content = Array.from(inline_styles.values()).join("\n");
     const attributes = [];
-    if (csp.style_needs_nonce)
-      attributes.push(` nonce="${csp.nonce}"`);
+    if (csp.style_needs_nonce) attributes.push(` nonce="${csp.nonce}"`);
     csp.add_style(content);
     head += `
 	<style${attributes.join("")}>${content}</style>`;
@@ -2641,7 +2830,9 @@ async function render_response({
     } else {
       if (resolve_opts.preload({ type: "css", path })) {
         const preload_atts = ['rel="preload"', 'as="style"'];
-        link_header_preloads.add(`<${encodeURI(path)}>; ${preload_atts.join(";")}; nopush`);
+        link_header_preloads.add(
+          `<${encodeURI(path)}>; ${preload_atts.join(";")}; nopush`
+        );
       }
     }
     head += `
@@ -2656,7 +2847,7 @@ async function render_response({
         'as="font"',
         `type="font/${ext}"`,
         `href="${path}"`,
-        "crossorigin"
+        "crossorigin",
       ];
       head += `
 		<link ${attributes.join(" ")}>`;
@@ -2671,16 +2862,24 @@ async function render_response({
   );
   if (page_config.ssr && page_config.csr) {
     body += `
-			${fetched.map(
-      (item) => serialize_data(item, resolve_opts.filterSerializedResponseHeaders, !!state.prerendering)
-    ).join("\n			")}`;
+			${fetched
+        .map((item) =>
+          serialize_data(
+            item,
+            resolve_opts.filterSerializedResponseHeaders,
+            !!state.prerendering
+          )
+        )
+        .join("\n			")}`;
   }
   if (page_config.csr) {
-    const included_modulepreloads = Array.from(modulepreloads, (dep) => prefixed(dep)).filter(
-      (path) => resolve_opts.preload({ type: "js", path })
-    );
+    const included_modulepreloads = Array.from(modulepreloads, (dep) =>
+      prefixed(dep)
+    ).filter((path) => resolve_opts.preload({ type: "js", path }));
     for (const path of included_modulepreloads) {
-      link_header_preloads.add(`<${encodeURI(path)}>; rel="modulepreload"; nopush`);
+      link_header_preloads.add(
+        `<${encodeURI(path)}>; rel="modulepreload"; nopush`
+      );
       if (options2.preload_strategy !== "modulepreload") {
         head += `
 		<link rel="preload" as="script" crossorigin="anonymous" href="${path}">`;
@@ -2693,7 +2892,7 @@ async function render_response({
     const properties = [
       assets && `assets: ${s(assets)}`,
       `base: ${base_expression}`,
-      `env: ${s(public_env)}`
+      `env: ${s(public_env)}`,
     ].filter(Boolean);
     if (chunks) {
       blocks.push("const deferred = new Map();");
@@ -2730,13 +2929,16 @@ async function render_response({
         `node_ids: [${branch.map(({ node }) => node.index).join(", ")}]`,
         "data",
         `form: ${serialized.form}`,
-        `error: ${serialized.error}`
+        `error: ${serialized.error}`,
       ];
       if (status !== 200) {
         hydrate.push(`status: ${status}`);
       }
       if (options2.embedded) {
-        hydrate.push(`params: ${uneval(event.params)}`, `route: ${s(event.route)}`);
+        hydrate.push(
+          `params: ${uneval(event.params)}`,
+          `route: ${s(event.route)}`
+        );
       }
       args.push(`{
 							${hydrate.join(",\n							")}
@@ -2763,12 +2965,14 @@ async function render_response({
 			`;
     csp.add_script(init_app);
     body += `
-			<script${csp.script_needs_nonce ? ` nonce="${csp.nonce}"` : ""}>${init_app}<\/script>
+			<script${
+        csp.script_needs_nonce ? ` nonce="${csp.nonce}"` : ""
+      }>${init_app}<\/script>
 		`;
   }
   const headers = new Headers({
     "x-sveltekit-page": "true",
-    "content-type": "text/html"
+    "content-type": "text/html",
   });
   if (state.prerendering) {
     const http_equiv = [];
@@ -2777,7 +2981,9 @@ async function render_response({
       http_equiv.push(csp_headers);
     }
     if (state.prerendering.cache) {
-      http_equiv.push(`<meta http-equiv="cache-control" content="${state.prerendering.cache}">`);
+      http_equiv.push(
+        `<meta http-equiv="cache-control" content="${state.prerendering.cache}">`
+      );
     }
     if (http_equiv.length > 0) {
       head = http_equiv.join("\n") + head;
@@ -2800,39 +3006,41 @@ async function render_response({
     head,
     body,
     assets: assets$1,
-    nonce: (
+    nonce:
       /** @type {string} */
-      csp.nonce
-    ),
-    env: public_env
+      csp.nonce,
+    env: public_env,
   });
-  const transformed = await resolve_opts.transformPageChunk({
-    html,
-    done: true
-  }) || "";
+  const transformed =
+    (await resolve_opts.transformPageChunk({
+      html,
+      done: true,
+    })) || "";
   if (!chunks) {
     headers.set("etag", `"${hash(transformed)}"`);
   }
-  return !chunks ? text(transformed, {
-    status,
-    headers
-  }) : new Response(
-    new ReadableStream({
-      async start(controller) {
-        controller.enqueue(encoder$1.encode(transformed + "\n"));
-        for await (const chunk of chunks) {
-          controller.enqueue(encoder$1.encode(chunk));
+  return !chunks
+    ? text(transformed, {
+        status,
+        headers,
+      })
+    : new Response(
+        new ReadableStream({
+          async start(controller) {
+            controller.enqueue(encoder$1.encode(transformed + "\n"));
+            for await (const chunk of chunks) {
+              controller.enqueue(encoder$1.encode(chunk));
+            }
+            controller.close();
+          },
+          type: "bytes",
+        }),
+        {
+          headers: {
+            "content-type": "text/html",
+          },
         }
-        controller.close();
-      },
-      type: "bytes"
-    }),
-    {
-      headers: {
-        "content-type": "text/html"
-      }
-    }
-  );
+      );
 }
 function get_data(event, options2, nodes, global) {
   let promise_id = 1;
@@ -2842,57 +3050,67 @@ function get_data(event, options2, nodes, global) {
     if (typeof thing?.then === "function") {
       const id = promise_id++;
       count += 1;
-      thing.then(
-        /** @param {any} data */
-        (data) => ({ data })
-      ).catch(
-        /** @param {any} error */
-        async (error2) => ({
-          error: await handle_error_and_jsonify(event, options2, error2)
-        })
-      ).then(
-        /**
-         * @param {{data: any; error: any}} result
-         */
-        async ({ data, error: error2 }) => {
-          count -= 1;
-          let str;
-          try {
-            str = uneval({ id, data, error: error2 }, replacer);
-          } catch (e) {
-            error2 = await handle_error_and_jsonify(
-              event,
-              options2,
-              new Error(`Failed to serialize promise while rendering ${event.route.id}`)
-            );
-            data = void 0;
-            str = uneval({ id, data, error: error2 }, replacer);
-          }
-          push(`<script>${global}.resolve(${str})<\/script>
+      thing
+        .then(
+          /** @param {any} data */
+          (data) => ({ data })
+        )
+        .catch(
+          /** @param {any} error */
+          async (error2) => ({
+            error: await handle_error_and_jsonify(event, options2, error2),
+          })
+        )
+        .then(
+          /**
+           * @param {{data: any; error: any}} result
+           */
+          async ({ data, error: error2 }) => {
+            count -= 1;
+            let str;
+            try {
+              str = uneval({ id, data, error: error2 }, replacer);
+            } catch (e) {
+              error2 = await handle_error_and_jsonify(
+                event,
+                options2,
+                new Error(
+                  `Failed to serialize promise while rendering ${event.route.id}`
+                )
+              );
+              data = void 0;
+              str = uneval({ id, data, error: error2 }, replacer);
+            }
+            push(`<script>${global}.resolve(${str})<\/script>
 `);
-          if (count === 0)
-            done();
-        }
-      );
+            if (count === 0) done();
+          }
+        );
       return `${global}.defer(${id})`;
     }
   }
   try {
     const strings = nodes.map((node) => {
-      if (!node)
-        return "null";
-      return `{"type":"data","data":${uneval(node.data, replacer)},${stringify_uses(node)}${node.slash ? `,"slash":${JSON.stringify(node.slash)}` : ""}}`;
+      if (!node) return "null";
+      return `{"type":"data","data":${uneval(
+        node.data,
+        replacer
+      )},${stringify_uses(node)}${
+        node.slash ? `,"slash":${JSON.stringify(node.slash)}` : ""
+      }}`;
     });
     return {
       data: `[${strings.join(",")}]`,
-      chunks: count > 0 ? iterator : null
+      chunks: count > 0 ? iterator : null,
     };
   } catch (e) {
-    throw new Error(clarify_devalue_error(
-      event,
-      /** @type {any} */
-      e
-    ));
+    throw new Error(
+      clarify_devalue_error(
+        event,
+        /** @type {any} */
+        e
+      )
+    );
   }
 }
 function get_option(nodes, option) {
@@ -2914,7 +3132,7 @@ async function respond_with_error({
   state,
   status,
   error: error2,
-  resolve_opts
+  resolve_opts,
 }) {
   if (event.request.headers.get("x-sveltekit-error")) {
     return static_error_page(
@@ -2937,7 +3155,7 @@ async function respond_with_error({
         state,
         node: default_layout,
         parent: async () => ({}),
-        track_server_fetches: options2.track_server_fetches
+        track_server_fetches: options2.track_server_fetches,
       });
       const server_data = await server_data_promise;
       const data = await load_data({
@@ -2948,19 +3166,19 @@ async function respond_with_error({
         resolve_opts,
         server_data_promise,
         state,
-        csr
+        csr,
       });
       branch.push(
         {
           node: default_layout,
           server_data,
-          data
+          data,
         },
         {
           node: await manifest._.nodes[1](),
           // 1 is always the root error
           data: null,
-          server_data: null
+          server_data: null,
         }
       );
     }
@@ -2970,14 +3188,14 @@ async function respond_with_error({
       state,
       page_config: {
         ssr,
-        csr: get_option([default_layout], "csr") ?? true
+        csr: get_option([default_layout], "csr") ?? true,
       },
       status,
       error: await handle_error_and_jsonify(event, options2, error2),
       branch,
       fetched,
       event,
-      resolve_opts
+      resolve_opts,
     });
   } catch (e) {
     if (e instanceof Redirect) {
@@ -2994,17 +3212,24 @@ function once(fn) {
   let done = false;
   let result;
   return () => {
-    if (done)
-      return result;
+    if (done) return result;
     done = true;
-    return result = fn();
+    return (result = fn());
   };
 }
 const encoder = new TextEncoder();
-async function render_data(event, route, options2, manifest, state, invalidated_data_nodes, trailing_slash) {
+async function render_data(
+  event,
+  route,
+  options2,
+  manifest,
+  state,
+  invalidated_data_nodes,
+  trailing_slash
+) {
   if (!route.page) {
     return new Response(void 0, {
-      status: 404
+      status: 404,
     });
   }
   try {
@@ -3021,7 +3246,7 @@ async function render_data(event, route, options2, manifest, state, invalidated_
             return (
               /** @type {import('types').ServerDataSkippedNode} */
               {
-                type: "skip"
+                type: "skip",
               }
             );
           }
@@ -3033,17 +3258,16 @@ async function render_data(event, route, options2, manifest, state, invalidated_
             parent: async () => {
               const data2 = {};
               for (let j = 0; j < i; j += 1) {
-                const parent = (
+                const parent =
                   /** @type {import('types').ServerDataNode | null} */
-                  await functions[j]()
-                );
+                  await functions[j]();
                 if (parent) {
                   Object.assign(data2, parent.data);
                 }
               }
               return data2;
             },
-            track_server_fetches: options2.track_server_fetches
+            track_server_fetches: options2.track_server_fetches,
           });
         } catch (e) {
           aborted = true;
@@ -3056,7 +3280,7 @@ async function render_data(event, route, options2, manifest, state, invalidated_
         return (
           /** @type {import('types').ServerDataSkippedNode} */
           {
-            type: "skip"
+            type: "skip",
           }
         );
       }
@@ -3064,8 +3288,8 @@ async function render_data(event, route, options2, manifest, state, invalidated_
     });
     let length = promises.length;
     const nodes = await Promise.all(
-      promises.map(
-        (p, i) => p.catch(async (error2) => {
+      promises.map((p, i) =>
+        p.catch(async (error2) => {
           if (error2 instanceof Redirect) {
             throw error2;
           }
@@ -3075,7 +3299,7 @@ async function render_data(event, route, options2, manifest, state, invalidated_
             {
               type: "error",
               error: await handle_error_and_jsonify(event, options2, error2),
-              status: error2 instanceof HttpError ? error2.status : void 0
+              status: error2 instanceof HttpError ? error2.status : void 0,
             }
           );
         })
@@ -3094,15 +3318,15 @@ async function render_data(event, route, options2, manifest, state, invalidated_
           }
           controller.close();
         },
-        type: "bytes"
+        type: "bytes",
       }),
       {
         headers: {
           // we use a proprietary content type to prevent buffering.
           // the `text` prefix makes it inspectable
           "content-type": "text/sveltekit-data",
-          "cache-control": "private, no-store"
-        }
+          "cache-control": "private, no-store",
+        },
       }
     );
   } catch (e) {
@@ -3110,7 +3334,10 @@ async function render_data(event, route, options2, manifest, state, invalidated_
     if (error2 instanceof Redirect) {
       return redirect_json_response(error2);
     } else {
-      return json_response(await handle_error_and_jsonify(event, options2, error2), 500);
+      return json_response(
+        await handle_error_and_jsonify(event, options2, error2),
+        500
+      );
     }
   }
 }
@@ -3119,14 +3346,14 @@ function json_response(json2, status = 200) {
     status,
     headers: {
       "content-type": "application/json",
-      "cache-control": "private, no-store"
-    }
+      "cache-control": "private, no-store",
+    },
   });
 }
 function redirect_json_response(redirect) {
   return json_response({
     type: "redirect",
-    location: redirect.location
+    location: redirect.location,
   });
 }
 function get_data_json(event, options2, nodes) {
@@ -3140,72 +3367,86 @@ function get_data_json(event, options2, nodes) {
         const id = promise_id++;
         count += 1;
         let key2 = "data";
-        thing.catch(
-          /** @param {any} e */
-          async (e) => {
-            key2 = "error";
-            return handle_error_and_jsonify(
-              event,
-              options2,
-              /** @type {any} */
-              e
-            );
-          }
-        ).then(
-          /** @param {any} value */
-          async (value) => {
-            let str;
-            try {
-              str = stringify(value, reducers);
-            } catch (e) {
-              const error2 = await handle_error_and_jsonify(
+        thing
+          .catch(
+            /** @param {any} e */
+            async (e) => {
+              key2 = "error";
+              return handle_error_and_jsonify(
                 event,
                 options2,
-                new Error(`Failed to serialize promise while rendering ${event.route.id}`)
+                /** @type {any} */
+                e
               );
-              key2 = "error";
-              str = stringify(error2, reducers);
             }
-            count -= 1;
-            push(`{"type":"chunk","id":${id},"${key2}":${str}}
+          )
+          .then(
+            /** @param {any} value */
+            async (value) => {
+              let str;
+              try {
+                str = stringify(value, reducers);
+              } catch (e) {
+                const error2 = await handle_error_and_jsonify(
+                  event,
+                  options2,
+                  new Error(
+                    `Failed to serialize promise while rendering ${event.route.id}`
+                  )
+                );
+                key2 = "error";
+                str = stringify(error2, reducers);
+              }
+              count -= 1;
+              push(`{"type":"chunk","id":${id},"${key2}":${str}}
 `);
-            if (count === 0)
-              done();
-          }
-        );
+              if (count === 0) done();
+            }
+          );
         return id;
       }
-    }
+    },
   };
   try {
     const strings = nodes.map((node) => {
-      if (!node)
-        return "null";
+      if (!node) return "null";
       if (node.type === "error" || node.type === "skip") {
         return JSON.stringify(node);
       }
-      return `{"type":"data","data":${stringify(node.data, reducers)},${stringify_uses(
-        node
-      )}${node.slash ? `,"slash":${JSON.stringify(node.slash)}` : ""}}`;
+      return `{"type":"data","data":${stringify(
+        node.data,
+        reducers
+      )},${stringify_uses(node)}${
+        node.slash ? `,"slash":${JSON.stringify(node.slash)}` : ""
+      }}`;
     });
     return {
       data: `{"type":"data","nodes":[${strings.join(",")}]}
 `,
-      chunks: count > 0 ? iterator : null
+      chunks: count > 0 ? iterator : null,
     };
   } catch (e) {
-    throw new Error(clarify_devalue_error(
-      event,
-      /** @type {any} */
-      e
-    ));
+    throw new Error(
+      clarify_devalue_error(
+        event,
+        /** @type {any} */
+        e
+      )
+    );
   }
 }
 const MAX_DEPTH = 10;
-async function render_page(event, page, options2, manifest, state, resolve_opts) {
+async function render_page(
+  event,
+  page,
+  options2,
+  manifest,
+  state,
+  resolve_opts
+) {
   if (state.depth > MAX_DEPTH) {
     return text(`Not found: ${event.url.pathname}`, {
-      status: 404
+      status: 404,
       // TODO in some cases this should be 500. not sure how to differentiate
     });
   }
@@ -3216,13 +3457,12 @@ async function render_page(event, page, options2, manifest, state, resolve_opts)
   try {
     const nodes = await Promise.all([
       // we use == here rather than === because [undefined] serializes as "[null]"
-      ...page.layouts.map((n) => n == void 0 ? n : manifest._.nodes[n]()),
-      manifest._.nodes[page.leaf]()
+      ...page.layouts.map((n) => (n == void 0 ? n : manifest._.nodes[n]())),
+      manifest._.nodes[page.leaf](),
     ]);
-    const leaf_node = (
+    const leaf_node =
       /** @type {import('types').SSRNode} */
-      nodes.at(-1)
-    );
+      nodes.at(-1);
     let status = 200;
     let action_result = void 0;
     if (is_action_request(event)) {
@@ -3248,7 +3488,7 @@ async function render_page(event, page, options2, manifest, state, resolve_opts)
       }
     } else if (state.prerendering) {
       return new Response(void 0, {
-        status: 204
+        status: 204,
       });
     }
     state.prerender_default = should_prerender;
@@ -3259,7 +3499,7 @@ async function render_page(event, page, options2, manifest, state, resolve_opts)
         fetched,
         page_config: {
           ssr: false,
-          csr: get_option(nodes, "csr") ?? true
+          csr: get_option(nodes, "csr") ?? true,
         },
         status,
         error: null,
@@ -3267,7 +3507,7 @@ async function render_page(event, page, options2, manifest, state, resolve_opts)
         options: options2,
         manifest,
         state,
-        resolve_opts
+        resolve_opts,
       });
     }
     const branch = [];
@@ -3289,24 +3529,21 @@ async function render_page(event, page, options2, manifest, state, resolve_opts)
               const data = {};
               for (let j = 0; j < i; j += 1) {
                 const parent = await server_promises[j];
-                if (parent)
-                  Object.assign(data, await parent.data);
+                if (parent) Object.assign(data, await parent.data);
               }
               return data;
             },
-            track_server_fetches: options2.track_server_fetches
+            track_server_fetches: options2.track_server_fetches,
           });
         } catch (e) {
-          load_error = /** @type {Error} */
-          e;
+          load_error = /** @type {Error} */ e;
           throw load_error;
         }
       });
     });
     const csr = get_option(nodes, "csr") ?? true;
     const load_promises = nodes.map((node, i) => {
-      if (load_error)
-        throw load_error;
+      if (load_error) throw load_error;
       return Promise.resolve().then(async () => {
         try {
           return await load_data({
@@ -3323,21 +3560,16 @@ async function render_page(event, page, options2, manifest, state, resolve_opts)
             resolve_opts,
             server_data_promise: server_promises[i],
             state,
-            csr
+            csr,
           });
         } catch (e) {
-          load_error = /** @type {Error} */
-          e;
+          load_error = /** @type {Error} */ e;
           throw load_error;
         }
       });
     });
-    for (const p of server_promises)
-      p.catch(() => {
-      });
-    for (const p of load_promises)
-      p.catch(() => {
-      });
+    for (const p of server_promises) p.catch(() => {});
+    for (const p of load_promises) p.catch(() => {});
     for (let i = 0; i < nodes.length; i += 1) {
       const node = nodes[i];
       if (node) {
@@ -3351,11 +3583,11 @@ async function render_page(event, page, options2, manifest, state, resolve_opts)
             if (state.prerendering && should_prerender_data) {
               const body = JSON.stringify({
                 type: "redirect",
-                location: err.location
+                location: err.location,
               });
               state.prerendering.dependencies.set(data_pathname, {
                 response: text(body),
-                body
+                body,
               });
             }
             return redirect_response(err.status, err.location);
@@ -3364,14 +3596,12 @@ async function render_page(event, page, options2, manifest, state, resolve_opts)
           const error2 = await handle_error_and_jsonify(event, options2, err);
           while (i--) {
             if (page.errors[i]) {
-              const index = (
+              const index =
                 /** @type {number} */
-                page.errors[i]
-              );
+                page.errors[i];
               const node2 = await manifest._.nodes[index]();
               let j = i;
-              while (!branch[j])
-                j -= 1;
+              while (!branch[j]) j -= 1;
               return await render_response({
                 event,
                 options: options2,
@@ -3384,9 +3614,9 @@ async function render_page(event, page, options2, manifest, state, resolve_opts)
                 branch: compact(branch.slice(0, j + 1)).concat({
                   node: node2,
                   data: null,
-                  server_data: null
+                  server_data: null,
                 }),
-                fetched
+                fetched,
               });
             }
           }
@@ -3409,7 +3639,7 @@ async function render_page(event, page, options2, manifest, state, resolve_opts)
       }
       state.prerendering.dependencies.set(data_pathname, {
         response: text(data),
-        body: data
+        body: data,
       });
     }
     return await render_response({
@@ -3420,13 +3650,13 @@ async function render_page(event, page, options2, manifest, state, resolve_opts)
       resolve_opts,
       page_config: {
         csr: get_option(nodes, "csr") ?? true,
-        ssr: true
+        ssr: true,
       },
       status,
       error: null,
       branch: compact(branch),
       action_result,
-      fetched
+      fetched,
     });
   } catch (e) {
     return await respond_with_error({
@@ -3436,20 +3666,23 @@ async function render_page(event, page, options2, manifest, state, resolve_opts)
       state,
       status: 500,
       error: e,
-      resolve_opts
+      resolve_opts,
     });
   }
 }
 function get_cookies(request, url, trailing_slash) {
   const header = request.headers.get("cookie") ?? "";
-  const initial_cookies = cookieExports.parse(header, { decode: (value) => value });
+  const initial_cookies = cookieExports.parse(header, {
+    decode: (value) => value,
+  });
   const normalized_url = normalize_path(url.pathname, trailing_slash);
   const default_path = normalized_url.split("/").slice(0, -1).join("/") || "/";
   const new_cookies = {};
   const defaults = {
     httpOnly: true,
     sameSite: "lax",
-    secure: url.hostname === "localhost" && url.protocol === "http:" ? false : true
+    secure:
+      url.hostname === "localhost" && url.protocol === "http:" ? false : true,
   };
   const cookies = {
     // The JSDoc param annotations appearing below for get, set and delete
@@ -3462,7 +3695,11 @@ function get_cookies(request, url, trailing_slash) {
      */
     get(name, opts) {
       const c = new_cookies[name];
-      if (c && domain_matches(url.hostname, c.options.domain) && path_matches(url.pathname, c.options.path)) {
+      if (
+        c &&
+        domain_matches(url.hostname, c.options.domain) &&
+        path_matches(url.pathname, c.options.path)
+      ) {
         return c.value;
       }
       const decoder = opts?.decode || decodeURIComponent;
@@ -3477,7 +3714,10 @@ function get_cookies(request, url, trailing_slash) {
       const decoder = opts?.decode || decodeURIComponent;
       const cookies2 = cookieExports.parse(header, { decode: decoder });
       for (const c of Object.values(new_cookies)) {
-        if (domain_matches(url.hostname, c.options.domain) && path_matches(url.pathname, c.options.path)) {
+        if (
+          domain_matches(url.hostname, c.options.domain) &&
+          path_matches(url.pathname, c.options.path)
+        ) {
           cookies2[c.name] = c.value;
         }
       }
@@ -3498,7 +3738,7 @@ function get_cookies(request, url, trailing_slash) {
     delete(name, opts = {}) {
       cookies.set(name, "", {
         ...opts,
-        maxAge: 0
+        maxAge: 0,
       });
     },
     /**
@@ -3509,21 +3749,20 @@ function get_cookies(request, url, trailing_slash) {
     serialize(name, value, opts) {
       return cookieExports.serialize(name, value, {
         ...defaults,
-        ...opts
+        ...opts,
       });
-    }
+    },
   };
   function get_cookie_header(destination, header2) {
     const combined_cookies = {
       // cookies sent by the user agent have lowest precedence
-      ...initial_cookies
+      ...initial_cookies,
     };
     for (const key2 in new_cookies) {
       const cookie = new_cookies[key2];
       if (!domain_matches(destination.hostname, cookie.options.domain))
         continue;
-      if (!path_matches(destination.pathname, cookie.options.path))
-        continue;
+      if (!path_matches(destination.pathname, cookie.options.path)) continue;
       const encoder2 = cookie.options.encode || encodeURIComponent;
       combined_cookies[cookie.name] = encoder2(cookie.value);
     }
@@ -3533,7 +3772,9 @@ function get_cookies(request, url, trailing_slash) {
         combined_cookies[name] = parsed[name];
       }
     }
-    return Object.entries(combined_cookies).map(([name, value]) => `${name}=${value}`).join("; ");
+    return Object.entries(combined_cookies)
+      .map(([name, value]) => `${name}=${value}`)
+      .join("; ");
   }
   function set_internal(name, value, opts) {
     const path = opts.path ?? default_path;
@@ -3542,39 +3783,49 @@ function get_cookies(request, url, trailing_slash) {
       value,
       options: {
         ...opts,
-        path
-      }
+        path,
+      },
     };
   }
   return { cookies, new_cookies, get_cookie_header, set_internal };
 }
 function domain_matches(hostname, constraint) {
-  if (!constraint)
-    return true;
+  if (!constraint) return true;
   const normalized = constraint[0] === "." ? constraint.slice(1) : constraint;
-  if (hostname === normalized)
-    return true;
+  if (hostname === normalized) return true;
   return hostname.endsWith("." + normalized);
 }
 function path_matches(path, constraint) {
-  if (!constraint)
-    return true;
-  const normalized = constraint.endsWith("/") ? constraint.slice(0, -1) : constraint;
-  if (path === normalized)
-    return true;
+  if (!constraint) return true;
+  const normalized = constraint.endsWith("/")
+    ? constraint.slice(0, -1)
+    : constraint;
+  if (path === normalized) return true;
   return path.startsWith(normalized + "/");
 }
 function add_cookies_to_headers(headers, cookies) {
   for (const new_cookie of cookies) {
     const { name, value, options: options2 } = new_cookie;
-    headers.append("set-cookie", cookieExports.serialize(name, value, options2));
+    headers.append(
+      "set-cookie",
+      cookieExports.serialize(name, value, options2)
+    );
   }
 }
-function create_fetch({ event, options: options2, manifest, state, get_cookie_header, set_internal }) {
+function create_fetch({
+  event,
+  options: options2,
+  manifest,
+  state,
+  get_cookie_header,
+  set_internal,
+}) {
   return async (info, init2) => {
     const original_request = normalize_fetch_input(info, init2, event.url);
     let mode = (info instanceof Request ? info.mode : init2?.mode) ?? "cors";
-    let credentials = (info instanceof Request ? info.credentials : init2?.credentials) ?? "same-origin";
+    let credentials =
+      (info instanceof Request ? info.credentials : init2?.credentials) ??
+      "same-origin";
     return await options2.hooks.handleFetch({
       event,
       request: original_request,
@@ -3585,32 +3836,49 @@ function create_fetch({ event, options: options2, manifest, state, get_cookie_he
           request.headers.set("origin", event.url.origin);
         }
         if (info2 !== original_request) {
-          mode = (info2 instanceof Request ? info2.mode : init3?.mode) ?? "cors";
-          credentials = (info2 instanceof Request ? info2.credentials : init3?.credentials) ?? "same-origin";
+          mode =
+            (info2 instanceof Request ? info2.mode : init3?.mode) ?? "cors";
+          credentials =
+            (info2 instanceof Request
+              ? info2.credentials
+              : init3?.credentials) ?? "same-origin";
         }
-        if ((request.method === "GET" || request.method === "HEAD") && (mode === "no-cors" && url.origin !== event.url.origin || url.origin === event.url.origin)) {
+        if (
+          (request.method === "GET" || request.method === "HEAD") &&
+          ((mode === "no-cors" && url.origin !== event.url.origin) ||
+            url.origin === event.url.origin)
+        ) {
           request.headers.delete("origin");
         }
         if (url.origin !== event.url.origin) {
-          if (`.${url.hostname}`.endsWith(`.${event.url.hostname}`) && credentials !== "omit") {
-            const cookie = get_cookie_header(url, request.headers.get("cookie"));
-            if (cookie)
-              request.headers.set("cookie", cookie);
+          if (
+            `.${url.hostname}`.endsWith(`.${event.url.hostname}`) &&
+            credentials !== "omit"
+          ) {
+            const cookie = get_cookie_header(
+              url,
+              request.headers.get("cookie")
+            );
+            if (cookie) request.headers.set("cookie", cookie);
           }
           return fetch(request);
         }
         const prefix = assets || base;
         const decoded = decodeURIComponent(url.pathname);
-        const filename = (decoded.startsWith(prefix) ? decoded.slice(prefix.length) : decoded).slice(1);
+        const filename = (
+          decoded.startsWith(prefix) ? decoded.slice(prefix.length) : decoded
+        ).slice(1);
         const filename_html = `${filename}/index.html`;
         const is_asset = manifest.assets.has(filename);
         const is_asset_html = manifest.assets.has(filename_html);
         if (is_asset || is_asset_html) {
           const file = is_asset ? filename : filename_html;
           if (state.read) {
-            const type = is_asset ? manifest.mimeTypes[filename.slice(filename.lastIndexOf("."))] : "text/html";
+            const type = is_asset
+              ? manifest.mimeTypes[filename.slice(filename.lastIndexOf("."))]
+              : "text/html";
             return new Response(state.read(file), {
-              headers: type ? { "content-type": type } : {}
+              headers: type ? { "content-type": type } : {},
             });
           }
           return await fetch(request);
@@ -3637,12 +3905,13 @@ function create_fetch({ event, options: options2, manifest, state, get_cookie_he
         }
         const response = await respond(request, options2, manifest, {
           ...state,
-          depth: state.depth + 1
+          depth: state.depth + 1,
         });
         const set_cookie = response.headers.get("set-cookie");
         if (set_cookie) {
           for (const str of setCookieExports.splitCookiesString(set_cookie)) {
-            const { name, value, ...options3 } = setCookieExports.parseString(str);
+            const { name, value, ...options3 } =
+              setCookieExports.parseString(str);
             set_internal(
               name,
               value,
@@ -3652,7 +3921,7 @@ function create_fetch({ event, options: options2, manifest, state, get_cookie_he
           }
         }
         return response;
-      }
+      },
     });
   };
 }
@@ -3660,7 +3929,10 @@ function normalize_fetch_input(info, init2, url) {
   if (info instanceof Request) {
     return info;
   }
-  return new Request(typeof info === "string" ? new URL(info, url) : info, init2);
+  return new Request(
+    typeof info === "string" ? new URL(info, url) : info,
+    init2
+  );
 }
 const valid_layout_exports = /* @__PURE__ */ new Set([
   "load",
@@ -3668,22 +3940,37 @@ const valid_layout_exports = /* @__PURE__ */ new Set([
   "csr",
   "ssr",
   "trailingSlash",
-  "config"
+  "config",
 ]);
 /* @__PURE__ */ new Set([...valid_layout_exports, "entries"]);
-const valid_layout_server_exports = /* @__PURE__ */ new Set([...valid_layout_exports]);
+const valid_layout_server_exports = /* @__PURE__ */ new Set([
+  ...valid_layout_exports,
+]);
 /* @__PURE__ */ new Set([...valid_layout_server_exports, "actions", "entries"]);
 const default_transform = ({ html }) => html;
 const default_filter = () => false;
 const default_preload = ({ type }) => type === "js" || type === "css";
 const page_methods = /* @__PURE__ */ new Set(["GET", "HEAD", "POST"]);
-const allowed_page_methods = /* @__PURE__ */ new Set(["GET", "HEAD", "OPTIONS"]);
+const allowed_page_methods = /* @__PURE__ */ new Set([
+  "GET",
+  "HEAD",
+  "OPTIONS",
+]);
 async function respond(request, options2, manifest, state) {
   const url = new URL(request.url);
   if (options2.csrf_check_origin) {
-    const forbidden = is_form_content_type(request) && (request.method === "POST" || request.method === "PUT" || request.method === "PATCH" || request.method === "DELETE") && request.headers.get("origin") !== url.origin;
+    const forbidden =
+      is_form_content_type(request) &&
+      (request.method === "POST" ||
+        request.method === "PUT" ||
+        request.method === "PATCH" ||
+        request.method === "DELETE") &&
+      request.headers.get("origin") !== url.origin;
     if (forbidden) {
-      const csrf_error = error(403, `Cross-site ${request.method} form submissions are forbidden`);
+      const csrf_error = error(
+        403,
+        `Cross-site ${request.method} form submissions are forbidden`
+      );
       if (request.headers.get("accept") === "application/json") {
         return json(csrf_error.body, { status: csrf_error.status });
       }
@@ -3708,17 +3995,21 @@ async function respond(request, options2, manifest, state) {
   let invalidated_data_nodes;
   if (is_data_request) {
     decoded = strip_data_suffix(decoded) || "/";
-    url.pathname = strip_data_suffix(url.pathname) + (url.searchParams.get(TRAILING_SLASH_PARAM) === "1" ? "/" : "") || "/";
+    url.pathname =
+      strip_data_suffix(url.pathname) +
+        (url.searchParams.get(TRAILING_SLASH_PARAM) === "1" ? "/" : "") || "/";
     url.searchParams.delete(TRAILING_SLASH_PARAM);
-    invalidated_data_nodes = url.searchParams.get(INVALIDATED_PARAM)?.split("").map((node) => node === "1");
+    invalidated_data_nodes = url.searchParams
+      .get(INVALIDATED_PARAM)
+      ?.split("")
+      .map((node) => node === "1");
     url.searchParams.delete(INVALIDATED_PARAM);
   }
   if (!state.prerendering?.fallback) {
     const matchers = await manifest._.matchers();
     for (const candidate of manifest._.routes) {
       const match = candidate.pattern.exec(decoded);
-      if (!match)
-        continue;
+      if (!match) continue;
       const matched = exec(match, candidate.params, matchers);
       if (matched) {
         route = candidate;
@@ -3735,11 +4026,13 @@ async function respond(request, options2, manifest, state) {
     cookies: null,
     // @ts-expect-error
     fetch: null,
-    getClientAddress: state.getClientAddress || (() => {
-      throw new Error(
-        `${"@sveltejs/adapter-node"} does not specify getClientAddress. Please raise an issue`
-      );
-    }),
+    getClientAddress:
+      state.getClientAddress ||
+      (() => {
+        throw new Error(
+          `${"@sveltejs/adapter-node"} does not specify getClientAddress. Please raise an issue`
+        );
+      }),
     locals: {},
     params,
     platform: state.platform,
@@ -3758,20 +4051,19 @@ async function respond(request, options2, manifest, state) {
         } else {
           headers[lower] = value;
           if (state.prerendering && lower === "cache-control") {
-            state.prerendering.cache = /** @type {string} */
-            value;
+            state.prerendering.cache = /** @type {string} */ value;
           }
         }
       }
     },
     url,
     isDataRequest: is_data_request,
-    isSubRequest: state.depth > 0
+    isSubRequest: state.depth > 0,
   };
   let resolve_opts = {
     transformPageChunk: default_transform,
     filterSerializedResponseHeaders: default_filter,
-    preload: default_preload
+    preload: default_preload,
   };
   try {
     if (route) {
@@ -3780,39 +4072,40 @@ async function respond(request, options2, manifest, state) {
       } else if (route.page) {
         const nodes = await Promise.all([
           // we use == here rather than === because [undefined] serializes as "[null]"
-          ...route.page.layouts.map((n) => n == void 0 ? n : manifest._.nodes[n]()),
-          manifest._.nodes[route.page.leaf]()
+          ...route.page.layouts.map((n) =>
+            n == void 0 ? n : manifest._.nodes[n]()
+          ),
+          manifest._.nodes[route.page.leaf](),
         ]);
-        if (DEV)
-          ;
+        if (DEV);
         trailing_slash = get_option(nodes, "trailingSlash");
       } else if (route.endpoint) {
         const node = await route.endpoint();
         trailing_slash = node.trailingSlash;
-        if (DEV)
-          ;
+        if (DEV);
       }
       if (!is_data_request) {
-        const normalized = normalize_path(url.pathname, trailing_slash ?? "never");
+        const normalized = normalize_path(
+          url.pathname,
+          trailing_slash ?? "never"
+        );
         if (normalized !== url.pathname && !state.prerendering?.fallback) {
           return new Response(void 0, {
             status: 308,
             headers: {
               "x-sveltekit-normalize": "1",
-              location: (
+              location:
                 // ensure paths starting with '//' are not treated as protocol-relative
-                (normalized.startsWith("//") ? url.origin + normalized : normalized) + (url.search === "?" ? "" : url.search)
-              )
-            }
+                (normalized.startsWith("//")
+                  ? url.origin + normalized
+                  : normalized) + (url.search === "?" ? "" : url.search),
+            },
           });
         }
       }
     }
-    const { cookies, new_cookies, get_cookie_header, set_internal } = get_cookies(
-      request,
-      url,
-      trailing_slash ?? "never"
-    );
+    const { cookies, new_cookies, get_cookie_header, set_internal } =
+      get_cookies(request, url, trailing_slash ?? "never");
     cookies_to_add = new_cookies;
     event.cookies = cookies;
     event.fetch = create_fetch({
@@ -3821,37 +4114,42 @@ async function respond(request, options2, manifest, state) {
       manifest,
       state,
       get_cookie_header,
-      set_internal
+      set_internal,
     });
-    if (state.prerendering && !state.prerendering.fallback)
-      disable_search(url);
+    if (state.prerendering && !state.prerendering.fallback) disable_search(url);
     const response = await options2.hooks.handle({
       event,
-      resolve: (event2, opts) => resolve(event2, opts).then((response2) => {
-        for (const key2 in headers) {
-          const value = headers[key2];
-          response2.headers.set(
-            key2,
-            /** @type {string} */
-            value
+      resolve: (event2, opts) =>
+        resolve(event2, opts).then((response2) => {
+          for (const key2 in headers) {
+            const value = headers[key2];
+            response2.headers.set(
+              key2,
+              /** @type {string} */
+              value
+            );
+          }
+          add_cookies_to_headers(
+            response2.headers,
+            Object.values(cookies_to_add)
           );
-        }
-        add_cookies_to_headers(response2.headers, Object.values(cookies_to_add));
-        if (state.prerendering && event2.route.id !== null) {
-          response2.headers.set("x-sveltekit-routeid", encodeURI(event2.route.id));
-        }
-        return response2;
-      })
+          if (state.prerendering && event2.route.id !== null) {
+            response2.headers.set(
+              "x-sveltekit-routeid",
+              encodeURI(event2.route.id)
+            );
+          }
+          return response2;
+        }),
     });
     if (response.status === 200 && response.headers.has("etag")) {
       let if_none_match_value = request.headers.get("if-none-match");
       if (if_none_match_value?.startsWith('W/"')) {
         if_none_match_value = if_none_match_value.substring(2);
       }
-      const etag = (
+      const etag =
         /** @type {string} */
-        response.headers.get("etag")
-      );
+        response.headers.get("etag");
       if (if_none_match_value === etag) {
         const headers2 = new Headers({ etag });
         for (const key2 of [
@@ -3860,32 +4158,37 @@ async function respond(request, options2, manifest, state) {
           "date",
           "expires",
           "vary",
-          "set-cookie"
+          "set-cookie",
         ]) {
           const value = response.headers.get(key2);
-          if (value)
-            headers2.set(key2, value);
+          if (value) headers2.set(key2, value);
         }
         return new Response(void 0, {
           status: 304,
-          headers: headers2
+          headers: headers2,
         });
       }
     }
     if (is_data_request && response.status >= 300 && response.status <= 308) {
       const location = response.headers.get("location");
       if (location) {
-        return redirect_json_response(new Redirect(
-          /** @type {any} */
-          response.status,
-          location
-        ));
+        return redirect_json_response(
+          new Redirect(
+            /** @type {any} */
+            response.status,
+            location
+          )
+        );
       }
     }
     return response;
   } catch (e) {
     if (e instanceof Redirect) {
-      const response = is_data_request ? redirect_json_response(e) : route?.page && is_action_json_request(event) ? action_json_redirect(e) : redirect_response(e.status, e.location);
+      const response = is_data_request
+        ? redirect_json_response(e)
+        : route?.page && is_action_json_request(event)
+        ? action_json_redirect(e)
+        : redirect_response(e.status, e.location);
       add_cookies_to_headers(response.headers, Object.values(cookies_to_add));
       return response;
     }
@@ -3901,8 +4204,9 @@ async function respond(request, options2, manifest, state) {
         }
         resolve_opts = {
           transformPageChunk: opts.transformPageChunk || default_transform,
-          filterSerializedResponseHeaders: opts.filterSerializedResponseHeaders || default_filter,
-          preload: opts.preload || default_preload
+          filterSerializedResponseHeaders:
+            opts.filterSerializedResponseHeaders || default_filter,
+          preload: opts.preload || default_preload,
         };
       }
       if (state.prerendering?.fallback) {
@@ -3916,14 +4220,13 @@ async function respond(request, options2, manifest, state) {
           error: null,
           branch: [],
           fetched: [],
-          resolve_opts
+          resolve_opts,
         });
       }
       if (route) {
-        const method = (
+        const method =
           /** @type {import('types').HttpMethod} */
-          event2.request.method
-        );
+          event2.request.method;
         let response;
         if (is_data_request) {
           response = await render_data(
@@ -3935,11 +4238,25 @@ async function respond(request, options2, manifest, state) {
             invalidated_data_nodes,
             trailing_slash ?? "never"
           );
-        } else if (route.endpoint && (!route.page || is_endpoint_request(event2))) {
-          response = await render_endpoint(event2, await route.endpoint(), state);
+        } else if (
+          route.endpoint &&
+          (!route.page || is_endpoint_request(event2))
+        ) {
+          response = await render_endpoint(
+            event2,
+            await route.endpoint(),
+            state
+          );
         } else if (route.page) {
           if (page_methods.has(method)) {
-            response = await render_page(event2, route.page, options2, manifest, state, resolve_opts);
+            response = await render_page(
+              event2,
+              route.page,
+              options2,
+              manifest,
+              state,
+              resolve_opts
+            );
           } else {
             const allowed_methods2 = new Set(allowed_page_methods);
             const node = await manifest._.nodes[route.page.leaf]();
@@ -3950,8 +4267,8 @@ async function respond(request, options2, manifest, state) {
               response = new Response(null, {
                 status: 204,
                 headers: {
-                  allow: Array.from(allowed_methods2.values()).join(", ")
-                }
+                  allow: Array.from(allowed_methods2.values()).join(", "),
+                },
               });
             } else {
               const mod = [...allowed_methods2].reduce(
@@ -3969,12 +4286,15 @@ async function respond(request, options2, manifest, state) {
           throw new Error("This should never happen");
         }
         if (request.method === "GET" && route.page && route.endpoint) {
-          const vary = response.headers.get("vary")?.split(",")?.map((v) => v.trim().toLowerCase());
+          const vary = response.headers
+            .get("vary")
+            ?.split(",")
+            ?.map((v) => v.trim().toLowerCase());
           if (!(vary?.includes("accept") || vary?.includes("*"))) {
             response = new Response(response.body, {
               status: response.status,
               statusText: response.statusText,
-              headers: new Headers(response.headers)
+              headers: new Headers(response.headers),
             });
             response.headers.append("Vary", "Accept");
           }
@@ -3984,13 +4304,13 @@ async function respond(request, options2, manifest, state) {
       if (state.error && event2.isSubRequest) {
         return await fetch(request, {
           headers: {
-            "x-sveltekit-error": "true"
-          }
+            "x-sveltekit-error": "true",
+          },
         });
       }
       if (state.error) {
         return text("Internal Server Error", {
-          status: 500
+          status: 500,
         });
       }
       if (state.depth === 0) {
@@ -4001,7 +4321,7 @@ async function respond(request, options2, manifest, state) {
           state,
           status: 404,
           error: new Error(`Not found: ${event2.url.pathname}`),
-          resolve_opts
+          resolve_opts,
         });
       }
       if (state.prerendering) {
@@ -4012,10 +4332,14 @@ async function respond(request, options2, manifest, state) {
       return await handle_fatal_error(event2, options2, e);
     } finally {
       event2.cookies.set = () => {
-        throw new Error("Cannot use `cookies.set(...)` after the response has been generated");
+        throw new Error(
+          "Cannot use `cookies.set(...)` after the response has been generated"
+        );
       };
       event2.setHeaders = () => {
-        throw new Error("Cannot use `setHeaders(...)` after the response has been generated");
+        throw new Error(
+          "Cannot use `setHeaders(...)` after the response has been generated"
+        );
       };
     }
   }
@@ -4023,14 +4347,18 @@ async function respond(request, options2, manifest, state) {
 function filter_private_env(env, { public_prefix, private_prefix }) {
   return Object.fromEntries(
     Object.entries(env).filter(
-      ([k]) => k.startsWith(private_prefix) && (public_prefix === "" || !k.startsWith(public_prefix))
+      ([k]) =>
+        k.startsWith(private_prefix) &&
+        (public_prefix === "" || !k.startsWith(public_prefix))
     )
   );
 }
 function filter_public_env(env, { public_prefix, private_prefix }) {
   return Object.fromEntries(
     Object.entries(env).filter(
-      ([k]) => k.startsWith(public_prefix) && (private_prefix === "" || !k.startsWith(private_prefix))
+      ([k]) =>
+        k.startsWith(public_prefix) &&
+        (private_prefix === "" || !k.startsWith(private_prefix))
     )
   );
 }
@@ -4053,13 +4381,13 @@ class Server {
     set_private_env(
       filter_private_env(env, {
         public_prefix: this.#options.env_public_prefix,
-        private_prefix: this.#options.env_private_prefix
+        private_prefix: this.#options.env_private_prefix,
       })
     );
     set_public_env(
       filter_public_env(env, {
         public_prefix: this.#options.env_public_prefix,
-        private_prefix: this.#options.env_private_prefix
+        private_prefix: this.#options.env_private_prefix,
       })
     );
     if (!this.#options.hooks) {
@@ -4067,8 +4395,12 @@ class Server {
         const module = await get_hooks();
         this.#options.hooks = {
           handle: module.handle || (({ event, resolve }) => resolve(event)),
-          handleError: module.handleError || (({ error: error2 }) => console.error(error2)),
-          handleFetch: module.handleFetch || (({ request, fetch: fetch2 }) => fetch2(request))
+          handleError:
+            module.handleError ||
+            (({ error: error2 }) => console.error(error2)),
+          handleFetch:
+            module.handleFetch ||
+            (({ request, fetch: fetch2 }) => fetch2(request)),
         };
       } catch (error2) {
         {
@@ -4090,7 +4422,7 @@ class Server {
     return respond(request, this.#options, this.#manifest, {
       ...options2,
       error: false,
-      depth: 0
+      depth: 0,
     });
   }
 }

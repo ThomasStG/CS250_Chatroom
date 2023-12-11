@@ -1,1 +1,8 @@
-.message-list{margin-bottom:1rem;border-radius:.5rem;background-color:inherit;padding:1.5rem;border-color:gray;border-width:2px}
+.message-list {
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  background-color: inherit;
+  padding: 1.5rem;
+  border-color: gray;
+  border-width: 2px;
+}

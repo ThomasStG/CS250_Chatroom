@@ -7,41 +7,41 @@ const load = async ({ request, locals }) => {
     include: {
       friendsAsUser1: {
         include: {
-          user2: true
-        }
+          user2: true,
+        },
       },
       friendsAsUser2: {
         include: {
-          user1: true
-        }
-      }
-    }
+          user1: true,
+        },
+      },
+    },
   });
   let friends;
   if (userWithFriends != null) {
     friends = [
       ...userWithFriends.friendsAsUser1.map((friend) => friend.user2),
-      ...userWithFriends.friendsAsUser2.map((friend) => friend.user1)
+      ...userWithFriends.friendsAsUser2.map((friend) => friend.user1),
     ];
   }
   const friendRequests = await db.friendRequest.findMany({
     where: {
       OR: [
         { fromId: userId, status: "pending" },
-        { toId: userId, status: "pending" }
-      ]
+        { toId: userId, status: "pending" },
+      ],
     },
     include: {
       from: true,
       // Include the details of the user who sent the request
-      to: true
+      to: true,
       // Include the details of the user to whom the request was sent
-    }
+    },
   });
   return {
     friendRequests,
     friends,
-    userId
+    userId,
     // Include the friends array in the returned props
   };
 };
@@ -53,8 +53,8 @@ const actions = {
       console.log(userName);
       const userTo = await db.user.findUnique({
         where: {
-          username: String(userName)
-        }
+          username: String(userName),
+        },
       });
       if (!userTo) {
         return fail(404, { error: { message: "User not found" } });
@@ -62,30 +62,32 @@ const actions = {
       const userFromId = locals.user.id;
       if (userTo.id == userFromId) {
         return fail(404, {
-          error: { message: "You cannot send a friend request to yourself" }
+          error: { message: "You cannot send a friend request to yourself" },
         });
       }
       const friendRequest = await db.friendRequest.create({
         data: {
           fromId: userFromId,
-          toId: userTo.id
-        }
+          toId: userTo.id,
+        },
       });
       const from = await db.user.findUnique({ where: { id: userFromId } });
       const to = userTo.id;
-      const message = from?.username + " has sent you a friend request. Go to your friends page to accept.";
+      const message =
+        from?.username +
+        " has sent you a friend request. Go to your friends page to accept.";
       await db.notification.create({
         data: {
           content: message,
           receiverId: to,
-          senderName: from?.username
-        }
+          senderName: from?.username,
+        },
       });
       return {
         body: {
           userName: userTo.username,
-          friendRequest: friendRequest.id
-        }
+          friendRequest: friendRequest.id,
+        },
       };
     } catch (err) {
       console.error(err);
@@ -99,7 +101,7 @@ const actions = {
       const { requestId } = formData;
       const friendRequest = await db.friendRequest.findUnique({
         where: { id: Number(requestId) },
-        include: { from: true, to: true }
+        include: { from: true, to: true },
       });
       if (!friendRequest) {
         return fail(404, { error: { message: "Friend request not found" } });
@@ -107,21 +109,21 @@ const actions = {
       const usernames = await db.user.findMany({
         where: {
           id: {
-            in: [friendRequest.fromId, friendRequest.toId]
-          }
-        }
+            in: [friendRequest.fromId, friendRequest.toId],
+          },
+        },
       });
       await db.$transaction([
         db.friendRequest.update({
           where: { id: Number(requestId) },
-          data: { status: "accepted", acceptedAt: /* @__PURE__ */ new Date() }
+          data: { status: "accepted", acceptedAt: /* @__PURE__ */ new Date() },
         }),
         db.friend.create({
           data: {
             userId1: friendRequest.fromId,
-            userId2: friendRequest.toId
-          }
-        })
+            userId2: friendRequest.toId,
+          },
+        }),
       ]);
       const name = usernames[0].username + "‎" + usernames[1].username;
       console.log(name);
@@ -132,11 +134,11 @@ const actions = {
           users: {
             connect: [
               { id: friendRequest.from.id },
-              { id: friendRequest.to.id }
-            ]
+              { id: friendRequest.to.id },
+            ],
           },
-          Chatroom: false
-        }
+          Chatroom: false,
+        },
       });
       return { body: { message: "Friend request accepted" } };
     } catch (err) {
@@ -158,14 +160,14 @@ const actions = {
           OR: [
             {
               userId1: friendID,
-              userId2: userId
+              userId2: userId,
             },
             {
               userId1: userId,
-              userId2: friendID
-            }
-          ]
-        }
+              userId2: friendID,
+            },
+          ],
+        },
       });
       const roomsToDelete = await db.room.findMany({
         where: {
@@ -175,27 +177,27 @@ const actions = {
                 {
                   users: {
                     some: {
-                      id: friendID
-                    }
-                  }
+                      id: friendID,
+                    },
+                  },
                 },
                 {
                   users: {
                     some: {
-                      id: userId
-                    }
-                  }
-                }
-              ]
+                      id: userId,
+                    },
+                  },
+                },
+              ],
             },
             {
-              Chatroom: false
-            }
-          ]
+              Chatroom: false,
+            },
+          ],
         },
         include: {
-          users: true
-        }
+          users: true,
+        },
       });
       for (const room of roomsToDelete) {
         console.log(room);
@@ -204,17 +206,17 @@ const actions = {
           where: { id: room.id },
           data: {
             users: {
-              disconnect: userIds.map((id) => ({ id }))
-            }
-          }
+              disconnect: userIds.map((id) => ({ id })),
+            },
+          },
         });
         await db.message.deleteMany({
           where: {
-            roomId: room.id
-          }
+            roomId: room.id,
+          },
         });
         await db.room.delete({
-          where: { id: room.id }
+          where: { id: room.id },
         });
       }
       return { body: { message: "Friend request accepted" } };
@@ -222,9 +224,6 @@ const actions = {
       console.error(err);
       return fail(500, { error: { message: "Internal Server Error" } });
     }
-  }
+  },
 };
-export {
-  actions,
-  load
-};
+export { actions, load };
