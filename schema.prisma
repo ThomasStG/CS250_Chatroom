@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./db.sqlite"
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  username String @unique
+
+  passwordHash  String
+  userAuthToken String @unique
+
+  sentMessages     Message[] @relation("SentMessage")
+  receivedMessages Message[] @relation("ReceivedMessage")
+
+  rooms Room[] @relation("UserRoom")
+
+  sentFriendRequests     FriendRequest[] @relation("SentRequests")
+  receivedFriendRequests FriendRequest[] @relation("ReceivedRequests")
+
+  friendsAsUser1 Friend[] @relation("User1Friends")
+  friendsAsUser2 Friend[] @relation("User2Friends")
+  Notification Notification[] @relation("notificationReceiver")
+  blockedUsers User[] @relation("BlockedUsers", references: [id])
+}
+
+model Notification {
+  id         Int       @id @default(autoincrement())
+  senderName String    @default("The Developers")
+  receiverId Int
+  receiver    User     @relation("notificationReceiver", fields: [receiverId], references: [id])
+  content    String
+  sentAt     DateTime  @default(now())
+}
+
+model Friend {
+  id        Int      @id @default(autoincrement())
+  userId1   Int
+  user1     User     @relation("User1Friends", fields: [userId1], references: [id])
+  userId2   Int
+  user2     User     @relation("User2Friends", fields: [userId2], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model FriendRequest {
+  id         Int       @id @default(autoincrement())
+  fromId     Int
+  from       User      @relation("SentRequests", fields: [fromId], references: [id])
+  toId       Int
+  to         User      @relation("ReceivedRequests", fields: [toId], references: [id])
+  status     String    @default("pending") // pending, accepted, declined
+  createdAt  DateTime  @default(now())
+  acceptedAt DateTime?
+}
+
+model Room {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  users    User[]    @relation("UserRoom")
+  messages Message[]
+  Chatroom Boolean @default(false)
+}
+
+model Message {
+  id      Int    @id @default(autoincrement())
+  content String
+  //sentAt     DateTime  @default(now())
+  status  String @default("unread") //read, unread, delivered, error, undelivered
+
+  sender     User      @relation("SentMessage", fields: [senderId], references: [id])
+  senderId   Int
+  receiver   User?     @relation("ReceivedMessage", fields: [receiverId], references: [id])
+  receiverId Int?
+  room       Room      @relation(fields: [roomId], references: [id])
+  roomId     Int
+  sentAt     DateTime
+  updatedAt  DateTime?
+}
+
+model BlockedUser {
+  id           Int      @id @default(autoincrement())
+  userId       Int
+  user         User     @relation(fields: [userId], references: [id])
+  blockedUserId Int
+  blockedUser   User     @relation("BlockedUsers", fields: [blockedUserId], references: [id])
+
+  createdAt DateTime @default(now())
+}
