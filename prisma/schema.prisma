@@ -12,9 +12,12 @@ datasource db {
 }
 
 model User {
-  id            Int    @id @default(autoincrement())
-  email         String @unique
-  username      String @unique
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  username String @unique
+
+  friend FriendLink[] @relation("fr")
+
   passwordHash  String
   userAuthToken String @unique
 
@@ -22,6 +25,12 @@ model User {
   receivedMessages Message[] @relation("ReceivedMessage")
 
   rooms Room[] @relation("UserRoom")
+}
+
+model FriendLink {
+  id      Int      @id @default(autoincrement())
+  addedOn DateTime
+  friend  User[]   @relation("fr")
 }
 
 model Room {

@@ -8,6 +8,15 @@
 	"/": [
 		"src/routes/+layout.server.ts"
 	],
+	"/(app)/chatroom": [
+		"src/routes/(app)/chatroom/+page.server.ts",
+		"src/routes/(app)/+layout.server.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/(app)/chatroom/[slug]": [
+		"src/routes/(app)/+layout.server.ts",
+		"src/routes/+layout.server.ts"
+	],
 	"/(app)/hello": [
 		"src/routes/(app)/hello/+page.ts",
 		"src/routes/(app)/+layout.server.ts",
